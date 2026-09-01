@@ -1,0 +1,66 @@
+<!--@layout(/layout/basic/layout.html)-->
+<style>
+    #contents { min-height: 80vh; }
+    .xans-member-findpasswd { width: 550px; margin: 0 auto 60px; }
+    .xans-member-findpasswd .ec-base-desc.gVer .desc { margin: 0; padding: 0; }
+    .xans-member-findpasswd .ec-base-desc select, .ec-base-desc option, .ec-base-desc input { font-size: 14px; font-weight: 400; line-height: 1.5; }
+    .xans-member-findpasswd .ec-base-desc li { display: flex; margin-bottom: 20px; align-items: center; }
+    .xans-member-findpasswd .ec-base-desc li .term { width: 30%; font-size: 16px; font-weight: 600; line-height: 1.5; }
+    .xans-member-findpasswd .ec-base-desc li .desc { width: 70%; }
+    .xans-member-findpasswd .ec-base-desc li .desc .check { display: flex; align-items: center; }
+    .xans-member-findpasswd .ec-base-desc select, .ec-base-desc input[type=text], .ec-base-desc input[type=password] { width: 100%; height: 48px; border-radius: 4px; }
+    @media(max-width: 1024px) {
+        .xans-member-findpasswd { width: 100%; }
+        .xans-member-findpasswd .ec-base-help ul li { font-size: 13px; }
+        .xans-member-findpasswd .ec-base-desc select, .ec-base-desc option, .ec-base-desc input { font-size: 13px; }
+        .xans-member-findpasswd .ec-base-desc li { margin-bottom: 24px; flex-direction: column; align-items: flex-start; }
+        .xans-member-findpasswd .ec-base-desc li .term { margin: 0 0 12px; font-size: 15px; width:auto; }
+        .xans-member-findpasswd .ec-base-desc li .desc { width: 100%; }
+    }
+</style>
+<div class="section titleArea">
+    <h2>비밀번호 찾기</h2>
+</div>
+
+<div module="member_findpasswd" class="memberArea">
+    <!--@css(/css/module/member/find_passwd.css)-->
+    <!--
+        $nextURL = /member/passwd/find_passwd_question.html
+     -->
+    <div class="ec-base-box typeMember">
+        <fieldset class="content">
+            <legend>비밀번호 찾기 1단계 정보 입력</legend>
+            <ul class="ec-base-desc gVer">
+                <li><strong class="term">회원유형</strong><div class="desc">{$form.searchType}<span class="check gBlank10">{$form.check_method}</span></div></li>
+                <li class="gBlank20 {$display_id|display}"><strong class="term">아이디</strong><div class="desc">{$form.member_id}</div></li>
+                <li id="name_view" class="name"><strong class="term" id="name_lable">이름</strong><div class="desc">{$form.name}</div></li>
+                <li id="ssn_view" class="ssn_no">
+                    <strong class="term" id="ssn_name">법인번호로 찾기</strong>
+                    <div class="desc"> {$form.ssn} <p class="gBlank5 txtInfo">(-) 없이 숫자만 입력하세요.</p></div>
+                </li>
+                <li id="email_view" class="email" style="display:none;"><strong class="term">이메일로 찾기</strong><div class="desc">{$form.email}</div></li>
+                <li id="mobile_view" class="mobile" style="display:none;">
+                    <strong class="term">휴대폰 번호로 찾기</strong>
+                    <div class="desc"><span class="ec-base-field code">{$form.mobile1} - {$form.mobile2} - {$form.mobile3}</span></div>
+                </li>
+                <li id="ipin_view" class="ipin" style="display:none;">
+                    <strong class="term">아이핀인증으로 찾기</strong>
+                    <div class="desc">
+                        <p class="info">회원가입을 아이핀으로 가입하신 회원님께서는 아이핀으로 인증하세요.</p>
+                        <a href="#none" class="btnNormal sizeS gBlank10" onclick="{$action_func_find_passwd_question}" role="button">아이핀인증</a>
+                    </div>
+                </li>
+                <li id="mobile_auth_view" class="mobileauth" style="display:none;">
+                    <strong class="term">휴대폰인증으로 찾기</strong>
+                    <div class="desc">
+                        <p class="info">본인 명의의 휴대폰으로 아이디 찾기를 진행할 수 있습니다. <br />휴대폰 명의자의 정보로 가입한 아이디 찾기가 가능합니다.</p>
+                        <a href="#none" class="btnNormal sizeS gBlank10" onclick="{$action_func_find_passwd_question}" role="button">휴대폰 인증</a>
+                    </div>
+                </li>
+            </ul>
+        </fieldset>
+    </div>
+    <div class="ec-base-button gBottom">
+        <a href="#none" class="btnSubmitFix sizeM gFull" onclick="{$action_func_find_passwd_question}" role="button">확인</a>
+    </div>
+</div>

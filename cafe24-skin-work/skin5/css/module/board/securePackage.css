@@ -1,0 +1,17 @@
+/* board common */
+.xans-board-title p.imgArea { margin:0 0 20px; }
+
+
+.xans-board-secure.ec-base-box { margin-bottom: 100px; padding:49px 0 39px; border: none !important; text-align:center; }
+.xans-board-secure .secret { width:370px; margin:0 auto; }
+.xans-board-secure .secret .info { margin:5px 0 40px; line-height:150%; color:#757575; }
+.xans-board-secure .secret .password label { display:inline-block; margin:10px 0 5px; width:118px; font-weight:normal; vertical-align:top; text-align:left; }
+.xans-board-secure .secret .password input { width:236px; height:28px; line-height:28px; }
+.xans-board-secure .secret .ec-base-button { padding:40px 0 10px 0; }
+
+@media(max-width:1024px){
+    .xans-board-secure.ec-base-box { margin-bottom: 50px; }
+    .xans-board-secure .secret { width: 100%; max-width:370px; padding: 0 20px; box-sizing: border-box; }
+    .xans-board-secure .secret .password { display: flex; width: 100%; }
+    .xans-board-secure .secret .password label { width: auto; flex: 1; margin: 0; line-height: 28px; }
+}

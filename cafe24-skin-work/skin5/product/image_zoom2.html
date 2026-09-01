@@ -1,0 +1,36 @@
+<!--@layout(/layout/basic/popup.html)-->
+<div module="Product_ZoomPackage" class="ec-base-layer">
+    <!--@css(/css/module/product/zoomPackage2.css)-->
+    <div class="header">
+        <h1>View Larger</h1>
+    </div>
+    <div class="content">
+        <div module="product_zoom">
+            <!--@js(/js/module/product/product_image.js)-->
+            <!--
+                $popup_flag = T
+             -->
+            <div class="imgArea" >
+                <div class="keyImg">
+
+                    <div class="topLogo {$supply_link_display|display}">
+                        <span>{$supply_top_logo}</span>
+                        <a href="#none" onclick="{$supply_go_action}" role="button"><img src="{$supply_go_img}" alt="Visit Store" /></a>
+                    </div>
+
+                    <div class="thumbnail"><img src="{$big_img}" class="{$big_img_class}" alt="" onclick="self.close();" /><span module="product_Imagestyle"><span class="prdIcon {$icon_class_name}" style="background-image:url('{$icon_url}');"></span></span></div>
+                </div>
+
+                <div class="listImg" module="product_addimage">
+                    <ul>
+                        <li>{$add_img}</li>
+                        <li>{$add_img}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ec-base-button">
+        <a href="#none" class="btnNormalFix sizeS" onclick="self.close();" role="button">Close</a>
+    </div>
+</div>

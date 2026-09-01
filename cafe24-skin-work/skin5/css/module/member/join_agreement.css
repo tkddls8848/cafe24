@@ -1,0 +1,58 @@
+.xans-member-join .title h3 { display:flex; align-items: center; gap:8px; font-size:14px; font-weight:normal; line-height:1.5; }
+.xans-member-join label { display:none; }
+.xans-member-join label + label { margin-left:0; }
+.xans-member-join label.check { display:inline-block; }
+.xans-member-join .contents, 
+.xans-member-join #foreignerPersonWrap .content { overflow:hidden; overflow-y:auto; height:152px; margin:20px 0 0; padding:20px; color:#6d6d6d; font-size:12px; line-height:20px; border:1px solid #e5e5e5; box-sizing:border-box; }
+.xans-member-join .contents p { margin:0 0 20px; }
+.xans-member-join .ec-base-chk { margin-top:3px; max-width:18px; }
+.xans-member-join h3 { font-size:18px; font-weight:600;  }
+.xans-member-join .agreeAll { margin:0 0 30px; font-size:16px;  }
+.xans-member-join .agreeAll label { display:inline-block; width: calc(100% - 41px); font-weight:600; line-height:1.2;}
+.xans-member-join .agreeAll label strong{ font-weight:600; }
+.xans-member-join .agreeAll .desc { font-size: 14px; font-weight:normal; color:#939393; margin:4px 0 0 28px; }
+.xans-member-join .agreeAll p{display:flex; gap:8px; line-height: 1.5;}
+.xans-member-join .agreeAll p .ec-base-chk #sAgreeAllChecked {margin-top:0;}
+.xans-member-join .agreeAll label strong {display:inline-block;}
+.xans-member-join .agreeArea label.check {vertical-align: middle !important; }
+.xans-member-join .agreeArea .additional { display:flex; gap:18px; margin:18px 0 0; border-top: 0; padding:0 0 0 28px; }
+.xans-member-join .agreeArea .additional li { display:flex; align-items:center; gap:8px; }
+.xans-member-join .agreeArea + .agreeArea { margin:18px 0 0; }
+.xans-member-join .ec-base-button.gColumn{margin:40px 0;padding:0;}
+.xans-member-join .contents, .xans-member-join #foreignerPersonWrap .content{border-radius: 6px; border-color:#C5C5C8;}
+.agree-step{padding-bottom:30px; border-bottom: 1px solid #ededed; margin-bottom:30px !important; max-width:720px;}
+
+.agree-login-txt{text-align:center; font-size:14px; color: #1C1B1F; margin-bottom:80px; margin-top:18px; }
+.agree-login-txt a{text-decoration: underline; font-weight:600; color:#000;}
+
+.agreeArea .title { position:relative; }
+.agreeArea .title .btnToggle { position:absolute; right:0; cursor: pointer; overflow: visible; }
+.agreeArea .title .btnToggle:before { content:''; display: block; position: absolute; width: 100%; height: 100%; transform: scale(3); }
+.agreeArea.on .title .btnToggle { transform: rotate(135deg); }
+.agreeArea .contents {display:none;}
+.agreeArea.on .contents {display:block;}
+
+#sAgreeAllChecked{margin-top:3px;}
+
+/********************* Mobile / Tablet *********************/
+@media (max-width:1024px) {
+    .xans-member-join{width: calc(100% - 30px);}
+	.xans-member-join .agreeArea { margin:0 0 18px; }
+    .xans-member-join .agreeAll p,.xans-member-join .title h3 { gap:4px; }
+    .xans-member-join .ec-base-button.gColumn{margin:18px 0 24px;}
+    .ec-base-step{width: calc(100% - 30px); margin: 40px auto 50px !important;}
+    .ec-base-button:after{display:none;}
+    .xans-member-join .agreeAll label{font-size:15px;}
+    .xans-member-join .agreeArea label.check{max-width:calc(100% - 30px); line-height:1.1;}
+    .xans-member-join .agreeArea .title h3 label.check{max-width: calc(100% - 50px);}
+    .xans-member-join .agreeArea .additional { flex-direction: column; }
+}
+
+/********************* PC *********************/
+@media (min-width:1025px) {
+    .xans-member-join .agreeInner { display:flex; }
+	.xans-member-join .left { display:flex; flex:1; margin-right:40px; }
+    .xans-member-join .right { flex:1; }
+    .xans-member-join .agreeArea.terms .contents { min-height:100%; }
+}
+

@@ -1,0 +1,105 @@
+<!--@layout(/layout/basic/layout.html)-->
+<style>
+    .titleArea p { margin-top: 10px; font-size: 14px; }
+    
+    @media (max-width:1024px){
+		.path { display: none; }
+        .titleArea { margin: 40px 0; }
+    }
+</style>
+<div module="board_ReadPackage_9">
+    <!--@css(/css/module/board/readPackage_9.css)-->
+    <div module="board_title_9">
+        <div class="titleArea">
+            <h2>{$board_title}</h2>
+            <p>{$board_info}</p>
+        </div>
+    </div>
+
+    <div module="Board_Read_9">
+        <!--
+            $login_page_url = /member/login.html
+            $delete_success_url = /board/consult/list.html
+        -->
+        <div class="ec-base-table gLayoutFixed">
+            <table border="1" summary="">
+            <caption>Private Post Details</caption>
+            <colgroup>
+                <col style="width:130px;" />
+                <col style="width:auto;" />
+                <col style="width:130px;" />
+                <col style="width:auto;" />
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th scope="row">제목</th>
+                    <td colspan="3">{$subject}</td>
+                </tr>
+                <tr>
+                    <th scope="row">작성자</th>
+                    <td>{$writer} <span class="{$config.display_ip|display}">(ip:{$ip})</span></td>
+                    <th scope="row">Reply</th>
+                    <td>{$consult}</td>
+                </tr>
+                <tr class="{$config.use_date|display}">
+                    <th scope="row">작성일</th>
+                    <td colspan="3">{$write_date}</td>
+                </tr>
+                <tr class="view">
+                    <td colspan="4">
+                        <div class="detail">{$content}{$content_image}</div>
+                    </td>
+                </tr>
+                <tr class="attach {$config.use_attach|display}" >
+                    <th scope="row">첨부파일</th>
+                    <td colspan="3">{$attach_file}</td>
+                </tr>
+                <tr class="{$delete_button_auth|display} {$config.use_password|display}">
+                    <th scope="row">비밀번호</th>
+                    <td colspan="3">{$form.password} <span class="ec-base-help txtInfo">Please enter password to remove or edit this post.</span></td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <div class="{$display_consult_reply}">
+            <div class="ec-base-table">
+                <table border="1" summary="">
+                <caption>Reply</caption>
+                <colgroup>
+                    <col style="width:130px;" />
+                    <col style="width:auto;" />
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <th scope="row">Replied by</th>
+                        <td>{$reply_name}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">작성일</th>
+                        <td>{$reply_date}</td>
+                    </tr>
+                    <tr class="view">
+                        <td colspan="2">
+                            <div class="detail">{$reply_content}</div>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="ec-base-box typeThinBg gBlank30 {$display_consult_noreply}">
+            <p>We will get back to you as soon as possible!</p>
+        </div>
+
+        <div class="ec-base-button">
+            <span class="gLeft"><a href="{$link_board_list}" class="btnNormalFix sizeM">목록</a></span>
+            <span class="gRight">
+                <span class="{$delete_button_auth|display}"><a href="#none" class="btnNormalFix sizeM" onclick="{$action_delete}" role="button">삭제</a></span>
+                <span class="{$modify_button_auth|display}"><a href="#none" onclick="{$action_modify}" class="btnEmFix sizeM" role="button">수정</a></span>
+                <span class="{$config.is_admin|display}"><a href="/board/consult/reply.html{$param_reply}" class="btnSubmitFix sizeM {$reply_button_auth|display}">Reply</a></span>
+            </span>
+        </div>
+    </div>
+</div>

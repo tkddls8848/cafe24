@@ -1,0 +1,51 @@
+<!--@layout(/layout/basic/popup.html)-->
+<style>
+    .boardReport { border: 1px solid #c5c5c5; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);}
+    .ec-base-layer .header { border: 1px solid #ECECEC; }
+    .boardReport > .header > h3 { font-size: 16px; font-weight: 400; line-height: 1.5;}
+    .boardReport .close { display: flex; position:absolute; top: 25px; right: 25px; width: 24px; height: 24px; padding: 0; justify-content: center; align-items: center; cursor: pointer; }
+    .boardReport .close { width: 24px; height: 24px; display: flex; position: absolute; top: 20px; right: 20px; align-items: center; }
+    .boardReport .close img { width: 13px; object-fit: contain; }
+    .boardReport .content h4,
+    .boardReport .content .summary { font-size: 13px; font-weight: 400; line-height: 1.7; }
+    .boardReport .box { border: 1px solid #ECECEC; }
+    .boardReport .box .selectBox ul li .radio { margin-right: 8px; }
+    .boardReport .ec-base-button { padding: 0 0 20px; }
+    .boardReport .ec-base-button [class^='btn'].sizeS { min-width: 110px; padding: 16px 12px !important; line-height: 1 !important; }
+    @media (max-width: 1024px) {
+        .boardReport > .header > h3 { font-size: 13px; }
+        .boardReport .box .selectBox ul li .radio { margin-right: 4px; }
+        .boardReport .ec-base-button { padding: 0 20px 20px; }
+        .boardReport .ec-base-button [class^='btn'].sizeS { height: 40px; padding: 11px 12px !important; font-size: 13px; }
+        .boardReport .ec-base-button a:first-child { margin-bottom: 10px; }
+    }
+</style>
+<div class="boardReport displaynone ec-base-layer typeModal">
+    <!--@css(/layout/basic/css/ec-base-layer.css)-->
+    <!--@css(/css/module/board/report.css)-->
+    <div class="header">
+        <h3>게시글 신고하기</h3>
+    </div>
+    <div class="content">
+        <h4>신고사유</h4>
+        <div class="box">
+            <div class="selectBox">
+                <ul>
+                    <li><label class="label"><input type="radio" name="report_reason" value="1" class="radio" checked>관련없는 내용</label></li>
+                    <li><label class="label"><input type="radio" name="report_reason" value="2" class="radio">욕설/비방</label></li>
+                    <li><label class="label"><input type="radio" name="report_reason" value="3" class="radio">개인정보유출</label></li>
+                    <li><label class="label"><input type="radio" name="report_reason" value="4" class="radio">광고/홍보글</label></li>
+                    <li><label class="label"><input type="radio" name="report_reason" value="5" class="radio">기타</label></li>
+                </ul>
+            </div>
+        </div>
+        <p class="summary">신고해주신 내용은 쇼핑몰 운영자의 검토 후 내부 운영 정책에 의해 처리가 진행됩니다.</p>
+    </div>
+
+    <div class="ec-base-button report-button">
+        <a href="#none" class="btnSubmit ecReportAction sizeS" onclick="{$action_report}" role="button">신고</a>
+        <a href="#none" class="btnNormal ecReportCloseLayer sizeS" onclick="{$board_report_displaynone}" role="button">취소</a>
+    </div>
+    <a href="#none" class="close ecReportCloseLayer" onclick="{$board_report_displaynone}" role="button"><img src="/SkinImg/img/ico_close.png" alt="닫기" /></a>
+</div>
+

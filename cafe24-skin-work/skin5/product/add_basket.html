@@ -1,0 +1,33 @@
+<style>
+    .xans-product-basketadd.ec-base-layer-area .ec-base-layer { max-width: 450px; padding: 20px; width:var(--layer-width); }
+    .xans-product-basketadd .ec-base-layer .header { display: none; }
+    .xans-product-basketadd .ec-base-layer .content { padding: 108px 0 40px; background: url("/SkinImg/img/ico_add_cart.png") no-repeat 50% 28px; background-size: 64px; }
+    .xans-product-basketadd .ec-base-layer .content p { font-size: 16px; font-weight: 500; color: var(--black-color); }
+    .xans-product-basketadd .ec-base-layer .close { display: flex; position:absolute; top: 20px; right: 20px; width: 24px; height: 24px; padding: 0; justify-content: center; align-items: center; cursor: pointer; }
+    .xans-product-basketadd .ec-base-layer .close img { width: 14px; object-fit: contain; }
+    .xans-product-basketadd .ec-base-layer .ec-base-button { display: flex; margin: 0; padding: 0; border: none; background: none; gap: 10px; justify-content: center; }
+    .xans-product-basketadd .ec-base-layer .ec-base-button a { min-width: 110px; height: 48px; padding: 0 12px; border-radius: 4px; font-size: 14px; font-weight: 600; line-height: 48px; }
+    .xans-product-basketadd .ec-base-layer .ec-base-button .btnNormal { border: 1px solid var(--black-color); color: var(--black-color); }
+    @media(max-width: 1024px){
+        .xans-product-basketadd.ec-base-layer-area .ec-base-layer .option_product input[type="number"]{max-width:100px;}
+    }
+</style>
+
+<!-- ##module_info #ProductDetail #Addbasket #AddbasketCheck1 -->
+<div module="Product_BasketAdd" class="ec-base-layer-area">
+    <!--@css(/layout/basic/css/ec-base-layer.css)-->
+    <!--@css(/css/module/product/basketAdd.css)-->
+    <div class="ec-base-layer typeModal">
+        <div class="header">
+            <h3>장바구니</h3>
+        </div>
+        <div class="content">
+            <p>장바구니에 상품이 정상적으로 담겼습니다.</p>
+        </div>
+        <div class="ec-base-button">
+            <a href="#none" class="btnNormal sizeS" onclick="$('#confirmLayer').remove();" complete="complete" role="button">쇼핑계속하기</a>
+            <a href="/order/basket.html?delvtype={$delvtype}" class="btnSubmit sizeS">장바구니 이동</a>
+        </div>
+        <a class="close" onclick="$('#confirmLayer').remove();"><img src="/SkinImg/img/ico_close.png" alt="Close" /></a>
+    </div>
+</div>

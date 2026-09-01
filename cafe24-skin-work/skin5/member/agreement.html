@@ -1,0 +1,183 @@
+<!--@layout(/layout/basic/layout.html)-->
+<style>
+    #contents .ec-base-step.agree-step { width: 100%; margin: 0 auto 20px !important; padding: 0 !important; border: none; }
+    .titleArea { margin-top:100px; }
+    .ec-base-step.agree-step{ display:none;}
+</style>
+<div class="section titleArea">
+    <h2>회원가입</h2>
+</div>
+<div class="section ec-base-step agree-step">
+    <ol class="step">
+        <li class="selected">1. 약관동의</li>
+        <li>2. 정보입력</li>
+        <li>3. 가입완료</li>
+    </ol>
+</div>
+<div module="member_join">
+    <!--@js(/js/module/member/join_agreement.js)-->
+    <!--@css(/css/module/member/join_agreement.css)-->
+    <h3>전체 동의</h3>
+    <div class="agree-section">
+        <div class="agreeAll">
+            <p>
+                {$sAgreeAllChecked}
+                <label for="sAgreeAllChecked"><strong>{$sAgreeAllMsgTitle}</strong></label>
+            </p>
+            <p class="desc">{$sAgreeAllMsgSubTitle}</p>
+            <p></p>
+        </div>
+        <div class="agreeInner">
+            <div class="agreeArea terms">
+                <div class="title">
+                    <h3>{$form.agree_service_check}
+                        <label for="agree_service_check0" class="check">[필수] 이용약관 동의</label>
+                        <i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i>
+                    </h3>
+                </div>
+                <div class="contents">{$service_desc}</div>
+            </div>
+            <div class="{$display_privacy_agreement|display} agreeArea">
+                <div class="title">
+                    <h3>{$form.agree_privacy_check}
+                        <label for="agree_privacy_check0" class="check">[필수] 개인정보 수집 및 이용 동의</label>
+                        <i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i>
+                    </h3>
+                </div>
+                <div class="contents">{$privacy_desc}</div>
+            </div>
+
+            <div class="{$display_privacy_optional|display} agreeArea">
+                <div class="title">
+                    <h3>{$form.agree_privacy_optional_check}
+                        <label for="agree_privacy_optional_check0" class="check">[선택] 개인정보 수집 및 이용 동의</label>
+                        <i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i>
+                    </h3>
+                </div>
+                <div class="contents">{$privacy_optional_desc}</div>
+            </div>
+            <div class="{$display_information|display} agreeArea">
+                <div class="title">
+                    <h3>{$form.agree_information_check}
+                        <label for="agree_information_check0" class="check">[선택] 개인정보 제3자 제공 동의</label>
+                        <i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i>
+                    </h3>
+                </div>
+                <div class="contents">{$information_desc}</div>
+            </div>
+            <div class="{$display_consignment|display} agreeArea">
+                <div class="title">
+                    <h3>{$form.agree_consignment_check}
+                        <label for="agree_consignment_check0" class="check">[선택] 개인정보 처리 위탁 동의</label>
+                        <i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i>
+                    </h3>
+                </div>
+                <div class="contents">{$consignment_desc}</div>
+            </div>
+
+            <!-- User Defined 1~10: 변수 그대로 유지 -->
+            <div class="{$display_user_defined_1|display} agreeArea">
+                <div class="title">
+                    <h3>{$form.check_user_defined_1}<label for="{$name_user_defined_1}" class="check">{$title_user_defined_1}</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+                </div>
+                <div class="contents"><div class="fr-view fr-view-privacy-optional">{$desc_user_defined_1}</div></div>
+            </div>
+            <div class="{$display_user_defined_2|display} agreeArea">
+                <div class="title">
+                    <h3>{$form.check_user_defined_2}<label for="{$name_user_defined_2}" class="check">{$title_user_defined_2}</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+                </div>
+                <div class="contents"><div class="fr-view fr-view-privacy-optional">{$desc_user_defined_2}</div></div>
+            </div>
+            <div class="{$display_user_defined_3|display} agreeArea">
+                <div class="title">
+                    <h3>{$form.check_user_defined_3}<label for="{$name_user_defined_3}" class="check">{$title_user_defined_3}</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+                </div>
+                <div class="contents"><div class="fr-view fr-view-privacy-optional">{$desc_user_defined_3}</div></div>
+            </div>
+            <div class="{$display_user_defined_4|display} agreeArea">
+                <div class="title">
+                    <h3>{$form.check_user_defined_4}<label for="{$name_user_defined_4}" class="check">{$title_user_defined_4}</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+                </div>
+                <div class="contents"><div class="fr-view fr-view-privacy-optional">{$desc_user_defined_4}</div></div>
+            </div>
+            <div class="{$display_user_defined_5|display} agreeArea">
+                <div class="title">
+                    <h3>{$form.check_user_defined_5}<label for="{$name_user_defined_5}" class="check">{$title_user_defined_5}</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+                </div>
+                <div class="contents"><div class="fr-view fr-view-privacy-optional">{$desc_user_defined_5}</div></div>
+            </div>
+            <div class="{$display_user_defined_6|display} agreeArea">
+                <div class="title">
+                    <h3>{$form.check_user_defined_6}<label for="{$name_user_defined_6}" class="check">{$title_user_defined_6}</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+                </div>
+                <div class="contents"><div class="fr-view fr-view-privacy-optional">{$desc_user_defined_6}</div></div>
+            </div>
+            <div class="{$display_user_defined_7|display} agreeArea">
+                <div class="title">
+                    <h3>{$form.check_user_defined_7}<label for="{$name_user_defined_7}" class="check">{$title_user_defined_7}</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+                </div>
+                <div class="contents"><div class="fr-view fr-view-privacy-optional">{$desc_user_defined_7}</div></div>
+            </div>
+            <div class="{$display_user_defined_8|display} agreeArea">
+                <div class="title">
+                    <h3>{$form.check_user_defined_8}<label for="{$name_user_defined_8}" class="check">{$title_user_defined_8}</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+                </div>
+                <div class="contents"><div class="fr-view fr-view-privacy-optional">{$desc_user_defined_8}</div></div>
+            </div>
+            <div class="{$display_user_defined_9|display} agreeArea">
+                <div class="title">
+                    <h3>{$form.check_user_defined_9}<label for="{$name_user_defined_9}" class="check">{$title_user_defined_9}</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+                </div>
+                <div class="contents"><div class="fr-view fr-view-privacy-optional">{$desc_user_defined_9}</div></div>
+            </div>
+            <div class="{$display_user_defined_10|display} agreeArea">
+                <div class="title">
+                    <h3>{$form.check_user_defined_10}<label for="{$name_user_defined_10}" class="check">{$title_user_defined_10}</label><i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i></h3>
+                </div>
+                <div class="contents"><div class="fr-view fr-view-privacy-optional">{$desc_user_defined_10}</div></div>
+            </div>
+
+            <div class="{$display_marketing_consent|display} agreeArea">
+                <div class="title">
+                    <h3>{$form.marketing_consent_check}
+                        <label for="marketing_consent_check0">동의함</label>
+                        <label for="marketing_consent_check0" class="check">{$title_marketing_consent}</label>
+                        <i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i>
+                    </h3>
+                </div>
+                <div class="contents"><div class="fr-view fr-view-privacy-optional">{$desc_marketing_consent}</div></div>
+            </div>
+
+            <div class="agreeArea {$display_marketing|display}">
+                 <div class="title">
+                     <h3>{$sMarketingAgreeAllChecked}
+                         <label for="sMarketingAgreeAllChecked" class="check">[선택] 마케팅 정보 수신 동의</label>
+                         <i aria-hidden="true" class="icon icoArrowBottom btnToggle"></i>
+                     </h3>
+                     <ul class="additional">
+                         <li class="{$display_is_sms|display}">{$form.is_sms}
+                             <label for="is_sms0" class="check">[선택] 모바일 메시지 수신 동의</label>
+                         </li>
+                         <li class="{$display_is_news_mail|display}">{$form.is_news_mail}
+                             <label for="is_news_mail0" class="check">[선택] 이메일 수신 동의</label>
+                         </li>
+                     </ul>
+                </div>
+               <div class="contents">
+                    <p>모바일 메시지 또는 이메일을 통해 프로모션 쿠폰, 혜택, 이벤트 소식, 상품 업데이트 등을 받아보실 수 있습니다.  
+                    주문/거래 및 정책 관련 알림은 동의 여부와 관계없이 발송됩니다.</p>
+                    <p>선택 약관에 동의하지 않더라도 회원 가입에는 영향이 없으며, 마이페이지에서 언제든지 수신 설정을 변경하실 수 있습니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ec-base-button gColumn">
+        <a href="#none" class="btnEm sizeM" onclick="history.go(-1); return false;" role="button">취소</a>
+        <button type="button" class="btnSubmit sizeM" onclick="checkAgreement('/member/join.html');">다음</button>
+    </div>
+
+    <p class="agree-login-txt">
+        이미 아이디가 있으신가요? <a href='/member/login.html'>로그인</a>
+    </p>
+</div>

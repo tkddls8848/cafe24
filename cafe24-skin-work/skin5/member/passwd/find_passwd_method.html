@@ -1,0 +1,28 @@
+<!--@layout(/layout/basic/layout.html)-->
+<style>
+    .titleArea{margin-bottom:0 !important;}
+    .ec-base-button.gBottom { gap: 20px; }
+</style>
+<div class="section titleArea">
+    <h2>비밀번호 찾기</h2>
+</div>
+<div module="member_findpasswdmethod" class="memberArea">
+    <!--@css(/css/module/member/find_passwd_method.css)-->
+    <!--
+        $nextURL = /member/passwd/find_passwd_result.html
+     -->
+    <div class="ec-base-box typeMember">
+        <fieldset class="content">
+            <legend>임시 비밀번호 전송</legend>
+            <ul class="ec-base-desc gVer">
+                <li><strong class="term">임시 비밀번호</strong><span class="desc">{$form.passwd_method_type}</span></li>
+                <li id="{$passwd_method_email_info}"><strong class="term">이메일</strong><span class="desc"><strong class="txtEm">{$passwd_method_email}</strong></span></li>
+                <li id="{$passwd_method_mobile_info}"><strong class="term">휴대폰 번호</strong><span class="desc"><strong class="txtEm">{$passwd_method_mobile}</strong></span></li>
+            </ul>
+        </fieldset>
+    </div>
+    <div class="ec-base-button gBottom">
+        <a href="#none" class="btnNormalFix sizeM" onclick="{$action_func_find_passwd_cancel}" role="button">취소</a>
+        <a href="#none" class="btnSubmitFix sizeM" onclick="{$action_func_find_passwd_send}" role="button">임시 비밀번호 전송</a>
+    </div>
+</div>

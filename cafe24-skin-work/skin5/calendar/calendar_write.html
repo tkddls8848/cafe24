@@ -1,0 +1,37 @@
+<!--@layout(/layout/basic/popup.html)-->
+<div module="calendar_Write" class="ec-base-layer">
+    <!--@css(/css/module/calendar/write.css)-->
+    <div class="header">
+        <h1>New post</h1>
+    </div>
+    <div class="content">
+        <div class="ec-base-table typeWrite">
+            <table border="1" summary="">
+                <caption>Add New Calendar Post</caption>
+                <colgroup>
+                    <col style="width:110px;" />
+                    <col style="width:auto; ">
+                </colgroup>
+                <tr>
+                    <th scope="row">When</th>
+                    <td>{$form.date} {$form.start_hour} {$form.start_minute} ~ {$form.end_hour} {$form.end_minute}</td>
+                </tr>
+                <tr>
+                    <th scope="row">제목</th>
+                    <td>{$form.title}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Description</th>
+                    <td>{$form.contents}</td>
+                </tr>
+                <tr>
+                    <th scope="row">선택</th>
+                    <td>{$form.field}<br />{$field_info}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="ec-base-button">
+        <a href="#none" class="btnSubmitFix sizeS" onclick="{$action_write}" role="button">저장</a>
+    </div>
+</div>

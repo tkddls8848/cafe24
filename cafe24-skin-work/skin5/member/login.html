@@ -1,0 +1,175 @@
+<!--@layout(/layout/basic/layout.html)-->
+<style>
+    #contents {min-height: 50vh;}
+    .ec-base-box {border: none;}
+    .path {float: left;}
+    .path ol li > * {color: var(--gray-color); font-weight: 500; font-size: 12px;}
+    .path ol li strong {color: var(--black-color);}
+    .login .boxTitle {font-weight: 600; font-size: 26px !important;}
+    .login .sns-box {width: 100%; margin: 30px auto; text-align: center;}
+    .login .sns-box .sns-title {display: none; color: #777; margin-bottom:16px; text-align: center; font-size: 14px;}
+    .login .sns-box .snsArea{display: flex; gap: 8px; flex-direction: column;}
+    .login .sns-box .snsArea li a { display: flex; align-items: center; justify-content: center; position: relative; border-radius: 4px; box-sizing: border-box; font-size: var(--font-size-xs); font-weight: var(--font-weight-bold); height: 48px; line-height: var(--line-height-lg); padding:0 50px; }
+    .login .sns-box .snsArea li a img { position: absolute; top: 50%; left: 20px; height: 20px; margin:0; transform: translateY(-50%); object-fit: contain; }
+    .login .sns-box .snsArea .btn_sso a { border: 1px solid #000; }
+    .login .sns-box .snsArea .btn_naver a { background: #03c75a; color: #FFF; }
+    .login .sns-box .snsArea .btn_kakao a { background: #fee500; }
+    .login .sns-box .snsArea .btn_facebook a { background: #1877f2; color: #FFF; }
+    .login .sns-box .snsArea .btn_google a { border: 1px solid #BCBCBC; }
+    .login .sns-box .snsArea .btn_line a { background: #00c300; color: #FFF; }
+    .login .sns-box .snsArea .btn_apple a { border: 1px solid #000; }
+    .login .sns-box .snsArea .btn_yahoo a { background: #ff0033; color: #FFF; }
+    .xans-member-login{margin: 100px auto 50px !important;}
+    .xans-member-login .login{margin: auto; padding:0;}
+    .xans-member-login .login fieldset{width: 100%; padding: 0;}
+    .xans-member-login .login fieldset .id, .xans-member-login .login fieldset .password {border-color: #ddd; border-radius: 4px; width: 100%; height:48px; }
+    .xans-member-login .login fieldset .security {margin: 20px;}
+    .xans-member-login .login fieldset .security input[type="checkbox"] {margin-right:8px;}
+    .xans-member-login .login fieldset .security input[type=checkbox] + label {margin-left:0;}
+    .xans-member-login .login fieldset .snsArea {border: none;}
+    .xans-member-login .login fieldset .link{display: flex; font-size: 13px; flex-direction: column; align-items: center; gap: 15px;}
+    .xans-member-login .login fieldset .link a {position: unset; width: 100%; height: 48px; padding: 0; border: 1px solid var(--black-color); border-radius: 4px; line-height: 48px; font-weight:500; font-size: 16px;}
+    .xans-myshop-orderhistorynologin.ec-base-box.typeThin{padding-top:30px; border-top:1px solid #ECECEC; margin-top:30px;}
+    .xans-myshop-orderhistorynologin.xans-myshop-orderhistorynologin h3 {font-size:20px !important;}
+    .xans-myshop-orderhistorynologin.xans-myshop-orderhistorynologin h3.guest-title {margin-bottom:16px; font-weight:600;}
+    .xans-myshop-orderhistorynologin p.guest-subTitle {margin-bottom:20px;}
+    .xans-myshop-orderhistorynologin .ec-base-desc label {display:block; margin:0 auto 8px;}
+    .xans-myshop-orderhistorynologin .ec-base-desc input[type=text],
+    .xans-myshop-orderhistorynologin .ec-base-desc input[type=password]{width: 100%; height: 48px; padding-left:10px; box-sizing: border-box; border-radius: 4px; color: var(--black-color); font-size: 14px;}
+    .xans-myshop-orderhistorynologin .ec-base-button button {font-weight:500;}
+    @media(max-width: 1024px){
+        .xans-member-login { margin-top: 40px !important; }
+        .xans-member-login .login{padding:0;}
+        .xans-member-login .login fieldset .id, 
+        .xans-member-login .login fieldset .password { height: 40px; }
+        .xans-member-login.ec-base-box.typeThin,
+        .xans-myshop-orderhistorynologin.ec-base-box.typeThin{margin:30px auto;}
+        .xans-member-login .login fieldset,
+        .xans-myshop-orderhistorynologin p,
+        .xans-myshop-orderhistorynologin input[type=text], .xans-myshop-orderhistorynologin input[type=password],
+        .xans-myshop-orderhistorynologin .ec-base-desc{width: 100%;}
+        .login .sns-box .snsArea li a { font-size: var(--font-size-2xs); height: 40px; }
+    }
+</style>
+
+<!-- ##module_info #MyShop #LoginSingup #login -->
+<div module="member_login" class="ec-base-box typeThin">
+    <!--@css(/css/module/member/login.css)-->
+    <!--
+        $defaultReturnUrl = /index.html
+        $forbidIpUrl = member/adminFail.html
+    -->
+    <div class="login">
+        <h3 class="boxTitle">로그인</h3>
+        <fieldset>
+            <legend>로그인</legend>
+            <label class="id ePlaceholder" title="{$login_id_type_text}">{$form.member_id}</label>
+            <label class="password ePlaceholder" title="password">{$form.member_passwd}</label>
+            <p class="security">
+                {$form.member_check_save_id}
+                {$form.action_func_login}
+            </p>
+            <a href="#none" class="btnLogin" onclick="{$action_func_login}" role="button">로그인</a>
+            <ul>
+                <li><a href="/member/id/find_id.html">아이디 찾기</a></li>
+                <li><a href="/member/passwd/find_passwd_info.html">비밀번호 찾기</a></li>
+                <li><a href="/member/agreement.html">회원가입</a></li>
+            </ul>
+            <p class="link {$display_nomember|display}" id="noMemberWrap">
+                비회원의 경우, 해당버튼을 통해 주문이 가능합니다.
+                <a href="{$returnUrl}" class="btnNormal" onclick="{$action_nomember_order}">비회원 구매</a>
+            </p>
+        </fieldset>
+        <div class="sns-box">
+            <p class="sns-title">SNS 로그인</p>
+            <ul class="snsArea">
+                <li class="btn_sso {$display_sso|display}">
+                    <a href="#none" onclick="{$sso_func_login}" role="button"><img src="/SkinImg/img/ico_sns_sso.png" alt="SSO 로그인" />{$sso_title}</a>
+                </li>
+	            <li class="btn_sso {$display_sso1|display}">
+                    <a href="#none" onclick="{$sso1_func_login}" role="button"><img src="/SkinImg/img/ico_sns_sso.png" alt="SSO 로그인1" />{$sso1_title}</a>
+                </li>
+	            <li class="btn_sso {$display_sso2|display}">
+                    <a href="#none" onclick="{$sso2_func_login}" role="button"><img src="/SkinImg/img/ico_sns_sso.png" alt="SSO 로그인2" />{$sso2_title}</a>
+                </li>
+	            <li class="btn_sso {$display_sso3|display}">
+                    <a href="#none" onclick="{$sso3_func_login}" role="button"><img src="/SkinImg/img/ico_sns_sso.png" alt="SSO 로그인3" />{$sso3_title}</a>
+                </li>
+                <li class="btn_sso {$display_sso4|display}">
+                    <a href="#none" onclick="{$sso4_func_login}" role="button"><img src="/SkinImg/img/ico_sns_sso.png" alt="SSO 로그인4" />{$sso4_title}</a>
+                </li>
+                <li class="btn_kakao {$display_kakao|display}">
+                    <a href="#none" onclick="{$kakao_func_login}" role="button"><img src="/SkinImg/img/ico_sns_kakao.png" alt="Kakao 로그인" />Kakao 로그인</a>
+                </li>
+                <li class="btn_naver {$display_naver|display}">
+                    <a href="#none" onclick="{$naver_func_login}" role="button"><img src="/SkinImg/img/ico_sns_naver.png" alt="Naver 로그인" />Naver 로그인</a>
+                </li>
+                <li class="btn_facebook {$display_facebook|display}">
+                    <a href="#none" onclick="{$facebook_func_login}" role="button"><img src="/SkinImg/img/ico_sns_facebook.png" alt="Facebook 로그인" />Facebook 로그인</a>
+                </li>
+                <li class="btn_line {$display_line|display}">
+                    <a href="#none" onclick="{$line_func_login}" role="button"><img src="/SkinImg/img/ico_sns_line.png" alt="LINE 로그인" />LINE 로그인</a>
+                </li>
+                <li class="btn_google {$display_google|display}">
+                    <a href="#none" onclick="{$google_func_login}" role="button"><img src="/SkinImg/img/ico_sns_google.png" alt="Google 로그인" /> Google 로그인</a>
+                </li>
+                <li class="btn_apple {$display_apple|display}">
+                    <a href="#none" onclick="{$apple_func_login}" role="button"><img src="/SkinImg/img/ico_sns_apple.png" alt="Apple 로그인" />Apple 로그인</a>
+                </li>
+                <li class="btn_yahoo {$display_yahoojp|display}">
+                    <a href="#none" onclick="{$yahoojp_func_login}" role="button"><img src="/SkinImg/img/ico_sns_yahoo.png" alt="Yahoo! JAPAN ID 로그인" />Yahoo! JAPAN 로그인</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div module="MyShop_OrderHistoryNologin" class="ec-base-box typeThin">
+    <!--@css(/css/module/myshop/orderHistoryNologin.css)-->
+    <!--
+        $orderDetailUrl = /myshop/order/list.html
+    -->
+    <h3 class="boxTitle guest-title">비회원 주문조회</h3>
+    <p class="guest-subTitle">비회원의 경우, 주문시의 주문번호로 주문조회가 가능합니다.</p>
+    <div class="ec-base-desc gBlank20">
+        <label class="guest-id ePlaceholder" title="{$form_label.order_name}">{$form.order_name}</label>
+        <label class="guest-password ePlaceholder" title="{$form_label.order_id}">{$form.order_id}</label>
+        <label class="guest-password ePlaceholder" title="{$form_label.order_password}">{$form.order_password}</label>
+    </div>
+    <p class="ec-base-button gColumn"><button type="submit" class="btnLogin">검색</button></p>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {        
+        const snsArea = document.querySelector('.sns-box');
+        if (!snsArea) return;
+
+        const liList = snsArea.querySelectorAll('li');
+
+        let allHidden = true;
+        liList.forEach(li => {
+            if (!li.classList.contains('displaynone')) {
+                allHidden = false;
+            }else{
+                console.log("HI");
+            }
+        });
+
+        if (allHidden) {
+            snsArea.classList.add('displaynone');
+        }
+
+        // placeholder 변경
+        const placeholders = [
+            { selector: '.xans-member-login .login fieldset input#member_id', text: '아이디' },
+        ];
+
+        setTimeout(() => {
+            placeholders.forEach(({ selector, text }) => {
+                const input = document.querySelector(selector);
+                if (input) {
+                    input.placeholder = text;
+                }
+            });
+        }, 300);
+    });
+</script>

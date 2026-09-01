@@ -1,0 +1,31 @@
+<!--@layout(/layout/basic/popup.html)-->
+<div module="poll_result" class="ec-base-layer">
+    <!--@css(/css/module/poll/result.css)-->
+    <div class="header">
+        <h1>Survey results</h1>
+    </div>
+
+    <div class="content">
+        <div class="ec-base-box typeThinBg">
+            <h2>{$title}</h2>
+            <p>- Total number of votes: {$total_count}</p>
+        </div>
+
+        <ol class="result">
+            <li>
+                <p class="title"><strong title="Category">{$comment_title}</strong><span title="Number of votes">({$comment_count}votes)</span></p>
+                <p class="graph">
+                    <em title="Voting rate">{$comment_percentage}%</em>
+                    <span class="box"><span style="width:{$comment_percentage}%;">&nbsp;</span></span>
+                </p>
+            </li>
+            <li>
+                <p class="title"><strong title="Category">{$comment_title}</strong><span title="Number of votes">({$comment_count}votes)</span></p>
+                <p class="graph">
+                    <em title="Voting rate">{$comment_percentage}%</em>
+                    <span class="box"><span style="width:{$comment_percentage}%;">&nbsp;</span></span>
+                </p>
+            </li>
+        </ol>
+    </div>
+</div>

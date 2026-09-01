@@ -1,0 +1,17 @@
+.titleArea.titleArea--myshop{margin-bottom: 0 !important; padding-bottom:15px; border-bottom: 1px solid var(--black-color); }
+div.ec-base-help .inner,.xans-myshop-couponserial .couponSerial, .xans-myshop-summary.ec-base-box.gHalf { border:0 !important; border-top:1px solid var(--black-color) !important; padding: 30px 0; }
+.xans-myshop-couponserial { margin-bottom:50px; }
+.xans-myshop-couponserial .title { margin:0 0 10px 10px; }
+.xans-myshop-couponserial .title h3 { color:#353535; font-size:12px; }
+.xans-myshop-couponserial .couponSerial fieldset { display: flex; flex-wrap: wrap; justify-content: left; gap:8px; }
+.xans-myshop-couponserial .couponSerial .txtInfo { margin-top:0; width: 100%; }
+    
+.xans-myshop-couponserial .couponSerial { text-align:left; padding: 20px 0 0 !important; border-top:0 !important;}
+.xans-myshop-couponserial .couponSerial p { padding:0; color:#757575; line-height:1.3 }
+.xans-myshop-couponserial .couponSerial .btnSubmit { margin:-1px 0 0; }
+.xans-myshop-couponserial .couponSerial #coupon_code { height:48px; line-height:48px; width:340px; font-size:var(--font-size-md); border-radius: 4px; }
+.xans-myshop-couponserial .couponSerial #coupon_code + a{border-radius:4px; background:#FFF; color: var(--black-color); border: 1px solid var(--black-color); height: 48px; line-height: 30px;}
+
+@media(max-width:1024px){
+    .xans-myshop-couponserial .couponSerial #coupon_code { flex: 1; min-width: 0; width: auto; }
+}

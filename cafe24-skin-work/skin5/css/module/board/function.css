@@ -1,0 +1,5 @@
+.xans-board-function { padding:10px 10px 0; color:#757575; font-size:12px; width:100%; max-width: 100% !important; margin-bottom:20px;}
+.xans-board-function p { padding:0; line-height:25px;}
+@media (max-width:1024px) {
+	.xans-board-function{ width: calc(100% - 40px); margin: 0 auto;}
+}

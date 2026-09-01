@@ -1,0 +1,7 @@
+.xans-myshop-orderregularmanagedetailreceiveredit .ec-base-table.typeWrite { padding:20px 20px 10px; }
+.xans-myshop-orderregularmanagedetailreceiveredit #tel1, #phone1 { width:86px; }
+.xans-myshop-orderregularmanagedetailreceiveredit #tel2, #tel3, #phone2, #phone3 { width:86px; }
+.xans-myshop-orderregularmanagedetailreceiveredit .ec-base-table.typeWrite .ec-address li + li { margin-top:5px; }
+.xans-myshop-orderregularmanagedetailreceiveredit textarea { box-sizing:border-box; width:100%; min-width:277px; min-height:90px; }
+.xans-myshop-orderregularmanagedetailreceiveredit .quickdelivery { margin:0 0 5px 0; }
+.xans-myshop-orderregularmanagedetailreceiveredit .quickdelivery + select { width:136px; }

@@ -1,0 +1,77 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div class="path" role="navigation" aria-label="현재 위치">
+    <span aria-hidden="true">Current Page</span>
+    <ol>
+        <li><a href="/">Home</a></li>
+        <li title="Current Page" aria-current="page"><strong>Calendar</strong></li>
+    </ol>
+</div>
+
+<div class="titleArea">
+    <h2>Calendar</h2>
+</div>
+
+<div module="Calendar_Daypackage">
+    <!--@css(/css/module/calendar/daypackage.css)-->
+    <div class="ec-base-tab">
+        <ul class="menu">
+            <li class="selected"><a href="/calendar/calendar_day.html">Daily</a></li>
+            <li><a href="/calendar/calendar_week.html">Weekly</a></li>
+            <li><a href="/calendar/calendar_month.html">Monthly</a></li>
+        </ul>
+        <span class="right"><a href="/calendar/calendar_field.html" class="btnNormal">More</a></span>
+    </div>
+
+    <div module="Calendar_HeadDay">
+        <!--
+            $calendar_write_url = calendar_write.html
+         -->
+        <p class="date">
+            <a href="#none" onclick="{$action_prev_day}" role="button"><img src="//img.echosting.cafe24.com/skin/base/calendar/btn_date_prev.gif" alt="Prev" /></a>
+            <span class="day">{$current_year}-{$current_month}-{$current_day}</span>
+            <a href="#none" onclick="{$action_next_day}" role="button"><img src="//img.echosting.cafe24.com/skin/base/calendar/btn_date_next.gif" alt="Next" /></a>
+            <a href="#none" class="btnNormal" onclick="{$action_today}" role="button">Today</a>
+        </p>
+        <p class="button"><a href="#none" onclick="{$action_write}" class="btnSubmitFix sizeS {$write_display|display}" role="button">글쓰기</a></p>
+    </div>
+
+    <div module="Calendar_Category">{$form.category_no}</div>
+
+    <table border="1" summary="" class="calendar">
+        <caption>Daily Calendar</caption>
+        <colgroup>
+            <col style="width:9%;" />
+            <col style="width:auto;" />
+        </colgroup>
+        <thead module="Calendar_ListDayhead">
+            <tr>
+                <th class="time" scope="col">time</th>
+                <th class="todo" scope="col">{$calendar_day}</th>
+            </tr>
+        </thead>
+        <tbody module="Calendar_ListDay">
+            <!--
+                $calendar_view_url = calendar_view.html
+                $login_page_url = /member/login.html
+             -->
+            <tr>
+                <th scope="row">{$calendar_time}:00</th>
+                <td class="todo {$today.class}">
+                    <ol module="Calendar_List">
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                    </ol>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">{$calendar_time}:00</th>
+                <td class="todo {$today.class}">
+                    <ol module="Calendar_List">
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                    </ol>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

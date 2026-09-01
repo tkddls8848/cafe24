@@ -1,0 +1,16 @@
+.xans-member-joincomplete { padding:30px 0; line-height:150%; text-align:center; margin:0 auto; }
+.xans-member-joincomplete .joinComplete{border:0 !important;}
+.xans-member-joincomplete .joinComplete h3 { margin:0 0 30px 0; }
+.xans-member-joincomplete .joinComplete .desc { margin:0 0 30px; font-size:20px; color:#008bcc; font-weight:bold; }
+.xans-member-joincomplete .joinComplete .ec-base-box { width:430px; margin:0 auto;overflow:hidden; text-align:left; }
+.xans-member-joincomplete .joinComplete .ec-base-box li strong { padding:0 0 0 10px; width:95px; color:#2e2e2e; font-weight:normal; background:url("//img.echosting.cafe24.com/skin/base/common/ico_arrow.png") no-repeat 0 6px; }
+.xans-member-joincomplete .joinComplete .memberSpecial { margin:40px 0 0; line-height:160%; color:#757575; }
+.xans-member-joincomplete .joinComplete .memberSpecial p { margin:5px 0 0; }
+.xans-member-joincomplete .joinComplete .memberSpecial p:first-child { margin:0; }
+.xans-member-joincomplete .joinComplete .memberSpecial em { color:#34a7b3; font-style:normal; }
+.xans-member-joincomplete .joinComplete .memberAge { margin:20px 0 0; line-height:160%; }
+.xans-member-joincomplete .joinComplete .memberAge strong { color:#f26323; }
+@media(max-width: 1024px){
+    .ec-base-step li{margin-bottom: 6px; display:block !important;}
+    .ec-base-step li:not(:last-child):after{display:none !important;}
+}

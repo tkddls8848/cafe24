@@ -1,0 +1,83 @@
+<!--@layout(/layout/basic/layout.html)-->
+<style>
+    #contents { min-height: 80vh; }
+    #contents .ec-base-step.agree-step { display: none; margin: 0 !important; padding: 0 !important; }
+    .titleArea{margin-bottom:0 !important;}
+    .xans-member-joincomplete { max-width: 370px; }
+    .xans-member-joincomplete .joinComplete { padding: 40px 0; }
+    .xans-member-joincomplete .joinComplete .desc { margin: 0 0 20px; color: var(--text-black); font-size: var(--font-size-lg); font-weight: var(--font-weight-semi-bold); line-height: var(--line-height-lg); }
+    .xans-member-joincomplete .ec-base-box.typeMember.gMessage { width: auto; border-radius: 4px; }
+    .xans-member-joincomplete .ec-base-box.typeMember .information { padding: 20px 30px; }
+    .xans-member-joincomplete .ec-base-box.typeMember .information .description { padding: 0; border: none; }
+    .xans-member-joincomplete .joinComplete .ec-base-box .ec-base-desc dt,
+    .xans-member-joincomplete .joinComplete .ec-base-box .ec-base-desc span { color: var(--text-black); font-size: var(--font-size-xs); line-height: var(--line-height-lg); }
+    .xans-member-joincomplete .joinComplete .memberSpecial, .xans-member-joincomplete .joinComplete .memberSpecial * { color: var(--black-color-60); font-size: var(--font-size-base); line-height: var(--line-height-lg); }
+    .xans-member-joincomplete .joinComplete .memberSpecial strong { font-size: inherit }
+    @media(max-width: 1024px) {
+        .xans-member-joincomplete .joinComplete .desc { font-size: var(--font-size-md); }
+        .xans-member-joincomplete .joinComplete .ec-base-box .ec-base-desc dt, .xans-member-joincomplete .joinComplete .ec-base-box .ec-base-desc span { font-size: var(--font-size-2xs); }
+        .xans-member-joincomplete .joinComplete .memberSpecial, .xans-member-joincomplete .joinComplete .memberSpecial * { font-size: var(--font-size-2xs); }
+    }
+</style>
+<div class="section titleArea">
+    <h2>회원가입</h2>
+</div>
+<div class="section ec-base-step agree-step">
+    <ol class="step">
+        <li>1. 약관동의</li>
+        <li>2. 정보입력</li>
+        <li class="selected">3. 가입완료</li>
+    </ol>
+</div>
+<div module="member_joinComplete">
+    <!--@css(/css/module/member/joincomplete.css)-->
+    <div class="joinComplete">
+        <p class="desc">회원가입이 완료되었습니다.</p>
+        <div class="ec-base-box typeMember gMessage">
+            <div class="information">
+                <div class="description">
+                    <dl class="ec-base-desc gBlank5">
+                        <dt>아이디</dt><dd>{$member_id}</dd>
+                        <dt class="{$display_member_name|display}">이름</dt><dd class="{$display_member_name|display}">{$member_name}</dd>
+                        <dt>이메일</dt><dd>{$member_email}</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="memberSpecial" module="member_BenefitJoin">
+            <p>회원가입 해주셔서 감사합니다.<br/>현재 회원님의 멤버쉽 레벨은 [{$group_name}]입니다.</p>
+            <p class="{$display_no_benefit|display}"><strong>{$dc_pay} {$dc_min_price}</strong> 구매시 <strong>{$dc_price}{$dc_type}</strong>을 {$use_dc} 받으실 수 있습니다. {$dc_max_percent}</p>
+            <p class="{$display_with_all|display}"><strong>{$dc_pay} {$dc_min_price_mileage}</strong> 구매시 <strong>{$dc_price_mileage}{$dc_type_mileage}</strong>을 {$use_dc_mileage} 받으실 수 있습니다. {$dc_max_mileage_percent}</p>
+        </div>
+        <p class="memberEmail {$display_email_auth|display}">이메일 주소로 발송된 인증 메일을 통해 인증하신 후에 로그인이 가능합니다.</p>
+        <p class="memberAge {$under_fourteen_display|display}">
+            <strong>{$member_name} 님</strong>은 14세 미만 회원이므로 <br />관리자 인증 후 아이디 사용이 가능합니다.
+        </p>
+        <div class="ec-base-button gColumn gBlank20">
+            <a href="{$redirect_function}" class="btnEmFix sizeM">완료</a>
+            <a href="/member/login.html" class="btnSubmitFix sizeM {$display_login_chk|display}">로그인</a>
+        </div>
+    </div>
+</div>
+
+<div module="coupon_join">
+    <!--@css(/css/module/coupon/join.css)-->
+    <div class="couponSkinArea">
+        <ul class="grid3">
+            <li>
+                <div class="coupon {$background_class}" style="background-image:url('{$background_url}')">
+                    <strong class="title" style="color:#483b1b; font-family:Arial; font-size:11px;">{$coupon_name}</strong>
+                    <p class="discount" style="color:#d07b01; font-family:Dotum;"><span style="font-family:Verdana;">{$coupon_content}</span></p>
+                    <p class="period" style="color:#685219; font-family:Dotum;">{$coupon_period}</p>
+                </div>
+            </li>
+            <li>
+                <div class="coupon {$background_class}" style="background-image:url('{$background_url}')">
+                    <strong class="title" style="color:#483b1b; font-family:Arial; font-size:11px;">{$coupon_name}</strong>
+                    <p class="discount" style="color:#d07b01; font-family:Dotum;"><span style="font-family:Verdana;">{$coupon_content}</span></p>
+                    <p class="period" style="color:#685219; font-family:Dotum;">{$coupon_period}</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

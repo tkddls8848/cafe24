@@ -1,0 +1,10 @@
+.top_banner.top_banner_A_a { z-index: 999 !important; display: flex; position: relative; background: var(--primary-color); overflow: hidden; justify-content: center; }
+/* PMF-5598 2026-08-19: 콘텐츠 폭 상한은 --content-max-width 참조로 교체 - mobile에서 --max-width(480px 컬럼 폭)가 텍스트 폭까지 잘라 뷰포트 521~1024px 구간에서 잘림/좌측쏠림 발생. 변수 미정의 몰(기존 배포분)은 fallback으로 기존 동작 유지 */
+.top_banner.top_banner_A_a .top_banner_box { position: relative; width: calc(100% - 40px); max-width: var(--content-max-width, var(--max-width)); }
+.top_banner.top_banner_A_a .text_wrapper { display: block; width: calc(100% - 60px); margin: 0 auto; white-space: nowrap; text-align: center; }
+.top_banner.top_banner_A_a .text_wrapper span { display: block; padding: 10px 0; font-size: 14px; font-weight: 500; color: var(--primary-on-text-color); line-height: 20px; white-space: nowrap; text-wrap: wrap; }
+.top_banner.top_banner_A_a .btn_banner_close { display: flex; position: absolute; top: 50%; right: 0; transform: translateY(-50%); width: 24px; height: 24px; justify-content: center; align-items: center; }
+.top_banner.top_banner_A_a .btn_banner_close svg { stroke:var(--primary-on-color); }
+@media (max-width: 1024px) {
+    .top_banner.top_banner_A_a .text_wrapper span { padding: 9px 0; font-size: 13px; line-height: 18px; }
+}

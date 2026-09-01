@@ -1,0 +1,113 @@
+
+<!-- ##module_info #ProductDetail #Addbasket #AddbasketCheck2 -->
+<div module="Order_LayerBasketPackage" class="ec-base-layer-area">
+    <!--@css(/layout/basic/css/ec-base-layer.css)-->
+    <!--@css(/css/module/product/basketAdd2.css)-->
+
+    <style>
+        .xans-order-layerbasketpackage.ec-base-layer-area .ec-base-layer { max-width:600px; width: var(--layer-width); }
+        .xans-order-layerbasket.content .totalCount { display: flex; height: 48px; margin: 0 0 20px; padding: 0 20px; font-size: 16px; font-weight: 400; line-height: 1.5; align-items: center; border-bottom: 1px solid var(--black-color-30); }
+        .xans-order-layerbasket.content .totalCount strong { margin: 0 4px; color: var(--text-black); }
+        .xans-order-layerbasket.content ul.prdList { width: 100%; box-sizing: border-box; }
+        .xans-order-layerbasket.content ul.prdList .name a { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; margin-bottom: 4px; font-size: 12px; font-weight: 600; line-height: 1.7; color: var(--text-black); }
+        .xans-order-layerbasket.content ul.prdList .thumb { width: 125px; height: 125px; border: none; }
+        .xans-order-layerbasket.content ul.prdList li.item .box p { font-size: 12px; font-weight: 400; line-height: 1.7; color: var(--text-gray); }
+        .xans-order-layerbasket.content ul.prdList ul li { font-size: 12px; font-weight: 400; line-height: 1.7; color: var(--text-gray); }
+        .xans-order-layerbasket.content ul.prdList ul li.price { margin: 10px 0 0; font-size: 12px; font-weight: 600; line-height: 1.7; color: var(--text-black); }
+        .xans-order-layerbasket.content ul.prdList ul li .txtWarn { font-size: 12px; font-weight: 400; line-height: 1.7; color: var(--text-gray); }
+        .xans-order-layerbasketpackage .ec-base-layer .header { display: none; }
+        .xans-order-layerbasketpackage .ec-base-layer .name img { display: none; }
+        .xans-order-layerbasketpackage .ec-base-layer .close { display: flex; top: 16px; right: 20px; width: 16px; height: 16px; padding: 0; position:absolute; align-items: center; justify-content: center; cursor: pointer;}
+        .xans-order-layerbasketpackage .ec-base-layer .close img { width: 9px; height: 9px; object-fit: contain; }
+        .xans-order-layerbasketpackage .ec-base-layer .ec-base-button { display: flex; margin: 0; padding: 20px; border: none; background: none; gap: 10px; justify-content: center; }
+        .xans-order-layerbasketpackage .ec-base-layer .ec-base-paginate { margin: 20px 0 0; }
+        .xans-order-layerbasketpackage .xans-order-layerbasket.content ul.prdList { display:grid; grid-template-columns: repeat(4, 1fr); margin: 0 auto; padding: 0 20px 20px; gap: 20px; }
+        @media(max-width: 1024px){
+            .xans-order-layerbasket.content { display:flex; flex-direction:column; }
+            .xans-order-layerbasket.content .totalCount { flex-shrink:0; font-size: 15px; }
+            .xans-order-layerbasket.content ul.prdList { flex:1; width: 100% !important; padding: 0 10px; gap: 10px; flex-wrap: wrap; box-sizing: border-box; }
+            .xans-order-layerbasket.content ul.prdList::-webkit-scrollbar { width: 3px; }
+            .xans-order-layerbasket.content ul.prdList::-webkit-scrollbar-thumb { background-color: var(--black-color); }
+            .xans-order-layerbasket.content ul.prdList::-webkit-scrollbar-track { background-color: var(--black-color-20); }
+            .xans-order-layerbasket.content ul.prdList .thumb { width: 90px; height: 90px; aspect-ratio: 1; }
+            .xans-order-layerbasket.content ul.prdList ul li.price { margin: 4px 0 0; }
+            .xans-order-layerbasket.content ul.prdList ul li .txtWarn { display: none; }
+            .xans-order-layerbasket.content ul.prdList li.item .box { display: flex; gap: 10px; }
+            .xans-order-layerbasket.content ul.column4 li.item .box { width: 100% !important; }
+            .xans-order-layerbasketpackage .ec-base-layer { max-height: var(--layer-max-height); display:flex; flex-direction:column; }
+            .xans-order-layerbasketpackage .ec-base-layer .ec-base-button { display: flex; width: 100%; flex-wrap: nowrap; box-sizing: border-box; }
+            .xans-order-layerbasketpackage .ec-base-layer .ec-base-button a { min-width: unset; }
+            .xans-order-layerbasketpackage .ec-base-layer .option_product input[type="number"]{max-width:100px;}
+            .xans-order-layerbasketpackage .xans-order-layerbasket.content ul.prdList { display: flex; flex-flow: column nowrap; height: 368px; overflow: auto; }
+        }
+        @media(max-width: 400px){
+            .xans-order-layerbasket.content ul.column4 li.item { width: calc((100% - 10px) / 2) !important; flex: unset; }
+        }
+    </style>
+
+    <div class="ec-base-layer typeModal">
+        <div class="header">
+            <h3>장바구니 담기</h3>
+        </div>
+        <div class="content" module="Order_LayerBasket">
+            <div class="totalCount">합계 <strong>{$item_total}</strong> 개</div>
+            <ul class="prdList" module="Order_list">
+                <li class="item">
+                    <div class="box">
+                        <div class="thumbnail">
+                            <a href="/product/detail.html{$param}"><img src="{$img}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" alt="{$name_alt}" class="thumb" /></a>
+                        </div>
+                        <div class="info">
+                            <p class="name">{$product_name_link}{$icon} {$cultural_tax_icon}</p>
+                            <p class="option">{$option_str}</p>
+                            <ul>
+                                <li>수량 : {$quantity}</li>
+                                <li class="price notranslate">{$purchase_price}</li>
+                                <li class="{$purchase_price_ref_display|display}"><strong class="notranslate">{$purchase_price_ref}</strong></li>
+                                <li class="{$discount_price_display|display}"><strong class="txtWarn notranslate">-{$discount_price}</strong></li>
+                                <li class="{$discount_price_ref_display|display}"><strong class="txtWarn notranslate">{$discount_price_ref}</strong></li>
+                            </ul>
+                            <p class="option {$subscription_show_display|display}"><strong>배송주기</strong> <span class="txtEm">{$subscription_option_str}</span></p>
+                            <p class="option {$subscription_show_display|display}"><strong>배송횟수</strong> <span class="txtEm">{$max_expected_pay_seq_str}</span></p>
+                        </div>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="box">
+                        <div class="thumbnail">
+                            <a href="/product/detail.html{$param}"><img src="{$img}" onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';" alt="{$name_alt}" class="thumb" /></a>
+                        </div>
+                        <div class="info">
+                            <p class="name">{$product_name_link}{$icon} {$cultural_tax_icon}</p>
+                            <p class="option">{$option_str}</p>
+                            <ul>
+                                <li>수량 : {$quantity}</li>
+                                <li class="price notranslate">{$purchase_price}</li>
+                                <li class="{$purchase_price_ref_display|display}"><strong class="notranslate">{$purchase_price_ref}</strong></li>
+                                <li class="{$discount_price_display|display}"><strong class="txtWarn notranslate">-{$discount_price}</strong></li>
+                                <li class="{$discount_price_ref_display|display}"><strong class="txtWarn notranslate">{$discount_price_ref}</strong></li>
+                            </ul>
+                            <p class="option {$subscription_show_display|display}"><strong>배송주기</strong> <span class="txtEm">{$subscription_option_str}</span></p>
+                            <p class="option {$subscription_show_display|display}"><strong>배송횟수</strong> <span class="txtEm">{$max_expected_pay_seq_str}</span></p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <div module="Order_LayerBasketPaging" class="ec-base-paginate typeSub" role="navigation" aria-label="페이지 이동">
+                <a href="#none" {$param_before} role="button"><img src="/SkinImg/img/ico_prev.png" alt="Prev"></a>
+                <ol>
+                    <li><a href="#none" {$param} class="{$param_class}" role="button">{$no}</a></li>
+                    <li><a href="#none" {$param} class="{$param_class}" role="button">{$no}</a></li>
+                </ol>
+                <a href="#none" {$param_next} role="button"><img src="/SkinImg/img/ico_next.png" alt="Next"></a>
+            </div>
+        </div>
+        <div class="ec-base-button">
+            <a href="/order/basket.html{$basket_param}" class="btnEmFix sizeM">장바구니 <span class="pc">이동</span></a>
+            <a href="#none" onclick="$('#confirmLayer').remove();" class="btnEmFix sizeM" role="button">쇼핑 계속<span class="pc">하기</span></a>
+            <a href="#none" class="btnSubmitFix sizeM" onclick="Basket.orderLayerAll(this)" link-order="/order/orderform.html?basket_type=all_buy" link-login="/member/login.html" role="button">바로 구매</a>
+        </div>
+        <a class="close" onclick="$('#confirmLayer').remove();"><img src="/SkinImg/img/ico_close.png" alt="Close" /></a>
+    </div>
+</div>

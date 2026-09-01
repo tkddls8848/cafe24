@@ -1,0 +1,451 @@
+<!--@layout(/layout/basic/layout.html)-->
+<style>
+    #contents .ec-base-step.agree-step { display: none; margin: 0 0 20px !important; padding: 0 !important; }
+    .titleArea { margin-top:100px; }
+    .xans-member-join { max-width: 550px; }
+    .xans-member-join > h3:first-child { display: none; }
+    .xans-member-join .required { margin: 10px 0; }
+    .xans-member-join .icoRequired { color: var(--point-color); font-style:normal; font-weight: var(--font-weight-regular); margin:0 !important; }
+    .xans-member-join .ec-base-table { border: none; }
+    .xans-member-join .ec-base-table.typeWrite th, .xans-member-join .ec-base-table.typeWrite th[scope*="row"] { padding: 0 20px 20px 0; border: none; color: var(--black-color); background-color: unset; font-size: 16px; font-weight: 600; line-height: 1.5; text-align: left; }
+    .xans-member-join .ec-base-table.typeWrite th img { vertical-align: super; }
+    .xans-member-join .ec-base-table.typeWrite td { min-height: 48px; padding: 0; border: none; }
+    .xans-member-join .ec-base-table.typeWrite tr > td:last-child { box-sizing: border-box; padding-bottom: 20px; }
+    .xans-member-join .ec-base-table.typeWrite td, .xans-member-join .ec-base-table.typeWrite td * { font-size: 14px; line-height: 1.5;}
+    .xans-member-join .ec-base-table.typeWrite td:has(input[type="radio"]),
+    .xans-member-join .ec-base-table.typeWrite td:has(input[type="checkbox"]),
+    .xans-member-join .ec-base-table.typeWrite tr.flex td { display: flex; align-items: center; }
+    .xans-member-join .ec-base-table.typeWrite td input[type="text"], .xans-member-join .ec-base-table.typeWrite td input[type="password"], .xans-member-join .ec-base-table.typeWrite select { height: 48px; border-radius: 4px; }
+    .xans-member-join .ec-base-table.typeWrite #email1 { margin: 0; }
+    .xans-member-join .ec-base-table.typeWrite .ec-address .btnBasic { height: 48px; }
+    .xans-member-join .ec-base-table.typeWrite td:has(input[id="is_lifetime0"]),
+    .xans-member-join .ec-base-table.typeWrite td:has(.gIndent20) { flex-wrap: wrap; }
+    .xans-member-join .ec-base-table.typeWrite .gIndent20 { display: flex; align-items: center; margin: 10px 0 0; }
+    .xans-member-join .ec-base-table.typeWrite .txtDesc { width: 100%; margin-top: 10px; }
+    .xans-member-join .ec-base-table.typeWrite input[type="checkbox"] { margin: 0; }
+    .xans-member-join .ec-base-table.typeWrite input[type=radio] + label,
+    .xans-member-join .ec-base-table.typeWrite input[type=checkbox] + label { margin: 0 20px 0 8px; }
+    .xans-member-join .ec-base-table.typeWrite td input[type="text"],
+    .xans-member-join .ec-base-table.typeWrite td input[type="password"],
+    .xans-member-join .ec-base-table.typeWrite td select, .xans-member-join .ec-base-table.typeWrite .ec-address input[type="text"],
+    .xans-member-join .ec-address select, .xans-member-join #hint_answer, .xans-member-join #name, .xans-member-join #last_name, .xans-member-join #name_en, .xans-member-join #last_name_en, .xans-member-join #name_phonetic, .xans-member-join #last_name_phonetic, .xans-member-join #name.ec-member-name, .xans-member-join #name_en.ec-member-name, .xans-member-join #name_phonetic.ec-member-name, .xans-member-join #job, .xans-member-join #job_class, .xans-member-join #school, .xans-member-join #region, .xans-member-join #internet, .xans-member-join #child, .xans-member-join #car, .xans-member-join #earning, .xans-member-join #add1, .xans-member-join #add2, .xans-member-join #add3, .xans-member-join #add4, .xans-member-join #add5, .xans-member-join #add6, .xans-member-join #add7, .xans-member-join #add8, .xans-member-join #add9 { width: 400px; }
+    .xans-member-join .ec-base-table.typeWrite td:has(.typeDot) input, .xans-member-join .ec-base-table.typeWrite td:has(.typeDot) select { width: 300px; }
+    .xans-member-join .ec-base-table.typeWrite .mobile_box + button { width: 100%; margin: 10px 0 0; }
+    .xans-member-join > h3 { margin-bottom: 20px; border-bottom: 1px solid var(--black-color); color: var(--black-color); font-size: 16px; font-weight: 600; line-height: 1.5; }
+    .xans-member-join #birth_year, .xans-member-join #birth_month, .xans-member-join #birth_day, .xans-member-join #marry_year,
+    .xans-member-join #marry_month, .xans-member-join #marry_day, .xans-member-join #partner_year, .xans-member-join #partner_month, .xans-member-join #partner_day { width: 100px !important; margin: 0 4px 0 10px !important; }
+    .xans-member-join #phone1, .xans-member-join #mobile1, .xans-member-join #birth_year, .xans-member-join #marry_year, .xans-member-join #partner_year { margin-left: 0 !important; }
+    .xans-member-join .ec-base-table.typeWrite .ec-base-desc dt { display: flex; align-items: center; min-height: 48px;}
+    .xans-member-join .ec-base-table.typeWrite .ec-base-desc dd,
+    .xans-member-join .ec-base-table.typeWrite .ec-base-desc .desc { margin-bottom:4px; padding-right: 0; }
+    .xans-member-join .ec-base-table.typeWrite .ec-base-desc dt:last-of-type,
+    .xans-member-join .ec-base-table.typeWrite .ec-base-desc dd:last-child,
+    .xans-member-join .ec-base-table.typeWrite .ec-base-desc .desc:last-child { margin:0; }
+    .xans-member-join .ec-base-table.typeWrite .ec-base-desc dd:after, 
+    .xans-member-join .ec-base-table.typeWrite .ec-base-desc .desc:after { display:none; }
+    .xans-member-join .ec-base-table.typeWrite #authWrap { width: 100%; }
+    .xans-member-join .ec-base-table.typeWrite #authWrap .btnNormal { width: 100%; margin: 10px 0 0; }
+    .xans-member-join .ec-base-table.typeWrite #foreignerAuth input[type="text"],
+    .xans-member-join .ec-base-table.typeWrite #foreignerAuth input[type="password"] { width: 250px; }
+    .xans-member-join .ec-base-table.typeWrite #foreignerAuth .content { margin: 10px 0; border-radius: 4px; }
+    .xans-member-join .ec-base-table.typeWrite #foreignerAuth ul li { display: flex; margin-top: 10px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+    .xans-member-join .ec-base-table.typeWrite #foreignerAuth input[type="text"], .xans-member-join .ec-base-table.typeWrite #foreignerAuth input[type="password"] { width: 100%; margin-top: 10px; }
+    .xans-member-join .ec-base-table.typeWrite + .ec-base-button { margin-top:30px; padding:0; }
+    @media(max-width: 1024px){
+        .xans-member-join { width: 100%; }
+        .xans-member-join > h3 { margin-bottom:0;  padding-top: 16px !important; }
+        .xans-member-join .ec-base-table.typeWrite:last-child tr:last-child { margin: 0; }
+        .xans-member-join .ec-base-table.typeWrite th[scope*="row"] { margin: 0 0 12px; padding: 0; }
+        .xans-member-join .ec-base-table.typeWrite th, .xans-member-join .ec-base-table.typeWrite th[scope*="row"] { font-size: 15px; }
+        .xans-member-join .ec-base-table.typeWrite input[type=radio] + label, .xans-member-join .ec-base-table.typeWrite input[type=checkbox] + label { margin: 0 11px 0 4px; }
+        .xans-member-join .ec-base-table.typeWrite td, .xans-member-join .ec-base-table.typeWrite td * { font-size: 13px; }
+        .xans-member-join .ec-base-table.typeWrite tr > td:last-child { padding: 0; }
+        .xans-member-join .ec-base-table.typeWrite td input[type="text"], .xans-member-join .ec-base-table.typeWrite td input[type="password"], .xans-member-join .ec-base-table.typeWrite td select, .xans-member-join .ec-base-table.typeWrite .ec-address input[type="text"], .xans-member-join .ec-address select, .xans-member-join #hint_answer, .xans-member-join #name, .xans-member-join #last_name, .xans-member-join #name_en, .xans-member-join #last_name_en, .xans-member-join #name_phonetic, .xans-member-join #last_name_phonetic, .xans-member-join #name.ec-member-name, .xans-member-join #name_en.ec-member-name, .xans-member-join #name_phonetic.ec-member-name, .xans-member-join #job, .xans-member-join #job_class, .xans-member-join #school, .xans-member-join #region, .xans-member-join #internet, .xans-member-join #child, .xans-member-join #car, .xans-member-join #earning, .xans-member-join #add1, .xans-member-join #add2, .xans-member-join #add3, .xans-member-join #add4, .xans-member-join #add5, .xans-member-join #add6, .xans-member-join #add7, .xans-member-join #add8, .xans-member-join #add9 { width: 100%; }
+        .xans-member-join .ec-base-table.typeWrite .gIndent20 { width: 100%; }
+        .xans-member-join .ec-base-table.typeWrite table .interest { width: 100%; }
+        .xans-member-join .ec-base-table.typeWrite td:has(.typeDot) input, .xans-member-join .ec-base-table.typeWrite td:has(.typeDot) select { width: 100%; }
+        .xans-member-join #mobile1, .xans-member-join #mobile2, .xans-member-join #mobile3, .xans-member-join #phone1, .xans-member-join #phone2, .xans-member-join #phone3, .xans-member-join #birth_year, .xans-member-join #marry_year, .xans-member-join #partner_year, .xans-member-join #birth_month, .xans-member-join #marry_month, .xans-member-join #partner_month, .xans-member-join #birth_day, .xans-member-join #marry_day, .xans-member-join #partner_day { width: 30%; }
+        .xans-member-join #birth_year, .xans-member-join #birth_month, .xans-member-join #birth_day, .xans-member-join #marry_year, .xans-member-join #marry_month, .xans-member-join #marry_day, .xans-member-join #partner_year, .xans-member-join #partner_month, .xans-member-join #partner_day { width: 24% !important; }
+        .xans-member-join .ec-base-table.typeWrite #businessAuth input[type="text"] { margin-top: 10px; }
+        .xans-member-join .ec-base-table.typeWrite #foreignerAuth ul li { justify-content: normal; }
+        .xans-member-join .ec-base-tooltip.typeUpper { width: 320px; left: 0 !important; }
+        .xans-member-join .ec-base-table.typeWrite + .ec-base-button { margin-top:16px; }
+    }
+</style>
+
+<!-- ##module_info #MyShop #LoginSingup #join -->
+<div class="section titleArea">
+    <h2>회원가입</h2>
+</div>
+<div class="section ec-base-step agree-step">
+    <ol class="step">
+        <li>1. 약관동의</li>
+        <li class="selected">2. 정보입력</li>
+        <li>3. 가입완료</li>
+    </ol>
+</div>
+<div module="member_join">
+    <!--@css(/css/module/member/join.css)-->
+    <!--@js(/js/module/member/join.js)-->
+    <!--
+        $returnUrl = /member/join_result.html
+        $checkIdUrl = /member/check_id.html
+        $personalName = 이름
+        $companyName = 법인명
+        $companySsn = 법인번호
+        $foreignerSsn1 = 외국인 등록번호
+        $foreignerSsn2 = 여권번호
+        $foreignerSsn3 = 국제운전면허증번호
+        $isRuleBasedAddrForm = T
+     -->
+    <h3>정보입력</h3>
+    <p class="required"><i class="icoRequired" role="img" aria-label="필수">*</i> 필수항목</p>
+    <div class="ec-base-table typeWrite">
+    <table border="1" summary="">
+        <caption>정보입력</caption>
+        <colgroup>
+            <col style="width:150px;" />
+            <col style="width:auto;" />
+        </colgroup>
+        <tbody>
+            <tr class="{$display_member_type|display}">
+                <th scope="row">회원구분 <i class="icoRequired" aria-label="필수" role="img">*</i></th>
+                <td>{$form.member_type}</td>
+            </tr>
+            <tr id="companyWrap">
+                <th scope="row">사업자구분 <i class="icoRequired" aria-label="필수" role="img">*</i></th>
+                <td>{$form.company_type}</td>
+            </tr>
+            <tr id="authMember">
+                <th scope="row">회원인증 <i class="icoRequired" aria-label="필수" role="img">*</i></th>
+                <td>
+                    <div id="authWrap" style="display:none;">
+                        <!-- 개인 회원 인증 -->
+                        <div id="personAuth">
+                            <div id="personalTypeWrap">{$form.personal_type}</div>
+                            <div id="ipinWrap">
+                                <a href="#none" class="btnNormal" onclick="{$action_ipin_open}" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_icon_ipin.gif" alt="" /> 아이핀인증</a>
+                                <p class="gBlank5">아이핀이란, 회원님의 개인정보 보호를 위해 웹사이트에 주민등록번호를 제공하지 않고 본인임을 확인하는 인터넷상의 개인식별번호 서비스입니다. <br />아이핀을 통한 가입을 원하시면 아이핀 인증 버튼을 눌러 진행해 주십시오.</p>
+                            </div>
+                            <div id="mobileWrap">
+                                <a href="#none" class="btnNormal" onclick="{$action_mobile_open}" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_icon_mobile.gif" alt="" /> 휴대폰인증</a>
+                                <p class="gBlank5">본인 명의의 휴대폰으로 본인인증을 진행합니다.</p>
+                            </div>
+                            <div id="emailWrap">
+                                <ul>
+                                    <li>기본정보 &gt; 이메일 항목에 입력하신 정보로 본인인증을 진행합니다.</li>
+                                    <li>회원가입 후에 입력하신 이메일 주소로 인증 메일이 발송되오니, 확인해 주시기 바랍니다.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- 법인 사업자 인증 -->
+                        <div id="businessAuth">
+                            <ul class="grid">
+                                <li>법인명<br />{$form.bname}</li>
+                                <li>법인번호<br />{$form.bssn1} - {$form.bssn2} <a href="#none" class="btnNormal" onclick="{$action_business_dupl}" role="button">중복확인</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- 외국인 회원 인증 -->
+                        <div id="foreignerAuth">
+                            <ul class="grid">
+                                <li>이름(Name) {$form.foreigner_name}</li>
+                                <li>{$form.foreigner_type} {$form.foreigner_ssn} <a href="#none" class="btnNormal" onclick="{$action_foreigner_check}" role="button">중복확인</a></li>
+                            </ul>
+                            <div id="foreignerPersonWrap">
+                                <p class="gBlank5"><div class="content">{$desc_id_info_consent}</div></p>
+                            <p>{$form.f_identification_check}</p>
+                        </div>
+                        <div id="foreignerEmailWrap">
+                            <ul>
+                                <li>기본정보 &gt; 이메일 항목에 입력하신 정보로 본인인증을 진행합니다.</li>
+                                <li>회원가입 후에 입력하신 이메일 주소로 인증 메일이 발송되오니, 확인해 주시기 바랍니다.</li>
+                            </ul>
+                        </div>
+                    </div>
+        </div>
+        </td>
+        </tr>
+    </tbody>
+    <tbody>
+            <tr class="{$display_use_id|display}">
+                <th scope="row">아이디 <i class="icoRequired" aria-label="필수" role="img">*</i></th>
+                <td>{$form.member_id} <span id="{$idMsg_id}"></span></td>
+            </tr>
+            <tr>
+                <th scope="row">이메일 <i class="icoRequired" aria-label="필수" role="img">*</i></th>
+                <td>{$form.email} <span id="{$emailMsg_id}"></span></td>
+            </tr>
+            <tr>
+                <th scope="row">비밀번호 <i class="icoRequired" aria-label="필수" role="img">*</i></th>
+                <td>
+                    <div class="eTooltip">
+                        {$form.passwd}
+                        <div class="ec-base-tooltip typeUpper">
+                            <div class="content">
+                                <strong class="txtWarn">※ {$passwd_terms}</strong>
+                                <ul class="ec-base-help typeDash gBlank10 txtWarn">
+                                    {$passwd_chk_info}
+                                </ul>
+                            </div>
+                            <a href="#none" class="btnClose" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close_tip.gif" alt="닫기" /></a>
+                            <span class="edge"></span>
+                        </div>
+                    </div>
+                    <p class="info_msg">{$passwd_type_desc}</p>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">비밀번호 확인 <i class="icoRequired" aria-label="필수" role="img">*</i></th>
+                <td>{$form.user_passwd_confirm} <span id="{$pwConfirmMsg_id}"></span></td>
+            </tr>
+            <tr class="{$display_hint|display}">
+                <th scope="row">비밀번호 확인 질문 <i class="icoRequired" aria-label="필수" role="img">*</i></th>
+                <td>{$form.hint}</td>
+            </tr>
+            <tr class="{$display_hint_answer|display}">
+                <th scope="row">비밀번호 확인 답변 <i class="icoRequired" aria-label="필수" role="img">*</i></th>
+                <td>{$form.hint_answer}</td>
+            </tr>
+            <tr>
+                <th scope="row" id="{$name_title}">이름 <i class="icoRequired" aria-label="필수" role="img">*</i></th>
+                <td>
+                    <span id="{$name_contents}">{$form.name}</span>
+                    <span id="under14Msg" class="displaynone">14세 미만 사용자는 법정대리인 동의가 필요합니다.</span>
+                </td>
+            </tr>
+            <tr class="{$display_eng_name|display}">
+                <th scope="row">영문 이름 <i class="icoRequired {$display_required_name_en|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.name_en} <p class="info_msg">(이름 - 성 형식으로 입력해 주세요.)</p></td>
+            </tr>
+            <!-- 외국인 회원 정보 -->
+            <tr>
+                <th scope="row" id="ssnTitle"></th>
+                <td id="ssnContents"></td>
+            </tr><!-- // 외국인 회원 정보 -->
+            <tr id="{$companyRow}">
+                <th scope="row">상호명 <i class="icoRequired" aria-label="필수" role="img">*</i></th>
+                <td id="companyName">{$form.cname}</td>
+            </tr>
+            <tr id="{$companyNoRow}">
+                <th scope="row">사업자번호 <i class="icoRequired" aria-label="필수" role="img">*</i></th>
+                <td id="companySsn">
+                    {$form.cssn}
+                    <a href="#none" class="btnNormal {$display_cssn_dupl|display}" onclick="{$action_cssn_dupl}" role="button">중복확인</a>
+                    <span id="{$cssnMsg_id}"></span>
+                </td>
+            </tr>
+            <tr id="{$companyConditionRow}">
+                <th scope="row">업태 <i class="icoRequired" aria-label="필수" role="img">*</i></th>
+                <td id="companyCondition">{$form.company_condition}</td>
+            </tr>
+            <tr id="{$companyLineRow}">
+                <th scope="row">종목 <i class="icoRequired" aria-label="필수" role="img">*</i></th>
+                <td id="companyLine">{$form.company_line}</td>
+            </tr>
+            <tr id="nation">
+                <th>국적 <i class="icoRequired" aria-label="필수" role="img">*</i></th>
+                <td>{$form.citizenship}</td>
+            </tr>
+            <tr class="{$display_addr|display}">
+                <th scope="row">주소 <i class="icoRequired {$display_required_address|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.address}</td>
+            </tr>
+            <tr class="{$display_phone|display}">
+                <th scope="row">일반전화 <i class="icoRequired {$display_required_phone|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.phone}</td>
+            </tr>
+            <tr class="{$display_mobile|display}">
+                <th scope="row">휴대전화 <i class="icoRequired {$display_required_cell|display}" aria-label="필수" role="img">*</i></th>
+                <td>
+                    <div class="mobile_box">
+                    	{$form.mobile}
+                    </div>
+                    <button type="button" id="{$btn_action_verify_mobile}" class="btnNormal {$display_verify_mobile|display}" onclick="{$action_verify_mobile}">인증번호받기</button>
+                    <p class="txtWarn gBlank5 {$bDisplayMobileVerifyInfoDefault|display}" id="{$result_send_verify_mobile_fail}"></p>
+                    <ul class="txtInfo gBlank5 {$bDisplayMobileVerifyInfoDefault|display}" id="{$result_send_verify_mobile_success}">
+                        <li>인증번호가 발송되었습니다.</li>
+                        <li>인증번호를 받지 못하셨다면 휴대폰 번호를 확인해 주세요.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr class="{$display_verify_mobile_confirm|display}" id="{$confirm_verify_mobile}">
+                <th scope="row">인증번호 <i class="icoRequired" aria-label="필수" role="img">*</i></th>
+                <td>
+                    <div class="verify">
+                        {$form.verify_sms_number}
+                        <span class="time" id="{$expiryTime}"></span>
+                    </div>
+                    <button type="button" class="btnNormal" id="{$btn_verify_mobile_confirm}" onclick="{$action_verify_mobile_confirm}">확인</button>
+                </td>
+            </tr>
+            <tr class="{$display_is_lifetime|display}">
+                <th scope="row">평생회원</th>
+                <td>
+                    {$form.is_lifetime}
+                    <ul class="txtDesc">
+                        <li>평생회원으로 가입하시면 <strong>{$mall_name}</strong> 회원 탈퇴시까지는 휴면회원으로 전환되지 않으며, 고객님의 개인정보가 탈퇴시까지 안전하게 보관됩니다.</li>
+                        <li class="{$display_is_lifetime_benefit|display}">지금 평생회원으로 가입하시면 쿠폰혜택을 드립니다. (쿠폰혜택을 받으신 경우, 3개월간 평생회원을 유지하셔야 합니다.)</li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+    <h3 class="{$display_add_title|display}">추가 정보</h3>
+    <div class="ec-base-table typeWrite {$display_add_title|display}">
+        <table border="1" summary="">
+        <caption>회원 추가정보</caption>
+        <colgroup>
+            <col style="width:150px;" />
+            <col style="width:auto;" />
+        </colgroup>
+        <tbody>
+            <tr class="{$display_nick|display}">
+                <th scope="row">별명 <i class="icoRequired {$display_required_nick_name_flag|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.nick_name} <p id="{$nick_msg}"></p></td>
+            </tr>
+            <tr class="{$display_is_sex|display}">
+                <th scope="row">성별 <i class="icoRequired {$display_required_sex|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.is_sex}</td>
+            </tr>
+            <tr class="{$display_birthday|display}">
+                <th scope="row">생년월일 <i class="icoRequired {$display_required_is_birthday|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.birth_year} 년 {$form.birth_month} 월 {$form.birth_day} 일 <span class="gIndent20 {$display_calendar_type|display}">{$form.is_solar_calendar}</span></td>
+            </tr>
+            <tr class="flex {$display_marry|display}">
+                <th scope="row">결혼기념일 <i class="icoRequired {$display_required_is_wedding_anniversary|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.marry_year} 년 {$form.marry_month} 월 {$form.marry_day} 일</td>
+            </tr>
+            <tr class="flex {$display_partner|display}">
+                <th scope="row">배우자생일 <i class="icoRequired {$display_required_is_life_partner|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.partner_year} 년 {$form.partner_month} 월 {$form.partner_day} 일</td>
+            </tr>
+            <tr class="{$display_child|display}">
+                <th scope="row">자녀 <i class="icoRequired {$display_required_child|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.child}</td>
+            </tr>
+            <tr class="{$display_school|display}">
+                <th scope="row">최종학력 <i class="icoRequired {$display_required_school|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.school}</td>
+            </tr>
+            <tr class="{$display_job_class|display}">
+                <th scope="row">직종 <i class="icoRequired {$display_required_job_class|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.job_class}</td>
+            </tr>
+            <tr class="{$display_job|display}">
+                <th scope="row">직업 <i class="icoRequired {$display_required_job|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.job}</td>
+            </tr>
+            <tr class="{$display_earning|display}">
+                <th scope="row">연소득 <i class="icoRequired {$display_required_earning|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.earning}</td>
+            </tr>
+            <tr class="{$display_car|display}">
+                <th scope="row">자동차 <i class="icoRequired {$display_required_car|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.car}</td>
+            </tr>
+            <tr class="{$display_region|display}">
+                <th scope="row">지역 <i class="icoRequired {$display_required_region|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.region}</td>
+            </tr>
+            <tr class="{$display_internet|display}">
+                <th scope="row">인터넷 이용장소 <i class="icoRequired {$display_required_internet|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.internet}</td>
+            </tr>
+            <tr class="{$display_inter|display}">
+                <th scope="row">관심분야 <i class="icoRequired {$display_required_interest|display}" aria-label="필수" role="img">*</i></th>
+                <td>
+                    <div class="interest">{$form.inter_check}</div>
+                </td>
+            </tr>
+            <tr class="{$display_add1|display}">
+                <th scope="row">{$title_add1} <i class="icoRequired {$display_required_add1|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.add1}</td>
+            </tr>
+            <tr class="{$display_add2|display}">
+                <th scope="row">{$title_add2} <i class="icoRequired {$display_required_add2|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.add2}</td>
+            </tr>
+            <tr class="{$display_add3|display}">
+                <th scope="row">{$title_add3} <i class="icoRequired {$display_required_add3|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.add3}</td>
+            </tr>
+            <tr class="{$display_add4|display}">
+                <th scope="row">{$title_add4} <i class="icoRequired {$display_required_add4|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.add4}</td>
+            </tr>
+            <tr class="{$display_add5|display}">
+                <th scope="row">{$title_add5} <i class="icoRequired {$display_required_add5|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.add5}</td>
+            </tr>
+            <tr class="{$display_add6|display}">
+                <th scope="row">{$title_add6} <i class="icoRequired {$display_required_add6|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.add6}</td>
+            </tr>
+            <tr class="{$display_add7|display}">
+                <th scope="row">{$title_add7} <i class="icoRequired {$display_required_add7|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.add7}</td>
+            </tr>
+            <tr class="{$display_add8|display}">
+                <th scope="row">{$title_add8} <i class="icoRequired {$display_required_add8|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.add8}</td>
+            </tr>
+            <tr class="{$display_add9|display}">
+                <th scope="row">{$title_add9} <i class="icoRequired {$display_required_add9|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.add9}</td>
+            </tr>
+            <tr class="{$display_add10|display}">
+                <th scope="row">{$title_add10} <i class="icoRequired {$display_required_add10|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.add10}</td>
+            </tr>
+            <tr class="{$display_add11|display}">
+                <th scope="row">{$title_add11} <i class="icoRequired {$display_required_add11|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.add11}</td>
+            </tr>
+            <tr class="{$display_add12|display}">
+                <th scope="row">{$title_add12} <i class="icoRequired {$display_required_add12|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.add12}</td>
+            </tr>
+            <tr class="{$display_add13|display}">
+                <th scope="row">{$title_add13} <i class="icoRequired {$display_required_add13|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.add13}</td>
+            </tr>
+            <tr class="{$display_add14|display}">
+                <th scope="row">{$title_add14} <i class="icoRequired {$display_required_add14|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.add14}</td>
+            </tr>
+            <tr class="{$display_add15|display}">
+                <th scope="row">{$title_add15} <i class="icoRequired {$display_required_add15|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.add15}</td>
+            </tr>
+            <tr class="{$display_reco_id|display}">
+                <th scope="row">추천인 아이디 <i class="icoRequired {$display_required_reco_id|display}" aria-label="필수" role="img">*</i></th>
+                <td>{$form.reco_id}</td>
+            </tr>
+            <tr class="{$display_bank|display}">
+                <th scope="row">환불계좌 정보 <i class="icoRequired {$display_required_bank_account_no|display}" aria-label="필수" role="img">*</i></th>
+                <td>
+                    <dl class="ec-base-desc typeDot">
+                        <dt>예금주</dt>
+                        <dd>{$form.bank_account_owner}</dd>
+                        <dt>은행명</dt>
+                        <dd>{$form.refund_bank_code}</dd>
+                        <dt>계좌번호</dt>
+                        <dd>{$form.bank_account_no} </dd>
+                    </dl>
+                </td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+    <div class="ec-base-button gColumn">
+        <a href="/" class="btnEm sizeM">취소</a>
+        <a href="#none" class="btnSubmit sizeM" onclick="{$action_func_join}" role="button">가입하기</a>
+    </div>
+
+    <!--@import(/member/join_confirm.html)-->
+</div>

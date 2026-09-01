@@ -1,0 +1,158 @@
+<!--@layout(/layout/basic/layout.html)-->
+<style>
+    .titleArea.titleArea--myshop { display: none; }
+    .ec-base-prdInfo .btnDelete { background: none; }
+    .ec-base-prdInfo .description .prdName a { font-size: 16px; font-weight: 500; }
+    .ec-base-prdInfo .description .prdName .optionStr { display: block; margin-top: 5px; font-size: 16px; color: var(--gray-color); }
+    .ec-base-prdInfo .description .price { margin-top: 15px; }
+    .ec-base-prdInfo .description .price .strike { font-size: 13px; color: var(--gray-color); text-decoration: line-through; }
+    .ec-base-prdInfo .description .price li:not(.strike) { font-size: 16px; font-weight: 600; color: var(--black-color); }
+    .ec-base-prdInfo .description .icon { display: flex; margin-bottom: 5px; gap: 6px; flex-wrap: wrap; }
+    .ec-base-prdInfo .description .icon img { object-fit: contain; }
+    .ec-base-prdInfo .buttonGroup { top: 50%; bottom: unset; width: 130px; transform: translateY(-50%); }
+    .ec-base-prdInfo .buttonGroup .gRight { display: flex; flex-direction: column; gap: 8px; }
+    .xans-product-recentlist .ec-base-prdInfo .thumbnail { width: 160px; aspect-ratio: 1; }
+    .xans-product-recentlist .ec-base-prdInfo .thumbnail img { width: 100%; height: 100%; object-fit: cover; }
+    .xans-product-recentlist .ec-base-prdInfo .optionSelect { margin-left: 170px; overflow:hidden;}
+    .xans-product-recentlist .ec-base-prdInfo .name{ display:flex; align-items:center; }
+    .xans-product-recentlist .ec-base-prdInfo .optionDesc { margin-right:10px; }
+    @media (max-width:1024px){
+        .ec-base-prdInfo .description { padding-right: 30px; }
+        .ec-base-prdInfo .buttonGroup { width: 100%; margin: 10px 0 0; padding: 0; transform: translateY(0); }
+        .ec-base-prdInfo .buttonGroup .gRight { width: 100%; flex-direction: row; }
+        .ec-base-prdInfo .buttonGroup .gRight button { flex: 1; } 
+        .xans-product-recentlist .ec-base-prdInfo .prdBox { padding-bottom: 10px; align-items: flex-start; }
+        .xans-product-recentlist .ec-base-prdInfo .optionSelect { margin-left: 0; }
+        .xans-product-recentlist .ec-base-prdInfo .thumbnail { width: 120px; max-width: 50%; }
+        .xans-product-recentlist .ec-base-prdInfo .name { flex-direction:column; align-items:flex-start; }
+        .xans-product-recentlist .ec-base-prdInfo .optionDesc { margin-right:0; width:auto; }
+    }
+</style>
+
+<!-- ##module_info #MyShop #RecentlyViewedProducts -->
+<div class="section-inner">
+     <div class="section path" role="navigation" aria-label="현재 위치">
+         <span aria-hidden="true">현재 위치</span>
+         <ol>
+             <li><a href="/">HOME</a></li>
+             <li><a href="/myshop/index.html">My Page</a></li>
+             <li title="현재 위치" aria-current="page"><strong>최근 본 상품</strong></li>
+         </ol>
+     </div>
+     <div class="section titleArea">
+         <h2>최근 본 상품</h2>
+     </div>
+</div>
+<div class="section-inner">
+ <div class="section myshopArea">
+     <div class="titleArea titleArea--myshop">
+         <h2>최근 본 상품</h2>
+     </div>
+     <div module="product_recentlist">
+         <!--@css(/css/module/product/recentlist.css)-->
+         <!--
+             $count = 10
+         -->
+         <ul module="product_listitem">
+             <li>
+                 <div class="ec-base-prdInfo">
+                     <div class="prdBox">
+                         <div class="thumbnail">
+                             <a href="{$link_product_detail}"><img src="{$image_medium}" alt="" width="83" height="83" /></a>
+                             <span class="wishIcon">{$list_wish_icon}</span>
+                         </div>
+                         <div class="description">
+                            <span class="icon">{$soldout_icon} {$stock_icon} {$recommend_icon} {$new_icon} {$product_icons} {$today_arrival_icon} {$pickup_icon} {$benefit_icons} <img src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_rental.png" alt="" class="{$rental_information_display|display}"> {$regular_delivery_icon} {$cultural_tax_icon}</span>
+                             <strong class="prdName"><a href="{$link_product_detail}">{$product_name}</a> {$regular_delivery_icon}</strong>
+                             <ul module="product_setproduct" class="item">
+                                 <li>{$product_name}</li>
+                                 <li>{$product_name}</li>
+                             </ul>
+                             <ul class="price">
+                                 <li class="{$strike_custom_price} {$custom_price_display|display}"><strong>{$product_custom}</strong></li>
+                                 <li class="{$discount} notranslate"><strong class="txtEm notranslate">{$price}</strong>{$product_tax_type_text}</li>
+                                 <li class="{$product_sale_price_display|display} notranslate">{$product_sale_price}</li>
+                             </ul>
+                             <ul class="info">
+                                 <li class="mileage notranslate">{$mileage_list}</li>
+                             </ul>
+                         </div>
+                         <div class="buttonGroup">
+                            <span class="gRight">
+                                <button type="button" class="btnSubmitFix sizeS {$disp_order|display}" onclick="{$act_order}">바로 구매</button>
+                                <button type="button" class="btnEmFix sizeS {$disp_basket|display}" onclick="{$act_basket}">장바구니</button>
+                            </span>
+                         </div>
+                     </div>
+                     <ul class="optionSelect" module="product_mainoption">
+                         <li><div class="name"><span class="optionDesc">{$option_name}</span> {$form.option}</div></li>
+                         <li><div class="name"><span class="optionDesc">{$option_name}</span> {$form.option}</div></li>
+                     </ul>
+                     <ul class="optionSelect" module="product_addoption">
+                         <li><div class="name"><span class="optionDesc">{$add_option_name}</span> {$form.add_option}</div></li>
+                         <li><div class="name"><span class="optionDesc">{$add_option_name}</span> {$form.add_option}</div></li>
+                     </ul>
+                     <button type="button" class="btnDelete {$class_del}" href="#none" rel="{$rel_del}">><!--@import(/svg/ico_x.html)-->삭제</button>
+                 </div>
+             </li>
+             <li>
+                 <div class="ec-base-prdInfo">
+                     <div class="prdBox">
+                         <div class="thumbnail">
+                             <a href="{$link_product_detail}"><img src="{$image_medium}" alt="" width="83" height="83" /></a>
+                             <span class="wishIcon">{$list_wish_icon}</span>
+                         </div>
+                         <div class="description">
+                            <span class="icon">{$soldout_icon} {$stock_icon} {$recommend_icon} {$new_icon} {$product_icons} {$today_arrival_icon} {$pickup_icon} {$benefit_icons} <img src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_rental.png" alt="" class="{$rental_information_display|display}"> {$regular_delivery_icon} {$cultural_tax_icon}</span>
+                             <strong class="prdName"><a href="{$link_product_detail}">{$product_name}</a> {$regular_delivery_icon}</strong>
+                             <ul module="product_setproduct" class="item">
+                                 <li>{$product_name}</li>
+                                 <li>{$product_name}</li>
+                             </ul>
+                             <ul class="price">
+                                 <li class="{$strike_custom_price} {$custom_price_display|display}"><strong>{$product_custom}</strong></li>
+                                 <li class="{$discount} notranslate"><strong class="txtEm notranslate">{$price}</strong>{$product_tax_type_text}</li>
+                                 <li class="{$product_sale_price_display|display} notranslate">{$product_sale_price}</li>
+                             </ul>
+                             <ul class="info">
+                                 <li class="mileage notranslate">{$mileage_list}</li>
+                             </ul>
+                         </div>
+                         <div class="buttonGroup">
+                            <span class="gRight">
+                                <button type="button" class="btnSubmitFix sizeS {$disp_order|display}" onclick="{$act_order}">바로 구매</button>
+                                <button type="button" class="btnEmFix sizeS {$disp_basket|display}" onclick="{$act_basket}">장바구니</button>
+                            </span>
+                         </div>
+                     </div>
+                     <ul class="optionSelect" module="product_mainoption">
+                         <li><div class="name"><span class="optionDesc">{$option_name}</span> {$form.option}</div></li>
+                         <li><div class="name"><span class="optionDesc">{$option_name}</span> {$form.option}</div></li>
+                     </ul>
+                     <ul class="optionSelect" module="product_addoption">
+                         <li><div class="name"><span class="optionDesc">{$add_option_name}</span> {$form.add_option}</div></li>
+                         <li><div class="name"><span class="optionDesc">{$add_option_name}</span> {$form.add_option}</div></li>
+                     </ul>
+                     <button type="button" class="btnDelete {$class_del}" href="#none" rel="{$rel_del}">><!--@import(/svg/ico_x.html)-->삭제</button>
+                 </div>
+             </li>
+         </ul>
+         <p class="ec-base-prdEmpty {$empty_display|display}">최근 본 상품 내역이 없습니다.</p>
+     </div>
+
+     <div module="product_recentlistpaging" class="ec-base-paginate typeList" role="navigation" aria-label="페이지 이동">
+         <a href="{$param_first}" class="first"><img src="/SkinImg/img/ico_first.png" alt="첫 페이지" /></a>
+         <a href="{$param_before}"><img src="/SkinImg/img/ico_prev.png" alt="이전 페이지" /></a>
+         <ol>
+             <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+             <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+             <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+             <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+             <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+         </ol>
+         <a href="{$param_next}"><img src="/SkinImg/img/ico_next.png" alt="다음 페이지" /></a>
+         <a href="{$param_last}" class="last"><img src="/SkinImg/img/ico_last.png" alt="마지막 페이지" /></a>
+     </div>
+     <!--@import(/myshop/myshop_main.html)-->
+ </div>
+</div>

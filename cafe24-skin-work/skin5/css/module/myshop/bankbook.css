@@ -1,0 +1,76 @@
+#container{max-width:100%; width: 100%;}
+.section-inner{width: calc(100% - 40px);}
+.path li{padding:0 0 0 14px; margin:0 0px 0 10px;}
+.path li[title='현재 위치']{color:#000; font-weight:500;}
+.xans-myshop-asyncbankbook{ flex: 0 0 calc((100% - 40px) * 0.65); }
+.xans-myshop-asyncbankbook ul { display:flex; flex-wrap:wrap; justify-content:space-around; align-items: flex-start;}
+.xans-myshop-asyncbankbook li { position:relative; text-align:center; vertical-align:top; box-sizing:border-box; }
+.xans-myshop-asyncbankbook a:hover { text-decoration:none; }
+.xans-myshop-asyncbankbook li:not(:last-child):after { content:""; display:inline-block; position:absolute; right:0; width:1px; background:#ECECEC; vertical-align:middle; }
+.xans-myshop-asyncbankbook .thumb { display:block; }
+.xans-myshop-asyncbankbook .title { display:block; font-weight:normal; color:var(--black-color); box-sizing:border-box; font-size:var(--font-size-base); margin-bottom:20px;}
+.xans-myshop-asyncbankbook .data{ color:var(--gray-color); font-size:26px; font-weight:500;}
+.xans-myshop-orderstate .state__cs {display:block;}
+.xans-myshop-orderstate .state__cs li {display:flex;justify-content: space-between; margin-bottom:10px;}
+.xans-myshop-orderstate .state__cs li:nth-child(1) {border-left:none;}
+.xans-myshop-orderstate .state__cs li:last-child{margin-bottom:0;}
+.xans-myshop-orderstate .state__cs li span {font-size:14px;font-weight:400;color:#1a1a1a;}
+.section-inner, .myshopArea{max-width:var(--max-width); margin :0 auto;}
+.section-inner{margin-bottom:80px;}
+.section-top{background-color:#f7f7f7; padding: 10px 0 50px;}
+.section-top .section-inner{margin-bottom: 0;}
+.section.benefit{display:flex; gap:20px; flex-wrap: wrap; width:100%; box-sizing: border-box;}
+.dash-mypage{ flex: 0 0 calc((100% - 40px) * 0.20); }
+.xans-myshop-asyncbankbook,
+.dash-mypage,
+#topOrderstate{ background-color:#fff; border-radius:10px;border:0 !important; padding:35px 30px; margin:0; box-sizing: border-box; overflow:hidden;}
+#topOrderstate{ flex: 0 0 calc((100% - 40px) * 0.15); }
+#xans_myshop_bankbook_coupon_cnt,
+#xans_myshop_bankbook_order_count,
+#xans_myshop_bankbook_total_mileage{color:var(--point-color); font-weight:600; font-size:32px;}
+
+.xans-layout-statelogon .myinfo a{background-color:#000; color:#fff; border-radius:4px; font-size:14px; padding:3px 10px; display:inline-block; line-height:normal;}
+.xans-member-var-name{font-size:18px; font-weight:700;}
+.dash-mypage .xans-layout-statelogon{display: flex; height: 100%; float:unset; text-align:center; justify-content: center;  align-items: center; line-height: normal;}
+.myinfo{font-size:16px;}
+#myshopMain .xans-layout-statelogon{float:unset; height: auto; line-height:normal;}
+#myshopMain .xans-layout-statelogon a{ background: none; padding:0;}
+
+/********************* Mobile / Tablet *********************/
+@media (max-width:1024px) {
+    .pc{display:none !important;}
+    .xans-myshop-asyncbankbook li { width:100%; display: block !important; padding:0; margin-bottom: 10px;}
+    .xans-myshop-asyncbankbook li:last-child{margin-bottom:0;}
+    .xans-myshop-asyncbankbook li:not(:last-child):after { top:0; height:100%; }
+    .xans-myshop-asyncbankbook li a{display: flex; justify-content: space-between;}
+    .xans-myshop-asyncbankbook .xans-myshop-asyncbenefit { flex:auto; width:100%; border-bottom:1px solid #e5e5e5; }
+    .xans-myshop-asyncbankbook .xans-myshop-asyncbenefit .grou.xans-myshop-orderstate .state__cs lip { display:none; }
+    .xans-myshop-asyncbankbook .user { display:flex; text-align:left; padding:5px 16px; }
+    .xans-myshop-asyncbankbook .user__thumb { width:42px; height:42px; margin:0 16px 0 0; overflow:hidden; border-radius:50%; }
+    .xans-myshop-asyncbankbook .user__info { font-size:15px; font-weight:bold; }
+    .xans-myshop-asyncbankbook .user__data { display:block; margin:8px 0 0; font-size:14px; color:#6d6d6d; font-weight:normal; }
+    .xans-myshop-asyncbankbook .thumb { width:30px; height:30px; margin:0 auto 10px; }
+    .xans-myshop-asyncbankbook .data { display:block; line-height:1; }
+    .xans-myshop-asyncbankbook .title { font-size:var(--font-size-xs); margin-bottom:0;}
+    .section.benefit{display:block;}
+    .titleArea h2{font-size:26px;}
+    .section-inner{max-width:calc( 100% - 40px );}
+    .xans-myshop-asyncbankbook{margin:20px 0;}
+    
+    #xans_myshop_bankbook_coupon_cnt,
+    #xans_myshop_bankbook_order_count,
+    #xans_myshop_bankbook_total_mileage{font-size:20px;}
+}
+
+/********************* PC *********************/
+@media (min-width:1025px) {
+    .xans-myshop-asyncbankbook li { flex:1;}
+    .xans-myshop-asyncbankbook li:not(:last-child):after { top:50%; height:48px; margin-top:-24px; }
+    .xans-myshop-asyncbankbook .xans-myshop-asyncbenefit .user { display:none; }
+    .xans-myshop-asyncbankbook .thumb { width:30px; height:30px; margin:0 auto 5px; }
+    .xans-myshop-asyncbankbook .data {  line-height:30px; }
+}
+@media (max-width:1024px) {
+    .xans-myshop-asyncbankbook li { width: 100%; }
+    .xans-myshop-asyncbankbook li:not(:last-child):after{display: none;}
+}

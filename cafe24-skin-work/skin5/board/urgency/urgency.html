@@ -1,0 +1,101 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div module="Mall_Urgencycall">
+    <!--@css(/css/module/board/urgencycall.css)-->
+    <!--
+        $login_page = /member/login.html
+    -->
+    <div class="titleArea">
+        <h2>{$ucc_title}</h2>
+    </div>
+    <p class="info">{$ucc_info}</p>
+    <p class="required"><img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" width="5" height="5" alt="Required" /> Required Fields</p>
+    <div class="ec-base-table typeWrite">
+        <table border="1" summary="">
+        <caption>Contact Us</caption>
+        <colgroup>
+            <col style="width:150px;" />
+            <col style="width:auto;" />
+        </colgroup>
+        <tbody>
+            <tr>
+                <th scope="row">Inquiry Type</th>
+                <td>{$form.question}</td>
+            </tr>
+            <tr>
+                <th scope="row">제목</th>
+                <td>{$form.title}</td>
+            </tr>
+            <tr>
+                <th scope="row" >{$sPrdOrdText}</th>
+                <td>{$form.prd_ord}&nbsp;&nbsp;
+                     <a href="#none" id="opensearch" class="btnEm" name="opensearch" onClick="{$Open_SearchLayer}" role="button">검색</a>
+                     {$form.hiddenPrdOrd}
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">Contact via</th>
+                <td>{$form.chk_reply_type}</td>
+            </tr>
+            <tr>
+                <th scope="row">Email</th>
+                <td>
+                    {$form.email}
+                    <p class="gBlank5">ex) master@domain.com</p>
+                </td>
+            </tr>
+            <tr class="{$info_change_display|display}">
+                <th scope="row">Change of Contact Info</th>
+                <td>{$form.chk_info_change}</td>
+            </tr>
+            <tr>
+                <th scope="row" aria-label="Name (필수)">Name <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" width="5" height="5" alt="Required" /></th>
+                <td>{$form.writer}</td>
+            </tr>
+            <tr>
+                <th scope="row" aria-label="Message (필수)">Message <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif" width="5" height="5" alt="Required" /></th>
+                <td>{$form.content}</td>
+            </tr>
+        </tbody>
+        <tbody class="{$file_attatch_display|display}">
+            <tr>
+                <th scope="row">첨부파일1</th>
+                <td>{$form.attach_file}</td>
+            </tr>
+            <tr>
+                <th scope="row">첨부파일2</th>
+                <td>{$form.attach_file}</td>
+            </tr>
+            <tr>
+                <th scope="row">첨부파일3</th>
+                <td>{$form.attach_file}</td>
+            </tr>
+            <tr>
+                <th scope="row">첨부파일4</th>
+                <td>{$form.attach_file}</td>
+            </tr>
+            <tr>
+                <th scope="row">첨부파일5</th>
+                <td>{$form.attach_file}</td>
+            </tr>
+        </tbody>
+        <tbody class="captcha {$config.use_captcha_write|display}">
+            <tr>
+                <th scope="row">비밀번호</th>
+                <td>
+                    {$captcha_image} {$captcha_refresh}
+                    <p class="gBlank5">{$form.captcha} <span class="ec-base-help txtInfo">Your password must be alphanumeric characters with no space. (case sensitive)</span></p>
+                </td>
+            </tr>
+        </tbody>
+        <tbody class="{$privacy_agreement_display|display}">
+            <tr>
+                <th scope="row">Collection and use of <br />personal information ("Privacy Policy")</th>
+                <td>{$form.privacy_agreement}<p class="gBlank5">{$form.privacy_agreement_radio}</p></td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+    <div class="ec-base-button gBlank10">
+        <a href="#none" class="btnSubmitFix sizeS" onclick="{$action_send}" role="button">Send</a>
+    </div>
+</div>

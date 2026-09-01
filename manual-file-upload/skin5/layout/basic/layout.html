@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="//www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!-- PG크로스브라우징필수내용 -->
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <!-- // PG크로스브라우징필수내용 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기본 레이아웃</title>
+    <!--@import(/layout/basic/fonts.html)-->
+    <!-- 카탈로그 라벨/수치 전용 고정폭 서체. 한글은 fonts.html의 Pretendard가 담당한다. -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+    <!--@css(/layout/basic/css/common.css)--><!-- 해당 CSS는 쇼핑몰 전체 페이지에 영향을 줍니다. 삭제와 수정에 주의해주세요. -->
+    <!--@css(/layout/basic/css/layout.css)-->
+    <!--@css(/layout/basic/css/add_layout.css)-->
+    <!--@css(/layout/basic/css/ec-base-ui.css)-->
+    <!--@css(/layout/basic/css/ec-base-tooltip.css)-->
+    <!--@css(/layout/basic/css/ec-base-help.css)-->
+    <!--@css(/layout/basic/css/ec-base-product.css)-->
+    <!--@css(/layout/basic/css/ec-base-prdInfo.css)-->
+    <!--@css(/layout/basic/css/ec-base-paginate.css)-->
+    <!--@css(/layout/basic/css/ec-base-tab.css)-->
+    <!--@css(/layout/basic/css/ec-base-button.css)-->
+    <!--@css(/layout/basic/css/ec-base-box.css)-->
+    <!--@css(/layout/basic/css/ec-base-table.css)-->
+    <!--@css(/layout/basic/css/ec-base-desc.css)-->
+    <!--@css(/layout/basic/css/custom.css)-->
+    <!--@css(/modules/product_list/productList.css)-->
+    <!--@css(/layout/basic/css/mn-theme.css)-->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@6/swiper-bundle.min.css" />
+	<script src="https://cdn.jsdelivr.net/npm/swiper@6/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--@js(/layout/basic/js/basic.js)-->
+    <!--@js(/layout/basic/js/layout.js)-->
+    <!--@js(/js/module/layout/category.js)-->
+    <!--@js(/js/common.js)-->
+    <!--@js(/js/module/layout/quick_view.js)-->
+    <!--@js(/js/login_redirect.js)-->
+    <!--@js(/layout/basic/js/custom.js)-->
+    <!--@js(/modules/product_list/productList.js)-->
+</head>
+<body skin_type="gnb">
+<div id="layout">
+    <!-- 해당 기능의 정확한 용도가 확인되지 않아 임시로 주석 처리함 -->
+    <!-- <div id="skipNavigation">
+        <p><a href="#category">전체상품목록 바로가기</a></p>
+        <p><a href="#contents">본문 바로가기</a></p>
+    </div> -->
+
+    <!--top_banner/text_fixed-->
+<!--@import(/modules/top_banner/html/text_fixed.html)-->
+<!--@css(/modules/top_banner/css/text_fixed.css)-->
+<!--@js(/modules/top_banner/js/text_fixed.js)-->
+
+    <!--move_to_top/move_to_top-->
+<!--@import(/modules/move_to_top/html/move_to_top.html)-->
+<!--@css(/modules/move_to_top/css/move_to_top.css)-->
+<!--@js(/modules/move_to_top/js/move_to_top.js)-->
+
+    
+
+    <!-- header 영역 -->
+    <!--@css(/modules/header/css/header.css)-->
+    <!--@js(/modules/header/js/header.js)-->
+    <!--@import(/modules/header/html/header.html)-->
+
+    <!-- aside 영역 -->
+    <!--@css(/modules/aside/css/aside.css)-->
+    <!--@import(/modules/aside/html/aside.html)-->
+
+    <div id="wrap">
+        <div id="container" role="main">
+            <div id="contents">
+                <span module="Layout_MobileAction">
+                    <a href="#none" onclick="{$go_back}" role="button"><img src="/SkinImg/img/ico_mo_arrow_left.png" alt="뒤로가기"></a>
+                </span>
+                <!--@contents-->
+            </div>
+        </div>
+    </div>
+
+    <!-- footer 영역 -->
+    <!--@css(/css/module/layout/logobottom.css)-->
+    <!--@css(/css/module/layout/footer.css)-->
+    <!--@css(/modules/footer/css/footer.css)-->
+    <!--@import(/modules/footer/html/footer.html)-->
+
+    <!-- 결제를 위한 필수 영역 -->
+    <div id="progressPaybar" style="display:none;">
+        <div id="progressPaybarBackground" class="layerProgress"></div>
+        <div id="progressPaybarView">
+            <div class="box">
+                <p class="graph">
+                    <span><img src="//img.echosting.cafe24.com/skin/base_ko_KR/layout/txt_progress.gif" alt="현재 결제가 진행중입니다." /></span>
+                    <span><img src="//img.echosting.cafe24.com/skin/base/layout/img_loading.gif" alt="" /></span>
+                </p>
+                <p class="txt">
+                    본 결제 창은 결제완료 후 자동으로 닫히며,결제 진행 중에 본 결제 창을 닫으시면<br />
+                    주문이 되지 않으니 결제 완료 될 때 까지 닫지 마시기 바랍니다.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- // 결제를 위한 필수 영역 -->
+
+    <div module="Layout_multishopShipping">
+        <!--@css(/layout/basic/css/ec-base-layer.css)-->
+        <!--@css(/css/module/layout/multishopShipping.css)-->
+        <!--@js(/js/module/layout/multishopShipping.js)-->
+        <div class="worldshipLayer ec-base-layer typeModal">
+            <div class="header">
+                <h3>WORLD SHIPPING</h3>
+            </div>
+            <div class="content">
+                <p class="desc">Please select your country & language</p>
+                <div class="select">
+                    <select module="Layout_multishopShippingCountrylist">
+                        <option value="{$country_code}"{$country_default_selected}>SHIPPING TO : {$country_name}</option>
+                        <option value="{$country_code}"{$country_default_selected}>SHIPPING TO : {$country_name}</option>
+                    </select>
+                </div>
+                <div class="select">
+                    <select module="Layout_multishopShippingLanguagelist">
+                        <option value="{$shop_domain}"{$shop_default_selected}>LANGUAGE : {$shop_language_name}</option>
+                        <option value="{$shop_domain}"{$shop_default_selected}>LANGUAGE : {$shop_language_name}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="ec-base-button">
+                <a href="#none" class="btnSubmit sizeS" role="button">Continue</a>
+            </div>
+            <a href="#none" class="close" role="button">닫기</a>
+        </div>
+    </div>
+    <div id="layoutDimmed" class="dimmed"></div><!-- dim 영역(기존 스킨에 존재하는 부분으로 공통으로 사용) -->
+        <!--@css(/css/locale_setting.css)-->
+        <!-- 언어 번역 레이어 -->
+        <div class="localeSettingLayer ec-base-layer displaynone">
+        <div class="header">
+            <h3>Website Preference</h3>
+        </div>
+        <div class="content">
+            <fieldset>
+                <legend>검색</legend>
+                <div class="searchInput"><input type="text" class="keyword" id="" value="" placeholder="Search Language"><button type="button" class="btnSearch"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon" role="img"><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 19c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z"></path><path stroke="#000" stroke-linejoin="round" stroke-width="1.5" d="M22 22l-5-5"></path></svg></button></div>
+                <div class="selectBox notranslate">
+                    <ul>
+                            <!-- js로 목록 렌더링 -->
+                    </ul>
+                </div>
+            </fieldset>
+        </div>
+        <div class="ec-base-button">
+            <a href="javascript:void(0)" class="btnSubmit" role="button">Save</a>
+        </div>
+        <a href="javascript:void(0)" class="btnClose close" role="button">Close</a>
+        </div>
+        <!-- // 언어 번역 레이어 -->
+        <!--@css(/layout/basic/css/sub_style.css)-->
+        <!--@css(/layout/basic/css/sub_theme.css)-->
+    <div module="Layout_conversionPc">
+        <!--@css(/css/module/layout/conversionpc.css)-->
+        <!-- <a href="{$mobile_url}">모바일 화면보기</a> -->
+    </div>
+</div>
+
+<!--@css(/layout/basic/css/styleControl.css)-->
+<!--@js(/layout/basic/js/styleMap.js)-->
+<!--@js(/layout/basic/js/styleControl.js)-->
+<!-- Custom Alert Modal -->
+<div id="customAlertModal" hidden>
+<div aria-hidden="true" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:999;background:#000;opacity:0.3;"></div>
+<div role="alertdialog" aria-modal="true" aria-labelledby="customAlertTitle" aria-describedby="customAlertDesc" tabindex="-1" style="position:fixed;top:50%;left:50%;z-index:1000;transform:translate(-50%, -50%);width:calc(100vw - 40px);max-width:450px;max-height:calc(100vh - 144px);padding:40px 20px 20px;box-sizing:border-box;background:#FFF;border:1px solid #D4D4D4;box-shadow:0 8px 24px 0 rgba(0, 0, 0, 0.15);">
+<div style="display:flex;flex-direction:column;gap:40px;justify-content:center;align-items:center;">
+<p id="customAlertTitle" style="font-size:16px;line-height:150%;color:#000;text-align:center;"></p>
+<span id="customAlertDesc" class="sr-only" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">확인 버튼 또는 ESC 키를 눌러 닫을 수 있습니다.</span>
+<div style="display:flex;gap:8px;">
+<button type="button" data-action="confirm" onclick="CustomModal.closeAlert();" style="min-width:110px;height:48px;padding:0 20px;box-sizing:border-box;border-radius:4px;font-weight:600;font-size:14px;line-height:48px;color:var(--primary-on-text-color, #fff);background-color:var(--primary-color, #000);border:none;cursor:pointer;">확인</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Custom Confirm Modal -->
+<div id="customConfirmModal" hidden>
+<div aria-hidden="true" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:999;background:#000;opacity:0.3;"></div>
+<div role="dialog" aria-modal="true" aria-labelledby="customConfirmTitle" aria-describedby="customConfirmDesc" tabindex="-1" style="position:fixed;top:50%;left:50%;z-index:1000;transform:translate(-50%, -50%);width:calc(100vw - 40px);max-width:450px;max-height:calc(100vh - 144px);padding:40px 20px 20px;box-sizing:border-box;background:#FFF;border:1px solid #D4D4D4;box-shadow:0 8px 24px 0 rgba(0, 0, 0, 0.15);">
+<div style="display:flex;flex-direction:column;gap:40px;justify-content:center;align-items:center;">
+<p id="customConfirmTitle" style="font-size:16px;line-height:150%;color:#000;text-align:center;"></p>
+<span id="customConfirmDesc" class="sr-only" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">확인 또는 취소 버튼을 눌러 선택할 수 있습니다. ESC 키는 취소와 동일합니다.</span>
+<div style="display:flex;gap:8px;">
+<button type="button" data-action="cancel" onclick="CustomModal.closeConfirm(false);" style="min-width:110px;height:48px;padding:0 20px;box-sizing:border-box;border:1px solid #7D7D7F;border-radius:4px;font-weight:600;font-size:14px;line-height:48px;color:#000;background-color:#fff;cursor:pointer;">취소</button>
+<button type="button" data-action="confirm" onclick="CustomModal.closeConfirm(true);" style="min-width:110px;height:48px;padding:0 20px;box-sizing:border-box;border-radius:4px;font-weight:600;font-size:14px;line-height:48px;color:var(--primary-on-text-color, #fff);background-color:var(--primary-color, #000);border:none;cursor:pointer;">확인</button>
+</div>
+</div>
+</div>
+</div>
+<!--@js(/js/modal.js)-->
+</body>
+</html>

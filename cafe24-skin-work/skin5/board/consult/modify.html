@@ -1,0 +1,116 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div module="board_ModifyPackage_9">
+    <!--@css(/css/module/board/modifyPackage_9.css)-->
+    <div module="board_title_9">
+        <div class="path" role="navigation" aria-label="현재 위치">
+            <span aria-hidden="true">Current Page</span>
+            <ol>
+                <li><a href="/">HOME</a></li>
+                <li title="Current Page" aria-current="page"><strong>{$board_name}</strong></li>
+            </ol>
+        </div>
+
+        <div class="titleArea">
+            <h2>{$board_title}</h2>
+            <p>{$board_info}</p>
+        </div>
+    </div>
+
+    <div module="board_modify_9">
+        <!--
+            $modify_success_url = /board/consult/read.html
+        -->
+        <div class="ec-base-table gLayoutFixed {$display_parent_form|display}">
+            <table border="1" summary="">
+            <caption>Private Post</caption>
+            <colgroup>
+                <col style="width:130px;" />
+                <col style="width:auto;" />
+                <col style="width:130px;" />
+                <col style="width:auto;" />
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th scope="row">제목</th>
+                    <td colspan="3">{$parent_subject}</td>
+                </tr>
+                <tr>
+                    <th scope="row">작성자</th>
+                    <td>{$parent_writer}</td>
+                    <th scope="row">Reply</th>
+                    <td>{$parent_consult}</td>
+                </tr>
+                <tr class="{$config.use_date|display}">
+                    <th scope="row">Submitted on</th>
+                    <td colspan="3">{$parent_write_date}</td>
+                </tr>
+                <tr class="view">
+                    <td colspan="4">
+                        <div class="detail">{$parent_content}</div>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <div class="ec-base-table typeWrite">
+            <table border="1" summary="">
+            <caption>Private Post Reply Form</caption>
+            <colgroup>
+                <col style="width:130px;" />
+                <col style="width:auto;" />
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th scope="row">제목</th>
+                    <td>{$form.subject}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Email</th>
+                    <td>{$form.email} <span class="gBlank5">Reply me via email.{$form.cons_re}</span></td>
+                </tr>
+            </tbody>
+
+            <tbody>
+                <tr>
+                    <td colspan="2" class="clear">
+                        {$form.content}
+                    </td>
+                </tr>
+            </tbody>
+
+            <tbody class="{$config.use_attach|display}">
+                <tr>
+                    <th scope="row">첨부파일1</th>
+                    <td>{$form.attach_file} <br class="mo">{$attached_file1}</td>
+                </tr>
+                <tr>
+                    <th scope="row">첨부파일2</th>
+                    <td>{$form.attach_file} {$attached_file2}</td>
+                </tr>
+                <tr>
+                    <th scope="row">첨부파일3</th>
+                    <td>{$form.attach_file} {$attached_file3}</td>
+                </tr>
+                <tr>
+                    <th scope="row">첨부파일4</th>
+                    <td>{$form.attach_file} {$attached_file4}</td>
+                </tr>
+                <tr>
+                    <th scope="row">첨부파일5</th>
+                    <td>{$form.attach_file} {$attached_file5}</td>
+                </tr>
+            </tbody>
+
+            </table>
+        </div>
+
+        <div class="ec-base-button">
+            <span class="gLeft"><a href="{$link_board_list}"class="btnNormalFix sizeM">목록</a></span>
+            <span class="gRight">
+                <a href="{$link_board_list}" class="btnNormalFix sizeM">취소</a>
+                <a href="#none" class="btnSubmitFix sizeM" onclick="{$action_modify}" role="button">수정</a>
+            </span>
+        </div>
+    </div>
+</div>

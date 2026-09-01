@@ -1,0 +1,77 @@
+<!-- ##module_info #Main #Product_List_Viewmore #ThreeFourColumns #Product_list_B_c -->
+<section class="section main_product_list product_list_B_c">
+<div class="ec-base-product" module="product_listmain_9">
+<!--
+            $count = 8
+            $basket_result = /product/add_basket.html
+            $basket_option = /product/basket_option.html
+            $moreview = yes
+            $cache = yes
+        -->
+<div class="main_title">
+<div class="main_title_txt01 serif {$category_title_text_display}" data-key="title_1">클린 욕실 라이프</div>
+<div class="main_title_txt02" data-key="description_1">매일 아침을 기분 좋게 시작하는 세련된 욕실 세트</div>
+</div><!-- //main_title -->
+<ul class="prdList grid4">
+<li id="anchorBoxId_{$product_no}">
+<div class="prdList__item">
+<div class="thumbnail">
+<a href="{$link_product_detail}"><img alt="{$seo_alt_tag}" id="{$image_big_id}" loading="lazy" src="{$image_big}"/><span module="product_Imagestyle"><span class="prdIcon {$icon_class_name}" style="background-image:url('{$icon_url}');"></span></span></a>
+<div class="likeButton {$disp_likeprd_class}"><button type="button">{$disp_likeprd_icon} <strong>{$disp_likeprd_count}</strong></button></div>
+<div class="badge"><span></span></div>
+<div class="icon__box">
+<span class="cart">{$basket_icon}Cart<!--@import(/svg/ico_cart2.html)--></span>
+<span class="wish">{$list_wish_icon}Like<!--@import(/svg/ico_heart.html)--><!--@import(/svg/ico_heart_fill.html)--></span>
+</div>
+</div>
+<div class="description">
+<span class="option">{$option_preview_icon}OPTION</span>
+<div class="name"><a class="{$product_name_display|display}" href="{$link_product_detail}"><span class="title {$product_name_title_display|display}">{$product_name_title} :</span> {$product_name}</a></div>
+<p class="ec-base-help txtWarn txt11 {$exclusive_purchase_olny|display}"> Individual purchase items</p>
+<ul class="spec" module="product_ListItem">
+<li class="{$item_display|display}">
+<strong class="title {$item_title_display|display}">{$item_title} :</strong> {$item_content}
+                            </li>
+<li class="{$item_display|display}">
+<strong class="title {$item_title_display|display}">{$item_title} :</strong> {$item_content}
+                            </li>
+</ul>
+<div class="icon">{$soldout_icon} {$stock_icon} {$recommend_icon} {$new_icon} {$product_icons} {$today_arrival_icon} {$pickup_icon} {$benefit_icons} {$regular_delivery_icon}</div>
+</div>
+</div>
+</li>
+<li id="anchorBoxId_{$product_no}">
+<div class="prdList__item">
+<div class="thumbnail">
+<a href="{$link_product_detail}"><img alt="{$seo_alt_tag}" id="{$image_big_id}" loading="lazy" src="{$image_big}"/><span module="product_Imagestyle"><span class="prdIcon {$icon_class_name}" style="background-image:url('{$icon_url}');"></span></span></a>
+<div class="likeButton {$disp_likeprd_class}"><button type="button">{$disp_likeprd_icon} <strong>{$disp_likeprd_count}</strong></button></div>
+<div class="badge"><span></span></div>
+<div class="icon__box">
+<span class="cart">{$basket_icon}Cart<!--@import(/svg/ico_cart2.html)--></span>
+<span class="wish">{$list_wish_icon}Like<!--@import(/svg/ico_heart.html)--><!--@import(/svg/ico_heart_fill.html)--></span>
+</div>
+</div>
+<div class="description">
+<span class="option">{$option_preview_icon}OPTION</span>
+<div class="name"><a class="{$product_name_display|display}" href="{$link_product_detail}"><span class="title {$product_name_title_display|display}">{$product_name_title} :</span> {$product_name}</a></div>
+<p class="ec-base-help txtWarn txt11 {$exclusive_purchase_olny|display}"> Individual purchase items</p>
+<ul class="spec" module="product_ListItem">
+<li class="{$item_display|display}">
+<strong class="title {$item_title_display|display}">{$item_title} :</strong> {$item_content}
+                            </li>
+<li class="{$item_display|display}">
+<strong class="title {$item_title_display|display}">{$item_title} :</strong> {$item_content}
+                            </li>
+</ul>
+<div class="icon">{$soldout_icon} {$stock_icon} {$recommend_icon} {$new_icon} {$product_icons} {$today_arrival_icon} {$pickup_icon} {$benefit_icons} {$regular_delivery_icon}</div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="more" module="product_listmore_9">
+<a class="btnMore" href="#none" onclick="{$more_action}" role="button">
+            더보기 <div>(<span id="more_current_page_{$display_group}">{$current_page}</span>/<span id="more_total_page_{$display_group}">{$total_page}</span>)</div>
+</a>
+</div>
+</section>

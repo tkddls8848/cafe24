@@ -1,0 +1,121 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div module="board_ReplyPackage_8">
+    <!--@css(/css/module/board/replyPackage.css)-->
+    <div module="board_title_8">
+        <div class="path" role="navigation" aria-label="현재 위치">
+            <span aria-hidden="true">Current Page</span>
+            <ol>
+                <li><a href="/">HOME</a></li>
+                <li title="Current Page" aria-current="page"><strong>{$board_name}</strong></li>
+            </ol>
+        </div>
+        <div class="titleArea">
+            <h2>Reply to all</h2>
+        </div>
+    </div>
+
+    <div module="board_reply_8">
+        <!--
+            $login_page_url = /member/login.html
+            $deny_access_url = /index.html
+        -->
+        <div class="ec-base-table typeWrite">
+            <table border="1" summary="">
+                <caption>Reply to all</caption>
+                <colgroup>
+                    <col style="width:130px;" />
+                    <col style="width:auto;" />
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th scope="row">Target posts: <span class="ecActionReplyCount"></span></th>
+                    <td>
+                        <ul module="board_replyList_8">
+                            <li><a href="{$link_url}"><span>{$title}</span> / <span class="txtInfo">{$writer}({$writer_id})</span><img src="//img.echosting.cafe24.com/skin/mobile/board/review/btn_close_write.png" width="8" height="8" /></a></li>
+                            <li><a href="{$link_url}"><span>{$title}</span> / <span class="txtInfo">{$writer}({$writer_id})</span><img src="//img.echosting.cafe24.com/skin/mobile/board/review/btn_close_write.png" width="8" height="8" /></a></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">제목</th>
+                    <td><p class="txtInfo">The title cannot be edited if you are replying to multiple posts.<p></td>
+                </tr>
+                <tr class="{$config.is_admin|display}">
+                    <th scope="row">Frequently used answers</th>
+                    <td><a href="#none" class="btnNormal" onclick="{$action_comment_admin}" role="button">관리자 답변보기</a></td>
+                </tr>
+                <tr class="{$config.is_login|display}">
+                    <th scope="row">작성자</th>
+                    <td>{$form.writer}</td>
+                </tr>
+                <tr class="{$config.use_write_email|display}">
+                    <th scope="row">Email</th>
+                    <td>{$form.email}</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="clear">{$form.content}</td>
+                </tr>
+                <tr class="ucc">
+                    <th scope="row">UCC URL</th>
+                    <td>{$form.ucc}</td>
+                </tr>
+                </tbody>
+
+                <tbody class="{$config.use_attach|display}">
+                <tr>
+                    <th scope="row">Attached file1</th>
+                    <td>{$form.attach_file}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Attached file2</th>
+                    <td>{$form.attach_file}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Attached file3</th>
+                    <td>{$form.attach_file}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Attached file4</th>
+                    <td>{$form.attach_file}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Attached file5</th>
+                    <td>{$form.attach_file}</td>
+                </tr>
+                </tbody>
+
+                <tbody>
+                <tr class="{$config.use_password|display}">
+                    <th scope="row">비밀번호</th>
+                    <td>{$form.password} <span class="{$password_rule_help_display|display}">(Bao gồm 10-16 kí tự chứa ít nhất hai chữ cái in hoa và in thường/số/kí tự đặc biệt)</span></td>
+                </tr>
+                <tr class="{$config.use_secret|display}">
+                    <th scope="row">Private Setting</th>
+                    <td>{$form.secure}</td>
+                </tr>
+                <tr class="captcha {$config.use_captcha_write|display}">
+                    <th scope="row">Security code</th>
+                    <td>
+                        {$captcha_image} {$captcha_refresh}
+                        <p class="gBlank5">{$form.captcha} <span class="ec-base-help txtInfo">영문, 숫자 조합을 공백없이 입력하세요(대소문자구분)</span></p>
+                    </td>
+                </tr>
+                <tr class="agree {$config.is_login|display} {$display_privacy_agreement|display}">
+                    <th scope="row">Collection and use of <br />personal information ("Privacy Policy")</th>
+                    <td>
+                        {$form.privacy_agreement}<br />
+                        I have read and agree to the privacy policy. {$form.privacy_agreement_radio}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="ec-base-button">
+            <span class="gRight">
+                <a href="#none" class="btnSubmitFix sizeM" onclick="{$action_reply}" role="button">저장</a>
+                <a href="{$link_board_list}" class="btnBasicFix sizeM">취소</a>
+            </span>
+        </div>
+    </div>
+</div>

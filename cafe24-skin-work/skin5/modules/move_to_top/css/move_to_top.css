@@ -1,0 +1,20 @@
+body:has(.floatMenu .quick_menu_toggle.active) .moveToTop_module.visible { bottom: 120px; }
+.moveToTop_module { position: fixed; right: 20px; bottom: 0; display: flex; align-items: center; justify-content: center; border-radius: 50%; width: 4vw; max-width: 60px; min-width: 46px; height: 4vw; max-height: 60px; min-height: 46px; background-color: var(--black-color); font-size: 12px; color: #fff; z-index: 160; transition: all 0.3s; opacity: 0; aspect-ratio: 1 / 1; pointer-events: none; }
+.moveToTop_module .top_button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; background: none; border: none; padding: 0; }
+.moveToTop_module .top_button > span { color: #fff; font-weight: 500; font-size: 16px; line-height: 1; letter-spacing: -0.02em;}
+.moveToTop_module .top_button > span > svg { width: 12px; height: 12px; }
+.moveToTop_module.visible { bottom: 40px; opacity: 0.7; pointer-events: auto; }
+.moveToTop_module.visible:hover { opacity: 1; }
+@media (min-width: 1025px) {
+    .moveToTop_module.active_b { right: 200px; }
+}
+@media (max-width: 1024px) {
+    .moveToTop_module { width: 46px; height: 46px; }
+    .moveToTop_module.visible { bottom: 20px; }
+    /* detail, basket */
+    body:has(#orderFixArea) .moveToTop_module.visible { bottom:90px; }
+    .moveToTop_module.visible:hover { opacity: 0.7; }
+    .moveToTop_module .top_button { gap: 3px; }
+    .moveToTop_module .top_button > span { color: #fff; font-weight: 500; font-size: 12px; line-height: 1; letter-spacing: -0.02em; }
+    .moveToTop_module .top_button > span > svg path { stroke: #fff; }
+}

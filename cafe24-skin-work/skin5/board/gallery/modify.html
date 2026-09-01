@@ -1,0 +1,112 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div module="board_ModifyPackage_8">
+    <!--@css(/css/module/board/modifyPackage.css)-->
+    <div module="board_title_8">
+        <div class="path" role="navigation" aria-label="현재 위치">
+            <span aria-hidden="true">Current Page</span>
+            <ol>
+                <li><a href="/">HOME</a></li>
+                <li title="Current Page" aria-current="page"><strong>{$board_name}</strong></li>
+            </ol>
+        </div>
+        <div class="titleArea">
+            <h2>{$board_title}</h2>
+            <p>{$board_info}</p>
+        </div>
+    </div>
+
+    <div module="board_modify_8">
+        <div class="ec-base-table typeWrite">
+            <table border="1" summary="">
+            <caption>Edit Form</caption>
+            <colgroup>
+                <col style="width:130px;" />
+                <col style="width:auto;" />
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th scope="row">제목</th>
+                    <td>{$form.board_category} {$form.subject} {$form.notice} {$form.is_post}</td>
+                </tr>
+                <tr class="{$config.is_login|display}">
+                    <th scope="row">Posted</th>
+                    <td>{$form.writer}</td>
+                </tr>
+                <tr class="{$config.use_write_email|display}">
+                    <th scope="row">Email</th>
+                    <td>{$form.email}</td>
+                </tr>
+                <tr class="{$config.is_use_point|display}">
+                    <th scope="row">평점</th>
+                    <td>{$form.point}</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="clear">
+                        {$form.content}
+                    </td>
+                </tr>
+                <tr class="ucc">
+                    <th scope="row">Video URL</th>
+                    <td>{$form.ucc}</td>
+                </tr>
+            </tbody>
+
+            <tbody class="{$config.use_attach|display}">
+                <tr>
+                    <th scope="row">첨부파일1</th>
+                    <td>{$form.attach_file} <br class="mo">{$attached_file1}</td>
+                </tr>
+                <tr>
+                    <th scope="row">첨부파일2</th>
+                    <td>{$form.attach_file} {$attached_file2}</td>
+                </tr>
+                <tr>
+                    <th scope="row">첨부파일3</th>
+                    <td>{$form.attach_file} {$attached_file3}</td>
+                </tr>
+                <tr>
+                    <th scope="row">첨부파일4</th>
+                    <td>{$form.attach_file} {$attached_file4}</td>
+                </tr>
+                <tr>
+                    <th scope="row">첨부파일5</th>
+                    <td>{$form.attach_file} {$attached_file5}</td>
+                </tr>
+            </tbody>
+
+            <tbody>
+                <tr class="{$config.use_password|display}">
+                    <th scope="row">비밀번호</th>
+                    <td>{$form.password}</td>
+                </tr>
+                <tr class="{$config.use_secret|display}">
+                    <th scope="row">Private Setting</th>
+                    <td>{$form.secure}</td>
+                </tr>
+                <tr class="captcha {$config.use_captcha_write|display}">
+                    <th scope="row">비밀번호</th>
+                    <td>
+                        {$captcha_image} {$captcha_refresh}
+                        <p class="gBlank5">{$form.captcha} <span class="ec-base-help txtInfo">Your password must be alphanumeric characters with no space. (case sensitive)</span></p>
+                    </td>
+                </tr>
+                <tr class="agree {$config.is_login|display} {$display_privacy_agreement|display}">
+                    <th scope="row">Collection and use of <br />personal information ("Privacy Policy")</th>
+                    <td>
+                        {$form.privacy_agreement}<br />
+                        I have read and agree to the privacy policy. {$form.privacy_agreement_radio}
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <div class="ec-base-button">
+            <span class="gLeft"><a href="{$link_board_list}"class="btnNormalFix sizeM">목록</a></span>
+            <span class="gRight">
+                <a href="{$link_board_list}" class="btnNormalFix sizeM">취소</a>
+                <a href="#none" class="btnSubmitFix sizeM" onclick="{$action_modify}" role="button">수정</a>
+            </span>
+        </div>
+    </div>
+</div>

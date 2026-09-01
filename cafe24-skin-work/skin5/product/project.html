@@ -1,0 +1,168 @@
+<!--@layout(/layout/basic/layout.html)-->
+<style>
+    .path li strong { font-size: 12px; color: var(--black-color); }
+    .xans-project-package { margin-bottom: 100px; }
+    .xans-project-package .title h2 { margin-bottom: 30px; padding: 0; border: none; text-align: center; }
+    .xans-project-package .menuCategory { display: flex; margin: 0 0 50px; border: none; gap: 20px; align-items: center; justify-content: center; }
+    .xans-project-package .menuCategory > li { width: auto; }
+    .xans-project-package .menuCategory > li > a { display: block; padding: 0; border-radius: 40px; font-size: 16px; color: var(--gray-color); background: none; }
+    .xans-project-package .menuCategory > li > a:hover { color: var(--black-color); text-decoration: underline; }
+    .xans-project-package .banner { text-align: center; }
+    .xans-project-package .banner img { max-width: 100%; }
+    .xans-project-list { margin-top: 80px; }
+    .xans-project-list h3 span { font-size: 18px; }
+    .ec-base-product { margin-top: 30px; }
+    .ec-base-product .prdList { display: flex; margin: 0; gap: 40px 20px; flex-wrap: wrap; }
+    .ec-base-product .prdList > li { margin: 0; }
+    .ec-base-product .prdList .thumbnail { margin: 0; aspect-ratio: 1; }
+    .ec-base-product .prdList .thumbnail svg { border: none !important; }
+    .ec-base-product .prdList .thumbnail svg:after { display: none !important; }
+    .ec-base-product .prdList .thumbnail a img { width: 100%; max-width: unset; height: 100%; object-fit: cover; }
+    .ec-base-product .prdList .thumbnail > .icon { margin: 0; }
+    .ec-base-product .prdList .thumbnail > .icon .button { position: absolute; left: auto; right: 18px; bottom: 56px; width: 30px; height: 30px; margin: 0; border: none; font-size: 0; }
+    .ec-base-product .prdList .thumbnail > .icon .button > img.cart { position: absolute; top: 0; left: 0; width: 100%; height: 100%; margin: 0; opacity: 0; }
+    .ec-base-product .prdList .thumbnail > .icon .button > img:not(.cart) { display: none; }
+    .ec-base-product .prdList .thumbnail > .icon .button .likeButton { position: unset; width: 30px; height: 30px; margin: 0; padding: 0; opacity: 0; transition: opacity 0.3s; }
+    .ec-base-product .prdList .thumbnail > .icon .button .likeButton:before { display: none; }
+    .ec-base-product .prdList .thumbnail > .icon .button .likeButton button { display: flex; width: 30px; height: 30px; margin: 0; padding: 0 !important; border: 1px solid #c5c5c8 !important; border-radius: 4px; background: #FFF; box-shadow: 0 0 5px rgba(0, 0, 0, 0.13); transition: opacity 0.3s; align-items: center; justify-content: center; cursor: pointer; }
+    .ec-base-product .prdList .thumbnail > .icon .button .likeButton button img { display: none; }
+	.ec-base-product .prdList .thumbnail > .icon .button .likeButton button svg { width: 16px; margin: 0; fill: var(--gray-color); }
+    .ec-base-product .prdList .thumbnail .prdImg .wish { display: flex; flex: 1; right: 18px; bottom: 18px; opacity: 0; width: 28px; height: 28px; margin: 0; padding: 0 !important; border: 1px solid #c5c5c8 !important; border-radius: 4px; background: #FFF; box-shadow: 0 0 5px rgba(0, 0, 0, 0.13); transition: opacity 0.3s; align-items: center; justify-content: center; cursor: pointer; }
+	.ec-base-product .prdList .thumbnail .prdImg .wish svg { width: 16px; margin: 0; fill: var(--gray-color); }
+	.ec-base-product .prdList .thumbnail .prdImg .wish .heart_fill { display: none; fill: var(--point-color); }
+	.ec-base-product .prdList .thumbnail .prdImg .wish.active svg { fill: var(--point-color); }
+	.ec-base-product .prdList .thumbnail .prdImg .wish.active .heart { display: none; }
+	.ec-base-product .prdList .thumbnail .prdImg .wish.active .heart_fill { display: block; }
+    .ec-base-product .prdList .thumbnail:hover .prdImg .wish { opacity: 1; }
+    .ec-base-product .prdList .thumbnail:hover .icon .button .likeButton { opacity: 1; }
+    .ec-base-product .prdList .description { margin-top: 22px; padding: 0; }
+    .ec-base-product .prdList .description .option { position: relative; }
+    .ec-base-product .prdList .description .option a { display: block; margin-bottom: 10px; text-align: left; }
+    .ec-base-product .prdList .description .promotion { display: flex; margin-top: 5px; gap: 6px; flex-wrap: wrap; align-items: center; }
+    .ec-base-product .prdList .description .promotion img { height: 20px; object-fit: contain; }
+    .ec-base-product .spec { display: flex; margin-top: 10px; flex-wrap: wrap; align-items: center; }
+    .ec-base-product .spec li:first-child { margin-bottom: 8px; }
+    .ec-base-product .spec li.tag_icon { margin-top: 8px; }
+    .ec-base-product .spec li:not([class*=_price]) { width: 100%; }
+    .ec-base-product .spec li.product_price .sale_precent { margin-left: 6px; font-size: 13px; font-weight: 700; color: var(--point-color); }
+	.ec-base-product .spec li.product_price span:not(.sale_precent) { font-size: 13px !important; font-weight: 400 !important; color: var(--gray-color) !important; }
+    .ec-base-product .spec li.sale_price { width: 100%; }
+    .ec-base-product .spec li.sale_price > span { display: flex; font-size: 20px !important; font-weight: 700; color: var(--black-color) !important; }
+    .ec-base-product .spec li.sale_price > span .sale_precent { margin-left: 6px; font-size: 20px !important; font-weight: 700; color: var(--point-color); }
+    .ec-base-product .spec li:first-child span { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; text-overflow: ellipsis; word-break: break-word; }
+    .ec-base-product ul.prdList > li { width: calc((100% - 60px) / 4) !important; margin: 0 !important; }
+    .ec-base-product ul.prdList > li .color { display: flex; gap: 6px; }
+    .ec-base-product ul.prdList > li .color .chips { width: 8px; height: 8px; margin: 0; border: 1px solid #C5C5C8; border-radius: 50%; }
+    
+    @media (max-width:1024px) {
+        .path { width: 100%; height: 32px; margin: 10px 0 16px; opacity: 1; line-height: normal; text-indent: unset; }
+        .path li { background-position: 0 12px; line-height: 32px; }
+        .xans-project-list { margin-top: 50px; padding: 0 20px; }
+        .xans-project-list h3 { margin: 0 0 20px; }
+        .xans-project-list h3 span { position: unset !important; font-size: 17px; }
+        .xans-project-package .title { margin: 0; }
+        .xans-project-package .banner img { width: 100%; }
+        .xans-project-package .menuCategory { margin: 0 0 30px; }
+        .xans-project-package .menuCategory > li > a { font-size: 14px; }
+        .ec-base-product { margin-top: 10px; }
+        .ec-base-product .prdList { min-width: auto; gap: 40px 10px; }
+        .ec-base-product .prdList .spec { margin: 8px 0 0; }
+        .ec-base-product .prdList .description .name span { font-size: 15px !important; }
+        .ec-base-product .prdList .thumbnail svg { position: unset !important; }
+        .ec-base-product .prdList .thumbnail > .icon { position: unset !important; }
+        .ec-base-product .prdList .thumbnail > .icon .button { right: 8px; bottom: 43px; margin: 0; }
+        .ec-base-product .prdList .thumbnail > .icon .button .likeButton { opacity: 1; }
+        .ec-base-product .prdList .thumbnail .prdImg .wish { right: 8px; bottom: 8px; opacity: 1; }
+        .ec-base-product .spec li:first-child { margin-bottom: 10px; }
+        .ec-base-product ul.prdList > li { width: calc((100% - 10px) / 2) !important; }
+        .ec-base-paginate { margin-top: 60px; }
+        .ec-base-paginate li a { font-size: 14px; }
+    }
+    @media (min-width:768px) and (max-width:1024px) {
+        .ec-base-product ul.prdList > li { width: calc((100% - 20px) / 3) !important; }
+    }
+    @media (max-width:767px) {
+        .ec-base-product ul.prdList > li { width: calc((100% - 10px) / 2) !important; }
+    }
+</style>
+
+<div module="Project_Package">
+    <!--@css(/css/module/product/project_package.css)-->
+    <div class="path" module="project_head" role="navigation" aria-label="현재 위치">
+        <span aria-hidden="true">Current Page</span>
+        <ol>
+            <li><a href="/">HOME</a></li>
+            <li title="Current Page" aria-current="page"><strong>PROMOTIONS</strong></li>
+        </ol>
+    </div>
+
+    <div class="title" module="product_headcategory">
+        <h2>{$title_text_or_image}</h2>
+        <ul class="menuCategory">
+            <li module="product_projectcategory" style="display:{$display};">
+                <a href="#{$cate_id}">{$category_name} <span class="count {$product_count_display|display}">({$product_count})</span></a>
+            </li>
+        </ul>
+        <p class="banner">{$top_image_tag}</p>
+    </div>
+
+    <div module="project_list">
+        <!--
+            $basket_result = /product/add_basket.html
+            $basket_option = /product/basket_option.html
+        -->
+        <h3><span id="{$cate_id}">{$category_name}</span></h3>
+
+
+        <div module="project_productlist" class="ec-base-product">
+            <ul class="prdList grid4">
+                <li id="anchorBoxId_{$product_no}">
+                    <div class="thumbnail">
+                        <div class="prdImg">
+                            <a href="{$link_product_detail}" name="anchorBoxName_{$product_no}"><img src="{$image_medium}" alt="{$seo_alt_tag}" /><span module="project_Imagestyle"><span class="prdIcon {$icon_class_name}" style="background-image:url('{$icon_url}');"></span></span></a>
+                            <span class="wish">{$list_wish_icon}</span>
+                        </div>
+                        <div class="icon">
+                            <div class="button">
+                                <div class="likeButton {$disp_likeprd_class}"><button type="button"><!--@import(/svg/ico_cart2.html)--></button></div>
+                                {$basket_icon} {$zoom_icon}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="description">
+                        <strong class="name"><a href="{$link_product_detail}">{$product_name}</a></strong>
+                        <div class="option">{$option_preview_icon}</div>
+                        <ul module="project_ListItem" class="spec">
+                            <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title} :</strong> {$item_content}</li>
+                            <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title} :</strong> {$item_content}</li>
+                        </ul>
+                        <div class="promotion">{$soldout_icon} {$stock_icon} {$recommend_icon} {$new_icon} {$product_icons} {$pickup_icon}</div>
+                    </div>
+                </li>
+                <li id="anchorBoxId_{$product_no}">
+                    <div class="thumbnail">
+                        <div class="prdImg">
+                            <a href="{$link_product_detail}" name="anchorBoxName_{$product_no}"><img src="{$image_medium}" alt="{$seo_alt_tag}" /><span module="project_Imagestyle"><span class="prdIcon {$icon_class_name}" style="background-image:url('{$icon_url}');"></span></span></a>
+                            <span class="wish">{$list_wish_icon}</span>
+                        </div>
+                        <div class="icon">
+                            <div class="button">
+                                <div class="likeButton {$disp_likeprd_class}"><button type="button"><!--@import(/svg/ico_cart2.html)--></button></div>
+                                {$basket_icon} {$zoom_icon}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="description">
+                        <strong class="name"><a href="{$link_product_detail}">{$product_name}</a></strong>
+                        <div class="option">{$option_preview_icon}</div>
+                        <ul module="project_ListItem" class="spec">
+                            <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title} :</strong> {$item_content}</li>
+                            <li class="{$item_display|display}"><strong class="title {$item_title_display|display}">{$item_title} :</strong> {$item_content}</li>
+                        </ul>
+                        <div class="promotion">{$soldout_icon} {$stock_icon} {$recommend_icon} {$new_icon} {$product_icons} {$pickup_icon}</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+<!--@css(/layout/basic/css/ec-base-button.css)-->
+<div module="Mall_UrgencycallPrdResult">
+    <p class="result"><strong>{$totalPrd}</strong> results</p>
+
+    <div class="ec-base-table typeList">
+        <table border="1" summary="">
+            <caption>Results</caption>
+            <colgroup>
+                <col style="width:auto;" />
+                <col style="width:130px;" />
+                <col style="width:100px;" />
+            </colgroup>
+            <tbody class="head">
+                <tr>
+                    <td scope="col">상품명</td>
+                    <td scope="col">Product Code</td>
+                    <td scope="col">{$form.prdPagenum}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="scroll">
+            <table border="1" summary="">
+                <caption>Results</caption>
+                <colgroup>
+                    <col style="width:auto;" />
+                    <col style="width:130px;" />
+                    <col style="width:85px;" />
+                </colgroup>
+                <tbody class="{$displayPrdlist|display} center">
+                    <tr>
+                        <td class="product left">
+                            <span class="thumb"><img src="{$image_tiny}" alt="" /></span>
+                            <p>{$product_name}</p>
+                        </td>
+                        <td>{$product_code}</td>
+                        <td><a href="#none" class="btnNormal" onClick="{$selectfn}" role="button">선택</a></td>
+                    </tr>
+                    <tr>
+                        <td class="product left">
+                            <span class="thumb"><img src="{$image_tiny}" alt="" /></span>
+                            <p>{$product_name}</p>
+                        </td>
+                        <td>{$product_code}</td>
+                        <td><a href="#none" class="btnNormal" onClick="{$selectfn}" role="button">선택</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="message {$displayEmpty | display}">No results were found.</p>
+        </div>
+    </div>
+</div>
+
+<div module="Mall_UrgencycallPrdPage" class="ec-base-paginate typeSub" role="navigation" aria-label="페이지 이동">
+    <a href="#none" onClick="{$prev}" role="button"><img src="/SkinImg/img/ico_prev.png" alt="이전 페이지" /></a>
+    <ol>
+        <li><a href="#none" onClick="{$select_pageno}" class="{$curPageClass}" role="button">{$num}</a></li>
+        <li><a href="#none" onClick="{$select_pageno}" class="{$curPageClass}" role="button">{$num}</a></li>
+        <li><a href="#none" onClick="{$select_pageno}" class="{$curPageClass}" role="button">{$num}</a></li>
+        <li><a href="#none" onClick="{$select_pageno}" class="{$curPageClass}" role="button">{$num}</a></li>
+        <li><a href="#none" onClick="{$select_pageno}" class="{$curPageClass}" role="button">{$num}</a></li>
+    </ol>
+    <a href="#none" onClick="{$next}" role="button"><img src="/SkinImg/img/ico_next.png" alt="다음 페이지" /></a>
+</div>

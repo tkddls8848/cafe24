@@ -1,0 +1,40 @@
+.xans-board-search p,
+.xans-board-search .form,
+.xans-board-search .category { display:flex; flex-wrap:wrap; gap: 8px; }
+.xans-board-search select, 
+.xans-board-search input[type="text"],
+.xans-board-search a { border-radius:4px !important;}
+.xans-board-search .btnNormal {background-color: var(--white-color); color: var(--text-black);}
+#product_category_depth1{margin-left:0;}
+/********************* Mobile / Tablet *********************/
+@media (max-width:1024px) {
+    .xans-board-search { margin:10px 16px 0px 6px; }
+    
+    .xans-board-search select,
+    .xans-board-search input[type="text"],
+    .xans-board-search a { flex:1; margin-top:10px; }
+    .xans-board-search p { padding: 0 0 7px; }
+    .xans-board-search p > * { margin-bottom: 5px; }
+    .xans-board-search #search { flex:2; }
+    .xans-board-search p > a,
+    .xans-board-search .form > a,
+    .xans-board-search .category > a { bottom: unset !important; }
+    .xans-board-search p > a,
+    .xans-board-search p > input,
+    .xans-board-search p > select,
+    .xans-board-search .form > a,
+    .xans-board-search .form > input,
+    .xans-board-search .form > select,
+    .xans-board-search .category > a,
+    .xans-board-search .category > input,
+    .xans-board-search .category > select { flex: 1; margin: 0 !important; }
+}
+
+/********************* PC *********************/
+@media (min-width:1025px) {
+    .xans-board-search #search_key { width:110px; }
+    .xans-board-search #search { width:175px; }
+    .ec-base-button.gBottom:not(.displaynone) + #boardSearchForm { margin:-60px 0 0; }
+    
+    .xans-board-search .category { margin:0 0 10px 0; }
+}

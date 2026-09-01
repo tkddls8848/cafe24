@@ -1,0 +1,5 @@
+.main_product_list.product_list_B_c .ec-base-product ul.grid4 > li { width: calc((100% - 60px) / 4); }
+@media (max-width:1024px){
+    .main_product_list.product_list_B_c .ec-base-product ul.grid4 > li { width: calc((100% - 10px) / 2); }
+		.main_product_list.product_list_B_c .ec-base-product ul.grid4 > li:nth-child(n+5) { display: block !important; }
+}

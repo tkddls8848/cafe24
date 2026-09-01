@@ -1,0 +1,159 @@
+<div module="product_searchdata">
+    <!--@css(/css/module/product/searchdata.css)-->
+    <form class="searchField" id="{$searchkeyword_form}" action="/product/search.html" method="get">
+        <fieldset>
+        <legend>검색</legend>
+            <div class="searchInput">
+                {$searchdata_keywordform}
+                <button type="button" class="btnDelete">삭제</button>
+                <!-- <input type="image" id="{$search_submit_button}" src="//img.echosting.cafe24.com/skin/skin/product/ico_search.svg" alt="Search" class="btnSearch" /> -->
+                <button type="submit" id="{$search_submit_button}" class="btnSearch">
+                    <!--@import(/svg/ico_search.html)-->
+                </button>
+                <ul class="autoDrop" id="{$search_auto_id}"></ul>
+            </div>
+            <button type="button" class="btnSearchOption">Search Options</button>
+
+            <!-- Search Option Layer -->
+            <div id="ec-product-searchoption" class="searchOption ec-base-layer">
+                <!--@css(/layout/basic/css/ec-base-layer.css)-->
+                <div class="header">
+                    <h3>Search Options</h3>
+                </div>
+                <div class="content">
+                    <div class="boardWrite">
+                        <table border="1">
+                            <caption>Search Options</caption>
+                            <colgroup>
+                                <col style="width:80px;" />
+                                <col style="width:auto;" />
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">키워드</th>
+                                    <td>
+                                        {$searchdata_detail_keywordform}
+                                        <p class="desc">{$searchdata_detail_type_form}<label for="{$search_detail_type_id}"> Search for products containing one or more keywords.</label></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">제외</th>
+                                    <td>
+                                        {$searchdata_except_keywordform}
+                                        <p class="desc">검색결과에 제외하고싶은 키워드를 입력하세요.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="ec-base-button">
+                    <a href="#none" id="{$searchdata_layer_reset}" class="btnNormalFix sizeM" role="button">초기화</a>
+                    <a href="#none" id="{$searchdata_layer_submit}" class="btnSubmitFix sizeM" role="button">검색</a>
+                </div>
+                <a href="#none" class="close" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" alt="Close" /></a>
+            </div>
+        </fieldset>
+
+        <!-- Related Keywords -->
+        <div module="product_RelateKeyword" class="keywordArea">
+            <strong class="heading">관련검색어</strong>
+            <ul class="list">
+                <li><a href="{$relate_url}">{$relate_word}</a></li>
+                <li><a href="{$relate_url}">{$relate_word}</a></li>
+            </ul>
+        </div>
+
+        <!-- Hot Keywords -->
+        <div module="product_HotKeyword" class="keywordArea">
+            <strong class="heading">인기검색어</strong>
+            <div class="search_swiper swiper">
+                <ul class="list swiper-wrapper">
+                    <li class="swiper-slide"><a href="{$hot_keyword_search_url}">#{$hot_keyword_name}</a></li>
+                    <li class="swiper-slide"><a href="{$hot_keyword_search_url}">#{$hot_keyword_name}</a></li>
+                </ul>
+            </div>
+        </div>
+    </form>
+
+    <div module="product_searchdata" id="searchContent" class="section {$filter_class}">
+        <!--@css(/css/module/product/searchdata.css)-->
+        <form class="searchCondition" id="{$searchdata_form}" name="" method="get">
+            <input type="hidden" name="keyword" id="{$searchdata_keyword_hidden}" />
+            <div class="searchArea" id="ec-searchdata-area">
+                <table>
+                    <caption>Search Filters</caption>
+                    <colgroup>
+                        <col style="width:157px;">
+                        <col style="width:auto;">
+                    </colgroup>
+                    <tbody>
+                        <tr module="product_SearchFilterList">
+                            <th scope="row" class="title">{$filter_name}</th>
+                            <td class="{$filter_type}">
+                                <div class="cell">
+                                    <ul module="product_filterform" class="content">
+                                        <li class="{$filter_class}">{$filter_value}</li>
+                                        <li class="{$filter_class}">{$filter_value}</li>
+                                    </ul>
+                                    <div class="withinInput {$within_input_display|display}">{$within_input} <button type="button" class="btnResearch">검색</button>{$within_suggest}</div>
+                                    <div class="priceInput {$price_input_display|display}">Direct Input {$price_input} <span class="btnPriceSearch"><a href="#none" id="{$searchdata_submit}" role="button">검색<img src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_price_search.gif" alt="Search" /></a></span></div>
+                                    <div class="slider {$price_slider_display|display}">{$price_slider}</div>
+                                    <p class="value {$price_slider_display|display}">{$price_txt}</p>
+                                    <div class="extend">
+                                        <button type="button" class="btnExtend ec-searchdata-option-title">Expand</button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+        <div class="display_tablet_only">
+            <button type="button" class="btnSubmit gFull" id="{$searchdata_submit}">검색</button>
+        </div>
+    </div>
+
+    <div module="product_searchdata" class="display_tablet_only">
+        <a href="#none" id="shoppQbtn" class="btnNormalFix gFull {$search_detail_search_display|display}" role="button">Advanced Search</a>
+    </div>
+
+    <div module="product_searchConditionData">
+        <button type="button" class="btnRefresh ec-product-searchdata-reset">Clear All</button>
+        <ul class="list">
+            <li>{$search_condition_data}<button type="button" class="btnSearchDelete" {$search_attr}>삭제</button></li>
+            <li>{$search_condition_data}<button type="button" class="btnSearchDelete" {$search_attr}>삭제</button></li>
+        </ul>
+    </div>
+
+    <!-- Search Result Summary -->
+    <div class="searchResult">
+        <p class="record">검색 결과 <strong class="txtEm">{$total_count}</strong></p>
+        <div class="sort">
+            <div module="product_searchdata">
+                <div class="searchOrder">{$searchOrderby}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- No Result Message -->
+    <div class="noData {$search_fail_display|display}">
+       <!--@import(/svg/ico_warning.html)-->
+       <h3 class="title">검색 결과가 없습니다.</h3>
+       <p class="desc">검색어를 확인하고 다시 검색해 주세요.</p>
+       <p class="subDesc">
+           검색어 또는 제외어가 정확히 입력되었는지 확인해 주세요.<br />
+           여러 단어를 사용하는 경우에는 공백이 올바르게 들어갔는지도 확인해 주세요.
+       </p>
+   </div>
+</div>
+<script>
+    // 인기검색어 슬라이드
+    const searchSwiper = new Swiper('.keywordArea .search_swiper', {
+        slidesToShow: 'auto',
+        slidesPerView: 'auto',
+        observer: true,
+        observeParents: true,
+    });
+</script>

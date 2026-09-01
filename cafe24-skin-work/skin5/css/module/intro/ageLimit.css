@@ -1,0 +1,11 @@
+body { height:100%; }
+
+.xans-intro-agelimit { height:100%; padding:220px 0 100px; color:#444; box-sizing:border-box; background-color:#fafafa; }
+.xans-intro-agelimit .inner { width:960px; margin:0 auto; }
+.xans-intro-agelimit .inner:after { display:block; content:""; clear:both; }
+.xans-intro-agelimit .ageIcon { float:left; width:240px; height:240px; margin:0 80px 0 90px; border:17px solid #e9454e; border-radius:50%; box-sizing:border-box; font-size:90px; font-weight:900; line-height:205px; text-align:center; background-color:#fff; }
+.xans-intro-agelimit .ageDetail { float:left; width:450px; }
+.xans-intro-agelimit .ageDetail .info { margin:10px 0 30px; font-size:30px; }
+.xans-intro-agelimit .ageDetail .confirm { margin:20px 0 0; font-size:14px; }
+.xans-intro-agelimit .ageDetail .button [class*="btn"] { width:210px; padding:10px 8px; font-size:16px; }
+.xans-intro-agelimit .ageDetail .button .btnSubmit { margin:0 10px 0 0; }

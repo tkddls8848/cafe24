@@ -1,0 +1,88 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div class="section path" role="navigation" aria-label="현재 위치">
+    <span aria-hidden="true">현재 위치</span>
+    <ol>
+        <li><a href="/">Home</a></li>
+        <li title="현재 위치" aria-current="page"><strong>Link SNS Account</strong></li>
+    </ol>
+</div>
+
+<div class="section titleArea">
+    <h2>Link SNS Account</h2>
+</div>
+
+<div module="member_joinMapping">
+    <!--@css(/css/module/member/mapping_join.css)-->
+    <div class="boxTitle">
+        An account with the email <em>{$provider_member_email}</em> already exists.<br />
+        Would you like to log in to the existing account and link your SNS account?
+    </div>
+    <div class="ec-base-box typeThin">
+        <ul class="accountList">
+            <li class="head">
+                <strong>Username</strong>
+                <strong>Registration Date</strong>
+            </li>
+            <li>
+                <span>
+                    <label>
+                       <input type="radio" name="join_mapping_info" value="{$member_id}" provider="{$provider}" title="{$title}"><span class="snsId">{$title_ui}{$masking_member_id}</span>
+                    </label>
+                </span>
+                <span class="center">{$regist_date}</span>
+            </li>
+            <li>
+                <span>
+                    <label>
+                       <input type="radio" name="join_mapping_info" value="{$member_id}" provider="{$provider}" title="{$title}"><span class="snsId">{$title_ui}{$masking_member_id}</span>
+                    </label>
+                </span>
+                <span class="center">{$regist_date}</span>
+            </li>
+            <li>
+                <span>
+                    <label>
+                       <input type="radio" name="join_mapping_info" value="{$member_id}" provider="{$provider}" title="{$title}"><span class="snsId">{$title_ui}{$masking_member_id}</span>
+                    </label>
+                </span>
+                <span class="center">{$regist_date}</span>
+            </li>
+        </ul>
+    </div>
+    <div class="ec-base-button">
+        <a href="#none" class="btnSubmit gFull sizeL" onclick="{$action_func_mapping}" role="button">Link with Selected Account</a>
+        <a href="#none" onclick="{$action_func_join}" class="btnNormal gFull sizeL {$display_join|disp1lay}" role="button">회원가입 Without Linking</a>
+    </div>
+</div>
+
+<div module="Layout_login">
+    <!--@css(/layout/basic/css/ec-base-layer.css)-->
+    <!--@css(/css/module/member/layer_login.css)-->
+    <div class="layer-wrapper sizeM">
+        <div class="layer-inner">
+            <div class="ec-base-layer">
+                <div class="header">
+                    <h3>{$mall_name} Sing in</h3>
+                </div>
+                <div class="content">
+                    <div class="login">
+                        <fieldset>
+                            <legend>Login</legend>
+                            <label class="id ePlaceholder" title="{$login_id_type_text}">{$form.member_id}</label>
+                            <label class="password ePlaceholder" title="Password">{$form.member_passwd}</label>
+                            <a href="#none" class="btnLogin" onclick="{$action_func_login}" role="button">Sing in</a>
+                            <p class="info">Forgot your username or password?</p>
+                            <ul>
+                                <li><a href="/member/id/find_id.html">Forgot Username</a></li>
+                                <li><a href="/member/passwd/find_passwd_info.html">Forgot Password</a></li>
+                            </ul>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="ec-base-button">
+                    <button class="btnNormalFix sizeS" type="button" onclick="$('.xans-layout-login').hide();">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

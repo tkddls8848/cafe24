@@ -1,0 +1,43 @@
+<!--@layout(/layout/basic/popup.html)-->
+<div module="calendar_Modify" class="ec-base-layer">
+    <!--@css(/css/module/calendar/modify.css)-->
+    <div class="header">
+        <h1>Edit/Delete Post</h1>
+    </div>
+    <div class="content">
+        <div class="ec-base-table typeWrite">
+            <table border="1" summary="">
+                <caption>Edit/Delete Calendar Post</caption>
+                <colgroup>
+                    <col style="width:110px;" />
+                    <col style="width:auto; ">
+                </colgroup>
+                <tr>
+                    <th scope="row">When</th>
+                    <td>{$form.date} {$form.start_hour} {$form.start_minute} ~ {$form.end_hour} {$form.end_minute}</td>
+                </tr>
+                <tr>
+                    <th scope="row">제목</th>
+                    <td>{$form.title}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Description</th>
+                    <td>{$form.contents}</td>
+                </tr>
+                <tr>
+                    <th scope="row">선택</th>
+                    <td>{$form.field}<br />{$field_info}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Read by Admin</th>
+                    <td>{$form.confirm} <br /> NO: The site administarator has not read your message. <br /> YES: The site administarator has read your message.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="ec-base-button">
+        <a href="#none" class="btnEmFix sizeS" onclick="{$action_modify}" role="button">수정</a>
+        <a href="#none" class="btnBasicFix sizeS" onclick="{$action_delete}" role="button">삭제</a>
+        <a href="#none" class="btnNormalFix sizeS" onclick="window.close()" role="button">취소</a>
+    </div>
+</div>

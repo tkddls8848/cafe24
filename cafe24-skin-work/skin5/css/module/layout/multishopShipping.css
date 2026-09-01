@@ -1,0 +1,8 @@
+.xans-layout-multishopshipping { display:none; }
+.xans-layout-multishopshipping .worldshipLayer { border-color:var(--black-color-30); max-width:450px; width:var(--layer-width); }
+.xans-layout-multishopshipping .worldshipLayer .header { border-color:var(--black-color-10); color:var(--text-black); font-size:var(--font-size-base); height:47px; line-height:47px; margin:0; padding:0 20px; }
+.xans-layout-multishopshipping .worldshipLayer .desc { margin-bottom:20px; }
+.xans-layout-multishopshipping .worldshipLayer .select + .select { margin-top:10px; }
+.xans-layout-multishopshipping .worldshipLayer .ec-base-button { padding:0 0 20px; }
+.xans-layout-multishopshipping .worldshipLayer select { font-size:var(--font-size-xs); width:100%; }
+.xans-layout-multishopshipping .worldshipLayer .close { position:absolute; top:16px; right:20px; background:url(/SkinImg/img/ico_x.svg) no-repeat 0 0; margin:0; transform:none; height:16px; padding:0; width:16px;filter:invert(36%) sepia(0%) saturate(1967%) hue-rotate(177deg) brightness(94%) contrast(72%); font-size:0; }

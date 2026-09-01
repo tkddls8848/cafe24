@@ -1,0 +1,24 @@
+.xans-myshop-depositsummary { margin:0 0 40px; }
+.xans-myshop-depositsummary.ec-base-box.gHalf { border:1px solid #e5e5e5;border-top:1px solid #000;padding:0; }
+.xans-myshop-depositsummary.ec-base-box.gHalf::before { display:none; }
+.xans-myshop-depositsummary ul{ position:relative; float:none;width:100%;}
+.xans-myshop-depositsummary:after { content:""; display:block; clear:both; }
+.xans-myshop-depositsummary ul li { border-top:1px solid var(--black-color-25); padding:20px 16px; line-height:1.5; vertical-align:top; box-sizing:border-box; overflow:hidden; }
+.xans-myshop-depositsummary ul:first-child li:first-child { border-top:none; }
+.xans-myshop-depositsummary .title { float:left; width:50%; font-weight:600; box-sizing:border-box; font-size:var(--font-size-base); }
+.xans-myshop-depositsummary .data { float:left; width:50%;text-align:left; box-sizing:border-box; font-size:var(--font-size-base); }
+.xans-myshop-depositsummary + .ec-base-tab.typeNav .menu{margin: 0 0 40px;}
+.xans-myshop-depositsummary.ec-base-box.gHalf{border:0;}
+.xans-myshop-deposithead.ec-base-help .inner { border:0; border-top:1px solid var(--black-color); }
+
+/********************* PC *********************/
+@media all and (min-width:1025px) {
+	.xans-myshop-depositsummary { margin:0 0 50px; }
+    .xans-myshop-depositsummary ul{ float:left;width:50%;}
+	.xans-myshop-depositsummary ul li { margin:14px 0; padding:0 20px 0; border-top:none; }
+	.xans-myshop-depositsummary.ec-base-box.gHalf { padding: 10px 0;}
+	.xans-myshop-depositsummary.ec-base-box.gHalf::before {content:'';position: absolute;top: 25px;left: 50%;bottom: 25px;display: block;width: 1px;height:auto;background-color: #e5e5e5; }
+	.xans-myshop-depositsummary + .ec-base-tab.typeNav .menu{margin: 0 0 50px;}
+    .display_mobile_only {display:none;}
+    .display_tablet_only {display:none;}
+}

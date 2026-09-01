@@ -1,0 +1,40 @@
+<!--@layout(/layout/basic/popup.html)-->
+<div module="Product_RestockEmail" class="ec-base-layer">
+    <!--@css(/css/module/product/restock_email.css)-->
+    <div class="header">
+        <h1>Request back-in-stock notification</h1>
+    </div>
+    <div class="content">
+        <div class="ec-base-box typeProduct">
+            <p class="thumbnail"><img src="{$product_image}" alt="" onerror="this.src='//img.echosting.cafe24.com/thumb/75x75.gif'" /></p>
+            <div class="information">
+                <h2>{$product_name}</h2>
+                <p>Option Information</p>
+                <p>{$restock_option_name}</p>
+
+                <div class="optionWrap">
+                    <ul module="Product_optionstock">
+                        <li>
+                            <span class="name">{$option_name}</span>
+                            <div class="option">{$form.option}<p class="value">{$option_desc}</p></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="emailArea">
+            <div class="contact">
+                <p>Your email address : <strong>{$member_id}</strong><br /><span>-  Enter your email address and we'll notify you when this item is back in stock.</span></p>
+                <p>{$form.email}</p>
+            </div>
+            <ul class="info">
+            	<li>Products that you have requested for notifications will be added to your wishlist.</li>
+                <li>Please note that the requested product's price/options may change after it is restocked. Check the product information carefully before making a purchase.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="ec-base-button">
+        <button type="button" class="btnSubmitFix sizeS" onclick="{$action_write}">저장</button>
+        <button type="button" class="btnNormalFix sizeS" onclick="window.close();">취소</button>
+    </div>
+</div>

@@ -1,0 +1,161 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div class="path" role="navigation" aria-label="현재 위치">
+    <span aria-hidden="true">Current Page</span>
+    <ol>
+        <li><a href="/">Home</a></li>
+        <li title="Current Page" aria-current="page"><strong>Calendar</strong></li>
+    </ol>
+</div>
+
+<div class="titleArea">
+    <h2>Calendar</h2>
+</div>
+
+<div module="Calendar_Weekpackage">
+    <!--@css(/css/module/calendar/weekpackage.css)-->
+    <div class="ec-base-tab">
+        <ul class="menu">
+            <li><a href="/calendar/calendar_day.html">Daily</a></li>
+            <li class="selected"><a href="/calendar/calendar_week.html">Weekly</a></li>
+            <li><a href="/calendar/calendar_month.html">Monthly</a></li>
+        </ul>
+        <span class="right"><a href="/calendar/calendar_field.html" class="btnNormal">More</a></span>
+    </div>
+
+    <div module="Calendar_HeadWeek">
+        <!--
+            $calendar_write_url = calendar_write.html
+         -->
+        <p class="date">
+            <a href="#none" onclick="{$action_prev_week}" role="button"><img src="//img.echosting.cafe24.com/skin/base/calendar/btn_date_prev.gif" alt="Prev" /></a>
+            <span class="day">{$week_start} ~ {$week_end}</span>
+            <a href="#none" onclick="{$action_next_week}" role="button"><img src="//img.echosting.cafe24.com/skin/base/calendar/btn_date_next.gif" alt="Next" /></a>
+            <a href="#none" class="btnNormal" onclick="{$action_today}" role="button">Today</a>
+        </p>
+        <p class="button"><a href="#none" onclick="{$action_write}" class="btnSubmitFix sizeS {$write_display|display}" role="button">글쓰기</a></p>
+    </div>
+
+    <div module="Calendar_Category">{$form.category_no}</div>
+
+    <table border="1" summary="" class="calendar">
+        <caption>Weekly Calendar</caption>
+        <colgroup>
+            <col style="width:9%;" />
+            <col style="width:13%;" />
+            <col style="width:13%;" />
+            <col style="width:13%;" />
+            <col style="width:13%;" />
+            <col style="width:13%;" />
+            <col style="width:13%;" />
+            <col style="width:13%;" />
+        </colgroup>
+        <thead module="Calendar_ListWeekhead">
+            <tr>
+                <th scope="col">time</th>
+                <th scope="col">{$calendar_day_1} (MON)</th>
+                <th scope="col">{$calendar_day_2} (TUE)</th>
+                <th scope="col">{$calendar_day_3} (WED)</th>
+                <th scope="col">{$calendar_day_4} (THU)</th>
+                <th scope="col">{$calendar_day_5} (FRI)</th>
+                <th scope="col" class="sat">{$calendar_day_6} (SAT)</th>
+                <th scope="col" class="sun">{$calendar_day_7} (SUN)</th>
+            </tr>
+        </thead>
+        <tbody module="Calendar_ListWeek">
+            <!--
+                $calendar_view_url = calendar_view.html
+                $login_page_url = /member/login.html
+             -->
+            <tr>
+                <th scope="row">{$calendar_time}:00</th>
+                <td class="todo {$today1.class}">
+                    <ol module="Calendar_List1">
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                    </ol>
+                </td>
+                <td class="todo {$today2.class}">
+                    <ol module="Calendar_List2">
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                    </ol>
+                </td>
+                <td class="todo {$today3.class}">
+                    <ol module="Calendar_List3">
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                    </ol>
+                </td>
+                <td class="todo {$today4.class}">
+                    <ol module="Calendar_List4">
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                    </ol>
+                </td>
+                <td class="todo {$today5.class}">
+                    <ol module="Calendar_List5">
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                    </ol>
+                </td>
+                <td class="todo {$today6.class}">
+                    <ol module="Calendar_List6">
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                    </ol>
+                </td>
+                <td class="todo {$today7.class}">
+                    <ol module="Calendar_List7">
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                    </ol>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">{$calendar_time}:00</th>
+                <td class="todo {$today1.class}">
+                    <ol module="Calendar_List1">
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                    </ol>
+                </td>
+                <td class="todo {$today2.class}">
+                    <ol module="Calendar_List2">
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                    </ol>
+                </td>
+                <td class="todo {$today3.class}">
+                    <ol module="Calendar_List3">
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                    </ol>
+                </td>
+                <td class="todo {$today4.class}">
+                    <ol module="Calendar_List4">
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                    </ol>
+                </td>
+                <td class="todo {$today5.class}">
+                    <ol module="Calendar_List5">
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                    </ol>
+                </td>
+                <td class="todo {$today6.class}">
+                    <ol module="Calendar_List6">
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                    </ol>
+                </td>
+                <td class="todo {$today7.class}">
+                    <ol module="Calendar_List7">
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                        <li><a href="#none" onclick="{$action_list_view}" role="button">[{$calendar_start_hour}:{$calendar_start_minute}] {$calendar_title}</a></li>
+                    </ol>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

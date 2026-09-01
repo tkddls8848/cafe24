@@ -1,0 +1,311 @@
+<!--@layout(/layout/basic/layout.html)-->
+
+<style>
+    .xans-product-menupackage { margin-bottom: 80px; box-sizing: border-box; }
+    .xans-product-menupackage .title { margin: 0; text-align: center; }
+    .xans-product-menupackage .title h2 span { font-size: 26px; font-weight: 600; color: var(--black-color); line-height: 120%; }
+    .xans-product-menupackage .title .banner img { max-width: 100%; margin-bottom: 60px; }
+    .xans-product-menupackage .title .likeButton { display: none; }
+    .xans-product-menupackage .menuCategory { display: flex; margin-top: 45px; border: none; gap: 20px; flex-wrap: wrap; justify-content: center; }
+    .xans-product-menupackage .menuCategory .count { text-wrap: nowrap; }
+    .xans-product-menupackage .menuCategory ul.xans-product-children { display: none; flex-direction: column; }
+    .xans-product-menupackage .menuCategory > li { position: relative; width: auto; margin: 0; padding: 0; }
+    .xans-product-menupackage .menuCategory > li a { display: flex; width: max-content; max-width: 100%; margin: 7px 0; padding: 0; background: none; align-items: center; }
+    .xans-product-menupackage .menuCategory > li a .more { display: none; width: 16px; height: 16px; margin-left: 16px; align-items: center; justify-content: center; }
+    .xans-product-menupackage .menuCategory > li a * { font-size: 16px; font-weight: 400; line-height: 1.5; color: var(--text-gray);}
+    .xans-product-menupackage .menuCategory > li a svg { width: 12px; transform: rotate(90deg); stroke: var(--black-color-60); }
+    .xans-product-menupackage .menuCategory > li:has(.xans-product-children) > a .more,
+    .xans-product-menupackage .menuCategory > li > ul > li:has(.subCategory) a .more { display: flex; }
+    .xans-product-menupackage .menuCategory > li > ul { position: absolute; left: 0; width: 200px; padding: 16px; background-color: var(--white-color); border: 1px solid var(--black-color-30); z-index: 1; box-sizing: border-box; box-shadow: 0px 4px 12px #00000012; }
+    .xans-product-menupackage .menuCategory > li > ul > li { margin: 0; }
+    .xans-product-menupackage .menuCategory > li > ul > li a { width: 100%; margin: 4px 0; justify-content: space-between; }
+    .xans-product-menupackage .menuCategory > li.selected > a {color:var(--black-color); font-weight: 600;}
+    .xans-product-menupackage .subCategory { display: flex; position: relative; left: unset; top: unset; width: 100%; margin: 0 0 0 12px; padding: 0; border: none; flex-direction: column; background: none; }
+    .xans-product-menupackage .subCategory li { width: auto; margin: 0; }
+    .xans-product-normalmenu .function { margin: 0; border: none; }
+    .xans-product-normalmenu .prdCount { padding: 0; font-size: 16px; font-weight: 400; color: var(--black-color); text-transform: uppercase; }
+    .xans-product-normalmenu .prdCount strong { font-weight: 600; }
+    .xans-product-normalmenu #selArray { border: none; font-size: 14px; font-weight: 400; }
+    .xans-product-normalpackage { position: relative; }
+    .ec-base-product .title h3 { margin-bottom: 30px; }
+    .ec-base-product .prdList { display: flex; margin: 0; gap: 40px 20px; flex-wrap: wrap; }
+    .ec-base-product .prdList > li { margin: 0; }
+    .ec-base-product.xans-product .prdList .thumbnail { margin: 0; aspect-ratio: 1; }
+    .ec-base-product.xans-product .prdList .thumbnail svg { border: none !important; }
+    .ec-base-product.xans-product .prdList .thumbnail svg:after { display: none !important; }
+    .ec-base-product.xans-product .prdList .thumbnail a img { width: 100%; max-width: unset; height: 100%; object-fit: cover; }
+    .ec-base-product.xans-product .prdList .thumbnail > .icon { position: absolute; left: auto; right: 18px; bottom: 56px; width: 30px; height: 30px; margin: 0; border: none; }
+    .ec-base-product.xans-product .prdList .thumbnail > .icon .promotion { display: none; }
+    .ec-base-product.xans-product .prdList .thumbnail > .icon .button { position: relative; font-size: 0; }
+    .ec-base-product.xans-product .prdList .thumbnail > .icon .button > img.cart { position: absolute; top: 0; left: 0; width: 100%; height: 100%; margin: 0; opacity: 0; }
+    .ec-base-product.xans-product .prdList .thumbnail > .icon .button > img:not(.cart) { display: none; }
+    .ec-base-product.xans-product .prdList .thumbnail .likeButton { display: none; }
+    .ec-base-product.xans-product .prdList .thumbnail .prdImg .wish { display: flex; flex: 1; right: 18px; bottom: 18px; opacity: 0; width: 28px; height: 28px; margin: 0; padding: 0 !important; border: 1px solid #c5c5c8 !important; border-radius: 4px; background: #FFF; box-shadow: 0 0 5px rgba(0, 0, 0, 0.13); transition: opacity 0.3s; align-items: center; justify-content: center; cursor: pointer; }
+	.ec-base-product.xans-product .prdList .thumbnail .prdImg .wish svg { width: 18px; margin: 0; fill: var(--gray-color); }
+	.ec-base-product.xans-product .prdList .thumbnail .prdImg .wish .heart_fill { display: none; fill: var(--point-color); }
+	.ec-base-product.xans-product .prdList .thumbnail .prdImg .wish.on svg { fill: var(--point-color); }
+	.ec-base-product.xans-product .prdList .thumbnail .prdImg .wish.on .heart { display: none; }
+	.ec-base-product.xans-product .prdList .thumbnail .prdImg .wish.on .heart_fill { display: block; }
+    .ec-base-product.xans-product .prdList .thumbnail:hover .prdImg .wish { opacity: 1; }
+    .ec-base-product.xans-product .prdList .thumbnail:hover .icon .button .likeButton { opacity: 1; }
+    .ec-base-product.xans-product .prdList .icon__box { display: flex; position: absolute; bottom: 18px; left: unset; right: 18px; width: auto; height: auto; gap: 8px; background: none; flex-direction: column-reverse; }
+    .ec-base-product.xans-product .prdList .icon__box > span { display: flex; width: 30px; height: 30px; overflow: hidden; margin: 0; padding: 0 !important; border: 1px solid var(--black-color-30) !important; border-radius: 4px; font-size: 0; background: var(--white-color); align-items: center; justify-content: center; }
+    .ec-base-product.xans-product .prdList .icon__box > span:hover { border-color:var(--black-color) !important; }
+    .ec-base-product.xans-product .prdList .icon__box > span svg { margin: 0; }
+    .ec-base-product.xans-product .prdList .icon__box > span img { padding: 5px; box-sizing: border-box; object-fit: contain; }
+    .ec-base-product.xans-product .prdList .icon__box > span.cart { position: relative; }
+    .ec-base-product.xans-product .prdList .icon__box > span.wish { position: relative; right: 0; bottom: 0; }
+    .ec-base-product.xans-product .prdList .icon__box > .option { display: none; }
+    .ec-base-product.xans-product .prdList .icon__box svg { display: none; }
+    .ec-base-product.xans-product .prdList .icon__box .cart svg { width: 20px; margin: 0; fill: var(--gray-color); }
+    .ec-base-product.xans-product .prdList .icon__box .wish svg { width: 16px; margin: 0; fill: var(--gray-color); }
+    .ec-base-product.xans-product .prdList .icon__box .wish .heart_fill { display: none; fill: var(--point-color); }
+    .ec-base-product.xans-product .prdList .icon__box .wish.on .heart { display: none; }
+    .ec-base-product.xans-product .prdList .icon__box .wish.on .heart_fill { display: block; }
+    .ec-base-product.xans-product .prdList .description { margin-top: 22px; padding: 0; }
+    .ec-base-product.xans-product .prdList .description .chk { display: none; }
+    .ec-base-product.xans-product .prdList .description .option { position: relative; }
+    .ec-base-product.xans-product .prdList .description .option a { display: block; margin-bottom: 10px; text-align: left; }
+    .ec-base-product.xans-product .prdList .description .promotion { display: flex; margin-top: 8px; gap: 6px; flex-wrap: wrap; align-items: center; }
+    .ec-base-product.xans-product .prdList .description .promotion img { max-height: 20px; object-fit: contain; }
+    .ec-base-product .spec { display: flex; margin-top: 10px; flex-direction: column; flex-wrap: wrap; align-items: flex-start; }
+    .ec-base-product .spec li:first-child { margin-bottom: 8px; }
+    .ec-base-product .spec li.tag_icon { margin-top: 8px; }
+    .ec-base-product .spec li:not([class*=_price]) { width: 100%; }
+    .ec-base-product .spec li.product_price .sale_precent { margin-left: 6px; font-size: 13px; font-weight: 700; color: var(--point-color); }
+    .ec-base-product .spec li.product_price span:not(.sale_precent) { font-size: 13px !important; font-weight: 400 !important; color: var(--gray-color) !important; }
+    .ec-base-product .spec li.sale_price { width: 100%; }
+    .ec-base-product .spec li.sale_price > span { display: flex; font-size: 20px !important; font-weight: 700; color: var(--black-color) !important; }
+    .ec-base-product .spec li.sale_price > span .sale_precent { margin-left: 6px; font-size: 20px !important; font-weight: 700; color: var(--point-color); }
+    .ec-base-product .spec li:first-child span {overflow: hidden; text-overflow: ellipsis; word-break: break-word; }
+    .ec-base-product ul.prdList > li { width: calc((100% - 60px) / 4) !important; margin: 0 !important; }
+    .ec-base-product ul.prdList > li .color { display: flex; gap: 6px; }
+    .ec-base-product ul.prdList > li .color .chips { width: 8px; height: 8px; margin: 0; border: 1px solid #C5C5C8; border-radius: 50%; }
+    .ec-shop-detail-stock-layer .ec-base-layer .header { padding: 20px; }
+    .xans-product-normalmenu .function { display: flex; justify-content: space-between; align-items: center; } 
+    .xans-product-normalmenu ul#type { display: none; }
+    .xans-product-normalmenu select#selArray { border: none; background-size: 10px 5px; font-size: 14px; }
+    .xans-product-normalmenu select#selArray:focus { outline: none; }
+    .xans-product .ec-base-prdEmpty { display: flex; padding: 150px 0; border: none; font-size: 16px; color: var(--black-color); line-height: 1.2; flex-direction: column; align-items: center; }
+    .xans-product .ec-base-prdEmpty svg { width: 70px; height: 70px; margin: 0 auto 24px; }
+    @media (min-width:1024px) {
+        .xans-product-menupackage .menuCategory li:hover > ul.xans-product-children { display: flex; }
+        .xans-product-menupackage .menuCategory > li a:hover * { color: var(--black-color); }
+        .xans-product-menupackage .menuCategory > li a:hover svg { stroke: var(--black-color); }
+    }
+    @media (max-width:1024px) {
+        .path { width: 100%; height: 32px; margin: 10px 0 20px !important; opacity: 1; line-height: normal; text-indent: unset; }
+        .path li { background-position: 0 12px; line-height: 32px; }
+        .xans-product-menupackage { margin-bottom: 40px; }
+        .xans-product-menupackage .menuCategory { margin-top: 30px; gap: 6px 8px; }
+        .xans-product-menupackage .menuCategory > li a { margin: 10px 16px; font-size: 15px; }
+        .xans-product-menupackage .menuCategory > li:has(.xans-product-children) > a .more { display: none; }
+        .xans-product-menupackage .title .banner { position: relative; left: 50%; width: 100vw; transform: translateX(-50%); }
+        .xans-product-menupackage .title .banner img { width: 100%; }
+        .xans-product-normalpackage { box-sizing: border-box; }
+        .xans-product-normalmenu select#selArray { font-size: 13px; }
+        .xans-product-normalmenu .prdCount { font-size: 13px; }
+        .xans-product-normalmenu #selArray { font-size: 13px; }
+        .ec-base-product.xans-product .prdList .icon__box { bottom: 8px; right: 8px; opacity: 1; }
+        .ec-base-product .prdList { min-width: auto; gap: 40px 10px; }
+        .ec-base-product .prdList > li { position: unset; }
+        .ec-base-product .prdList .spec { margin: 8px 0 0; }
+        .ec-base-product .prdList .description .name span { font-size: 15px !important; }
+        .ec-base-product .prdList .thumbnail svg { position: unset !important; }
+        .ec-base-product .prdList .thumbnail > .icon { position: unset !important; }
+        .ec-base-product .prdList .thumbnail > .icon .button { right: 8px; bottom: 43px; margin: 0; }
+        .ec-base-product .prdList .thumbnail > .icon .button.alone { bottom: 8px; }
+        .ec-base-product .prdList .thumbnail > .icon .button .likeButton { opacity: 1; }
+        .ec-base-product .prdList .thumbnail .prdImg .wish { right: 8px; bottom: 8px; opacity: 1; }
+        .ec-base-product.xans-product .prdList .description { margin-top: 14px; }
+        .ec-base-product .layerDiscountPeriod .edge { display: none; }
+        .ec-base-product .layerDiscountPeriod .content,
+        .ec-base-product .prdList .shippingFee .ec-base-tooltip .content { overflow-x: auto; }
+        .ec-base-product .spec li:first-child { margin-bottom: 10px; }
+        .ec-base-product ul.prdList > li { width: calc((100% - 10px) / 2) !important; }
+        .xans-product .ec-base-prdEmpty { padding: 100px 0; font-size: 15px; }
+        .xans-product .ec-base-prdEmpty svg { width: 50px; height: 50px; }
+    }
+    @media (min-width:768px) and (max-width:1024px) {
+        .ec-base-product ul.prdList > li { width: calc((100% - 20px) / 3) !important; }
+    }
+    @media (max-width:767px) {
+        .ec-base-product ul.prdList > li { width: calc((100% - 10px) / 2) !important; }
+    }
+</style>
+
+<!-- ##module_info #ProductList #ProductList -->
+<div module="Product_menupackage">
+    <!--@css(/css/module/product/menupackage.css)-->
+    <!--@js(/js/module/product/menucategory.js)-->
+    <div class="path" module="product_headcategory" role="navigation" aria-label="현재 위치">
+        <span aria-hidden="true">Current Page</span>
+        <ol>
+            <li><a href="/">HOME</a></li>
+            <li class="{$disp_cate_1|display}"><a href="{$link_product_list_1}">{$name_1}</a></li>
+            <li class="{$disp_cate_2|display}"><a href="{$link_product_list_2}">{$name_2}</a></li>
+            <li class="{$disp_cate_3|display}"><a href="{$link_product_list_3}">{$name_3}</a></li>
+            <li class="{$disp_cate_4|display}"><strong><a href="{$link_product_list_4}">{$name_4}</a></strong></li>
+        </ol>
+    </div>
+
+    <div class="title" module="product_headcategory">
+        <p class="banner">{$top_image1_tag}{$top_image2_tag}{$top_image3_tag}</p>
+        <h2><span>{$title_text_or_image}</span></h2>
+        <span class="likeButton {$disp_likecate_class}"><button type="button">{$disp_likecate_icon}<strong>{$disp_likecate_count}</strong></button></span>
+    </div>
+
+    <!--@import(/product/shoppQ/searchContent.html)-->
+
+    <ul class="menuCategory">
+        <li module="product_displaycategory" class="{$selected}">
+            <a href="{$link_product_list_sub}"><div>{$category_name}<span class="count {$product_count_display|display}">({$product_count})</span></div><div class="more"><!--@import(/svg/ico_arrow.html)--></div></a>
+            <ul module="product_children">
+                <li class="{$selected}">
+                    <a href="{$link_product_list_sub}"><div>{$category_name}<span class="count {$product_count_display|display}">({$product_count})</span></div><div class="more"><!--@import(/svg/ico_arrow.html)--></div></a>
+                    <ul module="product_children" class="subCategory">
+                        <li class="{$selected}"><a href="{$link_product_list_sub}"><div>{$category_name}<span class="count {$product_count_display|display}">({$product_count})</span></div></a></li>
+                        <li class="{$selected}"><a href="{$link_product_list_sub}"><div>{$category_name}<span class="count {$product_count_display|display}">({$product_count})</span></div></a></li>
+                    </ul>
+                </li>
+                <li class="{$selected}">
+                    <a href="{$link_product_list_sub}"><div>{$category_name}<span class="count {$product_count_display|display}">({$product_count})</span></div><div class="more"><!--@import(/svg/ico_arrow.html)--></div></a>
+                    <ul module="product_children" class="subCategory">
+                        <li class="{$selected}"><a href="{$link_product_list_sub}"><div>{$category_name}<span class="count {$product_count_display|display}">({$product_count})</span></div></a></li>
+                        <li class="{$selected}"><a href="{$link_product_list_sub}"><div>{$category_name}<span class="count {$product_count_display|display}">({$product_count})</span></div></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div module="product_listrecommend" class="ec-base-product">
+    <!--
+        $count = 4
+            ※ Variable to set number of product display. If not set, up to 200 items will be displayed.
+            ※ If many products are displayed, shopping malls can become overloaded.
+        $basket_result = /product/add_basket.html
+        $basket_option = /product/basket_option.html
+    -->
+    <div class="title">
+        <h3><span>추천상품</span></h3>
+    </div>
+    <ul class="prdList grid4">
+        <!--@import(/product/list_product.html)-->
+    </ul>
+</div>
+
+<div module="product_listnew" class="ec-base-product">
+    <!--
+        $count = 5
+            ※ Variable to set number of product display. If not set, up to 200 items will be displayed.
+            ※ If many products are displayed, shopping malls can become overloaded.
+        $basket_result = /product/add_basket.html
+        $basket_option = /product/basket_option.html
+    -->
+    <div class="title">
+        <h3><span>신상품</span></h3>
+    </div>
+    <ul class="prdList grid5">
+        <!--@import(/product/list_product.html)-->
+    </ul>
+</div>
+
+<div module="product_normalpackage">
+    <!--@css(/css/module/product/listnormal.css)-->
+	<div module="product_normalmenu">
+        <!--
+            $compare_page = /product/compare.html
+        -->
+
+        <div class="function" id="{$listmenu_position}">
+            <p class="prdCount">전체 총 <strong>{$total_count}</strong>개</p>
+            <select id="selArray" name="selArray" module="product_Orderby">
+                <option value>- 정렬방식 -</option>
+                <option value="{$param}">{$sort_name}</option>
+                <option value="{$param}">{$sort_name}</option>
+            </select>
+            <ul id="type" module="product_Orderby">
+                <li><a href="{$param}" {$style}>{$sort_name}</a></li>
+                <li><a href="{$param}" {$style}>{$sort_name}</a></li>
+            </ul>
+    	</div>
+    </div>
+    <div module="product_listnormal" class="ec-base-product">
+        <!--
+            $count = 12
+                ※ Variable to set number of product display. If not set, up to 200 items will be displayed.
+                ※ If many products are displayed, shopping malls can become overloaded.
+            $basket_result = /product/add_basket.html
+            $basket_option = /product/basket_option.html
+        -->
+        <ul class="prdList grid4">
+            <!--@import(/product/list_product.html)-->
+        </ul>
+    </div>
+
+    <div module="product_normalpaging" class="ec-base-paginate typeList" role="navigation" aria-label="페이지 이동">
+        <a href="{$param_first}" class="first"><img src="/SkinImg/img/ico_first.png" alt="첫 페이지" /></a>
+        <a href="{$param_before}"><img src="/SkinImg/img/ico_prev.png" alt="이전 페이지" /></a>
+        <ol>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        </ol>
+        <a href="{$param_next}"><img src="/SkinImg/img/ico_next.png" alt="다음 페이지" /></a>
+        <a href="{$param_last}" class="last"><img src="/SkinImg/img/ico_last.png" alt="마지막 페이지" /></a>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // 해당 path에 active
+        const titleText = document.querySelector('.title h2 span')?.textContent.trim();
+        const pathLinks = document.querySelectorAll('.path li a');
+        if (titleText) {
+            pathLinks.forEach(function (link) {
+            if (link.textContent.trim() === titleText) {
+                link.classList.add('active');
+            }
+            });
+        }
+        
+        // 정렬 드롭다운
+        const selectBox = document.getElementById('selArray');
+        /* const orderbyList = document.querySelectorAll('#type li a');
+
+        orderbyList.forEach(link => {
+            const option = document.createElement('option');
+            option.value = link.href;
+            option.textContent = link.textContent;
+            selectBox.appendChild(option);
+        });
+
+        const currentUrl = location.href.split('?')[1];
+        if (currentUrl) {
+            for (let i = 0; i < selectBox.options.length; i++) {
+                if (selectBox.options[i].value.includes(currentUrl)) {
+                    selectBox.selectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        selectBox.addEventListener('change', function () {
+            const selectedUrl = this.value;
+            if (selectedUrl) {
+                location.href = selectedUrl;
+            }
+        }); */
+
+        // 좋아요 옵션 숨김
+        Array.from(selectBox.options).forEach(option => {
+            if (option.text.trim() === '좋아요') {
+                option.style.display = 'none';
+            }
+        });
+    });
+</script>

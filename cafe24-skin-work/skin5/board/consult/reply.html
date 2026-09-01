@@ -1,0 +1,90 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div module="board_ReplyPackage_9">
+    <!--@css(/css/module/board/replyPackage_9.css)-->
+    <div module="board_title_9">
+        <div class="path" role="navigation" aria-label="현재 위치">
+            <span aria-hidden="true">Current Page</span>
+            <ol>
+                <li><a href="/">HOME</a></li>
+                <li title="Current Page" aria-current="page"><strong>{$board_name}</strong></li>
+            </ol>
+        </div>
+
+        <div class="titleArea">
+            <h2>{$board_title}</h2>
+            <p>{$board_info}</p>
+        </div>
+    </div>
+
+    <div module="Board_Read_9">
+        <!--
+            $login_page_url = /member/login.html
+        -->
+        <div class="ec-base-table gLayoutFixed">
+            <table border="1" summary="">
+            <caption>Private Post</caption>
+            <colgroup>
+                <col style="width:130px;" />
+                <col style="width:auto;" />
+                <col style="width:130px;" />
+                <col style="width:auto;" />
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th scope="row">제목</th>
+                    <td colspan="3">{$subject}</td>
+                </tr>
+                <tr>
+                    <th scope="row">작성자</th>
+                    <td>{$writer}</td>
+                    <th scope="row">Answered</th>
+                    <td>{$consult}</td>
+                </tr>
+                <tr class="{$config.use_date|display}">
+                    <th scope="row">Submitted on</th>
+                    <td colspan="3">{$write_date}</td>
+                </tr>
+                <tr class="view">
+                    <td colspan="4">
+                        <div class="detail">{$content}</div>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+            </div>
+        </div>
+
+        <div module="board_reply_9">
+            <!--
+                $reply_success_url = /board/consult/list.html
+                $deny_access_url = /board/consult/list.html
+             -->
+            <div class="ec-base-table typeWrite">
+                <table border="1" summary="">
+                <caption>Private Post Reply Form</caption>
+
+                <tbody>
+                    <tr>
+                        <th scope="col">Message</th>
+                    </tr>
+                    <tr>
+                        <td class="clear">
+                            {$form.content}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="ec-base-button">
+            <span class="gLeft">
+                <span class="{$config.is_admin|display}"><a href="#none" class="btnNormalFix sizeM" onclick="{$action_comment_admin}" role="button">관리자 답변보기</a></span>
+                <a href="{$link_board_list}" class="btnNormalFix sizeM">목록</a>
+            </span>
+            <span class="gRight">
+                <a href="{$link_board_list}" class="btnNormalFix sizeM">취소</a>
+                <a href="#none" class="btnSubmitFix sizeM" onclick="{$action_reply}" role="button">저장</a>
+            </span>
+        </div>
+    </div>
+</div>

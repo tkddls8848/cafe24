@@ -1,0 +1,17 @@
+.xans-product-recentlist table td.product strong { display:block; color:#008bcc; }
+.xans-product-recentlist table td.image img { max-width:78px; border:1px solid #d6d6d6; }
+.xans-product-recentlist table td .xans-product-setproduct { margin:5px 0 0; }
+.xans-product-recentlist table td .xans-product-setproduct li { margin:2px 0 0; color:#757575; }
+.xans-product-recentlist table td .mileage { display: block; }
+.xans-product-recentlist table td.button a { width:100px; margin:1px 0; }
+.xans-product-recentlist .xans-product-listitem{border-top:1px solid #1a1a1a !important;}
+.xans-product-recentlist .ec-base-prdInfo .btnDelete { top:25px; right:0; height:auto; width:auto; transform:none;}
+.xans-product-recentlist .ec-base-prdInfo .btnDelete:before,
+.xans-product-recentlist .ec-base-prdInfo .btnDelete:after {display:none;}
+
+ @media (max-width:1024px) {
+    .xans-product-recentlist .xans-product-listitem .ec-base-prdInfo .prdBox { padding-bottom:24px; }
+    .xans-product-recentlist .xans-product-listitem .ec-base-prdInfo .prdBox + .optionSelect { margin-top:-14px; }
+    .xans-product-recentlist .ec-base-prdInfo .btnDelete svg { height:16px; width:16px; }
+    .xans-product-recentlist .ec-base-prdInfo .buttonGroup .gRight { flex-direction:row-reverse; }
+ }

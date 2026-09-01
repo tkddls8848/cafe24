@@ -1,0 +1,1493 @@
+<!--@layout(/layout/basic/layout.html)-->
+<style>
+    #totalProducts { margin: 0; }
+    #totalProducts .ec-base-help { display: none; }
+    #totalProducts .no_option tbody tr td {font-size: 17px !important; font-weight: 500 !important;}
+    #totalProducts .no_option tbody tr td.middle { padding: 0 !important; }
+    #totalProducts tbody td{ position:relative; border-color: #e5e5e5 !important; }
+    #totalProducts tbody td p { padding: 0; font-size: 17px; font-weight: 500; }
+    #totalProducts tbody td p span { font-size: 17px !important; font-weight: 500 !important; }
+    #totalProducts tbody td p.product span { margin-top: 5px; font-size: 15px !important; color: var(--gray-color); }
+    #totalProducts tbody td p.product + p.product{margin-top:10px;}
+    #totalProducts > table > tbody > tr:first-child > td { position: relative;}
+    #totalProducts tbody td .quantity {border: 1px solid #C5C5C8; border-radius: 6px; text-align:center; box-sizing:border-box; width: 103px !important;}
+    #totalProducts tbody td .quantity input {width: 45px; height: 30px !important; border: none; font-size: 14px; font-weight: 400; color: var(--black-color); line-height: 30px !important; background: none; text-align: center; }
+    #totalProducts tbody td .quantity a { width: 30px; height: 30px; }
+    #totalProducts tbody td .quantity a img { display: none; }
+    #totalProducts tbody td .quantity .up:before,
+    #totalProducts tbody td .quantity .eAddProductQuantityUpClass:before { content: ''; position: absolute; top: 50%; left: 50%; width: 12px; height: 1px; background: var(--gray-color); transform: translate(-50%,-50%); }
+    #totalProducts tbody td .quantity .up:after,
+    #totalProducts tbody td .quantity .eAddProductQuantityUpClass:after { content: ''; position: absolute; top: 50%; left: 50%; width: 1px; height: 12px; background: var(--gray-color); transform: translate(-50%,-50%); }
+    #totalProducts tbody td .quantity .down:before,
+    #totalProducts tbody td .quantity .eAddProductQuantityDownClass:before { content: ''; position: absolute; top: 50%; left: 50%; width: 12px; height: 1px; background: var(--gray-color); transform: translate(-50%,-50%); }
+    #totalProducts tbody td .delete img,
+    #totalProducts tbody td.center > a img { opacity:0; height:100%; width:100%; }
+    #totalProducts table tr.add_product > td { position: relative; padding: 27px 0; }
+    #totalProducts table tr.option_product > td { position: relative; padding: 27px 0; }
+    .couponDownResult.ec-base-layer .close{position:absolute;}
+    .xans-product-detail { padding: 0; }
+    .xans-product-detail .detailArea { display: flex; padding: 0; gap: 90px; }
+    .xans-product-detail .detailArea::after { display: none; }
+    .xans-product-detail .headingArea { display: none; }
+    .xans-product-detail .imgArea { display: flex; width: calc((100% - 90px) / 2 + 65px); max-height: 700px; overflow: hidden; float: unset; margin: 0; gap: 20px; flex-direction: row-reverse; }
+    .xans-product-detail .imgArea .keyImg { width: calc(100% - 100px); }
+    .xans-product-detail .imgArea .keyImg a img { width: 100%; max-width: 100%; height: 100%; object-fit: cover; box-sizing: border-box; }
+    .xans-product-detail .imgArea .keyImg .thumbnail { width: 100%; max-height: 700px; aspect-ratio: 36 / 35; }
+    .xans-product-detail .imgArea .keyImg .thumbnail #zoomMouseGiude { display: none !important; }
+    .xans-product-detail .imgArea .keyImg #zoom_wrap img { object-fit: cover; }
+    .xans-product-detail .imgArea .color { display: none; }
+    .xans-product-detail .imgArea .control { display: none; }
+    .xans-product-detail .imgArea .likeButton { display: none; }
+    .xans-product-detail .imgArea .xans-product-action { display: none; }
+    .xans-product-detail .imgArea .listImg { width: auto; margin: 0; overflow: hidden; }
+    .xans-product-detail .imgArea .listImg ul { width: 100%; min-width: unset; height: 100%; margin: 0; }
+    .xans-product-detail .imgArea .listImg ul::-webkit-scrollbar { display: none; }
+    .xans-product-detail .imgArea .listImg li { width: auto; height: auto; margin: 0; }
+    .xans-product-detail .imgArea .listImg li img { width: 80px; height: 100px; border: none; object-fit: cover; }
+    .xans-product-detail .imgArea .listImg button { display: none !important; }
+    .xans-product-detail .infoArea { position: relative; width: calc((100% - 90px) / 2 - 65px); }
+    .xans-product-detail .infoArea table { margin: 0; }
+    .xans-product-detail .infoArea .ec-base-qty { display: flex; width: auto !important; max-width:100px; border: 1px solid #C5C5C8; border-radius: 6px; }
+    .xans-product-detail .infoArea .ec-base-qty a { border: none; }
+    .xans-product-detail .infoArea .ec-base-qty input { min-width: 30px; height: 30px !important; padding: 0; border: none; font-size: 14px; font-weight: 400; color: var(--black-color); line-height: 30px !important; text-align: center; }
+    .xans-product-detail .infoArea .ec-base-qty .qtyUp:before { content: ''; position: absolute; top: 50%; left: 50%; width: 12px; height: 1px; background: var(--gray-color); transform: translate(-50%,-50%); }
+    .xans-product-detail .infoArea .ec-base-qty .qtyUp:after { content: ''; position: absolute; top: 50%; left: 50%; width: 1px; height: 12px; margin: 0; background: var(--gray-color); transform: translate(-50%,-50%); }
+    .xans-product-detail .infoArea .ec-base-qty .qtyDown:before { content: ''; position: absolute; top: 50%; left: 50%; width: 12px; height: 1px; background: var(--gray-color); transform: translate(-50%,-50%); }
+    .xans-product-detail .infoArea select { height: 32px; padding: 0 10px; border-radius: 6px; font-size: 12px; font-weight: 400; color: var(--black-color); }
+    .xans-product-detail .infoArea th,
+    .xans-product-detail .infoArea .xans-product-quantity dt { width: 120px; max-width: 120px; padding: 0 0 16px; }
+    .xans-product-detail .infoArea th span,
+    .xans-product-detail .infoArea td span { font-weight: inherit; word-break: break-word; }
+    .xans-product-detail .infoArea .info_table > tbody > tr > th,
+    .xans-product-detail .infoArea .info_table > tbody > tr > td { padding: 10px 0 !important; vertical-align: top; }
+    .xans-product-detail .infoArea tbody > tr:first-child.xans-record- > th:nth-of-type(1),
+    .xans-product-detail .infoArea tbody > tr:first-child.xans-record- > td:nth-of-type(1) { padding-top: 0px !important; }
+    .xans-product-detail .infoArea .product_price + tr th,
+    .xans-product-detail .infoArea .product_price + tr td { padding-top: 20px; border-top: 1px solid #C5C5C8; }
+    
+    .xans-product-detail .infoArea .top_btn { position: absolute; top: 0; right: 0; z-index: 10; }
+    .xans-product-detail .infoArea .top_btn a { margin-left: 12px; }
+    .xans-product-detail .infoArea .top_btn a img { width: 24px; height: 24px; object-fit: contain; }
+    .xans-product-detail .infoArea .top_btn .wish { display: flex; width: 30px; height: 30px; margin: 0; padding: 0 !important; align-items: center; justify-content: center; cursor: pointer; }
+    .xans-product-detail .infoArea .top_btn .wish img { width: 100%; height: 100%; object-fit: contain; }
+    .xans-product-detail .infoArea .top_btn .wish svg { display: none; width: 100%; margin: 0; fill: var(--gray-color); }
+    .xans-product-detail .infoArea .top_btn .wish .heart_fill { fill: var(--point-color); }
+    .xans-product-detail .infoArea .top_btn .wish.active svg { fill: var(--point-color); }
+    .xans-product-detail .infoArea .icon_box { padding-right: 30px; }
+    .xans-product-detail .infoArea .icon_box .icon { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+    .xans-product-detail .infoArea .icon_box .icon img { max-height: 20px; object-fit: contain; padding-bottom: 10px; }
+    .xans-product-detail .infoArea .title_area h2 { margin-bottom: 16px; font-size: 24px; font-weight: 500; color: var(--black-color); }
+    .xans-product-detail .infoArea .title_area .price_box { display: flex; margin-bottom: 16px; gap: 10px; align-items: flex-end; }
+    .xans-product-detail .infoArea .title_area .price_box span:first-child { display: block; font-size: 28px; font-weight: 800; color: var(--black-color); }
+    .xans-product-detail .infoArea .title_area .price_box .sale_price + span { font-size: 20px; font-weight: 400; color: var(--gray-color); }
+    .xans-product-detail .infoArea .title_area .price_box .sale_parsent { font-size: 20px; font-weight: 800; color: var(--point-color); }
+    .xans-product-detail .infoArea .qr_box td > span { display: flex; gap: 10px; flex-wrap: wrap; }
+    .xans-product-detail .infoArea .qr_box td > span > div { float: unset !important; width: auto !important; padding: 0 !important; }
+    .xans-product-detail .infoArea .qr_box td > span > div > img { width: 60px; }
+    .xans-product-detail .infoArea .qr_box td > span > div:nth-child(2) { display: flex; flex-direction: column; }
+    .xans-product-detail .infoArea .xans-product-option tr th { display: table-cell; border: none !important; font-size: 14px; font-weight: 400; color: var(--black-color); vertical-align: middle; word-break: break-word; }
+    .xans-product-detail .infoArea .xans-product-option tr td { padding-left: 10px !important; padding-right: 0; border: none !important; }
+    .xans-product-detail .infoArea .xans-product-option tr:last-child th,
+    .xans-product-detail .infoArea .xans-product-option tr:last-child td { padding-bottom: 20px; }
+    .xans-product-detail .infoArea .xans-product-addoption .txtByte { font-size: 12px; }
+    .xans-product-detail .infoArea .xans-product-addoption .txtByte strong { color: var(--black-color); }
+    .xans-product-detail .infoArea .xans-product-addoption input[type="text"] { width: calc(100% - 100px); margin-right: 7px; }
+    .xans-product-detail .infoArea .xans-product-quantity dt,
+    .xans-product-detail .infoArea .xans-product-quantity dd { padding: 10px 0 20px; }
+    .xans-product-detail .infoArea .xans-product-quantity dd { float: right; width: calc(100% - 150px); padding-left: 10px !important; }
+    .xans-product-detail .infoArea .no_option tr td { font-size: 14px !important; font-weight: 400 !important; color: var(--black-color) !important; }
+    .xans-product-detail .infoArea .no_option tr td .quantity_price { font-size: 0 !important; }
+    .xans-product-detail .infoArea .no_option tr:first-child td { padding: 10px 0; }
+    .xans-product-detail .infoArea .no_option col:nth-child(1){width:284px !important;}
+    .xans-product-detail .infoArea .xans-product-action:not(.gFixed) { padding: 40px 0 0; }
+    .xans-product-detail .infoArea .xans-product-action .gMessage { display: none !important; }
+    .xans-product-detail .infoArea .xans-product-action .ec-base-button { flex-wrap:wrap; }
+    .xans-product-detail .infoArea .xans-product-action .btn_inquiry:not(.displaynone) { order:2; }
+    .xans-product-detail .infoArea .xans-product-action .btn_inquiry:not(.displaynone) ~ .btn_wish { order:3; }
+    .xans-product-detail .infoArea .xans-product-action .btn_inquiry:not(.displaynone) ~ .btn_cart,
+    .xans-product-detail .infoArea .xans-product-action .btn_inquiry:not(.displaynone) ~ .btn_soldout { order:4; }
+    .xans-product-detail .infoArea .xans-product-action .btn_inquiry:not(.displaynone) ~ .btn_buy { order:1; flex-basis:auto; width:100%; }
+    .xans-product-detail .infoArea #btn_restock { margin-left: 4px; }
+ /*   .xans-product-detail .infoArea .add_products .add_product table colgroup col:nth-child(1) { width: 50% !important; }
+    .xans-product-detail .infoArea .add_products .add_product table colgroup col:nth-child(2) { width: 150px !important; }
+    .xans-product-detail .infoArea .add_products .add_product table colgroup col:nth-child(3) { width: auto !important; }*/
+    .xans-product-detail .productSet .product { display: none !important; margin-bottom: 24px; }
+    .xans-product-detail .productSet.active .product { display: block !important; }
+    .xans-product-detail .productSet.active .toggle { transform: rotate(180deg); }
+    .xans-product-detail .productSet:not(.additional) .product { display: block !important; }
+    .xans-product-detail .shippingFee .ec-base-tooltip,
+    .xans-product-detail .mileage_tooltip .mileage_layer { z-index:100; }
+    .totalPrice { display: flex; margin: 0; padding: 20px 0 0; border-top: 1px solid #C5C5C8; font-size: 14px; align-items: center; }
+    .totalPrice > strong { font-size: 17px; font-weight: 500; color: var(--black-color); }
+    .totalPrice .total { margin: 0 0 0 auto; }
+    .totalPrice .total strong em { font-size: 28px; font-weight: 700; color: var(--black-color); }
+    
+    /* 상품정보 */
+    .ec-base-tab > h3 { margin-top: 100px; padding: 30px 0; font-size: 20px; font-weight: 600; color: var(--black-color); text-transform: capitalize; }
+    .xans-coupon-productdetailajax { margin-top: 50px; }
+    .xans-coupon-productdetailajax > .title { border: none; }
+    .xans-coupon-productdetailajax > .title h2 { padding: 0; text-align: center; }
+    .xans-coupon-productdetailajax > .title h2 span { font-size: 17px; font-weight: 500; color: var(--black-color); }
+    .xans-coupon-productdetailajax > .title .button { padding: 0; }
+    .xans-coupon-productdetailajax > .title .button a { height: 33px; padding: 0 12px; font-size: 14px; font-weight: 500; line-height: 33px; color: var(--black-color); border: 1px solid var(--black-color); border-radius: 4px; text-transform: uppercase; }
+    .xans-coupon-productdetailajax .couponSkinArea ul { display: flex; width: auto !important; gap: 20px; align-items: center; flex-wrap: wrap; justify-content: center; }
+    .xans-coupon-productdetailajax .couponSkinArea ul:after { display: none; }
+    .xans-coupon-productdetailajax .couponSkinArea ul li { margin: 0 !important; }
+    .xans-product-additional { margin-top: 50px; }
+    .xans-product-additional .menu { display: flex; width: 100%; max-width: var(--max-width); margin: 0; border: none; background: none; }
+    .xans-product-additional .menu.fixed { position: fixed; top: 0; z-index: 999; background: #FFF; }
+    .xans-product-additional .menu li { flex: 1; border: none; border-bottom: 1px solid rgba(0, 0, 0, 0.15); background: none !important; text-align: center; }
+    .xans-product-additional .menu li a { display: block; width: 100%; height: 100%; padding: 20px 0; font-size: 17px; font-weight: 500; color: var(--gray-color); background: none !important; text-transform: capitalize; box-sizing: border-box; }
+    .xans-product-additional .menu li a span { margin-left: 5px; font-size: 17px; font-weight: 500; color: var(--gray-color); }
+    .xans-product-additional .menu li.selected { border: none; border-bottom: 3px solid var(--black-color); }
+    .xans-product-additional .menu li.selected a,
+    .xans-product-additional .menu li.selected a span { color: var(--black-color); }
+    .xans-product-additional { margin-bottom: 200px; }
+    .xans-product-additional .cont { padding: 0; font-size: 13px; font-weight: 400; color: var(--gray-color); }
+    .xans-product-additional .cont h3 { position: relative; margin: 0; padding: 20px 10px; border-bottom: 1px solid #ECECEC; font-size: 14px; font-weight: 500; color: var(--black-color); cursor: pointer; }
+    .xans-product-additional .cont h3:after { content: ''; position: absolute; top: 50%; right: 0; display: block; width: 7px; height: 7px; border-top: 1px solid var(--black-color); border-right: 1px solid var(--black-color); transform: translate(-50%,-50%) rotate(135deg); transition: transform 0.5s; }
+    .xans-product-additional .cont h3.active:after { transform: translate(-50%,calc(-50% + 3px)) rotate(-45deg); }
+    .xans-product-additional .cont li,
+    .xans-product-additional .cont .info_box { font-size: var(--font-size-2xs); font-weight: 400; color: var(--gray-color) }
+    .xans-product-additional .cont .info_box { transition: padding 0.3s, max-height 0.4s ease; }
+    .xans-product-additional div.board p.nodata { margin: 80px 0; border: none; font-size: 14px; font-weight: 400; line-height: 20px; color: var(--black-color); }
+    .xans-product-additional div.board .ec-base-button.typeBorder { margin: 0; padding: 0; border: none; }
+    .xans-product-additional div.board td .view { padding: 20px 0; }
+    .xans-product-additional div.board form[id*=commentWriteForm] { padding: 0 !important; }
+    .xans-product-additional .ec-base-table.typeList th { border-bottom: 1px solid #C5C5C8; font-size: 14px; font-weight: 500; background: none; text-transform: capitalize; }
+    .xans-product-additional .ec-base-table.typeList td { font-size: 14px; color: var(--black-color); }
+    .xans-product-additional .ec-base-table.typeList td .ec-common-rwd-image { margin-left: 5px; vertical-align:middle; }
+    .xans-product-additional .ec-base-table.typeList td:nth-child(n+3) { color: var(--gray-color); }
+    .xans-product-additional .ec-base-tab .ec-base-button { margin-top: 20px !important; }
+    .xans-product-additional .memoCont { background-color:var(--black-color-10); border-color:var(--black-color-20); margin: 0; }
+    .xans-product-additional .memoCont .user { display:flex; flex-wrap:wrap; gap:12px 20px; }
+    .xans-product-additional .memoCont .user textarea { flex:1; background-color:var(--white-color); border:1px solid var(--black-color-30); border-radius:4px; box-sizing:border-box; color:var(--black-color); height:60px; }
+    .xans-product-additional .memoCont .user .btnSubmit { height:auto; width:108px; }
+    .xans-product-additional .memoCont .nameArea { margin:0; width:100%; }
+    .xans-product-additional .memoCont .nameArea input[type=checkbox]::before { box-shadow: none; }
+    .xans-product-additional .boardComment { padding: 0; }
+    .xans-product-additional .boardComment li .name { padding-left: 9px; font-size: 14px; font-weight: 500; }
+    .xans-product-additional .boardComment li .name a { color: var(--black-color); }
+    .xans-product-additional .boardComment li .date { font-size: 14px; font-weight: 500; }
+    .xans-product-additional .boardComment li .comment span { font-size: 14px; }
+    .xans-product-relation .relation { padding: 120px 0; }
+    .xans-product-relation .relation .relation_slide { overflow: hidden; }
+    .xans-product-relation .relation h3 { margin-bottom: 30px; padding: 0; font-size: var(--font-size-lg); font-weight: var(--font-weight-semi-bold); color: var(--text-black); }
+    .xans-product-relation .relation ul.prdList { display: inline-flex; min-width: unset; margin: 0; }
+    .xans-product-relation .relation ul.prdList li.item { margin: 0; }
+    .xans-product-relation .relation ul.prdList li.item .thumb { width: 100%; height: auto; object-fit: cover; aspect-ratio: 1 / 1; margin-bottom:26px; }
+    .xans-product-relation .relation ul.prdList li.item .box { line-height: var(--line-height-lg); width: 100%; word-break: break-word; }
+    .xans-product-relation .relation ul.prdList li.item .box a { display: block; width: 100%; }
+    .xans-product-relation .relation ul.prdList li.item .box p a { font-size: var(--font-size-base); font-weight: var(--font-weight-semi-bold); color: var(--text-black); }
+    .xans-product-relation .relation ul.prdList li.item .box ul li strong { margin-top:8px; }
+    .xans-product-relation .relation ul.prdList li.item .box ul li strong,
+    .xans-product-relation .relation ul.prdList li.item .box ul li.salePrice { color: var(--text-black); font-size: var(--font-size-md); font-weight: var(--font-weight-bold); }
+    .xans-product-relation .relation ul.prdList li.item #span_product_tax_type_text { display:none; }
+    .xans-product-relation .relation ul.prdList li.item .box ul li strong.strike,
+    .xans-product-relation .relation ul.prdList li.item:has(.salePrice:not(.displaynone)) .box ul li strong { color: var(--text-gray); font-size: var(--font-size-xs); font-weight: var(--font-weight-regular); text-decoration: line-through; }
+    .ec-base-paginate { margin: 100px 0; }
+    .ec-base-paginate ol { margin: 0 !important; }
+    .ec-base-paginate li { border: none; }
+    .ec-base-paginate > a { display: inline-block; width: 36px; height: 36px; }
+    .ec-base-paginate > a img { width: 100%; height: 100%; object-fit: contain; }
+    .ec-base-paginate li a { width: 36px !important; height: 36px; margin: 0 !important; padding: 0 !important; font-size: 16px; font-weight: 400; line-height: 36px; color: var(--gray-color) !important; }
+    .ec-base-paginate li a.this { border: none !important; font-weight: 600; color: var(--black-color) !important; text-decoration: unset !important; }
+    .ec-base-layer .header{padding:20px;}
+    .mileage_layer td{padding-right:7px !important;}
+    @media (min-width:1025px) {
+        .xans-product-detail .imgArea .listImg { height: 100% !important; flex: 1; }
+    }
+    @media (max-width:1024px) {
+        #image_zoom_small, #zoom_wrap{display:none !important;}
+        .couponDownResult{width:100%; transform:translateX(-50%); margin-left:0;}
+        .path { width: 100%; height: 32px; margin: 10px 0; opacity: 1; line-height: normal; text-indent: unset; }
+        .path li { background-position: 0 12px; line-height: 32px; }
+        .xans-product-detail .detailArea { flex-direction: column; gap: 30px; }
+        .xans-product-detail .imgArea { width: 100%; gap: 10px; flex-direction: column; margin:0 auto;}
+        .xans-product-detail .imgArea .keyImg { width: 100%; }
+        .xans-product-detail .imgArea .keyImg .thumbnail { max-height: 650px; aspect-ratio: 1; }
+        .xans-product-detail .imgArea .listImg { width: 100%; box-sizing: border-box; }
+        .xans-product-detail .imgArea .listImg ul { margin: 0; overflow-x: scroll; overflow-y: hidden; flex-direction: row; }
+        .xans-product-detail .imgArea .listImg li { width: 15vw; max-width: 60px; margin-right: 10px; aspect-ratio: 1 / 1; }
+        .xans-product-detail .imgArea .listImg li img { width: 100%; height: 100%; }
+        .xans-product-detail .infoArea { width: 100%; box-sizing: border-box; }
+        .xans-product-detail .infoArea .info_table > colgroup col:first-child { width: 100px !important; }
+        .xans-product-detail .infoArea th,
+        .xans-product-detail .infoArea .xans-product-quantity dt { width: 100px; max-width: 100px; }
+        .xans-product-detail .infoArea th,
+        .xans-product-detail .infoArea td { vertical-align: baseline; }
+        .xans-product-detail .infoArea tr { position: relative; }
+        .xans-product-detail .infoArea tr:nth-child(n+3) th,
+        .xans-product-detail .infoArea tr:nth-child(n+3) > td { padding: 8px 0; }
+        .xans-product-detail .infoArea tr:nth-child(3) th,
+        .xans-product-detail .infoArea tr:nth-child(3) > td { padding-top: 16px; }
+        .xans-product-detail .infoArea .product_price + tr th,
+        .xans-product-detail .infoArea .product_price + tr td { padding-top: 16px; }
+        .xans-product-detail .infoArea .xans-product-option tr:last-child th,
+        .xans-product-detail .infoArea .xans-product-option tr:last-child td { padding-bottom: 16px; } 
+        .xans-product-detail .infoArea .xans-product-addoption td { border-top: unset !important; }
+        .xans-product-detail .infoArea .xans-product-addoption input[type="text"] { width: calc(100% - 60px); }
+        .xans-product-detail .infoArea .title_area h2 { margin-bottom: 8px; font-size: 16px; }
+        .xans-product-detail .infoArea .title_area .price_box { gap: 8px; align-items: center; }
+        .xans-product-detail .infoArea .title_area .price_box > span:first-child { font-size: 20px; }
+        .xans-product-detail .infoArea .title_area .price_box > span:last-child { font-size: 20px; }
+        .xans-product-detail .infoArea .title_area .price_box > span:last-child span { font-size: 20px !important; }
+        .xans-product-detail .infoArea .title_area .price_box .sale_price + span { font-size: 12px; }
+        .xans-product-detail .infoArea .title_area .price_box .sale_parsent { font-size: 14px !important; }
+        .xans-product-detail .infoArea .top_btn a img,
+        .xans-product-detail .infoArea .top_btn .wish img { width: 20px; height: 20px; }
+        .xans-product-detail .infoArea .no_option tr td { font-size: 13px !important; }
+        .xans-product-detail .infoArea .no_option col:nth-child(1){width: auto !important;}
+        .xans-product-detail .infoArea .xans-product-quantity dd { width: calc(100% - 110px); }
+        .xans-product-detail .infoArea .xans-product-action .btn_buy { flex-basis:auto; order:1; width:100%; }
+        .xans-product-detail .infoArea .xans-product-action .btn_wish { order:3; }
+        .xans-product-detail .infoArea .xans-product-action .btn_cart,
+        .xans-product-detail .infoArea .xans-product-action .btn_soldout { order:4; }
+        .xans-product-detail .infoArea .xans-product-action .btn_inquiry:not(.displaynone) { order:3; }
+        .xans-product-detail .infoArea .xans-product-action .btn_inquiry:not(.displaynone) ~ .btn_cart,
+        .xans-product-detail .infoArea .xans-product-action .btn_inquiry:not(.displaynone) ~ .btn_soldout { flex-basis:auto; order:2; width:100%; }
+        .xans-product-detail .shippingFee,
+        .xans-product-detail .mileage_tooltip { position: unset; }
+        .xans-product-detail .shippingFee .ec-base-tooltip,
+        .xans-product-detail .mileage_tooltip .mileage_layer{top: unset !important; left:0 !important; width: calc(100dvw - 40px); max-width: 450px; min-width: unset; margin: 0; padding: 15px 0; transform: none; }
+        .xans-product-detail .shippingFee .ec-base-tooltip h3,
+        .xans-product-detail .mileage_tooltip .mileage_layer h3 { margin: 0 15px; }
+        .xans-product-detail .shippingFee .ec-base-tooltip .btnStrong { height: 40px; padding: 7px 15px; border:1px solid transparent; border-radius: 4px; color: var(--primary-on-text-color); background: var(--primary-color); }
+        .xans-product-detail .shippingFee .ec-base-tooltip .content,
+        .xans-product-detail .mileage_tooltip .mileage_layer .content { overflow-x: auto; padding: 0 15px; }
+        .xans-product-detail .shippingFee .ec-base-tooltip table th,
+        .xans-product-detail .mileage_tooltip .mileage_layer table th,
+        .xans-product-detail .mileage_tooltip .mileage_layer table td { padding: 10px !important; }
+        #totalProducts tbody td{width: 400px;}
+        #totalProducts tbody td .delete,
+        #totalProducts tbody td.center > a { top: 5px; transform: translateY(0); }
+        #totalProducts tbody td p { font-size: 15px; font-weight: 500; }
+        #totalProducts tbody td p span { font-size: 15px !important; font-weight: 500 !important; }
+        #totalProducts tbody td .product + p:not(.product) { display: flex; position: relative; overflow: hidden; width: auto !important; max-width: 100px; margin-top: 10px; border: 1px solid #C5C5C8; border-radius: 6px; font-size: 0; }
+        #totalProducts tbody td .product + p:not(.product) input.quantity_opt { order: 2; min-width: 30px; height: 30px !important; padding: 0 30px; border: none; font-size: 14px; font-weight: 400; color: var(--black-color); line-height: 30px !important; text-align: center; }
+        #totalProducts tbody td .product + p:not(.product) a { position: absolute; top: 0; width: 30px; min-width: 30px; height: 30px; }
+        #totalProducts tbody td .product + p:not(.product) a img { display: none; }
+        #totalProducts tbody td .product + p:not(.product) .up,
+        #totalProducts tbody td .product + p:not(.product) .eProductQuantityUpClass,
+        #totalProducts tbody td .product + p:not(.product) .eAddProductQuantityUpClass { right: 0; }
+        #totalProducts tbody td .product + p:not(.product) .up:before,
+        #totalProducts tbody td .product + p:not(.product) .eProductQuantityUpClass:before,
+        #totalProducts tbody td .product + p:not(.product) .eAddProductQuantityUpClass:before { content: ''; position: absolute; top: 50%; left: 50%; width: 12px; height: 1px; background: var(--gray-color); transform: translate(-50%,-50%); }
+        #totalProducts tbody td .product + p:not(.product) .up:after,
+        #totalProducts tbody td .product + p:not(.product) .eProductQuantityUpClass:after,
+        #totalProducts tbody td .product + p:not(.product) .eAddProductQuantityUpClass:after { content: ''; position: absolute; top: 50%; left: 50%; width: 1px; height: 12px; background: var(--gray-color); transform: translate(-50%,-50%); }
+        #totalProducts tbody td .product + p:not(.product) .down,
+        #totalProducts tbody td .product + p:not(.product) .eProductQuantityDownClass,
+        #totalProducts tbody td .product + p:not(.product) .eAddProductQuantityDownClass { left: 0; }
+        #totalProducts tbody td .product + p:not(.product) .down:before,
+        #totalProducts tbody td .product + p:not(.product) .eProductQuantityDownClass:before,
+        #totalProducts tbody td .product + p:not(.product) .eAddProductQuantityDownClass:before { content: ''; position: absolute; top: 50%; left: 50%; width: 12px; height: 1px; background: var(--gray-color); transform: translate(-50%,-50%); }        
+        .totalPrice > strong { font-size: 15px; }
+        .totalPrice .total { display: flex; flex-wrap: wrap; justify-content: flex-end; }
+        .totalPrice .total .price,
+        .totalPrice .total strong em { font-size: 16px; font-weight: 700; color: var(--black-color); }
+        .xans-product-relation .relation { padding: 50px 0; }
+        .xans-product-relation .relation ul.prdList li.item .box p a { font-size:var(--font-size-sm); }
+        .xans-product-relation .relation ul.prdList li.item .box ul li strong.strike,
+        .xans-product-relation .relation ul.prdList li.item:has(.salePrice:not(.displaynone)) .box ul li strong { font-size: var(--font-size-2xs); }
+        
+        /* 상품정보 */
+        .xans-coupon-productdetailajax { position: relative; padding-bottom: 30px; }
+        .xans-coupon-productdetailajax > .title { position: unset }
+        .xans-coupon-productdetailajax > .title .button { top: unset; right: unset; bottom: 0; left: 50%; transform: translateX(-50%); }
+        .xans-coupon-productdetailajax > .title .button a { height: 28px; font-size: 13px; line-height: 28px; }
+        .xans-coupon-productdetailajax .couponSkinArea { padding: 20px 0 0; }
+        .ec-base-tab > h3 { margin-top: 50px; padding: 20px 0; font-size: 16px; }
+        .ec-base-tab.gFlex .menu { margin: 80px -20px 20px; }
+        .ec-base-tab.gFlex .menu li a { font-size: 15px; word-break: break-word; }
+        .xans-product-additional .menu { width: 100vw; transform: translateX(-20px); white-space: nowrap; overflow-x: scroll; }
+        .xans-product-additional .menu::-webkit-scrollbar { display: none; }
+        .xans-product-additional .menu li a { padding: 15px 14px; font-size: 15px; line-height: 15px; }
+        .xans-product-additional div.board { padding: 0; }
+        .xans-product-additional div.board .ec-base-button.typeBorder .gRight { width:100%; }
+        .xans-product-additional div.board .ec-base-button.typeBorder .gRight a { flex:1; }
+        .xans-product-additional .memoCont { box-sizing: border-box; padding:10px; width: 100%; }
+        .xans-product-additional .memoCont .user { gap:10px; }
+        .xans-product-additional .memoCont .user input[type=text], 
+        .xans-product-additional .memoCont .user input[type=password] { height:40px; margin:0; width:100%; }
+        .xans-product-additional .memoCont .user textarea { height:40px; }
+        .xans-product-additional .memoCont .nameArea { display:grid; grid-template-columns:100px 1fr; gap:10px; align-items: center; }
+        .xans-product-additional .memoCont .nameArea .secret,
+        .xans-product-additional .memoCont .nameArea .ec-base-help { grid-column: 1 / -1; margin:0; }
+        .xans-product-additional .boardComment li .name { font-size: 12px; }
+        .xans-product-additional .boardComment li .date { font-size: 12px; }
+        .xans-product-additional .boardComment li .comment span { font-size: 12px; }
+        .xans-product-additional #product-review-read { padding-bottom: 0; }
+        .xans-product-additional #product-review-read td { width: 100%; }
+        .xans-product-additional .cont h3 { padding: 15px 10px; font-size: var(--font-size-2xs); }
+        .xans-product-additional .ec-base-table.typeList tr { padding: 15px 0; }
+        .ec-base-paginate { margin-top: 60px; }
+        .ec-base-paginate li a { font-size: 14px; }
+    }
+</style>
+
+<!-- ##module_info #ProductDetail #detail_B_a -->
+<!--
+    $category_page = /product/list.html
+    $project_page = /product/project.html
+    $jointbuy_page = /product/jointbuy.html
+-->
+<div class="path" module="product_headcategory" role="navigation" aria-label="현재 위치">
+    <span>현재 페이지</span>
+    <ol>
+        <li><a href="/">HOME</a></li>
+        <li class="{$disp_cate_1|display}"><a href="{$link_product_list_1}">{$name_1}</a></li>
+        <li class="{$disp_cate_2|display}"><a href="{$link_product_list_2}">{$name_2}</a></li>
+        <li class="{$disp_cate_3|display}"><a href="{$link_product_list_3}">{$name_3}</a></li>
+        <li class="{$disp_cate_4|display}"><strong><a href="{$link_product_list_4}">{$name_4}</a></strong></li>
+    </ol>
+</div>
+
+<div module="product_detail" class="detail_B_a">
+    <!--@css(/css/module/product/detail.css)-->
+    <!--
+        $coupon_download_page = /coupon/coupon_productdetail.html
+    -->
+    <div class="headingArea">
+        <h2>[{$product_code}] {$name}</h2>
+        <span class="delivery {$delvtype_display|display}">(해외배송 가능상품)</span>
+        <span class="icon">{$soldout_icon} {$stock_icon} {$recommend_icon} {$new_icon} {$product_icons} {$today_arrival_icon} {$pickup_icon} {$benefit_icons} <img src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_rental.png" alt="" class="{$rental_information_display|display}"> {$regular_delivery_icon} {$cultural_tax_icon}</span>
+        <!-- 공급사 바로가기버튼 영역 -->
+        <div class="supply {$supply_link_display|display}">
+            <span>{$supply_top_logo}</span>
+            <a href="#none" onclick="{$supply_go_action}" role="button"><img src="{$supply_go_img}" alt="Visit Store" /></a>
+        </div>
+        <!-- //공급사 바로가기버튼 영역 -->
+    </div>
+
+    <div class="detailArea">
+        <div class="imgArea" module="product_image">
+            <!--@js(/js/module/product/product_image.js)-->
+            <div class="keyImg">
+                <div class="thumbnail">
+                    <a href="/product/image_zoom2.html{$zoom_param}" alt="{$product_code}" onclick="window.open(this.href, 'image_zoom2', 'toolbar=no,scrollbars=auto,resizable=yes,width=450,height=693,left=0,top=0', this);return false;">
+                        <img src="{$big_img}" alt="{$seo_alt_tag}" class="{$big_img_class} {$img_display|display}" /><span module="product_Imagestyle"><span class="prdIcon {$icon_class_name}" style="background-image:url('{$icon_url}');"></span></span>
+                    </a>
+                    <div id="zoom_wrap"></div>
+                </div>
+            </div>
+
+            <div class="listImg img_slide" module="product_addimage">
+                <ul class="img_slider swiper-wrapper">
+                    <li class="swiper-slide">{$add_img}</li>
+                    <li class="swiper-slide">{$add_img}</li>
+                </ul>
+            </div>
+            <div class="control">
+                <a href="/product/image_zoom2.html{$zoom_param}" class="btnZoom" onclick="window.open(this.href, 'image_zoom2', 'toolbar=no,scrollbars=auto,resizable=yes,width=560,height=710,left=0,top=0', this);return false;"><img src="//img.echosting.cafe24.com/skin/base/common/btn_icon_zoom.gif" alt="" /> 확대보기</a>
+            </div>
+            <div class="color {$colorchip_display|display}">
+                <div module="product_Colorchip">
+                    <span class="chips" style="background-color:{$color}"></span>
+                    <span class="chips" style="background-color:{$color}"></span>
+                </div>
+            </div>
+
+            <!--@import(/product/shoppQ/hashtag.html)-->
+
+            <div class="ec-base-button gColumn" module="product_action">
+                <!-- <a href="#none" class="btnNormal sizeM" onclick="{$action_recommend}" role="button">추천메일 보내기</a> -->
+                <!-- <a href="#none" class="btnNormal sizeM {$request_display|display}" onclick="{$action_request}" role="button">상품조르기</a> -->
+            </div>
+
+            <div class="likeButton {$disp_likeprd_class}">
+                <button type="button"><span class="title">좋아요</span>{$disp_likeprd_icon}<span class="count">{$disp_likeprd_count}</span></button>
+            </div>
+        </div>
+
+        <div class="infoArea">
+            <div module="product_detaildesign">
+                <!--
+                    count = 10
+                -->
+                <div class="top_btn" module="product_image">
+                    <span class="wish">{$wish_icon}<!--@import(/svg/ico_heart.html)--><!--@import(/svg/ico_heart_fill.html)--></span>
+                    <!-- <a href="#"><img src="/SkinImg/img/ico_share.png" alt="share product"></a> -->
+                </div>
+                <div class="icon_box" module="product_image">
+                    <span class="icon">{$soldout_icon} {$stock_icon} {$recommend_icon} {$new_icon} {$product_icons} {$today_arrival_icon} {$pickup_icon} {$benefit_icons} <img src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_rental.png" alt="" class="{$rental_information_display|display}"> {$regular_delivery_icon} {$cultural_tax_icon}</span>
+                </div>
+                <table border="1" summary="">
+                    <caption>{$name} 기본 정보</caption>
+                    <colgroup>
+                        <col style="width:120px;">
+                        <col style="width:auto;">
+                    </colgroup>
+                    <tbody>
+                    <tr class="{$item_display|display}">
+                        <th scope="row">{$item_title}</th>
+                        <td>{$item_content}</td>
+                    </tr>
+                    <tr class="{$item_display|display}">
+                        <th scope="row">{$item_title}</th>
+                        <td>{$item_content}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!--- Rental service -->
+            <table border="1" summary="" class="{$rental_information_display|display}">
+                <tbody>
+                    <tr class="rental">
+                        <th scope="row">월 렌탈 금액</th>
+                        <td>
+                            <p class="rental-maximum">월 <span class="rental-maximum-price">{$rental_maximum_price|numberformat}</span>원</p><span>(<span class="rental-maximum-term">{$rental_maximum_term}</span>개월 기준)</span>
+                            <ul module="product_rental">
+                                <li><span class="rental-term">{$rental_term}</span>개월 / 월 <span class="rental-price">{$rental_price|numberformat}</span>원</li>
+                                <li><span class="rental-term">{$rental_term}</span>개월 / 월 <span class="rental-price">{$rental_price|numberformat}</span>원</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="regularDelivery {$regular_delivery_display|display}">
+                <table border="1" summary="정기결제">
+                    <caption>정기결제</caption>
+                    <tbody>
+                    <tr>
+                        <th scope="row">구매방법</th>
+                        <td>
+                            <label class="gLabel"><span class="{$one_time_purchase_display|display}">{$regular_deliveryT}</span> 정기배송<span class="badge {$regular_delivery_discount_display|display}">{$max_discount_value} <i class="icoDown">할인</i></span></label>
+                            <label class="gLabel {$one_time_purchase_display|display}">{$regular_deliveryF} 1회구매</label>
+                        </td>
+                    </tr>
+                    <tr class="shippingCycle {$regular_cycle_period|display}" id="{$regular_cycle_period_id}">
+                        <th scope="row">배송주기</th>
+                        <td>
+                            {$regularPeriod}
+                        </td>
+                    </tr>
+                    <tr class="shippingNum {$regular_count_display|display}" id="{$regular_count_id}">
+                        <th scope="row">정기배송 횟수</th>
+                        <td>
+                            {$regularCount}
+                        </td>
+                    </tr>
+                    <tr class="shippingGuide" id="{$regular_info_id}">
+                        <th scope="row"><span class="displaynone">안내사항</span></th>
+                        <td>
+                            <div class="info {$regular_delivery_discount_display|display}" id="{$regular_delivery_discount_id}">
+                                <p class="title"><strong>정기배송 할인</strong> <span class="icoSave">save</span></p>
+                                <ul module="product_regularDiscount">
+                                    <li>{$discount_count}차 이상 구매 시 : {$discount_value} <span class="icoDown">할인</span></li>
+                                    <li>{$discount_count}차 이상 구매 시 : {$discount_value} <span class="icoDown">할인</span></li>
+                                </ul>
+                            </div>
+                            <div class="info">
+                                <ul class="ec-base-help typeDash txt11">
+                                    <li>배송주기, 정기배송 횟수는 상품 전체에 동일하게 적용됩니다.</li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="{$naver_mileage_exception_display|display}"><img src="//img.echosting.cafe24.com/skin/base_en_US/product/txt_naver.gif" alt="개인결제창을 통한 결제 시 네이버 마일리지 적립 및 사용이 가능합니다." /></p>
+
+            <table border="1" summary="" module="product_option">
+                <!--
+                $use_per_add_option = yes
+                -->
+                <caption>상품 옵션</caption>
+                <tbody module="product_option">
+                <tr>
+                    <th scope="row">{$option_name}</th>
+                    <td>{$form.option}<p class="value">{$option_desc}</p></td>
+                </tr>
+                <tr module="product_quantity">
+                    <th scope="row">수량</th>
+                    <td>
+                        <div class="ec-base-qty">
+                            {$form.quantity}
+                            <a href="javascript:;" class="qtyUp eClearUp" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" id="{$quantity_up_id}" alt="up" class="up {$quantity_up_class}"></a>
+                            <a href="javascript:;" class="qtyDown eClearDown" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" id="{$quantity_down_id}" alt="down" class="down {$quantity_down_class}"></a>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+                <tbody>
+                <tr module="product_addoption">
+                    <th scope="row">{$add_option_name}</th>
+                    <td>
+                        {$form.add_option}
+                        <span class="txtByte" title="현재글자수/최대글자수">(<strong class="length">0</strong>/{$option_maxlength})</span>
+                    </td>
+                </tr>
+                </tbody>
+                <tbody>
+                <tr class="{$option_push_button_display|display}" id="{$option_push_button_id}">
+                    <td colspan="2" class="selectButton"><a href="#none" class="btnSubmit sizeS" onclick="{$action_push_button}" role="button">옵션선택</a></td>
+                </tr>
+                <tr module="product_fileoption">
+                    <th scope="row">{$file_option_name}</th>
+                    <td class="fileInfo">
+                        {$form.file_option}
+                        <ul class="infoDesc">
+                            <li>- 파일은 최대 5개까지 {$file_option_limit}M 이하로 개별업로드 가능합니다.</li>
+                        </ul>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <dl module="product_quantity" class="ec-base-desc quantity">
+                <dt>수량</dt>
+                <dd>
+                    <div class="ec-base-qty">
+                        {$form.quantity}
+                        <a href="javascript:;" class="qtyUp eClearUp" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" id="{$quantity_up_id}" alt="up" class="up {$quantity_up_class}"></a>
+                        <a href="javascript:;" class="qtyDown eClearDown" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" id="{$quantity_down_id}" alt="down" class="down {$quantity_down_class}"></a>
+                    </div>
+                </dd>
+            </dl>
+
+            <div class="guideArea">
+
+                <p class="info {$limit_display|display}">(최소주문수량 {$minimum_limit}개 이상<span class="{$maximum_limit_display|display}"> / 최대주문수량 {$maximum_limit}개 이하</span>)</p>
+
+                <span class="sizeGuide {$size_guide_display|display}"><a href="#none" class="{$size_guide_class}" product_no="{$product_no}" role="button">사이즈 가이드</a></span>
+            </div>
+
+
+            <div class="productSet" module="product_setproduct">
+                <!--
+                $use_per_add_option = yes
+                -->
+                <div class="title">
+                    <h3>세트상품</h3>
+                </div>
+                <ul class="product">
+                    <li>
+                        <div class="information">
+                            <div class="thumbnail"><a href="/product/detail.html?product_no={$product_no}"><img src="{$product_image}" alt="" id="{$image_id}" /></a></div>
+                            <p class="name" title="상품명"><strong><a href="{$link_bind_product_detail}">{$product_name}</a></strong> <span class="{$set_quantity_display|display}">({$set_quantity}개씩 구매되는 상품)</span></p>
+                            <p class="price {$product_price_display|display}" title="Price"><strong class="{$product_price_del} notranslate">{$product_price}{$product_tax_type_text}</strong></p>
+                            <p class="salePrice {$product_sale_price_display|display} notranslate" title="Discounted Price">{$product_sale_price}</p>
+                            <div class="stock">
+                                <span class="gLabel {$stock_quantity_display|display}"><a href="#none" class="btnNormal" {$bind_stock_quantity} role="button">재고수량보기</a></span>
+                                <span class="{$product_restock_button_display|display}"><a href="#none" class="btnNormal" {$product_restock_link} role="button">재입고 알림 SMS</a></span>
+                            </div>
+                            <button type="button" class="btnInfo eProductDetailInfo" id="eProductDetailInfo_{$product_no}"><span>추가정보</span></button>
+                        </div>
+                        <ul class="option">
+                            <li module="product_option">
+                                <ul>
+                                    <li>
+                                        <strong class="name">{$option_name}</strong>
+                                        {$form.option}<p class="value">{$option_desc}</p>
+                                    </li>
+                                    <li module="product_quantity">
+                                        <div class="ec-base-qty">
+                                            {$form.quantity}
+                                            <a href="javascript:;" class="qtyUp eClearUp" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" id="{$quantity_up_id}" alt="up" class="up {$quantity_up_class}"></a>
+                                            <a href="javascript:;" class="qtyDown eClearDown" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" id="{$quantity_down_id}" alt="down" class="down {$quantity_down_class}"></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li module="product_noneoption">
+                                <ul>
+                                    <li>
+                                        <strong class="name">상품선택</strong>
+                                        {$form.noneoption}
+                                    </li>
+                                    <li module="product_quantity">
+                                        <div class="ec-base-qty">
+                                            {$form.quantity}
+                                            <a href="javascript:;" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" id="{$quantity_up_id}" alt="up" class="up {$quantity_up_class}"></a>
+                                            <a href="javascript:;" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" id="{$quantity_down_id}" alt="down" class="down {$quantity_down_class}"></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li module="product_addoption">
+                                <strong class="name">{$add_option_name}</strong>
+                                {$form.add_option}
+                                <span class="txtByte" title="현재글자수/최대글자수">(<strong class="length">0</strong>/{$option_maxlength})</span>
+                            </li>
+                            <li class="{$add_option_push_button_display|display} selectButton" id="{$add_option_push_button_id}">
+                                <a href="#none" class="btnSubmit sizeS" onclick="{$add_action_push_button}" role="button">옵션선택</a>
+                            </li>
+                        </ul>
+                        <div class="guide">
+                            <p class="qty {$product_min_display|display}">(최소주문수량 {$product_min}개 이상 <span class="{$product_max_display|display}">/ 최대주문수량 {$product_max}개 이하</span>)</p>
+                            <div class="sizeGuide {$size_guide_display|display}">
+                                <a href="#none" class="{$size_guide_class}" product_no="{$product_no}" role="button">사이즈 가이드</a>
+                            </div>
+                        </div>
+                        <div class="description" id="product_description_{$product_no}"></div>
+                    </li>
+                    <li>
+                        <div class="information">
+                            <div class="thumbnail"><a href="/product/detail.html?product_no={$product_no}"><img src="{$product_image}" alt="" id="{$image_id}" /></a></div>
+                            <p class="name" title="상품명"><strong><a href="{$link_bind_product_detail}">{$product_name}</a></strong> <span class="{$set_quantity_display|display}">({$set_quantity}개씩 구매되는 상품)</span></p>
+                            <p class="price {$product_price_display|display}" title="판매가"><strong class="{$product_price_del} notranslate">{$product_price}{$product_tax_type_text}</strong></p>
+                            <p class="salePrice {$product_sale_price_display|display} notranslate" title="할인판매가">{$product_sale_price}</p>
+                            <div class="stock">
+                                <span class="gLabel {$stock_quantity_display|display}"><a href="#none" class="btnNormal" {$bind_stock_quantity} role="button">재고수량보기</a></span>
+                                <span class="{$product_restock_button_display|display}"><a href="#none" class="btnNormal" {$product_restock_link} role="button">재입고 알림 SMS</a></span>
+                            </div>
+                            <button type="button" class="btnInfo eProductDetailInfo" id="eProductDetailInfo_{$product_no}"><span>추가정보</span></button>
+                        </div>
+                        <ul class="option">
+                            <li module="product_option">
+                                <ul>
+                                    <li>
+                                        <strong class="name">{$option_name}</strong>
+                                        {$form.option}<p class="value">{$option_desc}</p>
+                                    </li>
+                                    <li module="product_quantity">
+                                        <div class="ec-base-qty">
+                                            {$form.quantity}
+                                            <a href="javascript:;" class="qtyUp eClearUp" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" id="{$quantity_up_id}" alt="up" class="up {$quantity_up_class}"></a>
+                                            <a href="javascript:;" class="qtyDown eClearDown" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" id="{$quantity_down_id}" alt="down" class="down {$quantity_down_class}"></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li module="product_noneoption">
+                                <ul>
+                                    <li>
+                                        <strong class="name">상품선택</strong>
+                                        {$form.noneoption}
+                                    </li>
+                                    <li module="product_quantity">
+                                        <div class="ec-base-qty">
+                                            {$form.quantity}
+                                            <a href="javascript:;" class="qtyUp eClearUp" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" id="{$quantity_up_id}" alt="up" class="up {$quantity_up_class}"></a>
+                                            <a href="javascript:;" class="qtyDown eClearDown" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" id="{$quantity_down_id}" alt="down" class="down {$quantity_down_class}"></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li module="product_addoption">
+                                <strong class="name">{$add_option_name}</strong>
+                                {$form.add_option}
+                                <span class="txtByte" title="현재글자수/최대글자수">(<strong class="length">0</strong>/{$option_maxlength})</span>
+                            </li>
+
+                            <li class="{$add_option_push_button_display|display} selectButton" id="{$add_option_push_button_id}">
+                                <a href="#none" class="btnSubmit sizeS" onclick="{$add_action_push_button}" role="button">옵션선택</a>
+                            </li>
+                        </ul>
+                        <div class="guide">
+                            <p class="qty {$product_min_display|display}">(최소주문수량 {$product_min}개 이상 <span class="{$product_max_display|display}">/ 최대주문수량 {$product_max}개 이하</span>)</p>
+                            <div class="sizeGuide {$size_guide_display|display}">
+                                <a href="#none" class="{$size_guide_class}" product_no="{$product_no}" role="button">사이즈 가이드</a>
+                            </div>
+                        </div>
+                        <div class="description" id="product_description_{$product_no}"></div>
+                    </li>
+                </ul>
+                <dl module="product_quantity" class="ec-base-desc quantity">
+                    <dt>수량</dt>
+                    <dd>
+                        <div class="ec-base-qty">
+                            {$form.quantity}
+                            <a href="javascript:;" class="qtyUp eClearUp" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" id="{$quantity_up_id}" alt="up" class="up {$quantity_up_class}"></a>
+                            <a href="javascript:;" class="qtyDown eClearDown" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" id="{$quantity_down_id}" alt="down" class="down {$quantity_down_class}"></a>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+
+
+            <div class="productSet additional" module="product_addproduct">
+                <!--
+                $use_per_add_option = yes
+                -->
+                <div class="title">
+                    <h3>추가구성상품 <span>추가로 구매를 원하시면 선택하세요.</span></h3>
+                    <a href="#self" class="toggle"><i aria-hidden="true" class="icon icoArrowBottom"></i></a>
+                </div>
+                <ul class="product">
+                    <li>
+                        <div class="information">
+                            <div class="thumbnail"><a href="{$link_product_detail}"><img src="{$product_image}" alt="" id="{$image_id}" /></a></div>
+                            <p class="name" title="상품명"><strong>{$product_name}</strong></p>
+                            <p class="price {$product_price_display|display}" title="판매가"><strong class="{$product_price_del} notranslate">{$product_price}{$product_tax_type_text}</strong></p>
+                            <p class="salePrice {$product_sale_price_display|display} notranslate" title="할인판매가">{$product_sale_price}</p>
+                        </div>
+                        <ul class="option">
+                            <li module="product_option">
+                                <ul>
+                                    <li>
+                                        <strong class="name">{$option_name}</strong>
+                                        {$form.option}<p class="value">{$option_desc}</p>
+                                    </li>
+                                    <li module="product_quantity">
+                                        <div class="ec-base-qty">
+                                            {$form.quantity}
+                                            <a href="javascript:;" class="qtyUp eClearUp" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" id="{$quantity_up_id}" alt="up" class="up {$quantity_up_class}"></a>
+                                            <a href="javascript:;" class="qtyDown eClearDown" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" id="{$quantity_down_id}" alt="down" class="down {$quantity_down_class}"></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li module="product_noneoption">
+                                <ul>
+                                    <li>
+                                        <strong class="name">상품선택</strong>
+                                        {$form.noneoption}
+                                    </li>
+                                    <li module="product_quantity">
+                                        <div class="ec-base-qty">
+                                            {$form.quantity}
+                                            <a href="javascript:;" class="qtyUp eClearUp" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" id="{$quantity_up_id}" alt="up" class="up {$quantity_up_class}"></a>
+                                            <a href="javascript:;" class="qtyDown eClearDown" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" id="{$quantity_down_id}" alt="down" class="down {$quantity_down_class}"></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li module="product_addoption">
+                                <strong class="name">{$add_option_name}</strong>
+                                {$form.add_option}
+                                <span class="txtByte" title="현재글자수/최대글자수">(<strong class="length">0</strong>/{$option_maxlength})</span>
+                            </li>
+
+                            <li class="{$add_option_push_button_display|display} selectButton" id="{$add_option_push_button_id}">
+                                <a href="#none" class="btnSubmit sizeS" onclick="{$add_action_push_button}" role="button">옵션선택</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="information">
+                            <div class="thumbnail"><a href="{$link_product_detail}"><img src="{$product_image}" alt="" id="{$image_id}" /></a></div>
+                            <p class="name" title="상품명"><strong>{$product_name}</strong></p>
+                            <p class="price {$product_price_display|display}" title="판매가"><strong class="{$product_price_del} notranslate">{$product_price}{$product_tax_type_text}</strong></p>
+                            <p class="salePrice {$product_sale_price_display|display} notranslate" title="할인판매가">{$product_sale_price}</p>
+                        </div>
+                        <ul class="option">
+                            <li module="product_option">
+                                <ul>
+                                    <li>
+                                        <strong class="name">{$option_name}</strong>
+                                        {$form.option}<p class="value">{$option_desc}</p>
+                                    </li>
+                                    <li module="product_quantity">
+                                        <div class="ec-base-qty">
+                                            {$form.quantity}
+                                            <a href="javascript:;" class="qtyUp eClearUp" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" id="{$quantity_up_id}" alt="up" class="up {$quantity_up_class}"></a>
+                                            <a href="javascript:;" class="qtyDown eClearDown" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" id="{$quantity_down_id}" alt="down" class="down {$quantity_down_class}"></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li module="product_noneoption">
+                                <ul>
+                                    <li>
+                                        <strong class="name">상품선택</strong>
+                                        {$form.noneoption}
+                                    </li>
+                                    <li module="product_quantity">
+                                        <div class="ec-base-qty">
+                                            {$form.quantity}
+                                            <a href="javascript:;" class="qtyUp eClearUp" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" id="{$quantity_up_id}" alt="up" class="up {$quantity_up_class}"></a>
+                                            <a href="javascript:;" class="qtyDown eClearDown" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" id="{$quantity_down_id}" alt="down" class="down {$quantity_down_class}"></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li module="product_addoption">
+                                <strong class="name">{$add_option_name}</strong>
+                                {$form.add_option}
+                                <span class="txtByte" title="현재글자수/최대글자수">(<strong class="length">0</strong>/{$option_maxlength})</span>
+                            </li>
+
+                            <li class="{$add_option_push_button_display|display} selectButton" id="{$add_option_push_button_id}">
+                                <a href="#none" class="btnSubmit sizeS" onclick="{$add_action_push_button}" role="button">옵션선택</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div id="{$total.total_id}" class="{$total.total_display|display}">
+                <p class="ec-base-help txtWarn txt11 {$single_item_display|display}"> 수량을 선택해주세요.</p>
+                <p class="ec-base-help txtWarn txt11 {$several_item_display|display}"> 위 옵션선택 박스를 선택하시면 아래에 상품이 추가됩니다.</p>
+                <table border="1" summary="" class="no_option">
+                    <caption>Product List</caption>
+                    <colgroup>
+                        <col style="width:auto" />
+                        <col style="width:100px" />
+                        <col style="width:50px;" />
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th scope="col">작성자</th>
+                        <th scope="col">수량</th>
+                        <th scope="col">가격</th>
+                    </tr>
+                    </thead>
+                    <tbody class="{$quantity_display|display}">
+                    <tr>
+                        <td>{$name}</td>
+                        <td>
+                                <span class="quantity">
+                                    {$quantity}
+                                    <a href="javascript:;" class="up {$quantity_up_class}" role="button"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_count_up.gif" alt="up" /></a>
+                                    <a href="javascript:;" class="down {$quantity_down_class}" role="button"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_count_down.gif" alt="down" /></a>
+                                </span>
+                        </td>
+                        <td class="right"><span class="{$total.quantity_price} notranslate">{$product_price}</span> <span class="mileage {$mileage_display|display}">(<img src="{$mileage_mileage_icon}" /> <span class="{$total.mileage_price} notranslate">{$mileage_value}</span>)</span></td>
+                    </tr>
+                    <tr id="{$total.option_id}" class="option" module="product_option">
+                        <!--
+                        $use_per_add_option = yes
+                        $default_option = yes
+                        -->
+                        <td class="middle" colspan="3">
+                            <table border="1" summary="">
+                                <caption>옵션 정보</caption>
+                                <colgroup>
+                                    <col style="width:105px;">
+                                    <col style="width:auto;">
+                                </colgroup>
+                                <tbody>
+
+                                <tr module="product_addoption">
+                                    <th scope="row">{$add_option_name}</th>
+                                    <td>
+                                        {$form.add_option}
+                                        <span class="txtByte" title="현재글자수/최대글자수">(<strong class="length">0</strong>/{$option_maxlength})</span>
+                                    </td>
+                                </tr>
+                                <tr module="product_fileoption">
+                                    <th scope="row">{$file_option_name}</th>
+                                    <td class="fileInfo">
+                                        {$form.file_option}
+                                        <ul class="infoDesc">
+                                            <li>- 파일은 최대 5개까지 {$file_option_limit}M 이하로 개별업로드 가능합니다.</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <!-- 옵션선택 또는 세트상품 선택시 상품이 추가되는 영역입니다. 쇼핑몰 화면에는 아래와 같은 마크업구조로 표시됩니다. 삭제시 기능이 정상동작 하지 않습니다. -->
+                    <tbody>
+                    <!-- tr>
+                        <td>
+                            <p class="product">
+                                $상품명<br />
+                                <span>$옵션</span>
+                            </p>
+                        </td>
+                        <td>
+                            <span class="quantity">
+                                <input type="text" class="quantity_opt" />
+                                <a href="javascript:;" class="up eProductQuantityUpClass" role="button"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_count_up.gif" alt="수량증가" /></a>
+                                <a href="javascript:;" class="down eProductQuantityDownClass" role="button"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_count_down.gif" alt="수량감소" /></a>
+                            </span>
+                            <a href="#none" role="button"><img src="//img.echosting.cafe24.com/design/skin/default/product/btn_price_delete.gif" alt="삭제" class="option_box_del" /></a>
+                        </td>
+                        <td class="right">
+                            <span>$가격</span>
+                            <span class="mileage">(<img src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/product/ico_pay_point.gif" /> <span class="mileage_price">$적립금</span>)</span>
+                        </td>
+                    </tr -->
+                    </tbody>
+
+                    <!-- // 옵션선택 또는 세트상품 선택시 상품이 추가되는 영역입니다. 쇼핑몰 화면에는 아래와 같은 마크업구조로 표시됩니다. 삭제시 기능이 정상동작 하지 않습니다. -->
+                </table>
+            </div>
+
+
+            <div id="{$total.total_price_id}" class="totalPrice">
+                <p class="ec-base-help txtWarn txt11 {$exclusive_purchase_olny|display}"> 단독구매상품</p>
+                <strong>총 상품금액</strong>(수량) : <span class="{$total.total_cnt}"><strong><em>0</em></strong> (0개)</span>
+            </div>
+            <p class="ec-base-help txt11 {$price_warning_class}">할인가가 적용된 최종 결제예정금액은 주문 시 확인할 수 있습니다.</p>
+
+
+            <div module="product_action" id="{$fixed_action_button}" class="fixedActionButton">
+                <div class="ec-base-button gColumn">
+                    <a href="/board/inquiry/write.html{$inquiry_param}" class="btnEm sizeL btn_inquiry {$inquiry_display|display}">대량구매문의</a>
+                    <a href="#none" onclick="{$action_wishlist}" class="btnEm sizeL btn_wish {$wishlist_display|display}" role="button">관심상품</a>
+                    <a href="#none" class="btnEm sizeL {$basket_display|display} btn_cart" onclick="{$action_basket}" role="button">장바구니</a>
+                    <a href="#none" class="btnSubmit sizeL {$buy_display|display} btn_buy" onclick="{$action_buy}" role="button">
+                        <span id="{$btn_buy_id}">바로 구매</span>
+                        <span id="{$btn_reserve_id}" class="{$btn_reserve_class|display}">예약주문</span>
+                        <span id="{$btn_regular_delivery_id}" class="{$btn_regular_delivery|display}">정기배송 신청하기</span>
+                    </a>
+                    <span class="btnEm sizeL btn_soldout disabled {$soldout_display|display}">품절</span>
+                </div>
+
+                <div id="NaverChk_Button"></div>
+                <div id="{$app_payment_button_box_id}"></div>
+
+                <div module="myshop_asyncbenefit" class="ec-base-box typeMember gMessage">
+                    <p class="message {$display_benefit|display}">저희 쇼핑몰을 이용해 주셔서 감사합니다.</p>
+                    <div class="information {$display_benefit|display}">
+                        <strong class="thumbnail"><img src="{$group_image}" alt="" onerror="this.src='//img.echosting.cafe24.com/skin/base/member/img_member_default.gif';" class="{$group_image_tag_class}" /></strong>
+                        <div class="description">
+                            <p class="member"><strong>{$member_name} 님</strong>은 <em>[{$group_name}]</em> 회원이십니다.</p>
+                            <p class="{$display_no_benefit|display} {$display_no_benefit_class}"><strong class="notranslate">{$dc_pay} {$dc_min_price}</strong> 구매시 <strong class="notranslate">{$dc_price}{$dc_type}</strong>을 {$use_dc} 받으실 수 있습니다. {$dc_max_percent}</p>
+                            <p class="{$display_with_all|display} {$display_with_all_class}"><strong class="notranslate">{$dc_pay} {$dc_min_price_mileage}</strong> 구매시 <strong class="notranslate">{$dc_price_mileage}{$dc_type_mileage}</strong>을 {$use_dc_mileage} 받으실 수 있습니다. {$dc_max_mileage_percent}</p>
+                        </div>
+                    </div>
+                </div>
+                {$common_event_b}
+            </div>
+
+            <div module="product_action" class="ec-base-button gFixed" id="orderFixArea">
+                <div class="ec-base-button gColumn {$action_display|display}">
+                    <button type="button" class="btnEm sizeL actionCart {$basket_display|display}" onclick="{$action_basket}">장바구니</button>
+                    <a href="#none" class="btnSubmit sizeL {$buy_display|display}" onclick="{$action_buy}" role="button"><span id="{$btn_buy_mobile_id}">바로 구매</span><span class="{$btn_reserve_class|display}" id="{$btn_reserve_mobile_id}">예약주문</span><span id="{$btn_regular_delivery_id}" class="{$btn_regular_delivery|display}">정기배송 신청하기</span></a>
+                </div>
+                <div class="ec-base-button gColumn {$action_soldout_display|display}">
+                    <button type="button" class="btnNormal sizeL {$wishlist_display|display}" onclick="{$action_wishlist}" id="actionWishSoldout">관심상품</button>
+                    <button type="button" class="btnEm sizeL btn_soldout disabled {$soldout_display|display}">품절</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="supplyInfo {$supply_info_display|display}">
+        {$supply_info}
+    </div>
+
+    <div class="eventArea {$common_event_a|display}">
+        <h3><span>이벤트</span></h3>
+        <div class="event">{$common_event_a}</div>
+    </div>
+</div>
+
+<!--@import(/coupon/coupon_productdetail.html)-->
+
+<div module="product_additional">
+    <!--@import(/board/report_popup.html)-->
+    <!--@css(/css/module/product/additional.css)-->
+    <ul class="menu">
+        <li class="selected"><a href="#prdDetail">상세정보</a></li>
+        <li class="{$review_display|display}"><a href="#prdReview">상품 리뷰<span>({$review_count})</span></a></li>
+        <li class="{$qna_display|display}"><a href="#prdQnA">상품 문의 ({$qna_count})</a></li>
+        <li><a href="#prdInfo">배송 및 반품 정보</a></li>
+        <!-- <li><a href="#prdRelated">관련 상품</a></li> -->
+    </ul>
+    <div id="prdDetail" class="ec-base-tab gFlex">
+        <div class="cont">
+            <!-- <h3>product detail</h3> -->
+            {$product_detail}
+        </div>
+    </div>
+
+    <div module="product_relation" id="prdRelated" class="ec-base-tab gFlex">
+        <!--@css(/css/module/product/relation.css)-->
+        <!-- <ul class="menu">
+            <li><a href="#prdDetail">상세정보</a></li>
+            <li class="{$review_display|display}">><a href="#prdReview">상품 리뷰<span>({$review_count})</span></a></li>
+            <li class="{$qna_display|display}">><a href="#prdReview">상품 리뷰<span>({$review_count})</span></a></li>
+            <li><a href="#prdInfo">배송 및 반품 정보</a></li>
+            <li class="selected"><a href="#prdRelated">관련 상품</a></li>
+        </ul> -->
+    
+        <div class="relation">
+            <h3>관련 상품</h3>
+            <div module="product_relationlist" class="relation_slide swiper">
+                <ul class="prdList swiper-wrapper">
+                    <li class="item swiper-slide">
+                        <div class="box">
+                            <a href="{$link_product_detail}"><img src="{$img_small}" alt="{$seo_alt_tag}" class="thumb" /></a>
+                            <p><a href="{$link_product_detail}">{$name}</a></p>
+                            <ul>
+                                <li><strong class="{$product_sale_strike} notranslate">{$disp_product_price}{$product_tax_type_text}</strong></li>
+                                <li class="salePrice {$sale_price_display|display} notranslate">{$disp_sale_price}</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="item swiper-slide">
+                        <div class="box">
+                            <a href="{$link_product_detail}"><img src="{$img_small}" alt="{$seo_alt_tag}" class="thumb" /></a>
+                            <p><a href="{$link_product_detail}">{$name}</a></p>
+                            <ul>
+                                <li><strong class="{$product_sale_strike} notranslate">{$disp_product_price}{$product_tax_type_text}</strong></li>
+                                <li class="salePrice {$sale_price_display|display} notranslate">{$disp_sale_price}</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="prdReview" class="ec-base-tab gFlex {$review_display|display}">
+        <!-- <ul class="menu">
+            <li><a href="#prdDetail">상세정보</a></li>
+            <li class="{$review_display|display} selected">><a href="#prdReview">상품 리뷰<span>({$review_count})</span></a></li>
+            <li class="{$qna_display|display}">><a href="#prdReview">상품 리뷰<span>({$review_count})</span></a></li>
+            <li><a href="#prdInfo">배송 및 반품 정보</a></li>
+            <li><a href="#prdRelated">관련 상품</a></li>
+        </ul> -->
+        <h3>상품 리뷰 ({$review_count})</h3>
+
+        <div class="board">
+            <div module="product_review">
+                <!--@js(/js/module/product/review.js)-->
+                <a name="use_review"></a>
+
+                <p class="noAccess {$deny_display|display}">글읽기 권한이 없습니다.</p>
+
+                <div class="minor {$adult_display|display}">
+                    <p><img src="//img.echosting.cafe24.com/skin/base_ko_KR/product/ico_under19.gif" alt="" /> <strong>"19세 미만의 미성년자"</strong>는 출입을 금합니다!</p>
+                    <p class="button"><a href="/intro/board.html{$returnParam}" class="btnEm sizeS">성인인증 하기</a></p>
+                </div>
+
+                <div class="ec-base-table typeList">
+                    <table border="1" summary="" class="{$list_display|display}">
+                        <caption>상품사용후기</caption>
+                        <colgroup>
+                            <col style="width:70px;" />
+                            <col style="width:auto" />
+                            <col style="width:100px;" />
+                            <col style="width:100px;" />
+                            <col style="width:80px;" />
+                            <col style="width:80px;" class="{$use_point_display|display}" />
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th scope="col">No.</th>
+                            <th scope="col">제목</th>
+                            <th scope="col">작성자</th>
+                            <th scope="col">작성일</th>
+                            <th scope="col">조회수</th>
+                            <th scope="col" class="{$use_point_display|display}">평점</th>
+                        </tr>
+                        </thead>
+                        <tbody class="center">
+                            <tr class="{$block_target_class}" {$block_data_attr}>
+                                <td>{$no}</td>
+                                <td class="subject left txtBreak">{$icon_re}{$icon_lock} <a href="{$link_board_detail}{$param_read}" class="{$block_content_class}">{$subject}</a> {$icon_new}{$icon_hit}{$icon_file}<span class="txtWarn">{$comment_count}</span></td>
+                                <td>{$member_icon} {$writer}</td>
+                                <td class="txtInfo txt11">{$write_date|date:Y.m.d}</td>
+                                <td class="txtInfo txt11">{$hit_count}</td>
+                                <td class="{$use_point_display|display}"><img src="//img.echosting.cafe24.com/skin/base/board/ico_point{$point_count}.gif" alt="{$point_count}점"></td>
+                            </tr>
+                            <tr class="{$block_target_class}" {$block_data_attr}>
+                                <td>{$no}</td>
+                                <td class="subject left txtBreak">{$icon_re}{$icon_lock} <a href="{$link_board_detail}{$param_read}" class="{$block_content_class}">{$subject}</a> {$icon_new}{$icon_hit}{$icon_file}<span class="txtWarn">{$comment_count}</span></td>
+                                <td>{$member_icon} {$writer}</td>
+                                <td class="txtInfo txt11">{$write_date|date:Y.m.d}</td>
+                                <td class="txtInfo txt11">{$hit_count}</td>
+                                <td class="{$use_point_display|display}"><img src="//img.echosting.cafe24.com/skin/base/board/ico_point{$point_count}.gif" alt="{$point_count}점"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <p class="ec-base-button typeBorder">
+                <span class="gRight">
+                    <a href="{$review_write}" class="btnEm sizeS">상품후기쓰기</a>
+                    <a href="{$review_list}" class="btnSubmit sizeS">모두 보기</a>
+                </span>
+            </p>
+
+            <div module="product_reviewpaging" class="ec-base-paginate typeSub" role="navigation" aria-label="페이지 이동">
+                <a href="{$param_first}" class="first"><img src="/SkinImg/img/ico_first.png" alt="첫 페이지" /></a>
+                <a href="{$param_before}"><img src="/SkinImg/img/ico_prev.png" alt="이전 페이지" /></a>
+                <ol>
+                    <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                    <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                    <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                    <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                    <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                </ol>
+                <a href="{$param_next}"><img src="/SkinImg/img/ico_next.png" alt="다음 페이지" /></a>
+                <a href="{$param_last}" class="last"><img src="/SkinImg/img/ico_last.png" alt="마지막 페이지" /></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="prdQnA" class="ec-base-tab gFlex {$qna_display|display}">
+        <!-- <ul class="menu">
+            <li><a href="#prdDetail">상세정보</a></li>
+            <li class="{$review_display|display}">><a href="#prdReview">상품 리뷰<span>({$review_count})</span></a></li>
+            <li class="{$qna_display|display} selected">><a href="#prdReview">상품 리뷰<span>({$review_count})</span></a></li>
+            <li><a href="#prdInfo">배송 및 반품 정보</a></li>
+            <li><a href="#prdRelated">관련 상품</a></li>
+        </ul> -->
+
+        <h3>상품 문의 ({$qna_count})</h3>
+
+        <div class="board">
+            <div module="product_qna">
+                <!--@js(/js/module/product/qna.js)-->
+                <a name="use_qna"></a>
+
+                <p class="noAccess {$deny_display|display}">접근권한이 없습니다.</p>
+
+                <div class="minor {$adult_display|display}">
+                    <p><img src="//img.echosting.cafe24.com/skin/base_ko_KR/product/ico_under19.gif" alt="" /> 이 페이지는 <strong> "만 18세이상 성인만" 볼 수 있습니다. </strong>!</p>
+                    <p class="button"><a href="/intro/board.html{$returnParam}" class="btnEm sizeS">성인인증</a></p>
+                </div>
+
+                <div class="ec-base-table typeList">
+                    <table border="1" summary="" class="{$list_display|display}">
+                        <caption>상품 문의</caption>
+                        <colgroup>
+                            <col style="width:70px;" />
+                            <col style="width:134px;" />
+                            <col style="width:auto" />
+                            <col style="width:80px;" />
+                            <col style="width:100px;" />
+                            <col style="width:55px;" />
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th scope="col">No.</th>
+                            <th scope="col">분류</th>
+                            <th scope="col">제목</th>
+                            <th scope="col">작성자</th>
+                            <th scope="col">작성일</th>
+                            <th scope="col">조회수</th>
+                        </tr>
+                        </thead>
+                        <tbody class="center">
+                            <tr class="{$block_target_class}" {$block_data_attr}>
+                                <td>{$no}</td>
+                                <td>{$category_name}</td>
+                                <td class="subject left txtBreak">{$icon_re}{$icon_lock} <a href="{$link_board_detail}{$param_read}" class="{$block_content_class}">{$subject}</a> {$icon_new}{$icon_hit}{$icon_file}<span class="txtWarn">{$comment_count}</span></td>
+                                <td>{$member_icon} {$writer}</td>
+                                <td class="txtInfo txt11">{$write_date|date:Y.m.d}</td>
+                                <td class="txtInfo txt11">{$hit_count}</td>
+                            </tr>
+                            <tr class="{$block_target_class}" {$block_data_attr}>
+                                <td>{$no}</td>
+                                <td>{$category_name}</td>
+                                <td class="subject left txtBreak">{$icon_re}{$icon_lock} <a href="{$link_board_detail}{$param_read}" class="{$block_content_class}">{$subject}</a> {$icon_new}{$icon_hit}{$icon_file}<span class="txtWarn">{$comment_count}</span></td>
+                                <td>{$member_icon} {$writer}</td>
+                                <td class="txtInfo txt11">{$write_date|date:Y.m.d}</td>
+                                <td class="txtInfo txt11">{$hit_count}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <p class="ec-base-button typeBorder">
+                <span class="gRight">
+                    <a href="{$qna_write}" class="btnEm sizeS">문의하기</a>
+                    <a href="{$qna_list}" class="btnSubmit sizeS">목록</a>
+                </span>
+            </p>
+
+            <div module="product_qnapaging" class="ec-base-paginate typeSub" role="navigation" aria-label="페이지 이동">
+                <a href="{$param_first}" class="first"><img src="/SkinImg/img/ico_first.png" alt="첫 페이지" /></a>
+                <a href="{$param_before}"><img src="/SkinImg/img/ico_prev.png" alt="이전 페이지" /></a>
+                <ol>
+                    <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                    <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                    <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                    <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                    <li><a href="{$param}"class="{$param_class}">{$no}</a></li>
+                </ol>
+                <a href="{$param_next}"><img src="/SkinImg/img/ico_next.png" alt="다음 페이지" /></a>
+                <a href="{$param_last}" class="last"><img src="/SkinImg/img/ico_last.png" alt="마지막 페이지" /></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="prdInfo" class="ec-base-tab gFlex">
+        <!-- <ul class="menu">
+            <li><a href="#prdDetail">상세정보</a></li>
+            <li class="{$review_display|display}">><a href="#prdReview">상품 리뷰<span>({$review_count})</span></a></li>
+            <li class="{$qna_display|display}">><a href="#prdReview">상품 리뷰<span>({$review_count})</span></a></li>
+            <li class="selected"><a href="#prdInfo">배송 및 반품 정보</a></li>
+            <li><a href="#prdRelated">관련 상품</a></li>
+        </ul> -->
+        <h3>배송 및 반품 정보</h3>
+        <div class="cont">
+            <h3>상품결제정보</h3>
+            <div class="info_box">{$payment_info}</div>
+        </div>
+        <div class="cont">
+            <h3>배송 및 반품 정보</h3>
+            <div class="info_box">
+                <ul class="delivery">
+                    <li>배송 방법 : {$shipping_method}</li>
+                    <li>배송 지역 : {$shipping_area}</li>
+                    <li>배송 비용 : {$shipping_fee}</li>
+                    <li>배송 기간 : {$shipping_period}</li>
+                    <li>배송 안내 : {$shipping_info}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="cont">
+            <h3>교환 및 반품정보</h3>
+            <div class="info_box">{$exchange_info}</div>
+        </div>
+        <div class="cont">
+            <h3>서비스문의</h3>
+            <div class="info_box">{$service_info}</div>
+        </div>
+    </div>
+</div>
+<!--@define(cmc_log)-->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // 옵션 없을때 텍스트 수정
+        setTimeout(function () {
+            const target = document.querySelector('.xans-product-detail .infoArea .no_option tr:first-child td:first-child');
+            if (target && target.textContent.trim() === 'no option prod') {
+                target.textContent = 'Quantity';
+            }
+            target.style.opacity = '1'; 
+        }, 300);
+
+        // 해당 위치 active
+        const items = document.querySelectorAll('.path li');
+        let lastVisible = null;
+
+        items.forEach(function (item) {
+            if (!item.classList.contains('displaynone')) {
+                lastVisible = item;
+            }
+        });
+
+        if (lastVisible) {
+            lastVisible.classList.add('active');
+        }
+
+        // 위시리스트 아이콘 변경
+        const btnWish = document.querySelectorAll('.top_btn .wish');
+        btnWish.forEach(function(button){
+            const img = button.querySelector('img');
+            if (img) {
+                button.style.display = 'flex';
+                setTimeout(function(){
+                    const status = img.getAttribute('icon_status');
+                    if (status === 'on') {
+                        button.classList.add('active');
+                    } else if (status === 'off') {
+                        button.classList.remove('active');
+                    }
+                },300)
+            }
+        });
+
+        function imgClick(button) {
+            const img = button.querySelector('img');
+            if (img) {
+                img.click();
+                setTimeout(function(){
+                    const status = img.getAttribute('icon_status');
+                    if (status === 'on') {
+                        button.classList.add('active');
+                    } else if (status === 'off') {
+                        button.classList.remove('active');
+                    }
+                },300)
+            }
+        }
+
+        function attachClickEvent(buttons) {
+            buttons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    imgClick(button);
+                });
+            });
+        }
+
+        attachClickEvent(btnWish);
+
+        // qr코드 영역에 클래스명 추가
+        document.querySelectorAll('.xans-product-detail .infoArea th span').forEach(function(span) {
+            if (span.textContent.trim() === 'QR Code') {
+                const tr = span.closest('tr');
+                if (tr) { 
+                    tr.classList.add('qr_box');
+                }
+            }
+        });
+
+
+        // 추가입력옵션 title 수정
+        const addOption = document.querySelectorAll('.xans-product-detail .infoArea .xans-product-addoption')
+        if(addOption){
+            addOption.forEach(function(el) {
+                let html = el.innerHTML;
+                html = html.replace(/([^>])(\[Required\])/g, function(match, p1, p2) {
+                    return p1 + ' ' + p2;
+                });
+                html = html.replace(/([^>])(\[Select\])/g, function(match, p1, p2) {
+                    return p1 + ' ' + p2;
+                });
+                el.innerHTML = html;
+            });
+        };
+
+        // 메뉴 tab에 fixed 추가
+        const menu = document.querySelector('.xans-product-additional .menu');
+        if (!menu) return;
+
+        const menuItems = menu.querySelectorAll('li');
+        const sectionIds = ['#prdDetail', '#prdReview', '#prdQnA', '#prdInfo'];
+        const sections = sectionIds.map(id => document.querySelector(id));
+
+        const menuOffsetTop = menu.offsetTop;
+        // 헤더 요소 가져오기
+        const header = document.getElementById('header');
+
+        // 메뉴 클릭 시 selected 처리
+        menuItems.forEach(function (item) {
+            item.addEventListener('click', function () {
+                menuItems.forEach(el => el.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+
+        function updateMenuWidth() {
+            if (window.innerWidth > 1024) {
+                const additional = document.querySelector('.xans-product-additional');
+            
+                if (additional) {
+                    const additionalWidth = additional.offsetWidth;
+                    menu.style.width = `${additionalWidth}px`;
+                }
+            } else {
+                menu.style.width = ''; // 원래 스타일로 복구
+            }
+        }
+
+        window.addEventListener('scroll', function () {
+            const scrollY = window.scrollY;
+            const isFixed = menu.classList.contains('fixed');
+
+            if (scrollY >= menuOffsetTop) {
+                if (!isFixed) {
+                    menu.classList.add('fixed');
+                    if (!document.querySelector('.header_L') && !document.querySelector('.header_R')) {
+                        if (header) header.style.display = 'none'; // 헤더 숨기기
+                    } else {
+                        updateMenuWidth();
+                    }
+                }
+            } else {
+                if (isFixed) {
+                    menu.classList.remove('fixed');
+                    if (header) header.style.display = 'block'; // 헤더 보이기
+                    menuItems.forEach(el => el.classList.remove('selected'));
+                    if (menuItems[0]) {
+                        menuItems[0].classList.add('selected');
+                    }
+                }
+            }
+
+            sections.forEach((section, index) => {
+                if (!section) return;
+
+                const rect = section.getBoundingClientRect();
+                const sectionTop = rect.top + window.scrollY;
+                const sectionBottom = sectionTop + section.offsetHeight;
+
+                // 현재 스크롤 위치에 따라 selected 변경
+                if (scrollY >= sectionTop - 10 && scrollY < sectionBottom - 10) {
+                    menuItems.forEach(el => el.classList.remove('selected'));
+                    if (menuItems[index]) {
+                        menuItems[index].classList.add('selected');
+                    }
+                }
+            });
+        });
+
+        // 추가구성상품 클릭이벤트
+        document.querySelectorAll('.xans-product-detail .productSet.additional .toggle').forEach(function(toggle) {
+            toggle.addEventListener('click', function () {
+                const productSet = toggle.closest('.productSet');
+
+                if (productSet.classList.contains('active')) {
+                    productSet.classList.remove('active');
+                } else {
+                    productSet.classList.add('active');
+                }
+            });
+        });
+
+        // 상품정보 slide 이벤트
+        const contList = document.querySelectorAll('.xans-product-additional .cont');
+        contList.forEach(function (cont) {
+            const h3 = cont.querySelector('h3');
+            const infoBox = cont.querySelector('.info_box');
+
+            if (!h3 || !infoBox) return;
+
+            infoBox.style.maxHeight = '0';
+            infoBox.style.overflow = 'hidden';
+
+            h3.addEventListener('click', function () {
+                contList.forEach(function (e) {
+                    const otherH3 = e.querySelector('h3');
+                    if (otherH3 && otherH3 !== h3) {
+                        otherH3.classList.remove('active');
+                    }
+                });
+                
+                h3.classList.toggle('active');
+                const isOpen = infoBox.style.maxHeight && infoBox.style.maxHeight !== '0px';
+
+                contList.forEach(function (e) {
+                    const box = e.querySelector('.info_box');
+                    if (box) box.style.maxHeight = '0', box.style.padding = '0 10px';
+                });
+
+                if (!isOpen) {
+                    infoBox.style.maxHeight = infoBox.scrollHeight + 'px', infoBox.style.padding = '20px 10px';
+                }
+            });
+        });
+    });
+</script>
+<script>
+    // 상품 추가 이미지 슬라이드
+    const addimage_slide = new Swiper('.xans-product-detail .imgArea .img_slide', {
+        slidesPerView: 'auto',
+        autoHeight: false,
+        spaceBetween: 10,
+        loop: false,
+        observer: true,
+        observeParents: true,
+        breakpoints:{
+            0: {
+                direction: 'horizontal'
+            },
+            1024: {
+                direction: 'vertical'
+            }
+        }
+    });
+
+    // 추천상품 슬라이드
+    const relation_slide = new Swiper('.relation_slide', {
+        spaceBetween: 10,
+        speed: 800,
+        loop: false,
+        observer: true,
+        observeParents: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        breakpoints:{
+            0: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 5,
+            }
+        }
+    });
+</script>

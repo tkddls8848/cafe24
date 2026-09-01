@@ -1,0 +1,77 @@
+.orderList {border-top: 2px solid var(--black-color);}
+.ec-base-prdInfo .prdBox{gap: 24px; align-items: center;}
+.ec-base-prdInfo .thumbnail{margin-right: 0; max-width:120px;}
+.ec-base-prdInfo .description {line-height:var(--line-height-lg);}
+.ec-base-prdInfo .description .prdName{margin-bottom:4px;}
+.ec-base-prdInfo .description .prdName a,
+.ec-base-prdInfo .description .price span{font-size:var(--font-size-base); font-weight:var(--font-weight-semi-bold);}
+.ec-base-prdInfo .description .price strong{font-weight:inherit !important;}
+.ec-base-prdInfo .description .optionGroup {color: var(--gray-color); font-size:var(--font-size-base);}
+.ec-base-prdInfo .description .optionGroup,
+.ec-base-prdInfo .description ul.info { margin-top:20px;}
+.ec-base-prdInfo .description .optionGroup:not(.displaynone) + ul.info {margin-top:8px;}
+.ec-base-prdInfo .description .optionGroup li,
+.ec-base-prdInfo .description ul.info li { color:var(--text-gray); font-size:var(--font-size-base); line-height:var(--line-height-lg); }
+.ec-base-prdInfo .description ul.info li span { color:inherit; }
+.ec-base-prdInfo .description ul.info li a.line { font-size:var(--font-size-sm); font-weight:var(--font-weight-semi-bold); text-decoration:underline; }
+.ec-base-prdInfo .status-order { text-align: center; }
+.ec-base-prdInfo .btn-check { display: flex; flex-direction: column; gap:8px; }
+.ec-base-prdInfo .btn-check a { border-radius: 4px; width:130px; }
+.xans-myshop-orderhistorylistitem .order { position:relative; }
+.xans-myshop-orderhistorylistitem .order__number { overflow:hidden; padding:20px 0 15px 15px; font-size:13px; border-top:1px solid #000; }
+.xans-myshop-orderhistorylistitem .order .order__number{border-top: 0; padding: 20px; background: #f2f2f2;}
+.xans-myshop-orderhistorylistitem .order .order__number a{text-decoration: underline; font-size:14px;}
+.xans-myshop-orderhistorylistitem .order.order_group { margin-top: 60px; }
+.xans-myshop-orderhistorylistitem .order.order_group .ec-base-prdInfo { border-top: 2px solid var(--black-color); }
+.xans-myshop-orderhistorylistitem .btnDetail { position:absolute; top:19px; right:19px; }
+.xans-myshop-orderhistorylistitem .request { position:relative; overflow:hidden; padding:25px 0 0; text-align:right; }
+.xans-myshop-orderhistorylistitem .ec-base-prdInfo { border: none; }
+.xans-myshop-orderhistorylistitem .ec-base-prdInfo .prdBox { border-bottom: 1px solid var(--black-color-20); }
+.xans-myshop-orderhistorylistitem .ec-base-prdInfo:has(.payDetail:not(.displaynone)) .prdBox { border-bottom: 1px solid var(--black-color-30); }
+.xans-myshop-orderhistorylistitem .ec-base-prdInfo:has(.payDetail:not(.displaynone)) .summary { display:flex; align-items:center; justify-content: space-between; gap:0 60px; margin-top:10px; }
+.xans-myshop-orderhistorylistitem .payDetail { color:var(--text-gray); font-size:var(--font-size-base); line-height:var(--line-height-lg); }
+.xans-myshop-orderhistorylistitem .payDetail span { color:inherit; font-weight:inherit; }
+.xans-myshop-orderhistorylistitem .payDetail .total { color:var(--text-black); }
+.xans-myshop-orderhistorylistitem .btn-orders {display: flex; gap: 8px; justify-content: flex-end;}
+.xans-myshop-orderhistorylistitem .btn-orders .btnEm{ min-width:160px; }
+.xans-myshop-orderhistorylistitem .txtStatus{color: var(--point-color); font-weight:var(--font-weight-semi-bold); font-size:var(--font-size-base);}
+.xans-myshop-orderhistorylistitem .status-detail{display:block;margin-top:4px;text-align:center;}
+.xans-myshop-orderhistorylistitem .status-detail a{display:flex; align-items:center; justify-content:flex-end; gap:2px; color:var(--text-gray); line-height:var(--line-height-xl);}
+.xans-myshop-orderhistorylistitem .status-detail a svg{stroke:var(--black-color-60);}
+/********************* Mobile / Tablet *********************/
+@media (max-width:1024px) {
+    
+    .ec-base-tab.typeNav .menu li a{font-size:14px;}
+    .ec-base-prdInfo .prdBox{gap:0 10px;align-items:flex-start;}
+    .ec-base-prdInfo a.mo{text-decoration:underline; font-size:13px; margin-top:13px;}
+    .ec-base-prdInfo .description .prdName,
+    .ec-base-prdInfo .description .optionGroup{font-size:var(--font-size-2xs);}
+    .ec-base-prdInfo .description .prdName a,
+    .ec-base-prdInfo .description .price span{font-size:var(--font-size-sm);}
+    .ec-base-prdInfo .optionGroup .product { font-size:var(--font-size-xs); }
+    .ec-base-prdInfo .description .optionGroup,
+    .ec-base-prdInfo .description ul.info { margin-top:10px; }
+    .ec-base-prdInfo .description .optionGroup li,
+    .ec-base-prdInfo .description ul.info li { font-size:var(--font-size-2xs); }
+    .ec-base-prdInfo .description ul.info li a.line { font-size:var(--font-size-2xs); }
+    .ec-base-prdInfo .status-order { text-align: left; }
+    .ec-base-prdInfo .btn-check { flex-direction:row; width: 100%; }
+    .ec-base-prdInfo .btn-check:has(:not(.displaynone)) { margin-top:20px; }
+    .ec-base-prdInfo .btn-check a { flex:1;}
+    .xans-myshop-orderhistorylistitem .order.order_group { margin-top: 40px; }
+    .xans-myshop-orderhistorylistitem .order .order__number { padding: 15px; }
+    .xans-myshop-orderhistorylistitem .request { padding:25px 16px; }
+	.xans-myshop-orderhistorylistitem .ec-base-prdInfo .prdBox { margin-bottom:0; padding:20px 0; }
+    .xans-myshop-orderhistorylistitem .ec-base-prdInfo:has(.payDetail:not(.displaynone)) .summary { flex-direction:column; align-items:flex-start; margin-top:20px; }
+    .xans-myshop-orderhistorylistitem .payDetail { font-size:var(--font-size-2xs); }
+    .xans-myshop-orderhistorylistitem .payDetail .total { display:block; margin-top:8px; }
+    .xans-myshop-orderhistorylistitem .status-order{margin-top:20px;}
+    .xans-myshop-orderhistorylistitem .status-detail{text-align:left;}
+    .xans-myshop-orderhistorylistitem .status-detail a { justify-content:flex-start; }
+    .xans-myshop-orderhistorylistitem .btn-orders {width: 100%; flex-wrap: wrap; }
+    .xans-myshop-orderhistorylistitem .btn-orders:has(:not(.displaynone)) { margin-top:20px; }
+    .xans-myshop-orderhistorylistitem .btn-orders a {min-width: unset !important;}
+    .xans-myshop-orderhistorylistitem .btn-orders a:not(.displaynone) { flex: 1; }
+    .xans-myshop-orderhistorylistitem .btn-check a.btnSubmit { order:2; }
+    .xans-myshop-orderhistorylistitem .txtStatus{ font-size:var(--font-size-sm); }
+}

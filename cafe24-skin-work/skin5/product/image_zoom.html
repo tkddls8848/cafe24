@@ -1,0 +1,393 @@
+<!--@layout(/layout/basic/popup.html)-->
+<div module="Product_ZoomPackage" class="ec-base-layer">
+    <!--@css(/css/module/product/zoomPackage.css)-->
+    <div class="header">
+        <h1>Quick View</h1>
+        <a href="#none" class="close" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" alt="Close" /></a>
+    </div>
+    <div class="content">
+        <div module="product_zoom">
+            <!--@js(/js/module/product/product_image.js)-->
+            <!--
+                $popup_flag = T
+                $use_per_add_option = yes
+                $default_option = yes
+             -->
+            <div class="imgArea" >
+                <div class="keyImg">
+
+                    <div class="topLogo {$supply_link_display|display}">
+                        <span>{$supply_top_logo}</span>
+                        <a href="#none" onclick="{$supply_go_action}" role="button"><img src="{$supply_go_img}" alt="Visit Store" /></a>
+                    </div>
+
+                    <div class="thumbnail"><img src="{$big_img}" class="{$big_img_class}" alt="" onclick="self.close();" /><span module="product_Imagestyle"><span class="prdIcon {$icon_class_name}" style="background-image:url('{$icon_url}');"></span></span></div>
+                </div>
+
+                <div class="listImg" module="product_addimage">
+                    <ul>
+                        <li>{$add_img}</li>
+                        <li>{$add_img}</li>
+                    </ul>
+                </div>
+
+                <div class="color {$colorchip_display|display}">
+                    <div module="product_Colorchip">
+                        <span class="chips" style="background-color:{$color}"></span>
+                        <span class="chips" style="background-color:{$color}"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="infoArea">
+                <div class="icon">{$soldout_icon} {$stock_icon} {$recommend_icon} {$new_icon} {$product_icons} {$pickup_icon}</div>
+                <h3>{$name} <span class="{$delvtype_display|display}">(International shipping available)</span></h3>
+
+                <div module="product_detaildesign">
+                    <!--
+                        count = 10
+                    -->
+                    <table border="1" summary="">
+                        <caption>{$name} 기본 정보</caption>
+                        <tbody>
+                            <tr class="{$item_display|display}">
+                                <th scope="row">{$item_title}</th>
+                                <td>{$item_content}</td>
+                            </tr>
+                            <tr class="{$item_display|display}">
+                                <th scope="row">{$item_title}</th>
+                                <td>{$item_content}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <table border="1" summary="">
+                    <caption>Share This</caption>
+                    <tbody>
+                    <tr class="{$sns_display|display}">
+                        <th scope="row">Share This</th>
+                        <td class="social">{$facebook_icon} {$twitter_icon} <ul module="product_customsns"><li>{$customsns_icon}</li></ul></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div id="zoom_wrap"></div>
+
+                <p class="{$naver_mileage_exception_display|display}"><img src="//img.echosting.cafe24.com/skin/base_en_US/product/txt_naver.gif" alt="To use or earn Naver Mileages, please check out through personal payment window." /></p>
+
+                <table border="1" summary="">
+                    <!--
+                        $popup_flag = T
+                        $use_per_add_option = yes
+                    -->
+                    <caption>Product Option</caption>
+                    <tbody module="product_option">
+                        <tr>
+                            <th scope="row">{$option_name}</th>
+                            <td>{$form.option}<p class="value">{$option_desc}</p></td>
+                        </tr>
+                        <tr module="product_quantity">
+                            <th scope="row">수량</th>
+                            <td>
+                                <div class="ec-base-qty">
+                                    {$form.quantity}
+                                    <a href="javascript:;" class="qtyUp eClearUp" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" id="{$quantity_up_id}" alt="up" class="up {$quantity_up_class}"></a>
+                                    <a href="javascript:;" class="qtyDown eClearDown" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" id="{$quantity_down_id}" alt="down" class="down {$quantity_down_class}"></a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr module="product_addoption">
+                            <th scope="row">{$add_option_name}</th>
+                            <td>
+                                {$form.add_option}
+                                <span class="txtByte" title="current length/max length">(<strong class="length">0</strong>/{$option_maxlength})</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr class="{$option_push_button_display|display}" id="{$option_push_button_id}">
+                            <td colspan="2" class="selectButton"><a href="#none" class="btnSubmit sizeS" onclick="{$action_push_button}" role="button">Select item with details above</a></td>
+                        </tr>
+                        <tr module="product_fileoption">
+                            <th scope="row">{$file_option_name}</th>
+                            <td class="fileInfo">
+                                {$form.file_option}
+                                <ul class="infoDesc">
+                                    <li>- You can upload up to 5 separates files totaling less than {$file_option_limit}M. </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <dl module="product_quantity" class="ec-base-desc quantity">
+                    <dt>수량</dt>
+                    <dd>
+                        <div class="ec-base-qty">
+                            {$form.quantity}
+                            <a href="javascript:;" class="qtyUp eClearUp" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" id="{$quantity_up_id}" alt="up" class="up {$quantity_up_class}"></a>
+                            <a href="javascript:;" class="qtyDown eClearDown" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" id="{$quantity_down_id}" alt="down" class="down {$quantity_down_class}"></a>
+                        </div>
+                    </dd>
+                </dl>
+
+                <div class="guideArea">
+
+                    <p class="info {$limit_display|display}">(Minimum Order {$minimum_limit} or more<span class="{$maximum_limit_display|display}"> / Maximum Order {$maximum_limit} or less</span>)</p>
+
+                    <span class="sizeGuide {$size_guide_display|display}"><a href="#none" class="{$size_guide_class}" product_no="{$product_no}" role="button">Size Charts</a></span>
+                </div>
+
+
+                <div class="productSet" module="product_setproduct">
+                    <!--
+                    $use_per_add_option = yes
+                    -->
+                    <div class="title">
+                        <h3>Set Items</h3>
+                    </div>
+                    <ul class="product">
+                        <li>
+                            <div class="information">
+                                <div class="thumbnail"><a href="/product/detail.html?product_no={$product_no}"><img src="{$product_image}" alt="" id="{$image_id}" /></a></div>
+                                <p class="name" title="Product Name"><strong><a href="{$link_bind_product_detail}">{$product_name}</a></strong> <span class="{$set_quantity_display|display}">(Sold in sets of {$set_quantity})</span></p>
+                                <p class="price {$product_price_display|display}" title="Price"><strong class="{$product_price_del}">{$product_price}</strong></p>
+                                <p class="salePrice {$product_sale_price_display|display}" title="Discounted Price">{$product_sale_price}</p>
+                                <div class="stock">
+                                    <span class="btnNormal {$stock_quantity_display|display}"><a href="#" {$bind_stock_quantity}>Availability</a></span>
+                                </div>
+                                <button type="button" class="btnInfo eProductDetailInfo" id="eProductDetailInfo_{$product_no}"><span>More Details</span></button>
+                            </div>
+                            <ul class="option">
+                                <li module="product_option">
+                                    <ul>
+                                        <li>
+                                            <strong class="name">{$option_name}</strong>
+                                            {$form.option}<p class="value">{$option_desc}</p>
+                                        </li>
+                                        <li module="product_quantity">
+                                            <div class="ec-base-qty">
+                                                {$form.quantity}
+                                                <a href="javascript:;" class="qtyUp eClearUp" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" id="{$quantity_up_id}" alt="up" class="up {$quantity_up_class}"></a>
+                                                <a href="javascript:;" class="qtyDown eClearDown" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" id="{$quantity_down_id}" alt="down" class="down {$quantity_down_class}"></a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li module="product_noneoption">
+                                    <ul>
+                                        <li>
+                                           <strong class="name">Product Select</strong>
+                                            {$form.noneoption}
+                                        </li>
+                                        <li module="product_quantity">
+                                            <div class="ec-base-qty">
+                                                {$form.quantity}
+                                                <a href="javascript:;" class="qtyUp eClearUp" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" id="{$quantity_up_id}" alt="up" class="up {$quantity_up_class}"></a>
+                                                <a href="javascript:;" class="qtyDown eClearDown" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" id="{$quantity_down_id}" alt="down" class="down {$quantity_down_class}"></a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li module="product_addoption">
+                                    <strong class="name">{$add_option_name}</strong>
+                                    {$form.add_option}
+                                    <span class="txtByte" title="current length/max length">(<strong class="length">0</strong>/{$option_maxlength})</span>
+                                </li>
+                                <li class="{$add_option_push_button_display|display} selectButton" id="{$add_option_push_button_id}">
+                                    <a href="#none" class="btnSubmit sizeS" onclick="{$add_action_push_button}" role="button">Select item with details above</a>
+                                </li>
+                            </ul>
+                            <div class="guide">
+                                <p class="qty {$product_min_display|display}">(Minimum Order : {$product_min} or more <span class="{$product_max_display|display}">/ Maximum Order {$product_max} or less</span>)</p>
+                                <div class="sizeGuide {$size_guide_display|display}">
+                                    <a href="#none" class="{$size_guide_class}" product_no="{$product_no}" role="button">Size Charts</a>
+                                </div>
+                            </div>
+                            <div class="description" id="product_description_{$product_no}"></div>
+                        </li>
+                        <li>
+                            <div class="information">
+                                <div class="thumbnail"><a href="/product/detail.html?product_no={$product_no}"><img src="{$product_image}" alt="" id="{$image_id}" /></a></div>
+                                <p class="name" title="Product Name"><strong><a href="{$link_bind_product_detail}">{$product_name}</a></strong> <span class="{$set_quantity_display|display}">(Sold in sets of {$set_quantity})</span></p>
+                                <p class="price {$product_price_display|display}" title="Price"><strong class="{$product_price_del}">{$product_price}</strong></p>
+                                <p class="salePrice {$product_sale_price_display|display}" title="Discounted Price">{$product_sale_price}</p>
+                                <div class="stock">
+                                    <span class="btnNormal {$stock_quantity_display|display}"><a href="#" {$bind_stock_quantity}>Availability</a></span>
+                                </div>
+                                <button type="button" class="btnInfo eProductDetailInfo" id="eProductDetailInfo_{$product_no}"><span>More Details</span></button>
+                            </div>
+                            <ul class="option">
+                                <li module="product_option">
+                                    <ul>
+                                        <li>
+                                            <strong class="name">{$option_name}</strong>
+                                            {$form.option}<p class="value">{$option_desc}</p>
+                                        </li>
+                                        <li module="product_quantity">
+                                            <div class="ec-base-qty">
+                                                {$form.quantity}
+                                                <a href="javascript:;" class="qtyUp eClearUp" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" id="{$quantity_up_id}" alt="up" class="up {$quantity_up_class}"></a>
+                                                <a href="javascript:;" class="qtyDown eClearDown" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" id="{$quantity_down_id}" alt="down" class="down {$quantity_down_class}"></a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li module="product_noneoption">
+                                    <ul>
+                                        <li>
+                                           <strong class="name">Product Select</strong>
+                                            {$form.noneoption}
+                                        </li>
+                                        <li module="product_quantity">
+                                            <div class="ec-base-qty">
+                                                {$form.quantity}
+                                                <a href="javascript:;" class="qtyUp eClearUp" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" id="{$quantity_up_id}" alt="up" class="up {$quantity_up_class}"></a>
+                                                <a href="javascript:;" class="qtyDown eClearDown" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" id="{$quantity_down_id}" alt="down" class="down {$quantity_down_class}"></a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li module="product_addoption">
+                                    <strong class="name">{$add_option_name}</strong>
+                                    {$form.add_option}
+                                    <span class="txtByte" title="current length/max length">(<strong class="length">0</strong>/{$option_maxlength})</span>
+                                </li>
+                                <li class="{$add_option_push_button_display|display} selectButton" id="{$add_option_push_button_id}">
+                                    <a href="#none" class="btnSubmit sizeS" onclick="{$add_action_push_button}" role="button">Select item with details above</a>
+                                </li>
+                            </ul>
+                            <div class="guide">
+                                <p class="qty {$product_min_display|display}">(Minimum Order : {$product_min} or more <span class="{$product_max_display|display}">/ Maximum Order {$product_max} or less</span>)</p>
+                                <div class="sizeGuide {$size_guide_display|display}">
+                                    <a href="#none" class="{$size_guide_class}" product_no="{$product_no}" role="button">Size Charts</a>
+                                </div>
+                            </div>
+                            <div class="description" id="product_description_{$product_no}"></div>
+                        </li>
+                    </ul>
+                    <dl module="product_quantity" class="ec-base-desc quantity">
+                        <dt>수량</dt>
+                        <dd>
+                            <div class="ec-base-qty">
+                                {$form.quantity}
+                                <a href="javascript:;" class="qtyUp eClearUp" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" id="{$quantity_up_id}" alt="up" class="up {$quantity_up_class}"></a>
+                                <a href="javascript:;" class="qtyDown eClearDown" role="button"><img src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" id="{$quantity_down_id}" alt="down" class="down {$quantity_down_class}"></a>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+
+
+                <div id="{$total.total_id}" class="{$total.total_display|display}">
+                    <p class="ec-base-help txtWarn {$single_item_display|display}">Select quantity</p>
+                    <p class="ec-base-help txtWarn {$several_item_display|display}">To add product, select an option in the above option box.</p>
+                    <table border="1" summary="">
+                        <caption>Product List</caption>
+                        <colgroup>
+                            <col style="width:211px;" />
+                            <col style="width:80px;;" />
+                            <col style="width:110px;" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">수량</th>
+                                <th scope="col">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody class="{$quantity_display|display}">
+                            <tr>
+                                <td>{$name}</td>
+                                <td>
+                                    <span class="quantity">
+                                        {$quantity}
+                                        <a href="javascript:;" class="up {$quantity_up_class}" role="button"><img src="//img.echosting.cafe24.com/skin/base_en_US/product/btn_count_up.gif" alt="up" /></a>
+                                        <a href="javascript:;" class="down {$quantity_down_class}" role="button"><img src="//img.echosting.cafe24.com/skin/base_en_US/product/btn_count_down.gif" alt="down" /></a>
+                                    </span>
+                                </td>
+                                <td class="right"><span class="{$total.quantity_price}">{$product_price}</span> <span class="mileage {$mileage_display|display}">(<img src="{$mileage_mileage_icon}" /> <span class="{$total.mileage_price}">{$mileage_value}</span>)</span></td>
+                            </tr>
+                            <tr id="{$total.option_id}" class="option" module="product_option">
+                                <td class="middle" colspan="3">
+                                    <table border="1" summary="">
+                                        <caption>Option Information</caption>
+                                        <colgroup>
+                                            <col style="width:105px;">
+                                            <col style="width:auto;">
+                                        </colgroup>
+                                        <tbody>
+    
+                                        <tr module="product_addoption">
+                                            <th scope="row">{$add_option_name}</th>
+                                            <td>
+                                                {$form.add_option}
+                                             <span class="txtByte" title="current length/max length">(<strong class="length">0</strong>/{$option_maxlength})</span>
+                                            </td>
+                                        </tr>
+                                        <tr module="product_fileoption">
+                                            <th scope="row">{$file_option_name}</th>
+                                            <td class="fileInfo">
+                                                {$form.file_option}
+                                                <ul class="infoDesc">
+                                                    <li>- You can upload up to 5 separates files totaling less than {$file_option_limit}M.</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <!-- Do not delete. -->
+                        <tbody>
+                            <!-- tr>
+                                <td>
+                                    <p class="product">
+                                        $상품명<br />
+                                        <span>$옵션</span>
+                                    </p>
+                                </td>
+                                <td>
+                                    <span class="quantity">
+                                        <input type="text" class="quantity_opt" />
+                                        <a href="javascript:;" class="up eProductQuantityUpClass" role="button"><img src="//img.echosting.cafe24.com/skin/base_en_US/product/btn_count_up.gif" alt="up" /></a>
+                                        <a href="javascript:;" class="down eProductQuantityDownClass" role="button"><img src="//img.echosting.cafe24.com/skin/base_en_US/product/btn_count_down.gif" alt="down" /></a>
+                                    </span>
+                                    <a class="close" href="#none" role="button"><img src="//img.echosting.cafe24.com/design/skin/default/product/btn_price_delete.gif" alt="Remove" class="option_box_del" /></a>
+                                </td>
+                                <td class="right">
+                                    <span>$가격</span>
+                                    <span class="mileage">(<img src="//img.echosting.cafe24.com/design/skin/admin/en_US/product/icon_sett04.gif" /> <span class="mileage_price">$적립금</span>)</span>
+                                </td>
+                            </tr -->
+                        </tbody>
+                        <!-- // Do not delete. -->
+                    </table>
+                </div>
+
+                <div id="{$total.total_price_id}" class="totalPrice">
+                    <strong>Total</strong>(Quantity) : <span class="{$total.total_cnt}"><strong><em>0</em></strong> (0 item)</span>
+                </div>
+                <p class="ec-base-help txt11 {$price_warning_class}">Discounted amount of your subtotal will appear when you place your orders.</p>
+
+                <div module="product_action">
+                    <div class="ec-base-button gColumn">
+                        <a href="#none" class="btnSubmit sizeL {$buy_display|display}" onclick="{$action_buy}" role="button">
+                            <span id="{$btn_buy_id}">바로 구매</span>
+                            <span id="{$btn_reserve_id}" class="{$btn_reserve_class|display}">Backorder</span>
+                        </a>
+                        <a href="#none" class="btnNormal sizeL {$basket_display|display}" onclick="{$action_basket}" role="button">장바구니</a>
+                        <span class="btnEm sizeL gFlex2 {$soldout_display|display}">SOLD OUT</span>
+                        <a href="#none" class="btnNormal sizeL" onclick="{$action_detail}" role="button">상품 정보</a>
+                    </div>
+                    <!-- 상품상세페이지에 추가되는 앱 관련 결제버튼's div -->
+                    <div id="{$app_payment_button_box_id}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

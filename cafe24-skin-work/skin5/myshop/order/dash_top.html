@@ -1,0 +1,78 @@
+<!--@layout(/layout/basic/layout_A.html)-->
+<!-- ##module_info #MyShop #MyPage #Header_2DepthIndividualMenu #dashboard_top -->
+<div class="section benefit">
+    <div class="dash-mypage">
+        <div module="Layout_stateLogon">
+            <!--@css(/css/module/layout/statelogon.css)-->
+            <div class="myinfo"><strong>{$name}</strong> 님, 환영합니다.</div>
+            <div module="myshop_asyncbenefit" class="{$display_benefit|display}">
+				<div class="user">
+					<span class="user__thumb"><img src="{$group_image}" alt="" onerror="this.src='//img.echosting.cafe24.com/skin/base_ko_KR/member/img_member_default.gif';" width="42" class="{$group_image_tag_class}"></span>
+					<div class="user__info">
+						<div class="user__data"><span class="{$displayGroupIcon|display}"><img src="{$group_icon}" class="{$group_icon_tag_class}"></span>현재 <span>{$group_name}</span> 등급 입니다.</div>
+                        <div class="grade_info">
+                            <a href="#none" class="grade_info_link" role="button">회원 등급 안내</a>
+                            <div class="grade_popup">
+                                <div class="grade_head">회원 등급 안내<a href="#" class="btn_close"><!--@import(/svg/ico_close.html)--></a></div>
+                                <div class="grade_contents">
+                                    <p class="{$display_no_benefit|display} {$display_no_benefit_class}"><strong class="txtEm">{$dc_pay} {$dc_min_price}</strong> 구매시 <strong class="txtEm">{$dc_price}{$dc_type}</strong> {$use_dc} 추가 할인 {$dc_max_percent}</p>
+                                    <p class="{$display_with_all|display} {$display_with_all_class}"><strong class="txtEm">{$dc_pay} {$dc_min_price_mileage}</strong> 구매시 <strong class="txtEm">{$dc_price_mileage}{$dc_type_mileage}</strong> {$use_dc_mileage} 추가 적립 {$dc_max_mileage_percent}</p>
+                                    <div class="{$bGradeAutoDisplay|display}" id="{$sGradeAutoDisplayId}">
+                                        <br class="{$bChangeTypePrice|display} {$sAutoGradeDisplay}"><strong><span class="{$bDisplayNextGroupIcon|display} {$sNextGroupIconClass}"><img src="{$group_icon}" alt="" class="{$next_group_icon_tag_class}" /></span>{$sNextGrade}</strong> 까지 남은 구매금액은 <strong>{$sGradeIncreasePrice}</strong> 입니다.<span class="info_sub">({$sApplyPeriod} {$sGradePeriod} 구매금액 : {$sPeriodOrderPrice})</span></p>
+                                        <p class="{$bChangeTypeCount|display} {$sAutoGradeDisplay}"><strong><span class="{$bDisplayNextGroupIcon|display} {$sNextGroupIconClass}"><img src="{$group_icon}" alt="" class="{$next_group_icon_tag_class}" /></span>{$sNextGrade}</strong> 까지 남은 구매건수는 <strong>{$sGradeIncreaseCount}</strong> 입니다. <span class="info_sub">({$sApplyPeriod} {$sGradePeriod} 구매건수 : {$sPeriodOrderCount})</span></p>
+                                        <p class="{$bChangeTypePriceAndCount|display} {$sAutoGradeDisplay}"><strong><span class="{$bDisplayNextGroupIcon|display} {$sNextGroupIconClass}"><img src="{$group_icon}" alt="" class="{$next_group_icon_tag_class}" /></span>{$sNextGrade}</strong> 까지 남은 구매금액은 <strong>{$sGradeIncreasePrice}</strong>, 남은 구매건수는 <strong>{$sGradeIncreaseCount}</strong> 입니다. <span class="info_sub">({$sApplyPeriod} {$sGradePeriod} 구매금액 : {$sPeriodOrderPrice} / 구매건수 : {$sPeriodOrderCount})</span></p>
+                                        <p class="{$bChangeTypePriceOrCount|display} {$sAutoGradeDisplay}"><strong><span class="{$bDisplayNextGroupIcon|display} {$sNextGroupIconClass}"><img src="{$group_icon}" alt="" class="{$next_group_icon_tag_class}" /></span>{$sNextGrade}</strong> 까지 남은 구매금액은 <strong>{$sGradeIncreasePrice}</strong>, 또는 남은 구매건수 <strong>{$sGradeIncreaseCount}</strong> 입니다. <span class="info_sub">({$sApplyPeriod} {$sGradePeriod} 구매금액 : {$sPeriodOrderPrice} / 구매건수 : {$sPeriodOrderCount})</span></p>
+                                        <p class="{$bChangeMaxTypePrice|display}" id="{$sChangeMaxTypePriceId}"><strong><span class="{$bDisplayNextGroupIcon|display} {$sNextGroupIconClass}"><img src="{$group_icon}" alt="" class="{$next_group_icon_tag_class}" /></span>{$sNextGrade}</strong> 등급을 유지하기 위해 남은 구매금액은 <strong>{$sGradeIncreasePrice}</strong> 입니다. <span class="info_sub">({$sApplyPeriod} {$sGradePeriod} 구매금액 : {$sPeriodOrderPrice})</span></p>
+                                        <p class="{$bChangeMaxTypeCount|display}" id="{$sChangeMaxTypeCountId}"><strong><span class="{$bDisplayNextGroupIcon|display} {$sNextGroupIconClass}"><img src="{$group_icon}" alt="" class="{$next_group_icon_tag_class}" /></span>{$sNextGrade}</strong> 등급을 유지하기 위해 남은 구매건수는 <strong>{$sGradeIncreaseCount}</strong> 입니다. <span class="info_sub">({$sApplyPeriod} {$sGradePeriod} 구매건수 : {$sPeriodOrderCount})</span></p>
+                                        <p class="{$bChangeMaxTypePriceAndCount|display}" id="{$sChangeMaxTypePriceAndCountId}"><strong><span class="{$bDisplayNextGroupIcon|display} {$sNextGroupIconClass}"><img src="{$group_icon}" alt="" class="{$next_group_icon_tag_class}" /></span>{$sNextGrade}</strong> 등급을 유지하기 위해 남은 구매금액은 <strong>{$sGradeIncreasePrice}</strong>, 남은 구매건수는 <strong>{$sGradeIncreaseCount}</strong> 입니다. <span class="info_sub">({$sApplyPeriod} {$sGradePeriod} 구매금액 : {$sPeriodOrderPrice} / 구매건수 : {$sPeriodOrderCount})</span></p>
+                                        <p class="{$bChangeMaxTypePriceOrCount|display}" id="{$sChangeMaxTypePriceOrCountId}"><strong><span class="{$bDisplayNextGroupIcon|display} {$sNextGroupIconClass}"><img src="{$group_icon}" alt="" class="{$next_group_icon_tag_class}" /></span>{$sNextGrade}</strong> 등급을 유지하기 위해 남은 구매금액은 <strong>{$sGradeIncreasePrice}</strong>, 또는 남은 구매건수 <strong>{$sGradeIncreaseCount}</strong> 입니다. <span class="info_sub">({$sApplyPeriod} {$sGradePeriod} 구매금액 : {$sPeriodOrderPrice} / 구매건수 : {$sPeriodOrderCount})</span></p>
+                                        <p class="txtInfo">승급 기준에 따른 예상 금액이므로 총주문 금액과 다를 수 있습니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+    <div module="myshop_asyncbankbook">
+        <!--@css(/css/module/myshop/bankbook.css)-->
+        <ul id="chk_shop">
+            <li>
+                <a href="/myshop/mileage/historyList.html">
+                    <span class="title">{$mileage_name}</span>
+                    <span class="data notranslate">{$total_mileage}</span>
+                </a>
+            </li>
+            <li class="{$display_coupon|display}">
+                <a href="/myshop/coupon/coupon.html">
+                    <span class="title">쿠폰</span>
+                    <span class="data">{$coupon_cnt}</span>
+                </a>
+            </li>
+            <li>
+                <a href="/myshop/order/list.html">
+                    <span class="title">주문내역</span>
+                    <span class="data">{$total_order_count}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div module="myshop_orderstate" id="topOrderstate">
+        <ul class="state__cs">
+            <li>
+                <strong>취소</strong>
+                <a href="{$orderCancelUrl}" class="count">{$orderCancelCount}</a>
+            </li>
+            <li>
+                <strong>교환</strong>
+                <a href="{$orderExchangeUrl}" class="count">{$orderExchangeCount}</a>
+            </li>
+            <li>
+                <strong>반품</strong>
+                <a href="{$orderReturnUrl}" class="count">{$orderReturnCount}</a>
+            </li>
+        </ul>
+    </div>
+</div><!-- //benefit -->

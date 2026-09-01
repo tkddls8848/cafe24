@@ -1,0 +1,85 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div module="board_ReadPackage_8">
+    <!--@css(/css/module/board/replyPackage.css)-->
+    <div module="board_title_8">
+        <div class="path" role="navigation" aria-label="현재 위치">
+            <span aria-hidden="true">Current Page</span>
+            <ol>
+                <li><a href="/">HOME</a></li>
+                <li title="Current Page" aria-current="page"><strong>{$board_name}</strong></li>
+            </ol>
+        </div>
+        <div class="titleArea">
+            <h2>Comment on all </h2>
+        </div>
+    </div>
+
+    <div module="board_CommentPackage_8">
+        <!--
+            $login_page_url = /member/login.html
+            $deny_access_url = /index.html
+        -->
+        <div class="ec-base-table typeWrite">
+            <table border="1" summary="">
+                <caption>Comment on all</caption>
+                <colgroup>
+                    <col style="width:130px;" />
+                    <col style="width:auto;" />
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th scope="row">Target posts: <span class="ecActionReplyCount"></span></th>
+                    <td>
+                        <ul module="board_replyList_8">
+                            <li><a href="{$link_url}"><span>{$title}</span> / <span class="txtInfo">{$writer}({$writer_id})</span><img src="//img.echosting.cafe24.com/skin/mobile/board/review/btn_close_write.png" width="8" height="8" /></a></li>
+                            <li><a href="{$link_url}"><span>{$title}</span> / <span class="txtInfo">{$writer}({$writer_id})</span><img src="//img.echosting.cafe24.com/skin/mobile/board/review/btn_close_write.png" width="8" height="8" /></a></li>
+                        </ul>
+                    </td>
+                </tr>
+                </tbody>
+
+                <tbody class="{$config.use_attach|display}">
+                <tr>
+                    <th scope="row">Attached file1</th>
+                    <td>{$form.attach_file}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Attached file2</th>
+                    <td>{$form.attach_file}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Attached file3</th>
+                    <td>{$form.attach_file}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Attached file4</th>
+                    <td>{$form.attach_file}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Attached file5</th>
+                    <td>{$form.attach_file}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div module="board_CommentPackage_8">
+            <!--@css(/css/module/board/commentPackage.css)-->
+            <div module="board_commentwrite_8" class="commentwrite-all">
+
+                <div class="{$comment_write_display|display}">
+                    <fieldset>
+                        <legend>Add comment</legend>
+                        <div class="input">
+                            <strong>Add comment</strong>
+                            <span class="{$comment_input_name|display}">name : {$form.comment_name}</span><a href="#none" onclick="{$action_comment_admin}" class="btnNormal" role="button">답변보기</a>
+                        </div>
+                        <div class="view">
+                            {$form.comment}
+                            <a href="#none" onclick="{$action_comment_insert}" class="btnEm sizeL {$comment_button|display}" role="button">OK</a>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,99 @@
+<!--@layout(/layout/basic/layout.html)-->
+<style>
+    .ec-base-fold.theme1 { position:relative; }
+    .ec-base-fold.theme1 > .title {  border-top:1px solid #000; }
+    .ec-base-fold.theme1 > .title h2 { padding:25px 0; font-weight:normal; }
+    .ec-base-fold.theme1 > .title h3 { padding:20px 0; font-size:16px; font-weight: 600; line-height: 1.5; }
+	.ec-base-fold.theme1.gBottomLine > .title { border-top:0; border-bottom:1px solid #000; }
+	.ec-base-fold.theme1.gClearLine > .title { border-top:0; border-bottom:1px solid transparent; }
+    .ec-base-fold.theme1 + .ec-base-fold.theme1 { margin-top:30px; }
+    .ec-base-fold.theme1 .contents * { font-size: 14px; font-weight: 400; line-height: 1.5; }
+    @media(max-width: 1024px) {
+        .ec-base-fold.theme1 > .title h3 { font-size:15px; }
+        .ec-base-fold.theme1 .contents * { font-size: 13px; }
+    }
+</style>
+<div class="path" role="navigation" aria-label="현재 위치">
+    <span aria-hidden="true">현재 위치</span>
+    <ol>
+        <li><a href="/">HOME</a></li>
+        <li title="현재 위치" aria-current="page"><strong>이용안내</strong></li>
+    </ol>
+</div>
+
+<div class="titleArea">
+    <h2>이용안내</h2>
+</div>
+
+<div module="mall_faq" class="section">
+    <!--@css(/css/module/mall/faq.css)-->
+    <div class="ec-base-fold theme1 gBottomLine selected eToggle">
+    	<div class="title">
+        	<h3>회원가입 안내</h3>
+        </div>
+        <div class="contents">
+        	{$member_info}
+        </div>
+    </div>
+
+    <div class="ec-base-fold theme1 gBottomLine selected eToggle">
+    	<div class="title">
+        	<h3>주문 안내</h3>
+        </div>
+        <div class="contents">
+        	{$order_info}
+        </div>
+    </div>
+
+    <div class="ec-base-fold theme1 gBottomLine selected eToggle">
+    	<div class="title">
+        	<h3>결제안내</h3>
+        </div>
+        <div class="contents">
+        	{$payment_info}
+        </div>
+    </div>
+
+    <div class="ec-base-fold theme1 gBottomLine selected eToggle">
+    	<div class="title">
+        	<h3>배송안내</h3>
+        </div>
+        <div class="contents">
+        	<ul>
+                <li>배송 방법 : {$shipping_method}</li>
+                <li>배송 지역 : {$shipping_area}</li>
+                <li>배송 비용 : {$shipping_fee}</li>
+                <li>배송 기간 : {$shipping_period}</li>
+                <li>배송 안내 : {$shipping_agreement}</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="ec-base-fold theme1 gBottomLine selected eToggle">
+    	<div class="title">
+        	<h3>교환/반품안내</h3>
+        </div>
+        <div class="contents">
+        	{$product_change_info}
+        </div>
+    </div>
+
+    <div class="ec-base-fold theme1 gBottomLine selected eToggle">
+    	<div class="title">
+        	<h3>환불안내</h3>
+        </div>
+        <div class="contents">
+        	{$refund_info}
+        </div>
+    </div>
+
+    <div class="ec-base-fold theme1 gBottomLine selected eToggle">
+    	<div class="title">
+        	<h3>기타안내</h3>
+        </div>
+        <div class="contents">
+        	{$etc_info}
+        </div>
+    </div>
+
+</div>

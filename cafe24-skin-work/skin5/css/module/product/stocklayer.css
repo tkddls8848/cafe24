@@ -1,0 +1,18 @@
+.xans-product-stocklayer .layer { width:410px; z-index:990; }
+.xans-product-stocklayer .layer .content { max-height:60vh; }
+.xans-product-stocklayer .layer .content .ec-base-table {  border-top:1px solid #000; }
+.xans-product-stocklayer .layer .content table { margin-top:0; border-top:0; }
+.xans-product-stocklayer .layer .content thead th { padding:14px 30px; text-align:center; font-weight:bold; }
+.xans-product-stocklayer .layer .content thead th,
+.xans-product-stocklayer .layer .content tbody td {height: 29px; padding: 14px 20px !important; line-height: 22px; vertical-align: middle; }
+.xans-product-stocklayer .layer .content p { line-height:1.4; }
+
+/********************* Mobile / Tablet *********************/
+@media (max-width:1024px) {
+  .xans-product-stocklayer .layer { width: calc(100vw - 40px); max-width: 410px; }
+  .xans-product-stocklayer .ec-base-table.typeList table { display:table; }
+  .xans-product-stocklayer .ec-base-table.typeList tbody { display:table-row-group; }
+  .xans-product-stocklayer .ec-base-table.typeList tr { padding:0; display:table-row; }
+  .xans-product-stocklayer .ec-base-table.typeList th,
+  .xans-product-stocklayer .ec-base-table.typeList td { display:table-cell; float:none; }
+}

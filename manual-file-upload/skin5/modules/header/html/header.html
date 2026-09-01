@@ -1,0 +1,13 @@
+<!-- ##module_info #Layout #header #header_A -->
+<header class="layout3 header_A mn-site-header" id="header">
+    <div class="inner"><div class="top_nav_box" id="top_nav_box">
+        <div class="top_nav"><a class="eNavFold" href="javascript:;" role="button"><!--@import(/svg/ico_category.html)-->메뉴</a></div>
+        <div class="logo_area"><div class="top_logo" module="Layout_LogoTop"><a class="notranslate mn-logo" href="/"><span class="mn-logo-mark" aria-hidden="true"><i></i><i></i></span><span>{$mall_name} <b>OFFICE</b></span></a></div></div>
+        <nav class="mn-desktop-nav pc" aria-label="주요 메뉴"><a href="/#mn-best">베스트</a><a href="/category/데스크문구/46/">필기·노트</a><a href="/category/수납정리/42/">파일·정리</a><a href="/product/search.html?keyword=복사용지">복사용지</a><a href="/#mn-business">기업·대량구매</a></nav>
+        <div class="top_mypage"><a class="pc" href="/member/login.html" module="Layout_statelogoff">로그인</a><a class="pc" href="/member/agreement.html" module="Layout_statelogoff">회원가입</a><a class="pc" href="{$action_logout}" module="Layout_stateLogon">로그아웃</a><a class="eSearch" href="javascript:;" role="button"><!--@import(/svg/ico_search.html)-->검색</a><a class="pc" href="/myshop/index.html"><!--@import(/svg/ico_user.html)-->마이페이지</a><a class="btn_cart" href="/order/basket.html" module="Layout_orderBasketcount"><!--@import(/svg/ico_cart.html)-->장바구니<span class="count {$basket_count_display|display} {$basket_count_display_class}"><span class="{$basket_count_class}">{$basket_count}</span></span></a></div>
+    </div></div>
+</header>
+<div module="Layout_SearchHeader"><!--@css(/css/module/layout/searchHeader.css)--><!--
+    $product_page=/product/detail.html
+    $category_page=/product/list.html
+--><fieldset><legend>Search</legend>{$form.keyword}<span alt="Search" onclick="{$action_search_submit}"><!--@import(/svg/ico_search.html)--></span><ul class="autoDrop" id="{$search_auto_id}"></ul></fieldset></div>

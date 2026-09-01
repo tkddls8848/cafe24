@@ -1,0 +1,16 @@
+<!--@layout(/layout/basic/popup.html)-->
+<div module="link_shortcut" class="ec-base-layer">
+    <!--@css(/css/module/link/shortcut.css)-->
+    <div class="header">
+        <h1>{$shortcut_name}</h1>
+    </div>
+    <div class="content">
+        <p class="info">
+            This <strong>shorcut icon</strong> will be added on your desktop. <br />Do you want to continue?
+        </p>
+    </div>
+    <div class="ec-base-button">
+        <a href="#none" class="btnSubmitFix sizeS" onclick="{$action_create_shortcut}" role="button">Install</a>
+        <a href="#none" class="btnNormalFix sizeS" onclick="{$action_close}" role="button">Cancel</a>
+    </div>
+</div>

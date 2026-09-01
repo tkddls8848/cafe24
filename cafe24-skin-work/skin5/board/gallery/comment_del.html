@@ -1,0 +1,32 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div module="board_CommentDeletePackage_8">
+    <!--@css(/css/module/board/commentDeletePackage.css)-->
+    <div module="board_title_8">
+        <div class="path" role="navigation" aria-label="현재 위치">
+            <span aria-hidden="true">Current Page</span>
+            <ol>
+                <li><a href="/">HOME</a></li>
+                <li title="Current Page" aria-current="page"><strong>{$board_name}</strong></li>
+            </ol>
+        </div>
+        <div class="titleArea">
+            <h2>{$board_title}</h2>
+            <p>{$board_info}</p>
+        </div>
+    </div>
+
+    <div module="Board_CommentDel_8" class="ec-base-box typeThin">
+        <div class="commentDel">
+            <h3 class="boxTitle">Remove Comment</h3>
+            <fieldset>
+                <legend>Remove Comment</legend>
+                <p class="info"><strong class="txtEm">Please enter your password to remove comment.</strong></p>
+                <p class="password"><label for="comment_password">PW</label> {$form.comment_password}</p>
+                <div class="ec-base-button gColumn">
+                    <a href="{$link_board_list}" class="btnNormal sizeM">목록</a>
+                    <button type="submit" class="btnEm sizeM">저장</button>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</div>

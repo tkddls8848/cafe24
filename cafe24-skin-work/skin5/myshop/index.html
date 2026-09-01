@@ -1,0 +1,192 @@
+<!--@layout(/layout/basic/layout.html)-->
+<style>
+    .myshopArea .titleArea--middle { min-height: unset; }
+    .section-top { padding-top: 15px; }
+    .myshop_recommender .invite { width: 100%; margin: 50px auto 0; padding: 20px 0; border: none; background-color: var(--white-color); border-radius: 10px; box-sizing: border-box; }
+    .myshop_recommender .invite .copy { display: flex; gap: 10px; align-items: center; justify-content: center; }
+    .myshop_recommender .invite > div { padding: 0 0 20px; font-size: 16px; font-weight: 400; line-height: 1.5; color: var(--text-black); }
+    .myshop_recommender .invite p input { width: 400px; height: 48px; padding: 0 15px; background-color: var(--white-color); border: 1px solid var(--black-color-20); border-radius: 4px; font-size:var(--font-size-xs); font-weight: 400; line-height: 1.5; }
+    .myshop_recommender .invite .btnNormal { width: 110px; }
+    .myshop_recommender .invite ul { margin: 20px 0 0; }
+    .myshop_recommender .invite ul li { color: var(--text-gray); font-size:var(--font-size-xs); font-weight: 400; line-height: 1.5; }
+    .ec-base-button .gRight a { width: auto !important; padding: 0 10px !important; }
+    
+    /* 회원 등급 관련 */
+    .xans-myshop-asyncbankbook, .dash-mypage, #topOrderstate { padding:30px; }
+    .benefit .dash-mypage { min-width: 312px; overflow: visible; }
+    .dash-mypage .xans-layout-statelogon { position: relative; flex-direction: column; align-items: flex-start; text-align: left; }
+    .dash-mypage .xans-layout-statelogon .myinfo { font-size: 18px; font-weight: 600; line-height: 1.5; color: var(--text-gray); }
+    .dash-mypage .xans-layout-statelogon:has(.xans-myshop-asyncbenefit:not(.displaynone)) .myinfo { margin-left: 76px; }
+    .dash-mypage .xans-myshop-asyncbenefit { margin-left: 76px; }
+    .dash-mypage .xans-myshop-asyncbenefit .user__thumb { position: absolute; top: 0; left: 0; }
+    .dash-mypage .xans-myshop-asyncbenefit .user__thumb img { width: 60px; height: 60px; }
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .user__data { font-size:var(--font-size-xs); font-weight: 400; line-height: 1.5; color: var(--text-gray); margin:8px 0 10px; }
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .user__data img { width: 20px; height: 20px; margin-right: 6px; border-radius: 4px; }
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .user__data .xans-member-var-group_name { font-size:var(--font-size-xs); font-weight: 700; line-height: 1.5; color: var(--text-black); }
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_info { position:relative; }
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_info > a { position: relative; width: max-content; font-size: 15px; font-weight: 600; line-height: 1.5; color: var(--text-black); }
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_info > a::after { display: block; position: absolute; content: ''; bottom: 2px; left: 0; width: 100%; height: 1px; background-color: var(--black-color); }
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_popup {  display:none; position: absolute; top:calc(100% + 6px ); left:0; width: 446px; background-color: var(--white-color); border: 1px solid var(--black-color-30); border-radius: 8px; box-shadow: 0px 4px 12px 0px #0000001F; z-index: 1; }
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_popup.show { display: block; }
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_head { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; font-size: 16px; font-weight: 400; line-height: 1.5; color: var(--text-black); border-bottom: 1px solid var(--black-color-10); }
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_head .btn_close { display: flex; width: 16px; height: 16px; padding: 0; align-items: center; justify-content: center; }
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_head .btn_close img { width: 9px; margin: 0; }
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_contents { padding: 20px 19px 19px; }
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_contents > * { position:relative; padding-left:9px; }
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_contents > *:before { content:''; position:absolute; top:8px; left:0;  background-color:var(--text-gray); border-radius:50%; height:3px; width:3px; }
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_contents > p + p { margin-top:4px; }
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_contents > p:not(.displaynone) + #sGradeAutoDisplayArea { margin-top:20px; }
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_contents * { font-size:var(--font-size-xs); font-weight: 400; line-height: 1.5; color: var(--text-gray); }
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_contents .txtEm span { color:var(--text-black); font-weight:700; }
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_contents .txtEm ~ .txtEm span { color:var(--point-color); }
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_contents img { width: 20px; height: 20px; margin-right: 6px; border-radius: 4px; }
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_contents .txtInfo { margin: 20px 0 0; font-size:var(--font-size-3xs); font-weight: 400; line-height: 1.7; color: var(--text-gray); }
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_contents .info_sub { display: block; font-size:var(--font-size-2xs); font-weight: 400; line-height: 1.7; }
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_contents .xans-member-var-sNextGrade,
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_contents .xans-member-var-sGradeIncreasePrice,
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_contents .xans-member-var-sGradeIncreaseCount { font-size: var(--font-size-xs); font-weight: 700; line-height: 1.5; color: var(--text-black); }
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_contents .xans-member-var-sPeriodOrderPrice,
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_contents .xans-member-var-sPeriodOrderCount { font-size:var(--font-size-2xs); font-weight: 400; line-height: 1.7; color: var(--text-black); }
+    .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_contents br.sAutoGradeDisplay { line-height:0; }
+    .xans-myshop-asyncbankbook { flex:1; display:flex; align-items:center;  }
+    .xans-myshop-asyncbankbook .title { color:var(--text-black); }
+    .xans-myshop-asyncbankbook ul { flex:1; }
+    #topOrderstate { display:flex; align-items:center; }
+    #topOrderstate .state__cs { flex:1; display: flex; gap:10px; flex-direction:column; }
+    #topOrderstate .state__cs li { line-height:1.7; margin-bottom:0; }
+    #topOrderstate .state__cs li strong,
+    #topOrderstate .state__cs li span { color:var(--text-black); font-size:var(--font-size-2xs) !important; }
+    
+    @media (max-width:1024px){
+        .path { display: none; }
+        .titleArea { margin: 40px 0; }
+        .titleArea h3 { font-size: var(--font-size-sm); }
+        .titleArea .desc { font-size: var(--font-size-2xs); }
+        .benefit .dash-mypage { min-width: auto; }
+        .dash-mypage .xans-myshop-asyncbenefit .user__info .user__data,
+        .dash-mypage .xans-myshop-asyncbenefit .user__info .user__data .xans-member-var-group_name,
+        .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_info > a { font-size: var(--font-size-2xs); }
+        .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_info { position:static; }
+        .dash-mypage .xans-myshop-asyncbenefit .user__info .grade_popup { left:-30px; width:calc(100vw - 40px); }
+        #topOrderstate .state__cs { gap:4px; }
+        .myshop_recommender .invite { padding: 20px 30px; }
+        .myshop_recommender .invite .copy { flex-direction: column; }
+        .myshop_recommender .invite > div { font-size:var(--font-size-2xs); }
+        .myshop_recommender .invite p input { width: 100%; font-size:var(--font-size-2xs); }
+        .myshop_recommender .invite .btnEm { width: 100%; }
+        .myshop_recommender .invite ul li { font-size:var(--font-size-2xs); }
+    }
+</style>
+<div class="section-top">
+    <div class="section-inner">
+        <div class="section path" role="navigation" aria-label="현재 위치">
+            <span aria-hidden="true">현재 위치</span>
+            <ol>
+                <li><a href="/">HOME</a></li>
+                <li title="현재 위치" aria-current="page">My Page</li>
+            </ol>
+        </div>
+        <div module="layout_logincheck">
+        <!--
+            $url = /member/login.html
+        -->
+        </div>
+        <div class="section titleArea">
+            <h2>My Page</h2>
+            </div>
+            <!--@import(/myshop/order/dash_top.html)-->
+            <div class="section myshop_recommender" module="myshop_asyncbenefit">
+                <div class="invite {$display_reco|display}">
+                    <div>주소를 복사하여 친구를 쇼핑몰에 초대해보세요.</div>
+                    <p class="copy">
+                        <input type="text" id="{$reco_url}" value="http://{$shop_domain}/?reco_id={$member_id}" readonly="readonly"><a href="#none" class="btnEm sizeM" onclick="{$copy_func}" role="button">주소복사</a>
+                    </p>
+                    <ul>
+                        <li>친구에게는 가입즉시 {$reco_mileage2}의 적립금이 지급됩니다.</li>
+                        <li>{$reco_mileage}</li>
+                    </ul>
+                </div>
+            </div>
+    </div>
+</div>
+<div class="section-inner">
+    <div class="myshopArea myshopMain">
+        <div class="wrap_order">
+            <div class="titleArea titleArea--middle">
+                <h3>나의 주문처리 현황 <span class="desc">(최근 3개월 기준)</span></h3>
+            </div>
+            <div module="myshop_orderstate">
+                <!--@css(/css/module/myshop/orderState.css)-->
+                <div class="state">
+                    <ul class="state__order">
+                        <li>
+                            <a href="{$shppiedBeforeUrl}" class="count">{$shppiedBeforeCount}</a>
+                            <span class="label">입금전</span>
+                        </li>
+                        <li>
+                            <a href="{$shppiedStandbyUrl}" class="count">{$shppiedStandbyCount}</a>
+                            <span class="label">배송 준비</span>
+                        </li>
+                        <li>
+                            <a href="{$shppiedBeginUrl}" class="count">{$shppiedBeginCount}</a>
+                            <span class="label">배송 중</span>
+                        </li>
+                        <li>
+                            <a href="{$shppiedComplateUrl}" class="count">{$shppiedComplateCount}</a>
+                            <span class="label">배송 완료</span>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </div>
+            <div class="RW pc">
+                <div class="titleArea titleArea--middle">
+                    <h3>주문내역</h3>
+                </div>
+                <!--@import(/myshop/order/history_list_item.html)-->
+            </div>
+        </div>
+        <!--@import(/myshop/myshop_main.html)-->
+    </div>
+</div>
+
+<script>
+    // 새로운 주문내역에 클래스명 추가
+    const orders = document.querySelectorAll('.xans-myshop-orderhistorylistitem .order');
+    orders.forEach(function(order, index) {
+        let next = order.nextElementSibling;
+        while (next && !next.classList.contains('order')) {
+            next = next.nextElementSibling;
+        }
+
+        if (next) {
+            const numberEl = next.querySelector('.order__number');
+            if (numberEl && !numberEl.classList.contains('displaynone')) {
+            next.classList.add('order_group');
+            }
+        }
+    });
+
+    // grade_popup 토글
+    const gradeInfoLink = document.querySelector('.grade_info_link');
+    if (gradeInfoLink) {
+        gradeInfoLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            const gradePopup = document.querySelector('.grade_popup');
+            if (gradePopup) {
+                gradePopup.classList.toggle('show');
+            }
+        });
+    }
+
+    const btnClose = document.querySelector('.grade_popup .btn_close');
+    if (btnClose) {
+        btnClose.addEventListener('click', function(e) {
+            e.preventDefault();
+            const gradePopup = this.closest('.grade_popup');
+            if (gradePopup) {
+                gradePopup.classList.remove('show');
+            }
+        });
+    }
+</script>

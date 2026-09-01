@@ -1,0 +1,92 @@
+<!--@layout(/layout/basic/layout.html)-->
+<style>
+    .xans-mall-company h3 { margin-left: 0; font-size: 20px; font-weight: 600; }
+    .xans-mall-company .ec-base-table { border-top: 1px solid var(--black-color); border-bottom: none; }
+    .xans-mall-company .ec-base-table th,
+    .xans-mall-company .ec-base-table td { line-height: 1.5; border-bottom: 1px solid #e5e5e5; background: none; }
+    .xans-mall-company .ec-base-table th { padding-left: 0; font-size: 16px; font-weight: 600; }
+    .xans-mall-company .ec-base-table td { font-size: 16px; font-weight: 400; }
+    .xans-mall-company .map img { max-width: 100%; }
+    @media(max-width: 1024px) {
+        .xans-mall-company h3 { font-size: 18px; }
+        .xans-mall-company .titleArea { margin: 0; }
+        .xans-mall-company .titleArea--middle { background: none; padding: 20px 0; }
+        .xans-mall-company .ec-base-table th,
+        .xans-mall-company .ec-base-table td { font-size: 13px; line-height: 1.2; }
+        .xans-mall-company .ec-base-table colgroup col:first-child { width: 150px !important; }
+    }
+</style>
+<div class="path" role="navigation" aria-label="현재 위치">
+    <span aria-hidden="true">현재 위치</span>
+    <ol>
+        <li><a href="/">HOME</a></li>
+        <li title="현재 위치" aria-current="page"><strong>회사소개</strong></li>
+    </ol>
+</div>
+
+<div class="titleArea">
+    <h2>회사소개</h2>
+</div>
+
+<div module="mall_company">
+    <!--@css(/css/module/mall/company.css)-->
+
+    <div class="titleArea titleArea--middle">
+        <h3>회사소개 정보</h3>
+    </div>
+    <div class="info">{$info}</div>
+
+
+    <div class="{$map_display|display}">
+        <div class="titleArea titleArea--middle">
+            <h3>회사위치 정보</h3>
+        </div>
+        <div class="map">{$map_image}</div>
+    </div>
+
+    <div class="ec-base-table" module="Layout_footer">
+        <table border="1">
+            <caption>회사소개</caption>
+            <colgroup>
+                <col style="width:300px;">
+                <col style="width:auto;">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th scope="row">상점명</th>
+                    <td>{$mall_name}</td>
+                </tr>
+                <tr>
+                    <th scope="row">대표이사</th>
+                    <td><a href="mailto:{$email}">{$president_name}</a></td>
+                </tr>
+                <tr>
+                    <th scope="row">대표전화</th>
+                    <td><a href="tel:{$phone}">{$phone}</a></td>
+                </tr>
+                <tr>
+                    <th scope="row">주소</th>
+                    <td>{$mall_addr1}<br>{$mall_addr2}</td>
+                </tr>
+                <tr>
+                    <th scope="row">사업자등록번호</th>
+                    <td>{$company_regno}</td>
+                </tr>
+                <tr>
+                    <th scope="row">통신판매업신고</th>
+                    <td>{$network_regno}</td>
+                </tr>
+                <tr class="{$cpo_email|display}">
+                    <th scope="row">개인정보 관리책임</th>
+                    <td><a href="mailto:{$cpo_email}">{$cpo_name}</a></td>
+                </tr>
+                <tr>
+                    <th scope="row">호스팅제공</th>
+                    <td>카페24(주)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>

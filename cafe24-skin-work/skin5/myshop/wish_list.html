@@ -1,0 +1,393 @@
+<!--@layout(/layout/basic/layout.html)-->
+<style>
+    
+    .titleArea.titleArea--myshop { display: none; }
+    .xans-element-.xans-myshop.xans-myshop-wishlist.xans-record- {border: none;}
+    .ec-base-prdInfo { border-bottom: 1px solid var(--black-color-20); }
+    .ec-base-prdInfo .prdBox { padding: 30px 0; align-items: center; }
+    .ec-base-prdInfo .check { width: 48px; margin: 0; text-align: center; }
+    .ec-base-prdInfo .check input[type=checkbox] { margin: 0; }
+    .ec-base-prdInfo .description { margin: 0; padding: 0 30px; word-break: break-word; }
+    .ec-base-prdInfo .description .prdName { margin: 0 0 10px; }
+    .ec-base-prdInfo .description .prdName a { font-size: 18px; font-weight: 600; line-height: 1.5; }
+    .ec-base-prdInfo .description .prdName .optionStr { display: block; margin-top: 10px; color: var(--text-gray); font-size: 16px; font-weight: 400; line-height: 1.5; }
+    .ec-base-prdInfo .price { padding:0 20px; width: 160px; }
+    .ec-base-prdInfo .price li { text-align: center; }
+    .ec-base-prdInfo .price .strike { display: block; font-size: 16px; font-weight: 400; line-height: 1.5; color: var(--text-gray); text-decoration: line-through; }
+    .ec-base-prdInfo .price .mileage { display: flex; margin: 4px 0 0; align-items: center; justify-content: center; font-size: 14px; font-weight: 400; line-height: 1.5; color: var(--text-gray); }
+    .ec-base-prdInfo .price .mileage img { margin-right: 4px; }
+    .ec-base-prdInfo .price #span_product_tax_type_text { font-size: 14px !important; font-weight: 400 !important; line-height: 1.5 !important; color: var(--text-gray) !important; text-decoration-line: none; }
+    .ec-base-prdInfo .price strong { display:block; }
+    .ec-base-prdInfo .price strong:not(.strike) { font-size: 18px; font-weight: 600; color: var(--black-color); }
+    .ec-base-prdInfo .price:has(.sale_price:not(.displaynone)) .product_price { font-size:var(--font-size-base); font-weight:var(--font-weight-regular); line-height:var(--line-height-lg); text-decoration: line-through; color:var(--text-gray); }
+    .ec-base-prdInfo .optionGroup { margin: 0; }
+    .ec-base-prdInfo .optionGroup li { position: relative; margin: 0; }
+    .ec-base-prdInfo .optionGroup li + li { margin-top:8px; }
+    .ec-base-prdInfo .optionGroup li > span { font-size: 16px; font-weight: 400; line-height: 1.5; color: var(--text-black); }
+    .ec-base-prdInfo .optionGroup li > .btnText { display: inline-block; position: relative; border: none; color: var(--text-black); font-size: 15px; font-weight: 600; line-height: 1.5; box-sizing: border-box; }
+    .ec-base-prdInfo .optionGroup li > .btnText::after { content: ''; position: absolute; bottom: 1px; left: 0; display: block; width: 100%; height: 1px; background: var(--black-color); }
+    .ec-base-prdInfo .optionGroup li .product { display: inline-block; margin: 0; }
+    .ec-base-prdInfo .optionGroup li .optionStr { display: block; color: var(--text-gray); }
+    .ec-base-prdInfo .buttonGroup { position: relative; width: 130px; margin: auto 0; bottom: 0; }
+    .ec-base-prdInfo .buttonGroup .gRight { display: flex; flex-direction: column; gap: 8px; }
+    .ec-base-prdInfo .buttonGroup .gRight .btn-list { height: 33px; padding: 0 12px; font-size: 14px; font-weight: 400; line-height: 33px; border-radius: 4px; }
+    .ec-base-prdInfo .buttonGroup .gRight .btn-list:first-child { color: var(--text-white); background: var(--black-color); border: 1px solid var(--black-color); }
+    .ec-base-prdInfo .buttonGroup .gRight .btn-list:nth-of-type(2) { color: var(--text-black); background: var(--white-color); border: 1px solid var(--black-color-60); }
+    .ec-base-prdInfo .buttonGroup a.btn_close { display: flex; position: absolute; top: -50px; right: 0; width: auto; height: auto; min-height:unset; margin: 0; padding: 0; font-size: 0; background: none; border: none; align-items: center; justify-content: center; }
+    .optionModifyLayer { position: absolute; top: 50px; background:none; z-index: 10; }
+    .optionModifyLayer .ec-base-layer { position: relative; margin: 0; transform: unset; }
+    .optionModifyLayer .ec-base-layer .header { background: #F2F2F2; }
+    .optionModifyLayer .ec-base-layer .header h4 { font-size: 14px; }
+    .optionModifyLayer .ec-base-layer .prdModify h5 { margin: 0 0 10px; padding: 0 0 10px; font-size: 12px; font-weight: 600; border-bottom: 1px dotted #c5c5c8; }
+    .optionModifyLayer .ec-base-layer .ec-base-button { padding: 15px; gap: 5px; border: none; background: none; }
+    .xans-myshop-wishlist .ec-base-prdInfo .thumbnail { width: 177px; aspect-ratio: 1; margin: 0; }
+    .xans-myshop-wishlist .ec-base-prdInfo .thumbnail img { width: 100%; height: 100%; object-fit: cover; }
+    .xans-myshop-wishlistbutton { display: flex; flex-wrap: wrap; justify-content: center; }
+    .xans-myshop-wishlistbutton .ec-base-button { display: flex; width: 100%; margin: 10px 0 0; padding: 0; gap: 40px; flex-direction: column; }
+    .xans-myshop-wishlistbutton .ec-base-button .gRight { margin: 0 0 10px; }
+    .xans-myshop-wishlistbutton .ec-base-button .gRight a { width: 110px; }
+    .xans-myshop-wishlistbutton .ec-base-button .gBottom { float: unset; text-align: center; }
+    .xans-myshop-wishlistbutton .ec-base-button .gBottom a { width: 195px; }
+    .myshopArea { margin-bottom: 0 !important; }
+    .myshopArea .wish_head { display: flex; padding: 20px 0; flex-wrap: nowrap; border-top: 1px solid var(--black-color-20); border-bottom: 1px solid var(--black-color-20); }
+    .myshopArea .wish_head span { text-align: center; font-size: 16px; font-weight: 400; line-height: 1.5; color: var(--text-black); }
+    .myshopArea .wish_head span:nth-of-type(2) { width: 177px; }
+    .myshopArea .wish_head span:nth-of-type(3) { flex: 1 1 auto; }
+    .myshopArea .wish_head span:nth-of-type(4) { width: 200px; }
+    .myshopArea .wish_head span:nth-of-type(5) { width: 130px; }
+    .myshopArea .wish_head .check { display: flex; width: 48px; align-items: center; justify-content: center; }
+    .myshopArea .wish_head .check input[type=checkbox] { margin: 0; }
+    .myshopArea .ec-base-prdEmpty { padding: 100px 0; border-bottom: 1px solid var(--black-color-20); font-size: var(--font-size-md
+        ); font-weight: var(--font-weight-regular); line-height: var(--line-height-lg); color: var(--text-gray); }
+        
+        @media (max-width:1024px){
+        .ec-base-prdInfo .check { width: 30px; text-align: left; grid-row: span 3; }
+        .ec-base-prdInfo .prdBox { align-items: flex-start; }
+        .ec-base-prdInfo .price { width: calc(100% - 30px); margin: 0 0 0 10px; padding: 10px 20px 0 0; border-top: 1px solid var(--black-color-20); box-sizing: border-box; }
+        .ec-base-prdInfo .price li { text-align: left; }
+        .ec-base-prdInfo .price #span_product_tax_type_text { font-size: 13px !important; }
+        .ec-base-prdInfo .price .strike,
+        .ec-base-prdInfo .price:has(.sale_price:not(.displaynone)) .product_price { font-size: 13px; }
+        .ec-base-prdInfo .price .mileage { justify-content: flex-start; font-size: 13px; }
+        .ec-base-prdInfo .description { margin-bottom: 10px; padding: 0 20px 0 10px; }
+        .ec-base-prdInfo .description .prdName a { font-size: 15px; }
+        .ec-base-prdInfo .optionGroup li { margin: 0 0 8px; }
+        .ec-base-prdInfo .optionGroup li:last-child { margin: 0 0 10px; }
+        .ec-base-prdInfo .optionGroup li .product { font-size: 14px; }
+        .ec-base-prdInfo .optionGroup li .product + span { font-size: 14px; }
+        .ec-base-prdInfo .optionGroup li > span { font-size: 13px; }
+        .ec-base-prdInfo .optionGroup li > .btnText { font-size: 13px; }
+        .ec-base-prdInfo .buttonGroup { position: unset; width: 100%; padding: 0 !important; grid-column: span 3; }
+        .ec-base-prdInfo .buttonGroup .gRight { flex-direction: row-reverse; }
+        .ec-base-prdInfo .buttonGroup .gRight > button { margin-top: 20px; flex: 1; }
+        .ec-base-prdInfo .buttonGroup a.btn_close { top: 23px; }
+        .ec-base-prdInfo .buttonGroup a.btn_close svg { height:16px; width:16px; }
+        .optionModifyLayer { position: fixed; top: 50%; left: 50%; width: calc(100% - 40px); max-width: 400px; transform: translate(-50%,-50%); }
+        .optionModifyLayer .ec-base-layer { position: unset; width: 100%; min-width: unset; }
+        .xans-myshop-wishlistbutton { border-top:1px solid var(--black-color-20); padding-top: 10px; }
+        .xans-myshop-wishlistbutton .ec-base-button { gap: 24px; }
+        .xans-myshop-wishlistbutton .ec-base-button .gRight { margin:0; width:100%; }
+        .xans-myshop-wishlistbutton .ec-base-button .gRight a { flex: 1; min-width: calc(50% - 4px); }
+        .xans-myshop-wishlistbutton .ec-base-button .gRight a:first-of-type { position: absolute; top: 22px; right: 0; width: auto; min-width: unset; min-height: unset; height: auto; margin: 0; padding: 0 !important; font-size: 12px !important; font-weight: 600; line-height: 1.7; border: none; }
+        .xans-myshop-wishlistbutton .ec-base-button .gBottom a { width: 100%; }
+        .xans-myshop-wishlist .ec-base-prdInfo .prdBox { display: grid; position: relative; padding: 20px 0; grid-auto-rows: auto; grid-template-columns: 30px minmax(0, 100px) minmax(50%, 1fr); }
+        .xans-myshop-wishlist .ec-base-prdInfo .thumbnail { width:90px; grid-row: span 3;}
+        .myshopArea { position: relative; }
+        .myshopArea .wish_head { border-bottom-width:2px; padding: 20px 0 10px; }
+        .myshopArea .wish_head .check { justify-content: flex-start; }
+        .myshopArea .wish_head .check .mo { margin-left: 4px; text-wrap: nowrap; font-size: 14px; font-weight: 400; line-height: 1.5; }
+    }
+</style>
+
+<!-- ##module_info #MyShop #WishList -->
+<div class="section-inner">
+    <div class="section path" role="navigation" aria-label="현재 위치">
+        <span aria-hidden="true">현재 위치</span>
+        <ol>
+            <li><a href="/">HOME</a></li>
+            <li><a href="/myshop/index.html">My Page</a></li>
+            <li title="현재 위치" aria-current="page"><strong>위시리스트</strong></li>
+        </ol>
+    </div>
+
+    <div class="section titleArea">
+        <h2>위시리스트</h2>
+    </div>
+</div>
+
+<div class="myshopArea">
+    <div class="titleArea titleArea--myshop">
+        <h2>위시리스트</h2>
+    </div>
+    <div class="wish_head">
+        <span class="check"><input type="checkbox" /><strong class="mo">전체 선택</strong></span>
+        <span class="pc">이미지</span>
+        <span class="pc">상품정보</span>
+        <span class="pc">판매가</span>
+        <span class="pc">선택</span>
+    </div>
+    <div module="myshop_wishlist">
+        <!--@css(/css/module/myshop/wishlist.css)-->
+        <!--
+            $login_page = /member/login.html
+            $count = 10
+            $use_per_add_option = yes
+        -->
+        <div module="myshop_wishlistitem">
+            <div class="ec-base-prdInfo gCheck">
+                <div class="prdBox">
+                    <span class="check">{$checkbox}</span>
+                    <div class="thumbnail"><a href="{$link_product_detail}"><img src="{$image_medium}" alt="" width="83" height="83"></a></div>
+                    <div class="description">
+                        <strong class="prdName" title="상품명">{$product_name_link}</strong>
+                        <p class="ec-base-help txtWarn txt11 {$exclusive_purchase_olny|display}"> 단독구매상품</p>
+                        <ul class="optionGroup" module="Myshop_optionAll">
+                            <li><span class="product {$product_name_display|display}">{$product_name}</span> <span class="{$qty_display|display}">({$qty}개)</span><span class="optionStr">{$option_str}</span><a href="#none" onclick="{$action_option_change}" class="btnText {$option_change_display|display}" role="button">옵션변경</a>
+                                <div class="optionModifyLayer ec-base-layer-area" id="{$option_modify_layer_id}">
+                                    <div class="ec-base-layer typeModal">
+                                        <div class="header">
+                                            <h4>옵션변경</h4>
+                                        </div>
+                                        <div class="content">
+                                            <ul class="prdInfo">
+                                                <li>{$product_name}</li>
+                                                <li class="option">{$layer_option_str}</li>
+                                            </ul>
+                                            <div class="prdModify">
+                                                <h5>상품옵션</h5>
+                                                <ul module="Myshop_optionList">
+                                                    <li><span class="optionDesc">{$option_name}</span> {$form.option_value}</li>
+                                                    <li><span class="optionDesc">{$option_name}</span> {$form.option_value}</li>
+                                                </ul>
+                                                <ul module="Myshop_optionAddList">
+                                                    <li><span class="optionDesc">{$option_name}</span> {$form.option_value}</li>
+                                                    <li><span class="optionDesc">{$option_name}</span> {$form.option_value}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="ec-base-button">
+                                            <a href="#none" class="btnEmFix sizeS {$option_add_display|display}" onclick="{$action_option_add}" role="button">추가</a>
+                                            <a href="#none" class="btnSubmitFix sizeS" onclick="{$action_option_modify}" role="button">변경</a>
+                                        </div>
+                                        <a href="#none" class="btnClose" onclick="$('.optionModifyLayer').hide();" role="button">닫기</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li><span class="product {$product_name_display|display}">{$product_name}</span> <span class="{$qty_display|display}">({$qty}개)</span><span class="optionStr">{$option_str}</span><a href="#none" onclick="{$action_option_change}" class="btnText {$option_change_display|display}" role="button">옵션변경</a>
+                                <div class="optionModifyLayer ec-base-layer-area" id="{$option_modify_layer_id}">
+                                    <div class="ec-base-layer typeModal">
+                                        <div class="header">
+                                            <h4>옵션변경</h4>
+                                        </div>
+                                        <div class="content">
+                                            <ul class="prdInfo">
+                                                <li>{$product_name}</li>
+                                                <li class="option">{$layer_option_str}</li>
+                                            </ul>
+                                            <div class="prdModify">
+                                                <h5>상품옵션</h5>
+                                                <ul module="Myshop_optionList">
+                                                    <li><span class="optionDesc">{$option_name}</span> {$form.option_value}</li>
+                                                    <li><span class="optionDesc">{$option_name}</span> {$form.option_value}</li>
+                                                </ul>
+                                                <ul module="Myshop_optionAddList">
+                                                    <li><span class="optionDesc">{$option_name}</span> {$form.option_value}</li>
+                                                    <li><span class="optionDesc">{$option_name}</span> {$form.option_value}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="ec-base-button">
+                                            <a href="#none" class="btnEmFix sizeS {$option_add_display|display}" onclick="{$action_option_add}" role="button">추가</a>
+                                            <a href="#none" class="btnSubmitFix sizeS" onclick="{$action_option_modify}" role="button">변경</a>
+                                        </div>
+                                        <a href="#none" class="btnClose" onclick="$('.optionModifyLayer').hide();" role="button">닫기</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="price">
+                        <li>
+                            <strong class="{$discount} product_price notranslate" title="판매가">{$product_price}</strong>
+                            {$product_tax_type_text}
+                            <strong class="{$product_sale_price_display|display} sale_price notranslate">{$product_sale_price}</strong>
+                            <span id="{$product_mileage_id}" class="txtInfo mileage">{$mileage}</span>
+                        </li>
+                    </ul>
+                    <div class="buttonGroup">
+                        <span class="gRight">
+                            <button type="button" onclick="{$act_order}" class="btnSubmitFix sizeS {$disp_order|display}">바로 구매</button>
+                            <button type="button" onclick="{$act_basket}" class="btnEmFix sizeS {$disp_basket|display}">장바구니</button>
+                            <a href="#none" class="btnNormal btn_close {$class_del}" rel="{$rel_del}" role="button"><!--@import(/svg/ico_x.html)-->삭제</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="ec-base-prdInfo gCheck">
+                <div class="prdBox">
+                    <span class="check">{$checkbox}</span>
+                    <div class="thumbnail"><a href="{$link_product_detail}"><img src="{$image_medium}" alt="" width="83" height="83"></a></div>
+                    <div class="description">
+                        <strong class="prdName" title="상품명">{$product_name_link}</strong>
+                        <p class="ec-base-help txtWarn txt11 {$exclusive_purchase_olny|display}"> 단독구매상품</p>
+                        <ul class="optionGroup" module="Myshop_optionAll">
+                            <li><span class="product {$product_name_display|display}">{$product_name}</span> <span class="{$qty_display|display}">({$qty}개)</span><span class="optionStr">{$option_str}</span><a href="#none" onclick="{$action_option_change}" class="btnText {$option_change_display|display}" role="button">옵션변경</a>
+                                <div class="optionModifyLayer ec-base-layer-area" id="{$option_modify_layer_id}">
+                                    <div class="ec-base-layer typeModal">
+                                        <div class="header">
+                                            <h4>옵션변경</h4>
+                                        </div>
+                                        <div class="content">
+                                            <ul class="prdInfo">
+                                                <li>{$product_name}</li>
+                                                <li class="option">{$layer_option_str}</li>
+                                            </ul>
+                                            <div class="prdModify">
+                                                <h5>상품옵션</h5>
+                                                <ul module="Myshop_optionList">
+                                                    <li><span class="optionDesc">{$option_name}</span> {$form.option_value}</li>
+                                                    <li><span class="optionDesc">{$option_name}</span> {$form.option_value}</li>
+                                                </ul>
+                                                <ul module="Myshop_optionAddList">
+                                                    <li><span class="optionDesc">{$option_name}</span> {$form.option_value}</li>
+                                                    <li><span class="optionDesc">{$option_name}</span> {$form.option_value}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="ec-base-button">
+                                            <a href="#none" class="btnEmFix sizeS {$option_add_display|display}" onclick="{$action_option_add}" role="button">추가</a>
+                                            <a href="#none" class="btnSubmitFix sizeS" onclick="{$action_option_modify}" role="button">변경</a>
+                                        </div>
+                                        <a href="#none" class="btnClose" onclick="$('.optionModifyLayer').hide();" role="button">닫기</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li><span class="product {$product_name_display|display}">{$product_name}</span> <span class="{$qty_display|display}">({$qty}개)</span><span class="optionStr">{$option_str}</span><a href="#none" onclick="{$action_option_change}" class="btnText {$option_change_display|display}" role="button">옵션변경</a>
+                                <div class="optionModifyLayer ec-base-layer-area" id="{$option_modify_layer_id}">
+                                    <div class="ec-base-layer typeModal">
+                                        <div class="header">
+                                            <h4>옵션변경</h4>
+                                        </div>
+                                        <div class="content">
+                                            <ul class="prdInfo">
+                                                <li>{$product_name}</li>
+                                                <li class="option">{$layer_option_str}</li>
+                                            </ul>
+                                            <div class="prdModify">
+                                                <h5>상품옵션</h5>
+                                                <ul module="Myshop_optionList">
+                                                    <li><span class="optionDesc">{$option_name}</span> {$form.option_value}</li>
+                                                    <li><span class="optionDesc">{$option_name}</span> {$form.option_value}</li>
+                                                </ul>
+                                                <ul module="Myshop_optionAddList">
+                                                    <li><span class="optionDesc">{$option_name}</span> {$form.option_value}</li>
+                                                    <li><span class="optionDesc">{$option_name}</span> {$form.option_value}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="ec-base-button">
+                                            <a href="#none" class="btnEmFix sizeS {$option_add_display|display}" onclick="{$action_option_add}" role="button">추가</a>
+                                            <a href="#none" class="btnSubmitFix sizeS" onclick="{$action_option_modify}" role="button">변경</a>
+                                        </div>
+                                        <a href="#none" class="btnClose" onclick="$('.optionModifyLayer').hide();" role="button">닫기</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="price">
+                        <li>
+                            <strong class="{$discount} product_price notranslate" title="판매가">{$product_price}</strong>
+                            {$product_tax_type_text}
+                            <strong class="{$product_sale_price_display|display} sale_price notranslate">{$product_sale_price}</strong>
+                            <span id="{$product_mileage_id}" class="txtInfo mileage">{$mileage}</span>
+                        </li>
+                    </ul>
+                    <div class="buttonGroup">
+                        <span class="gRight">
+                            <button type="button" onclick="{$act_order}" class="btnSubmitFix sizeS {$disp_order|display}">바로 구매</button>
+                            <button type="button" onclick="{$act_basket}" class="btnEmFix sizeS {$disp_basket|display}">장바구니</button>
+                            <a href="#none" class="btnNormal btn_close {$class_del}" rel="{$rel_del}" role="button"><!--@import(/svg/ico_x.html)-->삭제</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="ec-base-prdEmpty {$empty_display|display}">관심상품 내역이 없습니다.</p>
+    </div>
+
+    <div module="Myshop_WishlistButton">
+        <div class="ec-base-button">
+        
+            <span class="gRight">
+                <a href="#none" class="btnEm sizeM" onclick="{$action_delete}" role="button">선택 삭제</a>
+                <a href="#none" class="btnEm sizeM" onclick="{$action_delete_all}" role="button">전체 삭제</a>
+            </span>
+            <div class="gBottom">
+                <a href="#none" class="btnSubmit sizeL order-all" onclick="{$action_order_all}" role="button">전체 구매</a>
+            </div>
+        </div>
+        
+    </div>
+
+    <div module="myshop_wishlistpaging" class="ec-base-paginate typeList" role="navigation" aria-label="페이지 이동">
+        <a href="{$param_first}" class="first"><img src="/SkinImg/img/ico_first.png" alt="첫 페이지" /></a>
+        <a href="{$param_before}"><img src="/SkinImg/img/ico_prev.png" alt="이전 페이지" /></a>
+        <ol>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        </ol>
+        <a href="{$param_next}"><img src="/SkinImg/img/ico_next.png" alt="다음 페이지" /></a>
+        <a href="{$param_last}" class="last"><img src="/SkinImg/img/ico_last.png" alt="마지막 페이지" /></a>
+    </div>
+
+    <!--@import(/myshop/myshop_main.html)-->
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        /* const optionChange = document.querySelectorAll('.ec-base-prdInfo .optionGroup .optionStr');
+    
+        optionChange.forEach(function (el) {
+            const text = el.textContent.trim();
+            if (text !== '') {
+                const description = el.closest('.description');
+                const prdName = description?.querySelector('.prdName');
+                if (prdName) {
+                    prdName.appendChild(el);
+                }
+            }
+        }); */
+
+        /* 체크박스 전체선택 */
+        const headCheckbox = document.querySelector(".wish_head .check input[type='checkbox']");
+        const itemCheckboxes = document.querySelectorAll(".prdBox .check input[type='checkbox']");
+    
+        if (!headCheckbox) return;
+    
+        headCheckbox.addEventListener("change", () => {
+            itemCheckboxes.forEach(cb => {
+            cb.checked = headCheckbox.checked;
+            });
+        });
+    
+        // 개별 체크박스 변경 시 → 상단 체크박스 상태도 맞춰주기
+        itemCheckboxes.forEach(cb => {
+            cb.addEventListener("change", () => {
+            const allChecked = Array.from(itemCheckboxes).every(c => c.checked);
+            headCheckbox.checked = allChecked;
+            });
+        });
+
+        // 적립금 없을 경우 내용 숨김
+        const mileageElements = document.querySelectorAll('.ec-base-prdInfo .price .mileage');
+        mileageElements.forEach((e) => {
+            if (e.textContent.trim() === '-') {
+                e.style.display = 'none';
+            }
+        });
+    });
+</script>

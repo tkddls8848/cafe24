@@ -1,0 +1,50 @@
+<!-- ##module_info #Layout #aside #aside_A -->
+<aside class="aside_A" id="aside" module="layout_slidePackage">
+<!--@css(/layout/basic/css/slideMenu.css)-->
+<!--@js(/layout/basic/js/slide_menu.js)-->
+<button class="btnClose" type="button"><!--@import(/svg/ico_x.html)-->닫기</button>
+<div class="navigation_member">
+<div class="navigation_state">
+<div class="user-info">
+<p module="Layout_statelogoff">로그인이 필요합니다.</p>
+<p module="Layout_stateLogon"><strong>{$name}</strong>님 환영합니다!</p>
+<a class="btn-normal" href="{$action_logout}" module="Layout_stateLogon">로그아웃</a>
+</div>
+<a class="btnEm" href="/member/agreement.html" module="Layout_statelogoff">회원가입</a>
+<a class="btnSubmit header-login-btn" href="/member/login.html" module="Layout_statelogoff">로그인</a>
+</div><!-- //navigation_state -->
+</div><!-- //navigation_member -->
+<nav class="navigation-menu" role="navigation">
+<div class="navigation-menu__category" id="slideCateList" module="Layout_category">
+<span>카테고리</span>
+<ul id="slide_add_category">
+<li><span class="view"><a href="{$link_product_list}">{$name}</a><span class="more"></span></span></li>
+<li><span class="view"><a href="{$link_product_list}">{$name}</a><span class="more"></span></span></li>
+</ul>
+<div class="community_box">
+<a href="#">고객센터</a>
+<ul class="sub_cate01" module="Layout_BoardInfo">
+<li><a class="view" href="{$link_board_list}">{$board_name}</a></li>
+<li><a class="view" href="{$link_board_list}">{$board_name}</a></li>
+</ul>
+</div>
+<div class="multishop list" module="Layout_multishopList">
+<!--@css(/css/module/layout/multishopList.css)-->
+<button class="change_language toggle" type="button"><span>한국어</span><i aria-hidden="true" class="icon"><!--@import(/svg/ico_arrow.html)--></i></button>
+<ul module="Layout_multishopListitem">
+<li class="{$selected_class}">
+<a href="//{$shop_domain}/">
+<span class="name">{$locale_language}</span>
+</a>
+</li>
+<li class="{$selected_class}">
+<a href="//{$shop_domain}/">
+<span class="name">{$locale_language}</span>
+</a>
+</li>
+</ul>
+</div>
+</div><!-- //menu-side/1 -->
+</nav>
+</aside>
+<!--@js(/modules/aside/js/aside.js)-->

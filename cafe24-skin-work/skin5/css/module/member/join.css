@@ -1,0 +1,120 @@
+#joinForm{margin-bottom:60px;}
+.ec-base-table.typeWrite .ec-address li+li{margin-top:10px}
+.xans-member-join > h3 { padding:30px 0 10px; font-size:16px; color:#2e2e2e; }
+.xans-member-join > h3:first-child { padding-top:0; }
+.xans-member-join ul.grid li { margin:5px 0 0; }
+.xans-member-join .required { margin:-25px 0 10px; color:#353535; text-align:right; }
+.xans-member-join .required img { vertical-align:middle; }
+
+.xans-member-join .ec-base-table td .info_msg,
+.xans-member-join .ec-base-table td .error { display:block; margin-top:4px; }
+.xans-member-join .ec-base-table td span.info_msg { display:inline-block; }
+.xans-member-join .ec-base-table #idMsg{display:block;}
+.xans-member-join .ec-base-table #sexArea{display:flex; align-items:center;}
+.xans-member-join .ec-base-table .interest { line-height:25px; }
+.xans-member-join .ec-base-table .interest label { padding:0 15px 0 2px; }
+
+.xans-member-join .ec-base-table .error { color:#f00; display:block; }
+.xans-member-join .ec-base-table .ec-address input[type=checkbox]{margin-right:0;}
+.xans-member-join .ec-base-box.gStrong { position:relative; z-index:2; }
+.xans-member-join .ec-base-box.gStrong p { font-size:14px; color:#353535; line-height:22px; }
+.xans-member-join .ec-base-box.gStrong .desc { color: #747474; font-size: 12px; font-weight:normal; margin:4px 0 0 30px; }
+.xans-member-join .ec-base-box + .ec-base-box { margin-top:-1px; }
+.xans-member-join .ec-base-box .ec-base-chk input { width:100%; height:100%; }
+
+.xans-member-join .agreeArea { color:#747474; line-height:20px; }
+.xans-member-join .agreeArea label { display: none; }
+.xans-member-join .agreeArea label.check { display: inline-block; padding: 0; margin-left: 6px; }
+.xans-member-join .agreeArea h3 { position:relative; margin:0; font-size:12px; color:#353535; }
+.xans-member-join .agreeArea h3 .btnToggle { display: inline-block; width: 8px; height: 8px; text-indent: 120%; white-space: nowrap; border-left: 1px solid #000; border-bottom: 1px solid #000; -webkit-transition: .3s ease-out; transform: rotate(315deg); transition: .3s ease-out; position:absolute; right:0; cursor: pointer; overflow: visible; }
+.xans-member-join .agreeArea h3 .btnToggle:before { content:''; display: block; position: absolute; width: 100%; height: 100%; transform: scale(3); }
+.xans-member-join .agreeArea.on .content { margin-top: 10px; }
+.xans-member-join .agreeArea.on .check + .content { margin-top: 0px; }
+.xans-member-join .agreeArea.on h3 .btnToggle { transform: rotate(135deg); }
+.xans-member-join .agreeArea .content {display:none;}
+.xans-member-join .agreeArea.on .content {display:block;}
+.xans-member-join .agreeArea .ec-base-chk { margin: 3px 0 0 0; width: 18px; height: 18px; }
+.xans-member-join .agreeArea .ec-base-chk input { opacity: 1; }
+.xans-member-join .agreeArea .ec-base-chk .checkbox { background: none; }
+.xans-member-join .agreeArea .content,
+.xans-member-join #foreignerPersonWrap .content{ overflow:auto; height:110px; padding:20px; border:1px solid #d5d5d5; background:#fff; }
+.xans-member-join .agreeArea .content p { padding:0 0 17px; }
+.xans-member-join .agreeArea .check { padding:10px 0; color:#202020; font-size:12px; }
+.xans-member-join .agreeArea .check span + span { margin-left: 6px; }.xans-member-join .agreeArea ul.check li { display: table-row; }
+.xans-member-join .agreeArea ul.check li span { display: table-cell; }
+.xans-member-join .agreeArea ul.check li input { margin-left: 4px; }
+.xans-member-join .agreeArea ul.check li label { display: table-cell; padding-left: 2px; }
+.xans-member-join .agreeArea input.ec-base-chk { vertical-align: middle; margin: 0 2px 0 0; }
+
+/* INPUT SIZE */
+.xans-member-join #name, .xans-member-join #last_name,
+.xans-member-join #name_en, .xans-member-join #last_name_en,
+.xans-member-join #name_phonetic, .xans-member-join #last_name_phonetic { width:115px; }
+.xans-member-join #name.ec-member-name, .xans-member-join #name_en.ec-member-name,
+.xans-member-join #name_phonetic.ec-member-name { width:244px; }
+.xans-member-join #hint_answer { width:500px; }
+.xans-member-join #phone1,
+.xans-member-join #mobile1 { margin:0 4px 0 0; }
+.xans-member-join #phone2,
+.xans-member-join #phone3,
+.xans-member-join #mobile2,
+.xans-member-join #mobile3 { margin:0 4px; }
+.xans-member-join #email1 { margin-right:4px; }
+.xans-member-join #email2 { margin:0 4px; }
+.xans-member-join #birth_year,
+.xans-member-join #marry_year,
+.xans-member-join #partner_year { width:60px; margin:0 4px 0 0; }
+.xans-member-join #birth_month,
+.xans-member-join #marry_month,
+.xans-member-join #partner_month,
+.xans-member-join #birth_day,
+.xans-member-join #marry_day,
+.xans-member-join #partner_day { width:30px; margin:0 4px 0 0; }
+.xans-member-join #bank_code { width:240px; }
+.xans-member-join #c_bank_account_no { width:230px; }
+
+.xans-member-join #job,
+.xans-member-join #job_class,
+.xans-member-join #school,
+.xans-member-join #region,
+.xans-member-join #internet,
+.xans-member-join #child,
+.xans-member-join #car,
+.xans-member-join #earning { width:200px; }
+
+.xans-member-join #add1,
+.xans-member-join #add2,
+.xans-member-join #add3,
+.xans-member-join #add4,
+.xans-member-join #add5,
+.xans-member-join #add6,
+.xans-member-join #add7,
+.xans-member-join #add8,
+.xans-member-join #add9 { width:410px; }
+
+#realNameAuth p span { display:inline-block; width:80px; }
+#ipinWrap img,
+#mobileWrap img { display:block; }
+
+/* tooltip */
+.xans-member-join .eTooltip { position:relative; display:inline-block; }
+.xans-member-join .ec-base-tooltip.typeUpper { left:25px; bottom:28px; width:390px; }
+.xans-member-join .ec-base-tooltip.typeUpper .edge { left:20%; }
+
+@media(max-width: 1024px){
+    .xans-member-join > h3{padding-top: 0 !important;}
+    .ec-base-step{margin: 20px 0 50px !important;}
+    .ec-base-step li{margin-bottom: 6px; display:block !important;}
+	.xans-member-join{width: calc(100% - 40px);}
+    .ec-base-step li:not(:last-child):after{display:none  !important;}
+    .xans-member-join #add1,
+    .xans-member-join #add2,
+    .xans-member-join #add3,
+    .xans-member-join #add4,
+    .xans-member-join #add5,
+    .xans-member-join #add6,
+    .xans-member-join #add7,
+    .xans-member-join #add8,
+    .xans-member-join #add9{width: 100%;}
+    .xans-member-join .agreeArea .check span{display:block; margin:0 !important;}
+}

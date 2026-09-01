@@ -1,0 +1,233 @@
+<!--@layout(/layout/basic/layout.html)-->
+
+<style>
+    #searchContent { display: none; }
+    .titleArea { margin: 100px 0 20px; }
+    .titleArea h2 { font-size: 26px; font-weight: 600; }
+    .xans-product-searchdata .searchField { margin: 0; padding: 0; }
+    .xans-product-searchdata .searchField .keywordArea { display: flex; width: 100%; flex-flow: row nowrap; justify-content: center; align-items: center; }
+    .xans-product-searchdata .searchField .keywordArea .search_swiper { display: flex; width: max-content; max-width: 80%; overflow: hidden; }
+    .xans-product-searchdata .searchField .keywordArea .search_swiper .swiper-wrapper { display: flex; }
+    .xans-product-searchdata .searchField .keywordArea .search_swiper .swiper-slide { width: max-content; }
+    .xans-product-searchdata .searchField .keywordArea .search_swiper .swiper-slide:last-child { margin-right: 0; }
+    .xans-product-searchdata .searchResult { border: none; }
+    .xans-product-searchdata .searchResult .record { padding: 0; font-size: 16px; font-weight: 400; color: var(--black-color); text-transform: uppercase; }
+    .xans-product-searchdata .searchResult .record strong { font-weight: 600; }
+    .xans-product-searchdata #order_by { border: none; font-size: 14px; font-weight: 400; }
+    .xans-product-searchdata .noData { padding: 100px 0; }
+    .xans-product-searchdata .noData h3 { font-size: 16px; }
+    .xans-product-searchdata .noData svg { width: 70px; height: 70px; }
+    .xans-product-searchdata .noData .desc { margin: 5px 0 30px; font-size: 16px; }
+    .xans-search.ec-base-product { position: relative; margin-top: 30px; margin-bottom: 100px; }
+    .xans-search.ec-base-product .prdList { display: flex; margin: 0; gap: 40px 20px; flex-wrap: wrap; }
+    .xans-search.ec-base-product .prdList > li { margin: 0; }
+    .xans-search.ec-base-product .prdList .thumbnail { margin: 0; aspect-ratio: 1; }
+    .xans-search.ec-base-product .prdList .thumbnail svg { border: none !important; }
+    .xans-search.ec-base-product .prdList .thumbnail svg:after { display: none !important; }
+    .xans-search.ec-base-product .prdList .thumbnail a img { width: 100%; max-width: unset; height: 100%; object-fit: cover; }
+    .xans-search.ec-base-product .prdList .thumbnail > .icon { position: absolute; left: auto; right: 18px; bottom: 56px; width: 30px; height: 30px; margin: 0; border: none; }
+    .xans-search.ec-base-product .prdList .thumbnail > .icon .promotion { display: none; }
+    .xans-search.ec-base-product .prdList .thumbnail > .icon .button { position: relative; font-size: 0; }
+    .xans-search.ec-base-product .prdList .thumbnail > .icon .button > img.cart { position: absolute; top: 0; left: 0; width: 100%; height: 100%; margin: 0; opacity: 0; }
+    .xans-search.ec-base-product .prdList .thumbnail > .icon .button > img:not(.cart) { display: none; }
+    .xans-search.ec-base-product .prdList .thumbnail .likeButton { display: none; }
+    .xans-search.ec-base-product .prdList .thumbnail .prdImg .wish { display: flex; flex: 1; right: 18px; bottom: 18px; opacity: 0; width: 28px; height: 28px; margin: 0; padding: 0 !important; border: 1px solid #c5c5c8 !important; border-radius: 4px; background: #FFF; box-shadow: 0 0 5px rgba(0, 0, 0, 0.13); transition: opacity 0.3s; align-items: center; justify-content: center; cursor: pointer; }
+	.xans-search.ec-base-product .prdList .thumbnail .prdImg .wish svg { width: 16px; margin: 0; fill: var(--gray-color); }
+	.xans-search.ec-base-product .prdList .thumbnail .prdImg .wish .heart_fill { display: none; fill: var(--point-color); }
+	.xans-search.ec-base-product .prdList .thumbnail .prdImg .wish.on svg { fill: var(--point-color); }
+	.xans-search.ec-base-product .prdList .thumbnail .prdImg .wish.on .heart { display: none; }
+	.xans-search.ec-base-product .prdList .thumbnail .prdImg .wish.on .heart_fill { display: block; }
+    .xans-search.ec-base-product .prdList .thumbnail:hover .prdImg .wish { opacity: 1; }
+    .xans-search.ec-base-product .prdList .thumbnail:hover .icon .button .likeButton { opacity: 1; }
+    .xans-search.ec-base-product .prdList .icon__box { display: flex; position: absolute; bottom: 18px; left: unset; right: 18px; width: auto; height: auto; gap: 8px; background: none; flex-direction: column-reverse; }
+    .xans-search.ec-base-product .prdList .icon__box > span { display: flex; width: 30px; height: 30px; overflow: hidden; margin: 0; padding: 0 !important; border: 1px solid var(--black-color-30) !important; border-radius: 4px; font-size: 0; background: var(--white-color); align-items: center; justify-content: center; }
+    .xans-search.ec-base-product .prdList .icon__box > span:hover { border-color:var(--black-color) !important; }
+    .xans-search.ec-base-product .prdList .icon__box > span svg { margin: 0; }
+    .xans-search.ec-base-product .prdList .icon__box > span img { padding: 5px; box-sizing: border-box; object-fit: contain; }
+    .xans-search.ec-base-product .prdList .icon__box > span.cart { position: relative; }
+    .xans-search.ec-base-product .prdList .icon__box > span.wish { position: relative; right: 0; bottom: 0; }
+    .xans-search.ec-base-product .prdList .icon__box > .option { display: none; }
+    .xans-search.ec-base-product .prdList .icon__box svg { display: none; }
+    .xans-search.ec-base-product .prdList .icon__box .cart svg { width: 20px; margin: 0; fill: var(--gray-color); }
+    .xans-search.ec-base-product .prdList .icon__box .wish svg { width: 16px; margin: 0; fill: var(--gray-color); }
+    .xans-search.ec-base-product .prdList .icon__box .wish .heart_fill { display: none; fill: var(--point-color); }
+    .xans-search.ec-base-product .prdList .icon__box .wish.on .heart { display: none; }
+    .xans-search.ec-base-product .prdList .icon__box .wish.on .heart_fill { display: block; }
+    .xans-search.ec-base-product .prdList .description { margin-top: 22px; padding: 0; }
+    .xans-search.ec-base-product .prdList .description .option { position: relative; display:flex; font-size:0; line-height:0; }
+    .xans-search.ec-base-product .prdList .description .option a { display: block; margin-bottom: 10px; text-align: left; }
+    .xans-search.ec-base-product .prdList .description .promotion { display: flex; margin-top: 5px; gap: 6px; flex-wrap: wrap; align-items: center; }
+    .xans-search.ec-base-product .prdList .description .promotion img { max-height: 20px; object-fit: contain; }
+    .xans-search.ec-base-product .spec { display: flex; margin-top: 10px; flex-direction: column; flex-wrap: wrap; align-items: flex-start; }
+    .xans-search.ec-base-product .spec li:first-child { margin-bottom: 8px; }
+    .xans-search.ec-base-product .spec li:not([class*=_price]) { width: 100%; }
+    .xans-search.ec-base-product .spec li.sale_price { width: 100%; }
+    .xans-search.ec-base-product ul.prdList > li { width: calc((100% - 60px) / 4) !important; margin: 0 !important; }
+    .xans-search.ec-base-product ul.prdList > li .color { display: flex; margin-top: 8px; gap: 6px; }
+    .xans-search.ec-base-product ul.prdList > li .color .chips { width: 8px; height: 8px; margin: 0; border: 1px solid #C5C5C8; border-radius: 50%; }
+
+    @media (max-width:1024px) {
+        .titleArea { margin-top: 40px; }
+        .path { width: 100%; height: 32px; margin: 10px 0 16px; opacity: 1; line-height: normal; text-indent: unset; }
+        .path li { background-position: 0 12px; line-height: 32px; }
+        .xans-product-searchdata .searchResult { font-size: 13px; }
+        .xans-product-searchdata #order_by { font-size: 13px; }
+        .xans-product-searchdata .noData { padding: 50px 0; }
+        .xans-product-searchdata .noData h3 { font-size: 15px; }
+        .xans-product-searchdata .noData svg { width: 50px; height: 50px; }
+        .xans-product-searchdata .noData .desc { margin: 5px 0 20px; font-size: 15px; }
+        .xans-product-searchdata .searchField .keywordArea .list { overflow: unset; }
+        .xans-product-searchdata .searchField .keywordArea .search_swiper { max-width: 100%; }
+        .xans-search.ec-base-product { margin-top: 10px; margin-bottom: 50px; }
+        .xans-search.ec-base-product .prdList { min-width: auto; gap: 40px 10px; }
+        .xans-search.ec-base-product .prdList .spec { margin: 8px 0 0; }
+        .xans-search.ec-base-product .prdList .thumbnail svg { position: unset !important; }
+        .xans-search.ec-base-product .prdList .thumbnail > .icon { right: 8px; bottom: 46px; margin: 0; }
+        .xans-search.ec-base-product .prdList .thumbnail > .icon .button .likeButton { opacity: 1; }
+        .xans-search.ec-base-product .prdList .thumbnail .prdImg .wish { right: 8px; bottom: 8px; opacity: 1; }
+        .xans-search.ec-base-product .prdList .description .option { position:static; }
+        .xans-search.ec-base-product .prdList .icon__box { right: 8px; bottom: 8px; opacity: 1; }
+        .xans-search.ec-base-product .spec li.sale_price { width: 100%; }
+        .xans-search.ec-base-product ul.prdList > li { width: calc((100% - 10px) / 2) !important; }
+    }
+    @media (min-width:768px) and (max-width:1024px) {
+        .xans-search.ec-base-product ul.prdList > li { width: calc((100% - 20px) / 3) !important; }
+    }
+    @media (max-width:767px) {
+        .xans-search.ec-base-product ul.prdList > li { width: calc((100% - 10px) / 2) !important; }
+    }
+</style>
+
+<!-- ##module_info #ProductList #ProductList -->
+
+<div class="titleArea">
+    <h2>검색</h2>
+</div>
+
+<!--@import(/product/shoppQ/searchForm_typeTop.html)-->
+
+<div module="Search_Result" class="ec-base-product">
+	<!--
+		$count = 20
+	-->
+	<ul class="prdList grid4">
+		<li id="anchorBoxId_{$product_no}">
+			<div class="prdList__item">
+				<div class="thumbnail">
+					<a href="{$link_product_detail}">
+						<img src="{$image_big}" id="{$image_medium_id}" alt="{$seo_alt_tag}" loading="lazy">
+						<span module="product_Imagestyle">
+							<span class="prdIcon {$icon_class_name}" style="background-image:url('{$icon_url}');"></span>
+						</span>
+					</a>
+					<div class="likeButton {$disp_likeprd_class}">
+						<button type="button">{$disp_likeprd_icon} <strong>{$disp_likeprd_count}</strong></button>
+					</div>
+					<div class="icon__box">
+						<span class="wish">{$list_wish_icon}<!--@import(/svg/ico_heart.html)--><!--@import(/svg/ico_heart_fill.html)--></span>
+						<span class="cart">{$basket_icon}<!--@import(/svg/ico_cart2.html)-->Cart</span>
+					</div>
+				</div>
+				<div class="description">
+                    <span class="option">{$option_preview_icon}</span>
+					<div class="name">
+						<a href="{$link_product_detail}" class="{$product_name_display|display}">
+							<span class="title {$product_name_title_display|display}">{$product_name_title} :</span> {$product_name}
+						</a>
+					</div>
+					<p class="ec-base-help txtWarn txt11 {$exclusive_purchase_olny|display}"> Exclusive purchase only</p>
+					<ul module="search_ListItem" class="spec">
+						<li class="{$item_display|display}">
+							<strong class="title {$item_title_display|display}">{$item_title} :</strong> {$item_content}
+						</li>
+						<li class="{$item_display|display}">
+							<strong class="title {$item_title_display|display}">{$item_title} :</strong> {$item_content}
+						</li>
+					</ul>
+                    <div class="promotion">{$soldout_icon} {$stock_icon} {$recommend_icon} {$new_icon} {$product_icons} {$today_arrival_icon} {$pickup_icon} {$benefit_icons} {$regular_delivery_icon}</div>
+				</div>
+			</div>
+		</li>
+		<li id="anchorBoxId_{$product_no}">
+			<div class="prdList__item">
+				<div class="thumbnail">
+					<a href="{$link_product_detail}">
+						<img src="{$image_big}" id="{$image_medium_id}" alt="{$seo_alt_tag}" loading="lazy">
+						<span module="product_Imagestyle">
+							<span class="prdIcon {$icon_class_name}" style="background-image:url('{$icon_url}');"></span>
+						</span>
+					</a>
+					<div class="likeButton {$disp_likeprd_class}">
+						<button type="button">{$disp_likeprd_icon} <strong>{$disp_likeprd_count}</strong></button>
+					</div>
+					<div class="icon__box">
+						<span class="wish">{$list_wish_icon}<!--@import(/svg/ico_heart.html)--><!--@import(/svg/ico_heart_fill.html)--></span>
+						<span class="cart">{$basket_icon}<!--@import(/svg/ico_cart2.html)-->Cart</span>
+					</div>
+				</div>
+				<div class="description">
+                    <span class="option">{$option_preview_icon}</span>
+					<div class="name">
+						<a href="{$link_product_detail}" class="{$product_name_display|display}">
+							<span class="title {$product_name_title_display|display}">{$product_name_title} :</span> {$product_name}
+						</a>
+					</div>
+					<p class="ec-base-help txtWarn txt11 {$exclusive_purchase_olny|display}"> Exclusive purchase only</p>
+					<ul module="search_ListItem" class="spec">
+						<li class="{$item_display|display}">
+							<strong class="title {$item_title_display|display}">{$item_title} :</strong> {$item_content}
+						</li>
+						<li class="{$item_display|display}">
+							<strong class="title {$item_title_display|display}">{$item_title} :</strong> {$item_content}
+						</li>
+					</ul>
+                    <div class="promotion">{$soldout_icon} {$stock_icon} {$recommend_icon} {$new_icon} {$product_icons} {$today_arrival_icon} {$pickup_icon} {$benefit_icons} {$regular_delivery_icon}</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+
+    <div module="search_paging" class="ec-base-paginate typeList" role="navigation" aria-label="페이지 이동">
+        <a href="{$param_first}" class="first"><img src="/SkinImg/img/ico_first.png" alt="첫 페이지" /></a>
+        <a href="{$param_before}"><img src="/SkinImg/img/ico_prev.png" alt="이전 페이지" /></a>
+        <ol>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+            <li><a href="{$param}" class="{$param_class}">{$no}</a></li>
+        </ol>
+        <a href="{$param_next}"><img src="/SkinImg/img/ico_next.png" alt="다음 페이지" /></a>
+        <a href="{$param_last}" class="last"><img src="/SkinImg/img/ico_last.png" alt="마지막 페이지" /></a>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // 해당 path에 active
+        const titleText = document.querySelector('.title h2 span')?.textContent.trim();
+        const pathLinks = document.querySelectorAll('.path li a');
+        if (titleText) {
+            pathLinks.forEach(function (link) {
+            if (link.textContent.trim() === titleText) {
+                link.classList.add('active');
+            }
+            });
+        }
+
+        // 좋아요 옵션 숨김
+        const selectBox = document.getElementById('order_by');
+        if (selectBox) {
+            Array.from(selectBox.options).forEach(option => {
+                if (option.text.trim() === '좋아요') {
+                    option.style.display = 'none';
+                }
+            });
+        }
+    });
+</script>

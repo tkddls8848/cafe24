@@ -1,0 +1,16 @@
+.xans-member-findpasswdquestion.ec-base-box { padding:49px 0 39px; line-height:150%; }
+.xans-member-findpasswdquestion .findPw { width:375px; margin:0 auto; }
+.xans-member-findpasswdquestion .findPw p { margin:7px 0 0; }
+.xans-member-findpasswdquestion .findPw .check { color:#353535; }
+.xans-member-findpasswdquestion .findPw .check label { margin:0 5px 0 0; }
+.xans-member-findpasswdquestion .findPw .question { vertical-align:middle; }
+.xans-member-findpasswdquestion .findPw .question strong,
+.xans-member-findpasswdquestion .findPw .answer label { display:inline-block; margin:0 0 5px; padding:0 0 0 10px; width:40px; font-weight:normal; background:url("//img.echosting.cafe24.com/skin/base/common/ico_arrow.png") no-repeat 0 6px;}
+.xans-member-findpasswdquestion .findPw .question span { display:inline-block; width:170px; height:18px; padding:2px 4px; border:1px solid #d9d9d9; color:#202020; }
+.xans-member-findpasswdquestion .findPw input[type="text"] { width:236px; height:28px; line-height:28px; }
+
+.xans-member-findpasswdquestion .findPw .ec-base-desc dt { width:32%; margin:8px 0 0; }
+.xans-member-findpasswdquestion .findPw .ec-base-desc dd { margin:8px 0 0; padding-left:32%; }
+.xans-member-findpasswdquestion .findPw .ec-base-button { padding:40px 4px 10px 0; }
+
+.xans-member-findpasswdquestion .findPw fieldset { margin:0 2px; }

@@ -1,0 +1,27 @@
+# Local credentials and environment files
+.env
+.env.*
+!.env.example
+*password*.txt
+*credentials*.json
+
+# Deployment logs and temporary output
+upload-logs/
+*.log
+*.tmp
+*.bak
+*.swp
+Thumbs.db
+.DS_Store
+
+# Cafe24 backup/restore archives are not deployment packages
+*.tar.gz
+*.tgz
+*.zip
+
+# Local editor and dependency state
+**/.vscode/
+node_modules/
+
+# Local FTP permission test file
+manual-file-upload/skin5/test

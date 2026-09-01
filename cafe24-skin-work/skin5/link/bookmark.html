@@ -1,0 +1,16 @@
+<!--@layout(/layout/basic/popup.html)-->
+<div module="link_bookmark" class="ec-base-layer">
+    <!--@css(/css/module/link/bookmark.css)-->
+    <div class="header">
+        <h1>{$mall_name}</h1>
+    </div>
+    <div class="content">
+        <p class="info">
+            <strong>Bookmark</strong> will be installed.<br />Would you like to install?
+        </p>
+    </div>
+    <div class="ec-base-button">
+        <a href="#none" class="btnSubmitFix sizeS" onclick="{$action_add_bookmark}" role="button">추가</a>
+        <a href="#none" class="btnNormalFix sizeS" onclick="{$action_close}" role="button">Cancel</a>
+    </div>
+</div>

@@ -1,0 +1,87 @@
+<!--@layout(/layout/basic/layout.html)-->
+
+<main class="mn-home">
+    <section class="mn-hero" aria-labelledby="mn-hero-title">
+        <span class="mn-hero__image" role="img" aria-label="정갈하게 배치된 데스크 정리함과 노트, 펜, 서류 트레이"></span>
+        <span class="mn-hero__shade" aria-hidden="true"></span>
+        <div class="mn-shell mn-hero__inner">
+            <div class="mn-hero__copy">
+                <p class="mn-label">WORK ESSENTIALS</p>
+                <h1 id="mn-hero-title">일이 잘되는 공간은<br />작은 정리에서 시작됩니다.</h1>
+                <!-- br 앞의 공백은 모바일에서 br을 숨길 때 어절이 붙지 않게 한다. -->
+                <p class="mn-hero__lead">꼭 필요한 사무용품만 골라 <br />단정하고 편안한 업무 환경을 만듭니다.</p>
+                <a class="mn-button mn-button--navy" href="#mn-best">베스트 상품 보기<span aria-hidden="true">→</span></a>
+            </div>
+        </div>
+    </section>
+
+    <nav class="mn-catbar" aria-label="상품 카테고리">
+        <div class="mn-shell mn-catbar__inner">
+            <a href="/category/데스크문구/46/"><b>필기·노트</b><small>기록이 선명해지는 기본</small></a>
+            <a href="/category/수납정리/42/"><b>파일·정리</b><small>찾기 쉬운 업무의 시작</small></a>
+            <a href="/product/search.html?keyword=복사용지"><b>복사용지</b><small>매일 쓰는 종이의 기준</small></a>
+            <a href="/category/데스크문구/46/"><b>데스크 용품</b><small>작지만 확실한 효율</small></a>
+        </div>
+    </nav>
+
+    <section class="mn-section mn-products mn-shell" id="mn-best" aria-labelledby="mn-best-title">
+        <div class="mn-rule">
+            <div class="mn-rule__head">
+                <p class="mn-label">MOST LOVED</p>
+                <h2 id="mn-best-title">지금 가장 많이 찾는 제품</h2>
+            </div>
+            <a class="mn-text-link" href="/product/list.html?cate_no=46">전체 보기<span aria-hidden="true">→</span></a>
+        </div>
+        <div class="mn-product-module" module="product_listmain_9">
+            <!--
+                $count = 12
+                $basket_result = /product/add_basket.html
+                $basket_option = /product/basket_option.html
+                $moreview = yes
+                $cache = yes
+            -->
+            <ul class="mn-product-grid">
+                <li id="anchorBoxId_{$product_no}">
+                    <article class="mn-product-card">
+                        <div class="mn-product-image">
+                            <a href="{$link_product_detail}"><img src="{$image_big}" id="{$image_big_id}" alt="{$seo_alt_tag}" loading="lazy" /></a>
+                            <div class="mn-product-actions"><span class="mn-cart">{$basket_icon}</span><span class="mn-wish">{$list_wish_icon}</span></div>
+                        </div>
+                        <div class="mn-product-info">
+                            <p class="mn-product-name"><a href="{$link_product_detail}">{$product_name}</a></p>
+                            <ul class="mn-product-spec" module="product_ListItem">
+                                <li class="{$item_display|display}"><strong class="{$item_title_display|display}">{$item_title}</strong>{$item_content}</li>
+                                <li class="{$item_display|display}"><strong class="{$item_title_display|display}">{$item_title}</strong>{$item_content}</li>
+                                <li class="{$item_display|display}"><strong class="{$item_title_display|display}">{$item_title}</strong>{$item_content}</li>
+                            </ul>
+                            <div class="mn-product-icons">{$soldout_icon}{$stock_icon}{$recommend_icon}{$new_icon}{$product_icons}{$today_arrival_icon}</div>
+                        </div>
+                    </article>
+                </li>
+            </ul>
+        </div>
+        <div class="mn-product-more" module="product_listmore_9"><a href="#none" onclick="{$more_action}">상품 더보기<b>{$current_page} / {$total_page}</b></a></div>
+    </section>
+
+    <section class="mn-business" id="mn-business" aria-labelledby="mn-business-title">
+        <div class="mn-shell mn-business__inner">
+            <div class="mn-business__copy">
+                <p class="mn-label">FOR BUSINESS</p>
+                <h2 id="mn-business-title">회사에 필요한 소모품,<br />한 번에 간편하게.</h2>
+                <p>정기 배송부터 대량 견적까지 <br />기업 전용 상담으로 준비했습니다.</p>
+                <a class="mn-button mn-button--light" href="/board/상품-qa/6/">대량구매 문의하기<span aria-hidden="true">→</span></a>
+            </div>
+            <dl class="mn-spec">
+                <div><dt>맞춤 견적</dt><dd>품목과 수량에 맞춘 단가를 안내합니다.</dd></div>
+                <div><dt>정기 배송</dt><dd>주 1회, 월 1회 등 주기를 정해 받아보세요.</dd></div>
+                <div><dt>기업 전용 상담</dt><dd>게시판으로 접수하면 영업일 기준 1일 안에 회신합니다.</dd></div>
+            </dl>
+        </div>
+    </section>
+
+    <section class="mn-services mn-shell" aria-label="쇼핑 서비스 안내">
+        <div><strong>빠른 배송</strong><span>평일 오후 2시 이전 주문 당일 출고</span></div>
+        <div><strong>검증된 품질</strong><span>업무에 꼭 맞는 제품만 엄선</span></div>
+        <div><strong>친절한 상담</strong><span>상품과 대량구매 상담을 한 번에</span></div>
+    </section>
+</main>

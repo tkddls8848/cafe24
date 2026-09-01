@@ -1,0 +1,233 @@
+#contents { position:relative; }
+.xans-order-formglobal .orderStep { margin:0 0 20px; }
+
+/* Title */
+.xans-order-formglobal .title { margin:40px 0 10px 10px; }
+.xans-order-formglobal .title h3 { display:inline-block; vertical-align:middle; color:#353535; font-size:12px; }
+    .xans-order-formglobal .orderListArea .title { position:relative; height:38px; margin:0; padding:0 0 0 9px; border:1px solid #d7d5d5; border-bottom:0; line-height:38px; background:#f6f6f6; }
+    .xans-order-formglobal .orderListArea .title .button { position:absolute; right:10px; top:8px; }
+    .xans-order-formglobal .orderArea .title { margin-top:30px; }
+    .xans-order-formglobal .orderArea .title .required { margin:-15px 0 0; color:#353535; text-align:right; }
+    .xans-order-formglobal .orderArea .title .required img { vertical-align:middle; }
+
+/* List */
+.xans-order-formglobal .orderListArea .title + .ec-base-table table { margin:0; }
+.xans-order-formglobal .ec-base-table tfoot td .gLeft { float:left; margin:6px 0 0; }
+.xans-order-formglobal .ec-base-table td.thumb img { max-width:80px; }
+.xans-order-formglobal .ec-base-table .name .ec-set-product-name { display:block; }
+.xans-order-formglobal .ec-base-table td div.option,
+.xans-order-formglobal .ec-base-table td ul.option > li { margin:9px 0 0; color:#707070; line-height:16px; }
+.xans-order-formglobal .ec-base-table td ul.option > li > strong { display:block; color:#353535; }
+.xans-order-formglobal .ec-base-table td div.option span.file a,
+.xans-order-formglobal .ec-base-table td ul.option > li > span.file a { margin:0 0 0 4px; padding:0 0 0 11px; color:#707070; text-decoration:underline; background:url("//img.echosting.cafe24.com/skin/base/common/ico_file.gif") no-repeat 0 2px; }
+.xans-order-formglobal .controlInfo { padding:10px 0 8px 10px; border-top:1px solid #e8e5e4; color:#f76560; font-size:11px; line-height:1.5; background:#fff8f5; }
+.xans-order-formglobal .controlInfo.typeBtm { margin:-1px 0 0; border-top:0; border-bottom:1px solid #e8e5e4; }
+.xans-order-formglobal .controlInfo li { padding:0 0 0 23px; background:url("//img.echosting.cafe24.com/skin/base/common/ico_info.gif") no-repeat 0 1px; }
+.xans-order-formglobal > .ec-base-button { padding:10px 0 50px; border-bottom:1px solid #868686; }
+.xans-order-formglobal .ec-base-table.typeList tfoot td .gLeft { margin:0; }
+
+/* Write */
+.xans-order-formglobal .orderArea ul.list { padding:17px 0 16px 18px; border-bottom:1px solid #e8e8e8; line-height:1.5; color:#707070; }
+.xans-order-formglobal .orderArea ul.list li { padding:0 0 0 9px; background:url("//img.echosting.cafe24.com/skin/base/common/ico_dash.gif") no-repeat 0 7px; }
+.xans-order-formglobal .orderArea ul.list a { color:#295cef; }
+.xans-order-formglobal .ec-base-table.typeWrite td { color:#707070; }
+.xans-order-formglobal .ec-base-table.typeWrite label { color:#353535; }
+.xans-order-formglobal .ec-base-table ul.grid li { margin:5px 0 0; }
+.xans-order-formglobal .ec-base-table .delvMessage { margin:7px 0 0; }
+.xans-order-formglobal .ec-base-table .delvMessage ul { margin:5px 0 0; }
+.xans-order-formglobal .ec-base-table .delvMessage ul li { padding:0 0 0 9px; background:url("//img.echosting.cafe24.com/skin/base/common/ico_dash.gif") no-repeat 0 7px; }
+.xans-order-formglobal .selectAddr .choice { padding:10px; background:#fbfafa; }
+.xans-order-formglobal .selectAddr .info { padding:15px 20px; border-top:1px solid #e9e9e9; }
+.xans-order-formglobal .selectAddr .name { display:inline-block; margin-right:8px; color:#303030; font-size:14px; }
+.xans-order-formglobal .selectAddr .infoList { margin:10px 0 0 10px; }
+.xans-order-formglobal .selectAddr .infoList li { margin:0 0 3px; }
+.xans-order-formglobal .selectAddr .infoList .phone:before { content:""; display:inline-block; width:1px; height:10px; margin:0 7px 0 5px; vertical-align:-1px; border-left:1px solid #ccc; }
+.xans-order-formglobal .selectAddr .infoList .displaynone + .phone:before { display:none; }
+
+/* joinArea */
+.xans-order-formglobal .joinArea .ec-base-box { position:relative; padding:0; border-color:#777; }
+.xans-order-formglobal .joinArea .ec-base-box:before { content:""; position:absolute; left:-1px; bottom:0; z-index:1; width:1px; height:100%; background: #777; }
+.xans-order-formglobal .joinArea .ec-base-box:after { content:""; position:absolute; right:-1px; bottom:0; z-index:1; width:1px; height:100%; background: #777; }
+.xans-order-formglobal .joinArea .ec-base-table { margin:-1px; }
+.xans-order-formglobal .joinArea .ec-base-table:after { content:""; position:absolute; left:-1px; bottom:-1px; z-index:1; width:100%; height:1px; background: #777; }
+.xans-order-formglobal .joinArea .ec-base-table td { background:#fff; }
+.xans-order-formglobal .joinArea .agreeJoin { margin:17px 18px; }
+.xans-order-formglobal .joinArea .agreeJoin .fChk { display:inline-block; position:relative; width:22px; height:22px; margin:0 8px 0 0; cursor:pointer; vertical-align:top; }
+.xans-order-formglobal .joinArea .agreeJoin input { position:absolute; top:0; left:0; z-index:1; width:100%; height:100%; opacity:0; cursor:pointer; }
+.xans-order-formglobal .joinArea .agreeJoin label { display:inline-block; height:22px; line-height:22px; cursor:pointer; }
+.xans-order-formglobal .joinArea .agreeJoin .checkbox { position:absolute; top:0; left:0; width:100%; height:100%; background-image:url("//img.echosting.cafe24.com/skin/base/order/bg_join_check.png"); background-repeat:no-repeat; }
+.xans-order-formglobal .joinArea .agreeJoin input:checked + em { background-position:-34px 0; }
+.xans-order-formglobal .joinArea .guide { margin:-5px 0 27px 60px; }
+.xans-order-formglobal .joinArea .guide .list li { line-height:18px; }
+.xans-order-formglobal .joinArea .agreeMarketing { margin:6px 0 0 16px; }
+.xans-order-formglobal .joinArea .agreeMarketing .gLabel input { margin:0 0 0 20px; }
+.xans-order-formglobal .joinArea .eTooltip { display:inline-block; position:relative; }
+.xans-order-formglobal .joinArea .ec-base-tooltip.typeUpper { left:25px; bottom:28px; width:390px; }
+.xans-order-formglobal .joinArea .ec-base-tooltip.typeUpper .edge { left:20%; }
+
+/* Shipping */
+.xans-order-formglobal .shippingArea th { border-top:1px solid #d7d5d5; border-left:1px solid #d7d5d5; border-right:1px solid #d7d5d5; text-align:left; font-weight:normal; line-height:39px; background:#fbfafa; }
+.xans-order-formglobal .shippingArea th .method { padding:0 0 0 10px; }
+.xans-order-formglobal .shippingArea td { border-top:1px solid #e9e9e9; border-left:1px solid #d7d5d5; border-right:1px solid #d7d5d5; word-break:break-all; }
+.xans-order-formglobal .shippingArea ul.list { padding:15px 0 15px 15px; border-bottom:1px solid #d7d5d5; line-height:1.5; color:#707070; }
+.xans-order-formglobal .shippingArea ul.list li { padding:0 0 0 9px; background:url("//img.echosting.cafe24.com/skin/base/common/ico_dash.gif") no-repeat 0 7px; }
+.xans-order-formglobal .shippingArea ul.list li.map { margin:10px 10px 0 0; max-width:100%; }
+.xans-order-formglobal .shippingArea ul.list li.map img { margin-top:5px; max-width:100%; border:1px solid #e8e8e8; vertical-align:middle; }
+
+/* Total */
+.xans-order-formglobal .totalArea .ec-base-table.total table { z-index:2; border-color:#777; }
+.xans-order-formglobal .totalArea .ec-base-table.total th { height:39px; background:#fbfafa; }
+.xans-order-formglobal .totalArea .ec-base-table.total td { height:58px; }
+.xans-order-formglobal .totalArea .ec-base-table.total td .box { word-break:normal; }
+.xans-order-formglobal .totalArea .ec-base-table.total .txt23 { font-size:23px; letter-spacing:-1px; }
+
+.xans-order-formglobal .totalArea .ec-base-table.gMerge table { margin:-1px 0 0; }
+.xans-order-formglobal .totalArea .ec-base-table.gMerge + .ec-base-table.gMerge table { margin:-2px 0 0; }
+.xans-order-formglobal .totalArea .ec-base-table tr.sum td { font-weight:bold; background:#fbfafa; }
+
+.xans-order-formglobal .totalArea .detail .couponArea { margin:5px 0 0; }
+.xans-order-formglobal .totalArea .detail .couponArea .coupon { padding:0 0 0 9px; color:#707070; background:url("//img.echosting.cafe24.com/skin/base/common/ico_dash.gif") no-repeat 0 7px; }
+.xans-order-formglobal .totalArea .detail .info { margin:17px 0 8px; }
+.xans-order-formglobal .totalArea .detail .info li { padding:0 0 0 9px; background:url("//img.echosting.cafe24.com/skin/base/common/ico_dash.gif") no-repeat 0 7px; }
+.xans-order-formglobal .totalArea .detail .naverInfo { margin:0 0 8px; color:#707070; }
+.xans-order-formglobal .totalArea .detail .naverInfo h4 { margin:25px 0 13px; color:#353535; font-size:12px; font-weight:normal; }
+.xans-order-formglobal .totalArea .detail .naverInfo ul li { padding:0 0 0 9px; background:url("//img.echosting.cafe24.com/skin/base/common/ico_dash.gif") no-repeat 0 7px; }
+.xans-order-formglobal .totalArea .detail .naverInfo ol li { padding:0 0 0 25px; background:url("//img.echosting.cafe24.com/skin/base/common/ico_number.png") no-repeat; }
+.xans-order-formglobal .totalArea .detail .naverInfo ol li.item1 { background-position:-484px 0; }
+.xans-order-formglobal .totalArea .detail .naverInfo ol li.item2 { background-position:-434px -100px; }
+.xans-order-formglobal .totalArea .detail .naverInfo ol li.item3 { background-position:-384px -200px; }
+.xans-order-formglobal .totalArea .detail .naverInfo ol li.item4 { background-position:-334px -300px; }
+.xans-order-formglobal .totalArea .detail .naverInfo ol li.item5 { background-position:-284px -400px; }
+.xans-order-formglobal .totalArea .detail .naverInfo ol li.item6 { background-position:-234px -500px; }
+.xans-order-formglobal .totalArea .detail .mileage { margin:0 0 10px; padding:0 0 7px; border-bottom:1px dotted #cdcdcd; }
+
+/* Payment */
+.xans-order-formglobal .payArea { overflow:hidden; position:relative; padding:0 241px 0 0; border:1px solid #777; color:#353535; line-height:1.5; }
+.xans-order-formglobal .payArea:after { position:absolute; top:0; right:240px; display:block; content:""; width:1px; height:100%; background:#777; }
+.xans-order-formglobal .payArea .payment { float:left; width:100%; }
+.xans-order-formglobal .payArea .method { padding:17px 20px 15px; font-weight:bold; border-bottom:3px double #dedede; }
+.xans-order-formglobal .payArea .method span { display:inline-block; margin:0 15px 5px 0; }
+.xans-order-formglobal .payArea .method span img { vertical-align:middle; margin:0 2px 0 0; }
+.xans-order-formglobal .payArea .payment > .ec-base-table { padding:10px 20px; }
+.xans-order-formglobal .payArea .ec-base-table th,
+.xans-order-formglobal .payArea .ec-base-table td { padding:5px 0 5px 9px; vertical-align:middle; }
+.xans-order-formglobal .payArea .info { padding:15px 20px; }
+.xans-order-formglobal .payArea .info th { width:130px; padding:8px 0 0; font-weight:normal; text-align:left; }
+.xans-order-formglobal .payArea .info td { padding:5px 0; }
+.xans-order-formglobal .payArea .info input { width:190px; }
+.xans-order-formglobal .payArea .info td .grid { margin:4px 0 0; }
+.xans-order-formglobal .payArea .agree { padding:0 20px; }
+.xans-order-formglobal .payArea .payHelp { margin:0 0 0 130px; }
+.xans-order-formglobal .payArea .agree > table > tbody > tr > th { width:130px; padding:20px 0; border-top:1px solid #e8e8e8; font-weight:normal; text-align:left; }
+.xans-order-formglobal .payArea .agree > table > tbody > tr > td { padding:20px 0; border-top:1px solid #e8e8e8; }
+.xans-order-formglobal .payArea .agree .cashReceipt label { padding:0 30px 0 0; }
+.xans-order-formglobal .payArea .agree .cashReceipt strong { font-weight:normal; }
+.xans-order-formglobal .payArea .agree .cashReceipt .mobile,
+.xans-order-formglobal .payArea .agree .cashReceipt .regno { margin:10px 0 0; }
+.xans-order-formglobal .payArea .agree .cashReceipt .grid { margin:4px 0 0; }
+.xans-order-formglobal .payArea .agree .textArea { position:relative; margin:0 0 8px; padding:0 80px 0 0; }
+.xans-order-formglobal .payArea .agree .textArea textarea { width:96%; height:57px; }
+.xans-order-formglobal .payArea .agree .textArea a { position:absolute; right:0; top:0; }
+.xans-order-formglobal .payArea .agree .guarantee label { padding:0 30px 0 0; }
+.xans-order-formglobal .payArea .agree .guarantee a { color:#295cef; font-weight:bold; }
+.xans-order-formglobal .payArea .agree .guarantee div:first-child p:first-child { margin:0 0 15px; }
+.xans-order-formglobal .payArea .agree .guarantee #eguarantee_personal { margin:20px 0 0; border:1px solid #d6d4d4; }
+.xans-order-formglobal .payArea .agree .guarantee #eguarantee_personal p { height:33px; padding:0 10px; line-height:33px; border-top:1px solid #e8e7e7; }
+.xans-order-formglobal .payArea .agree .guarantee #eguarantee_personal p:first-child { border:0; }
+.xans-order-formglobal .receipt .title { display:block; margin:20px 0 0; }
+.xans-order-formglobal .receipt .info { padding:0; }
+.xans-order-formglobal .receipt .ec-base-table { margin:10px 0 0; }
+.xans-order-formglobal .payArea .total { float:right; width:240px; margin:0 -241px 0 0; text-align:right; background:#fbfafa; }
+.xans-order-formglobal .payArea .total h4 { margin:17px 10px 0 0; color:#353535; font-size:12px; }
+.xans-order-formglobal .payArea .total h4 span { font-weight:normal; }
+.xans-order-formglobal .payArea .total .price { margin:20px 10px 0 0; color:#008bcc; font-size:14px; }
+.xans-order-formglobal .payArea .total .price input#total_price { width:190px; height:auto; padding:0; border:0; color:#008bcc; font-size:28px; font-weight:bold; letter-spacing:-1px; line-height:normal; background:#fbfafa; }
+.xans-order-formglobal .payArea .total .price strong,
+.xans-order-formglobal .payArea .total .price span { vertical-align:-5px; }
+.xans-order-formglobal .payArea .total .paymentAgree { position:relative; margin:30px 0 0 14px; padding:0 0 0 24px; text-align:left; }
+.xans-order-formglobal .payArea .total .paymentAgree input { position:absolute; left:0; top:2px; }
+.xans-order-formglobal .payArea .total .ec-base-button { margin:6px 10px 0; }
+.xans-order-formglobal .payArea .total .mileage .ec-base-desc { padding:10px 10px 9px 0; border-top:1px solid #d7d5d5; }
+.xans-order-formglobal .payArea .total .mileage .ec-base-desc + .ec-base-desc { border-color:#e9e9e9; }
+
+
+.xans-order-formglobal .termArea { overflow:hidden; margin:10px 0 0; padding:10px 14px 0 4px; border:1px solid #d7d5d5; }
+.xans-order-formglobal .termArea .check { min-height:14px; padding:10px; margin:-10px -14px 10px -4px; border-bottom:1px solid #e9e9e9; background:#fbfafa; }
+.xans-order-formglobal .termArea .inner { width:100%; padding:10px 0 10px; }
+.xans-order-formglobal .termArea .box { position:relative; margin:10px 10px 20px; padding-left:160px; }
+.xans-order-formglobal .termArea .box h4 { position:absolute; top:0; left:0; width:150px; font-size:12px; }
+.xans-order-formglobal .termArea .box textarea { margin:0 0 10px; }
+
+
+.xans-order-formglobal .help .content a { color:#707070; }
+.xans-order-formglobal .help .content div h4:first-child { margin-top:22px; }
+
+/* Total Detail Layer */
+.xans-order-formglobal .totalDetail { display:none; z-index:110; width:300px; color:#707070; }
+.xans-order-formglobal .totalDetail .content p { text-align:right; }
+.xans-order-formglobal .totalDetail .content .ec-base-desc { margin:8px 0 0; padding-top:6px; border-top:1px dotted #b0b1b3; }
+
+/* Input Size */
+.xans-order-formglobal #fname, .xans-order-formglobal #fname2,
+.xans-order-formglobal #english_name, .xans-order-formglobal #english_name2,
+.xans-order-formglobal #pron_name, .xans-order-formglobal #pron_name2 {width:100px; }
+.xans-order-formglobal #fname.ec-member-name, .xans-order-formglobal  #english_name.ec-member-name,
+.xans-order-formglobal #pron_name.ec-member-name { width:200px; }
+.xans-order-formglobal #oname, .xans-order-formglobal #oname2, .xans-order-formglobal #rname,
+.xans-order-formglobal #si_gun_dosi, .xans-order-formglobal #ju_do,
+.xans-order-formglobal #ocity, .xans-order-formglobal #ostate { width:180px; }
+.xans-order-formglobal #fzipcode { width:90px; }
+
+.xans-order-formglobal #oaddr1, .xans-order-formglobal #oaddr2,
+.xans-order-formglobal #raddr1, .xans-order-formglobal #raddr2,
+.xans-order-formglobal #faddress, .xans-order-formglobal #faddress2 { width:450px; margin:5px 5px 0 0; }
+
+.xans-order-formglobal #ophone1_1, .xans-order-formglobal #ophone2_1,
+.xans-order-formglobal #rphone1_1, .xans-order-formglobal #rphone2_1,
+.xans-order-formglobal #cashreceipt_user_mobile1 { width:60px; }
+.xans-order-formglobal #ophone1_2, .xans-order-formglobal #ophone1_3,
+.xans-order-formglobal #ophone2_2, .xans-order-formglobal #ophone2_3,
+.xans-order-formglobal #rphone1_2, .xans-order-formglobal #rphone1_3,
+.xans-order-formglobal #rphone2_2, .xans-order-formglobal #rphone2_3,
+.xans-order-formglobal #cashreceipt_user_mobile2, .xans-order-formglobal #cashreceipt_user_mobile3 { width:60px; margin:0 4px; }
+.xans-order-formglobal #cashreceipt_reg_no { width:70px; }
+.xans-order-formglobal #fphone1_ex2, .xans-order-formglobal #fphone2_ex2 { margin:0 4px; }
+
+.xans-order-formglobal #oemail { width:450px; margin:0 0 7px; }
+.xans-order-formglobal #oemail1 { width:180px; margin:0 4px 0 0; }
+.xans-order-formglobal #oemail2 { width:180px; margin:0 4px; }
+
+.xans-order-formglobal #omessage, .xans-order-formglobal #fmessage, .xans-order-formglobal #question { width:750px; height:40px; }
+.xans-order-formglobal #nm_terms, .xans-order-formglobal #mall_agreement,
+.xans-order-formglobal #delivery_info_offer_content, .xans-order-formglobal #fdelivery_info_offer_content, .xans-order-formglobal #privacy_agreement_for_identification,
+.xans-order-formglobal #information_agreement, .xans-order-formglobal #consignment_agreement, .xans-order-formglobal #privacy_agreement { width:100%; height:80px; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box; }
+
+
+.xans-order-formglobal #hdateM, .xans-order-formglobal #fhdateM { width:60px; margin:0 9px 0 0; }
+.xans-order-formglobal #hdateY, .xans-order-formglobal #fhdateY {width:60px;margin:0 9px 0 9px;}
+.xans-order-formglobal #hdateD, .xans-order-formglobal #hdateW, .xans-order-formglobal #fhdateD { width:50px; margin:0 9px 0 9px; }
+.xans-order-formglobal #fhdateW { margin:0 9px 0 9px; }
+
+.xans-order-formglobal #nm_agreement1, .xans-order-formglobal #delivery_info_offer_check1, .xans-order-formglobal #fdelivery_info_offer_check1 { margin-left:20px; }
+
+.xans-order-formglobal #input_mile,
+.xans-order-formglobal #either_input_mile,
+.xans-order-formglobal #input_deposit { width:190px; padding:0 9px 0 0; text-align:right; font-weight:bold; }
+
+.xans-order-formglobal #order_password,
+.xans-order-formglobal #order_password_confirm,
+.xans-order-formglobal #question_passwd  { width:235px; }
+
+.xans-order-formglobal #escrow_terms { width:400px; }
+.xans-order-formglobal #eguarantee_year { width:30px; }
+.xans-order-formglobal #eguarantee_month { width:20px; }
+.xans-order-formglobal #eguarantee_day { width:20px; }
+.xans-order-formglobal #bankaccount { width:90%; }
+
+.xans-order-formglobal #tax_request_email1, .xans-order-formglobal #tax_request_email2 {margin:0 4px 0 0; width:110px; }
+.xans-order-formglobal #tax_request_address1, .xans-order-formglobal #tax_request_address2 { margin:5px 0 0; width:400px; }
+
+#divNvPointInfo { display:none; position:absolute; z-index:99; width:245px; padding:10px; color:#777; font-size:11px; line-height:14px; background:#fff; border:1px solid #5B9761; }
+#divNvPointInfo a { display:block; padding:5px 0 0; color:#1ec228; }
+#divNvPointInfo a img { vertical-align:middle; }
+#imgNaverMileageHelp { cursor:pointer; }
